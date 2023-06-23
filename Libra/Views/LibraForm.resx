@@ -117,141 +117,66 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="UserNameLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;userNameLabel.Name" xml:space="preserve">
+    <value>userNameLabel</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="UserNameLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 12</value>
-  </data>
-  <data name="UserNameLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 15</value>
-  </data>
-  <data name="UserNameLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="UserNameLabel.Text" xml:space="preserve">
-    <value>利用者名：</value>
-  </data>
-  <data name="&gt;&gt;UserNameLabel.Name" xml:space="preserve">
-    <value>UserNameLabel</value>
-  </data>
-  <data name="&gt;&gt;UserNameLabel.Type" xml:space="preserve">
+  <data name="&gt;&gt;userNameLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;UserNameLabel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;userNameLabel.Parent" xml:space="preserve">
     <value>rentalPanel</value>
   </data>
-  <data name="&gt;&gt;UserNameLabel.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;userNameLabel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="UserNameTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Meiryo UI, 9pt</value>
+  <data name="&gt;&gt;userNameTextBox.Name" xml:space="preserve">
+    <value>userNameTextBox</value>
   </data>
-  <data name="UserNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>75, 9</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="UserNameTextBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="UserNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 23</value>
-  </data>
-  <data name="UserNameTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;UserNameTextBox.Name" xml:space="preserve">
-    <value>UserNameTextBox</value>
-  </data>
-  <data name="&gt;&gt;UserNameTextBox.Type" xml:space="preserve">
+  <data name="&gt;&gt;userNameTextBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;UserNameTextBox.Parent" xml:space="preserve">
+  <data name="&gt;&gt;userNameTextBox.Parent" xml:space="preserve">
     <value>rentalPanel</value>
   </data>
-  <data name="&gt;&gt;UserNameTextBox.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;userNameTextBox.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="ReturnButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
+  <data name="&gt;&gt;returnButton.Name" xml:space="preserve">
+    <value>returnButton</value>
   </data>
-  <data name="ReturnButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Meiryo UI, 9pt</value>
-  </data>
-  <data name="ReturnButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ReturnButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 48</value>
-  </data>
-  <data name="ReturnButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="ReturnButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 25</value>
-  </data>
-  <data name="ReturnButton.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="ReturnButton.Text" xml:space="preserve">
-    <value>返却</value>
-  </data>
-  <data name="&gt;&gt;ReturnButton.Name" xml:space="preserve">
-    <value>ReturnButton</value>
-  </data>
-  <data name="&gt;&gt;ReturnButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;returnButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ReturnButton.Parent" xml:space="preserve">
+  <data name="&gt;&gt;returnButton.Parent" xml:space="preserve">
     <value>rentalPanel</value>
   </data>
-  <data name="&gt;&gt;ReturnButton.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;returnButton.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="BorrowButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
+  <data name="&gt;&gt;borrowButton.Name" xml:space="preserve">
+    <value>borrowButton</value>
   </data>
-  <data name="BorrowButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Meiryo UI, 9pt</value>
-  </data>
-  <data name="BorrowButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 48</value>
-  </data>
-  <data name="BorrowButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="BorrowButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 25</value>
-  </data>
-  <data name="BorrowButton.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="BorrowButton.Text" xml:space="preserve">
-    <value>貸出</value>
-  </data>
-  <data name="&gt;&gt;BorrowButton.Name" xml:space="preserve">
-    <value>BorrowButton</value>
-  </data>
-  <data name="&gt;&gt;BorrowButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;borrowButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;BorrowButton.Parent" xml:space="preserve">
+  <data name="&gt;&gt;borrowButton.Parent" xml:space="preserve">
     <value>rentalPanel</value>
   </data>
-  <data name="&gt;&gt;BorrowButton.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;borrowButton.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="rentalPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 9</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="rentalPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="rentalPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>208, 75</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="rentalPanel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -267,43 +192,244 @@
   <data name="&gt;&gt;rentalPanel.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="userNameLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="userNameLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="userNameLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 12</value>
+  </data>
+  <data name="userNameLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 15</value>
+  </data>
+  <data name="userNameLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="userNameLabel.Text" xml:space="preserve">
+    <value>利用者名：</value>
+  </data>
+  <data name="&gt;&gt;userNameLabel.Name" xml:space="preserve">
+    <value>userNameLabel</value>
+  </data>
+  <data name="&gt;&gt;userNameLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;userNameLabel.Parent" xml:space="preserve">
+    <value>rentalPanel</value>
+  </data>
+  <data name="&gt;&gt;userNameLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="userNameTextBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Meiryo UI, 9pt</value>
+  </data>
+  <data name="userNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 9</value>
+  </data>
+  <data name="userNameTextBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="userNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 23</value>
+  </data>
+  <data name="userNameTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;userNameTextBox.Name" xml:space="preserve">
+    <value>userNameTextBox</value>
+  </data>
+  <data name="&gt;&gt;userNameTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;userNameTextBox.Parent" xml:space="preserve">
+    <value>rentalPanel</value>
+  </data>
+  <data name="&gt;&gt;userNameTextBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="returnButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="returnButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Meiryo UI, 9pt</value>
+  </data>
+  <data name="returnButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="returnButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 48</value>
+  </data>
+  <data name="returnButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="returnButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 25</value>
+  </data>
+  <data name="returnButton.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="returnButton.Text" xml:space="preserve">
+    <value>返却</value>
+  </data>
+  <data name="&gt;&gt;returnButton.Name" xml:space="preserve">
+    <value>returnButton</value>
+  </data>
+  <data name="&gt;&gt;returnButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;returnButton.Parent" xml:space="preserve">
+    <value>rentalPanel</value>
+  </data>
+  <data name="&gt;&gt;returnButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="borrowButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="borrowButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Meiryo UI, 9pt</value>
+  </data>
+  <data name="borrowButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="borrowButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 48</value>
+  </data>
+  <data name="borrowButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="borrowButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 25</value>
+  </data>
+  <data name="borrowButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="borrowButton.Text" xml:space="preserve">
+    <value>貸出</value>
+  </data>
+  <data name="&gt;&gt;borrowButton.Name" xml:space="preserve">
+    <value>borrowButton</value>
+  </data>
+  <data name="&gt;&gt;borrowButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;borrowButton.Parent" xml:space="preserve">
+    <value>rentalPanel</value>
+  </data>
+  <data name="&gt;&gt;borrowButton.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="searchPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="ClearButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="&gt;&gt;clearButton.Name" xml:space="preserve">
+    <value>clearButton</value>
   </data>
-  <data name="ClearButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Meiryo UI, 9pt</value>
-  </data>
-  <data name="ClearButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ClearButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>451, 27</value>
-  </data>
-  <data name="ClearButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="ClearButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 25</value>
-  </data>
-  <data name="ClearButton.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="ClearButton.Text" xml:space="preserve">
-    <value>クリア</value>
-  </data>
-  <data name="&gt;&gt;ClearButton.Name" xml:space="preserve">
-    <value>ClearButton</value>
-  </data>
-  <data name="&gt;&gt;ClearButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;clearButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ClearButton.Parent" xml:space="preserve">
+  <data name="&gt;&gt;clearButton.Parent" xml:space="preserve">
     <value>searchPanel</value>
   </data>
-  <data name="&gt;&gt;ClearButton.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;clearButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;searchButton.Name" xml:space="preserve">
+    <value>searchButton</value>
+  </data>
+  <data name="&gt;&gt;searchButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;searchButton.Parent" xml:space="preserve">
+    <value>searchPanel</value>
+  </data>
+  <data name="&gt;&gt;searchButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;searchWordTextBox.Name" xml:space="preserve">
+    <value>searchWordTextBox</value>
+  </data>
+  <data name="&gt;&gt;searchWordTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;searchWordTextBox.Parent" xml:space="preserve">
+    <value>searchPanel</value>
+  </data>
+  <data name="&gt;&gt;searchWordTextBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;searchWordLabel.Name" xml:space="preserve">
+    <value>searchWordLabel</value>
+  </data>
+  <data name="&gt;&gt;searchWordLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;searchWordLabel.Parent" xml:space="preserve">
+    <value>searchPanel</value>
+  </data>
+  <data name="&gt;&gt;searchWordLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="searchPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>220, 9</value>
+  </data>
+  <data name="searchPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="searchPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>553, 75</value>
+  </data>
+  <data name="searchPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;searchPanel.Name" xml:space="preserve">
+    <value>searchPanel</value>
+  </data>
+  <data name="&gt;&gt;searchPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;searchPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;searchPanel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="clearButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="clearButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Meiryo UI, 9pt</value>
+  </data>
+  <data name="clearButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="clearButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>451, 27</value>
+  </data>
+  <data name="clearButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="clearButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 25</value>
+  </data>
+  <data name="clearButton.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="clearButton.Text" xml:space="preserve">
+    <value>クリア</value>
+  </data>
+  <data name="&gt;&gt;clearButton.Name" xml:space="preserve">
+    <value>clearButton</value>
+  </data>
+  <data name="&gt;&gt;clearButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;clearButton.Parent" xml:space="preserve">
+    <value>searchPanel</value>
+  </data>
+  <data name="&gt;&gt;clearButton.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="searchButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -375,62 +501,38 @@
   <data name="&gt;&gt;searchWordTextBox.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="searchWordLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="searchWordLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="searchWordLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 31</value>
   </data>
-  <data name="label1.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="searchWordLabel.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>70, 15</value>
   </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="searchWordLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 15</value>
   </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+  <data name="searchWordLabel.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
+  <data name="searchWordLabel.Text" xml:space="preserve">
     <value>検索ワード：</value>
   </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
+  <data name="&gt;&gt;searchWordLabel.Name" xml:space="preserve">
+    <value>searchWordLabel</value>
   </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+  <data name="&gt;&gt;searchWordLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;searchWordLabel.Parent" xml:space="preserve">
     <value>searchPanel</value>
   </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;searchWordLabel.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="searchPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>220, 9</value>
-  </data>
-  <data name="searchPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="searchPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>553, 75</value>
-  </data>
-  <data name="searchPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;searchPanel.Name" xml:space="preserve">
-    <value>searchPanel</value>
-  </data>
-  <data name="&gt;&gt;searchPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;searchPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;searchPanel.ZOrder" xml:space="preserve">
-    <value>5</value>
   </data>
   <data name="booksDataGridView.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -459,6 +561,42 @@
   <metadata name="BooksContextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="BooksContextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 114</value>
+  </data>
+  <data name="&gt;&gt;BooksContextMenuStrip.Name" xml:space="preserve">
+    <value>BooksContextMenuStrip</value>
+  </data>
+  <data name="&gt;&gt;BooksContextMenuStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="booksBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>335, 17</value>
+  </metadata>
+  <metadata name="booksDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>201, 17</value>
+  </metadata>
+  <data name="booksDataGridView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 89</value>
+  </data>
+  <data name="booksDataGridView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>764, 333</value>
+  </data>
+  <data name="booksDataGridView.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;booksDataGridView.Name" xml:space="preserve">
+    <value>booksDataGridView</value>
+  </data>
+  <data name="&gt;&gt;booksDataGridView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;booksDataGridView.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;booksDataGridView.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="貸出ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>158, 22</value>
   </data>
@@ -495,118 +633,85 @@
   <data name="書籍削除ToolStripMenuItem.Text" xml:space="preserve">
     <value>書籍削除</value>
   </data>
-  <data name="BooksContextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 114</value>
-  </data>
-  <data name="&gt;&gt;BooksContextMenuStrip.Name" xml:space="preserve">
-    <value>BooksContextMenuStrip</value>
-  </data>
-  <data name="&gt;&gt;BooksContextMenuStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <metadata name="booksBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>335, 17</value>
-  </metadata>
   <metadata name="booksDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>201, 17</value>
   </metadata>
-  <data name="booksDataGridView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 87</value>
-  </data>
-  <data name="booksDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>764, 333</value>
-  </data>
-  <data name="booksDataGridView.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;booksDataGridView.Name" xml:space="preserve">
-    <value>booksDataGridView</value>
-  </data>
-  <data name="&gt;&gt;booksDataGridView.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;booksDataGridView.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;booksDataGridView.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="DeleteBookButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="deleteBookButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
-  <data name="DeleteBookButton.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="deleteBookButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Meiryo UI, 9pt</value>
   </data>
-  <data name="DeleteBookButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="deleteBookButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="DeleteBookButton.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="deleteBookButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>671, 425</value>
   </data>
-  <data name="DeleteBookButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="deleteBookButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="DeleteBookButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="deleteBookButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>100, 25</value>
   </data>
-  <data name="DeleteBookButton.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="deleteBookButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 25</value>
   </data>
-  <data name="DeleteBookButton.TabIndex" type="System.Int32, mscorlib">
+  <data name="deleteBookButton.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
-  <data name="DeleteBookButton.Text" xml:space="preserve">
+  <data name="deleteBookButton.Text" xml:space="preserve">
     <value>書籍削除</value>
   </data>
-  <data name="&gt;&gt;DeleteBookButton.Name" xml:space="preserve">
-    <value>DeleteBookButton</value>
+  <data name="&gt;&gt;deleteBookButton.Name" xml:space="preserve">
+    <value>deleteBookButton</value>
   </data>
-  <data name="&gt;&gt;DeleteBookButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;deleteBookButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;DeleteBookButton.Parent" xml:space="preserve">
+  <data name="&gt;&gt;deleteBookButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;DeleteBookButton.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;deleteBookButton.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="AddBookButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="addBookButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
-  <data name="AddBookButton.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="addBookButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Meiryo UI, 9pt</value>
   </data>
-  <data name="AddBookButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="addBookButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="AddBookButton.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="addBookButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>567, 425</value>
   </data>
-  <data name="AddBookButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="addBookButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="AddBookButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="addBookButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>100, 25</value>
   </data>
-  <data name="AddBookButton.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="addBookButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 25</value>
   </data>
-  <data name="AddBookButton.TabIndex" type="System.Int32, mscorlib">
+  <data name="addBookButton.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="AddBookButton.Text" xml:space="preserve">
+  <data name="addBookButton.Text" xml:space="preserve">
     <value>書籍追加</value>
   </data>
-  <data name="&gt;&gt;AddBookButton.Name" xml:space="preserve">
-    <value>AddBookButton</value>
+  <data name="&gt;&gt;addBookButton.Name" xml:space="preserve">
+    <value>addBookButton</value>
   </data>
-  <data name="&gt;&gt;AddBookButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;addBookButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;AddBookButton.Parent" xml:space="preserve">
+  <data name="&gt;&gt;addBookButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;AddBookButton.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;addBookButton.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -629,48 +734,6 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>書籍管理システム</value>
-  </data>
-  <data name="&gt;&gt;貸出ToolStripMenuItem.Name" xml:space="preserve">
-    <value>貸出ToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;貸出ToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;返却ToolStripMenuItem.Name" xml:space="preserve">
-    <value>返却ToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;返却ToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;検索条件のクリアToolStripMenuItem.Name" xml:space="preserve">
-    <value>検索条件のクリアToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;検索条件のクリアToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;書籍追加ToolStripMenuItem.Name" xml:space="preserve">
-    <value>書籍追加ToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;書籍追加ToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;書籍削除ToolStripMenuItem.Name" xml:space="preserve">
-    <value>書籍削除ToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;書籍削除ToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;booksDataSet.Name" xml:space="preserve">
-    <value>booksDataSet</value>
-  </data>
-  <data name="&gt;&gt;booksDataSet.Type" xml:space="preserve">
-    <value>Libra.Models.BooksDataSet, Models.BooksDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;booksBindingSource.Name" xml:space="preserve">
-    <value>booksBindingSource</value>
-  </data>
-  <data name="&gt;&gt;booksBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bookIdDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>bookIdDataGridViewTextBoxColumn</value>
@@ -707,6 +770,48 @@
   </data>
   <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;貸出ToolStripMenuItem.Name" xml:space="preserve">
+    <value>貸出ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;貸出ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;返却ToolStripMenuItem.Name" xml:space="preserve">
+    <value>返却ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;返却ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;検索条件のクリアToolStripMenuItem.Name" xml:space="preserve">
+    <value>検索条件のクリアToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;検索条件のクリアToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;書籍追加ToolStripMenuItem.Name" xml:space="preserve">
+    <value>書籍追加ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;書籍追加ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;書籍削除ToolStripMenuItem.Name" xml:space="preserve">
+    <value>書籍削除ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;書籍削除ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;booksBindingSource.Name" xml:space="preserve">
+    <value>booksBindingSource</value>
+  </data>
+  <data name="&gt;&gt;booksBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;booksDataSet.Name" xml:space="preserve">
+    <value>booksDataSet</value>
+  </data>
+  <data name="&gt;&gt;booksDataSet.Type" xml:space="preserve">
+    <value>Libra.Models.BooksDataSet, Models.BooksDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>LibraForm</value>
