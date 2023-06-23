@@ -46,6 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\BooksDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BooksDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Views\LibraForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +71,17 @@
     <EmbeddedResource Include="Views\LibraForm.resx">
       <DependentUpon>LibraForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Models\BooksDataSet.xsc">
+      <DependentUpon>BooksDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Models\BooksDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BooksDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Models\BooksDataSet.xss">
+      <DependentUpon>BooksDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -81,7 +97,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

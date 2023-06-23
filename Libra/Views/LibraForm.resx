@@ -435,6 +435,27 @@
   <data name="booksDataGridView.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
+  <data name="bookIdDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>書籍ID</value>
+  </data>
+  <data name="bookIdDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="userNameDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>利用者名</value>
+  </data>
+  <data name="titleDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>書籍名</value>
+  </data>
+  <data name="authorDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>著者名</value>
+  </data>
+  <data name="publisherDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>出版社</value>
+  </data>
+  <data name="descriptionDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>概要</value>
+  </data>
   <metadata name="BooksContextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -483,6 +504,12 @@
   <data name="&gt;&gt;BooksContextMenuStrip.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <metadata name="booksBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>335, 17</value>
+  </metadata>
+  <metadata name="booksDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>201, 17</value>
+  </metadata>
   <data name="booksDataGridView.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 87</value>
   </data>
@@ -632,6 +659,54 @@
   </data>
   <data name="&gt;&gt;書籍削除ToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;booksDataSet.Name" xml:space="preserve">
+    <value>booksDataSet</value>
+  </data>
+  <data name="&gt;&gt;booksDataSet.Type" xml:space="preserve">
+    <value>Libra.Models.BooksDataSet, Models.BooksDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;booksBindingSource.Name" xml:space="preserve">
+    <value>booksBindingSource</value>
+  </data>
+  <data name="&gt;&gt;booksBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bookIdDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>bookIdDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;bookIdDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;userNameDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>userNameDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;userNameDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;titleDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>titleDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;titleDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;authorDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>authorDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;authorDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;publisherDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>publisherDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;publisherDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>descriptionDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>LibraForm</value>
