@@ -153,8 +153,11 @@
             this.Controls.Add(this.isbnLabel);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.addButton);
+            this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::Libra.Properties.Settings.Default, "MyLocation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.Location = global::Libra.Properties.Settings.Default.MyLocation;
             this.Name = "AddBookForm";
             this.Text = "書籍追加";
+            this.Load += new System.EventHandler(this.AddBookFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
 
