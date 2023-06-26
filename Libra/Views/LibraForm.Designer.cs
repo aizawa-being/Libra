@@ -114,12 +114,12 @@
             resources.ApplyResources(this.searchButton, "searchButton");
             this.searchButton.Name = "searchButton";
             this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.SearchButtonClick);
             // 
             // searchWordTextBox
             // 
             resources.ApplyResources(this.searchWordTextBox, "searchWordTextBox");
             this.searchWordTextBox.Name = "searchWordTextBox";
+            this.searchWordTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchWordTextBox_KeyDown);
             // 
             // searchWordLabel
             // 
@@ -262,7 +262,9 @@
             this.Controls.Add(this.booksDataGridView);
             this.Controls.Add(this.rentalPanel);
             this.Controls.Add(this.searchPanel);
+            this.KeyPreview = true;
             this.Name = "LibraForm";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LibraFormKeyDown);
             this.rentalPanel.ResumeLayout(false);
             this.rentalPanel.PerformLayout();
             this.searchPanel.ResumeLayout(false);

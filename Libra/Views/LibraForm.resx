@@ -231,6 +231,9 @@
   <data name="userNameTextBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
+  <data name="userNameTextBox.MaxLength" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
   <data name="userNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>131, 23</value>
   </data>

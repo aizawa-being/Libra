@@ -41,10 +41,6 @@ namespace Libra {
 
         }
 
-        private void SearchButtonClick(object sender, EventArgs e) {
-
-        }
-
         private void ClearButtonClick(object sender, EventArgs e) {
 
         }
@@ -55,6 +51,18 @@ namespace Libra {
 
         private void DeleteBookButtonClick(object sender, EventArgs e) {
 
+        }
+
+        private void LibraFormKeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyData == (Keys.Control | Keys.F)) {
+                searchWordTextBox.SelectAll();
+                searchWordTextBox.Focus();
+            }
+        }
+
+        private void searchWordTextBox_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyData == Keys.Enter) {
+            }
         }
     }
 }
