@@ -51,7 +51,7 @@
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.cancelButton.Location = new System.Drawing.Point(172, 199);
+            this.cancelButton.Location = new System.Drawing.Point(127, 199);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(100, 25);
             this.cancelButton.TabIndex = 13;
@@ -64,7 +64,7 @@
             this.isbnLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.isbnLabel.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.isbnLabel.Location = new System.Drawing.Point(35, 20);
+            this.isbnLabel.Location = new System.Drawing.Point(12, 20);
             this.isbnLabel.Name = "isbnLabel";
             this.isbnLabel.Size = new System.Drawing.Size(215, 15);
             this.isbnLabel.TabIndex = 14;
@@ -77,10 +77,10 @@
             this.isbnTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.isbnTextBox.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.isbnTextBox.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.isbnTextBox.Location = new System.Drawing.Point(38, 50);
+            this.isbnTextBox.Location = new System.Drawing.Point(12, 50);
             this.isbnTextBox.MaxLength = 13;
             this.isbnTextBox.Name = "isbnTextBox";
-            this.isbnTextBox.Size = new System.Drawing.Size(212, 23);
+            this.isbnTextBox.Size = new System.Drawing.Size(215, 23);
             this.isbnTextBox.TabIndex = 15;
             this.isbnTextBox.Text = "978";
             // 
@@ -97,7 +97,6 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label1.Location = new System.Drawing.Point(9, 130);
             this.label1.Name = "label1";
@@ -107,7 +106,6 @@
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label2.Location = new System.Drawing.Point(9, 160);
             this.label2.Name = "label2";
@@ -140,10 +138,10 @@
             // AddBookForm
             // 
             this.AcceptButton = this.getBookInfoButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(284, 236);
+            this.ClientSize = new System.Drawing.Size(239, 236);
             this.Controls.Add(this.authorLabel);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.label2);
@@ -154,7 +152,9 @@
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.addButton);
             this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::Libra.Properties.Settings.Default, "MyLocation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Location = global::Libra.Properties.Settings.Default.MyLocation;
+            this.MinimumSize = new System.Drawing.Size(255, 275);
             this.Name = "AddBookForm";
             this.Text = "書籍追加";
             this.Load += new System.EventHandler(this.AddBookFormLoad);

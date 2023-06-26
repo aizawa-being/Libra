@@ -25,7 +25,7 @@ namespace Libra.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0, 17")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
         public global::System.Drawing.Point MyLocation {
             get {
                 return ((global::System.Drawing.Point)(this["MyLocation"]));
