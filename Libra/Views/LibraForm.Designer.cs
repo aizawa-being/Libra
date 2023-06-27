@@ -150,6 +150,7 @@
             this.booksDataGridView.ReadOnly = true;
             this.booksDataGridView.RowTemplate.Height = 21;
             this.booksDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.booksDataGridView.TabStop = false;
             this.booksDataGridView.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.BooksGridCellPainting);
             // 
             // bookIdDataGridViewTextBoxColumn
@@ -224,11 +225,13 @@
             // 
             this.書籍追加ToolStripMenuItem.Name = "書籍追加ToolStripMenuItem";
             resources.ApplyResources(this.書籍追加ToolStripMenuItem, "書籍追加ToolStripMenuItem");
+            this.書籍追加ToolStripMenuItem.Click += new System.EventHandler(this.AddBookButtonClick);
             // 
             // 書籍削除ToolStripMenuItem
             // 
             this.書籍削除ToolStripMenuItem.Name = "書籍削除ToolStripMenuItem";
             resources.ApplyResources(this.書籍削除ToolStripMenuItem, "書籍削除ToolStripMenuItem");
+            this.書籍削除ToolStripMenuItem.Click += new System.EventHandler(this.DeleteBookButtonClick);
             // 
             // booksBindingSource
             // 
