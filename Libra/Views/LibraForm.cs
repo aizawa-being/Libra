@@ -66,7 +66,7 @@ namespace Libra {
 
         private void SearchWordTextBoxKeyDown(object sender, KeyEventArgs e) {
             if (e.KeyData == Keys.Enter) {
-                
+                this.searchButton.PerformClick();
             }
         }
 
