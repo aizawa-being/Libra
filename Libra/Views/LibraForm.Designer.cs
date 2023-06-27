@@ -114,12 +114,13 @@
             resources.ApplyResources(this.searchButton, "searchButton");
             this.searchButton.Name = "searchButton";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.SearchButtonClick);
             // 
             // searchWordTextBox
             // 
             resources.ApplyResources(this.searchWordTextBox, "searchWordTextBox");
             this.searchWordTextBox.Name = "searchWordTextBox";
-            this.searchWordTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchWordTextBox_KeyDown);
+            this.searchWordTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchWordTextBoxKeyDown);
             // 
             // searchWordLabel
             // 
