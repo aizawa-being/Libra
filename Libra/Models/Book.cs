@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 namespace Libra.Models {
 
     /// <summary>
-    /// 書籍情報クラス
+    /// 書籍クラス
     /// </summary>
     /// <remarks>
-    /// このクラスを基にDBの書籍情報テーブルが作成されます。
+    /// DBの書籍情報テーブルを定義しています。
     /// </remarks>
     public class Book {
         [Key]
@@ -26,7 +26,6 @@ namespace Libra.Models {
         [MaxLength(13)]
         [MinLength(13)]
         public string Barcode { get; set; }
-        [Required]
         public int IsDeleted { get; set; }
         public string UserName { get; set; }
         public string BorrowingDate { get; set; }
