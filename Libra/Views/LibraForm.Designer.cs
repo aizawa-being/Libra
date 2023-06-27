@@ -120,7 +120,7 @@
             // 
             resources.ApplyResources(this.searchWordTextBox, "searchWordTextBox");
             this.searchWordTextBox.Name = "searchWordTextBox";
-            this.searchWordTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchWordTextBoxKeyDown);
+            this.searchWordTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchWordTextBoxKeyDown);
             // 
             // searchWordLabel
             // 
@@ -265,6 +265,7 @@
             this.Controls.Add(this.searchPanel);
             this.KeyPreview = true;
             this.Name = "LibraForm";
+            this.Load += new System.EventHandler(this.LibraForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LibraFormKeyDown);
             this.rentalPanel.ResumeLayout(false);
             this.rentalPanel.PerformLayout();

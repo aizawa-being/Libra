@@ -59,14 +59,20 @@ namespace Libra {
 
         private void LibraFormKeyDown(object sender, KeyEventArgs e) {
             if (e.KeyData == (Keys.Control | Keys.F)) {
-                searchWordTextBox.SelectAll();
-                searchWordTextBox.Focus();
+                this.searchWordTextBox.SelectAll();
+                this.searchWordTextBox.Focus();
             }
         }
 
-        private void searchWordTextBoxKeyDown(object sender, KeyEventArgs e) {
+        private void SearchWordTextBoxKeyDown(object sender, KeyEventArgs e) {
             if (e.KeyData == Keys.Enter) {
-                searchButton.PerformClick();
+                
+            }
+        }
+
+        private void LibraForm_Load(object sender, EventArgs e) {
+            if (this.booksDataGridView.RowCount > 0) {
+                this.booksDataGridView.CurrentCell = this.booksDataGridView.FirstDisplayedCell;
             }
         }
     }
