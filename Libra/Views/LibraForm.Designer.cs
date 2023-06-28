@@ -210,16 +210,19 @@
             // 
             this.貸出ToolStripMenuItem.Name = "貸出ToolStripMenuItem";
             resources.ApplyResources(this.貸出ToolStripMenuItem, "貸出ToolStripMenuItem");
+            this.貸出ToolStripMenuItem.Click += new System.EventHandler(this.BorrowButtonClick);
             // 
             // 返却ToolStripMenuItem
             // 
             this.返却ToolStripMenuItem.Name = "返却ToolStripMenuItem";
             resources.ApplyResources(this.返却ToolStripMenuItem, "返却ToolStripMenuItem");
+            this.返却ToolStripMenuItem.Click += new System.EventHandler(this.ReturnButtonClick);
             // 
             // 検索条件のクリアToolStripMenuItem
             // 
             this.検索条件のクリアToolStripMenuItem.Name = "検索条件のクリアToolStripMenuItem";
             resources.ApplyResources(this.検索条件のクリアToolStripMenuItem, "検索条件のクリアToolStripMenuItem");
+            this.検索条件のクリアToolStripMenuItem.Click += new System.EventHandler(this.ClearButtonClick);
             // 
             // 書籍追加ToolStripMenuItem
             // 
