@@ -66,7 +66,8 @@
     </Compile>
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BooksDbContext.cs" />
-    <Compile Include="Models\IDbContext.cs" />
+    <Compile Include="Models\BooksRepository.cs" />
+    <Compile Include="Models\IBookRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

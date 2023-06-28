@@ -10,14 +10,15 @@
         // 
         // 別のデータベースとデータベース プロバイダーまたはそのいずれかを対象とする場合は、
         // アプリケーション構成ファイルで 'BooksDbContext' 接続文字列を変更してください。
+
         public BooksDbContext()
-            : base("name=BooksDbContext") {
+            : base("name=BookDbContext") {
         }
 
         // モデルに含めるエンティティ型ごとに DbSet を追加します。Code First モデルの構成および使用の
         // 詳細については、http://go.microsoft.com/fwlink/?LinkId=390109 を参照してください。
         
-        public DbSet<Book> Books { get; set; }
+        public virtual DbSet<Book> Books { get; set; }
 
     }
 }
