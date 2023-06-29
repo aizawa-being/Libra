@@ -33,39 +33,40 @@ namespace Libra {
             }
         }
 
-        private void BorrowButtonClick(object sender, EventArgs e) {
+        private void Borrow_Click(object sender, EventArgs e) {
 
         }
 
-        private void ReturnButtonClick(object sender, EventArgs e) {
+        private void Return_Click(object sender, EventArgs e) {
 
         }
 
-        private void SearchButtonClick(object sender, EventArgs e) {
+        private void Search_Click(object sender, EventArgs e) {
             
         }
 
-        private void ClearButtonClick(object sender, EventArgs e) {
+        private void Clear_Click(object sender, EventArgs e) {
 
         }
 
-        private void AddBookButtonClick(object sender, EventArgs e) {
-
+        private void AddBook_Click(object sender, EventArgs e) {
+            this.addBookButton.Focus();
         }
 
-        private void DeleteBookButtonClick(object sender, EventArgs e) {
-
+        private void DeleteBook_Click(object sender, EventArgs e) {
+            this.deleteBookButton.Focus();
         }
 
         private void LibraFormKeyDown(object sender, KeyEventArgs e) {
             if (e.KeyData == (Keys.Control | Keys.F)) {
-                this.searchWordTextBox.SelectAll();
                 this.searchWordTextBox.Focus();
+                this.searchWordTextBox.SelectAll();
             }
         }
 
         private void SearchWordTextBoxKeyDown(object sender, KeyEventArgs e) {
             if (e.KeyData == Keys.Enter) {
+                this.searchButton.Focus();
                 this.searchButton.PerformClick();
             }
         }

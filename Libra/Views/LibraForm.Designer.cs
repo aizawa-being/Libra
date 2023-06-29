@@ -84,14 +84,14 @@
             resources.ApplyResources(this.returnButton, "returnButton");
             this.returnButton.Name = "returnButton";
             this.returnButton.UseVisualStyleBackColor = true;
-            this.returnButton.Click += new System.EventHandler(this.ReturnButtonClick);
+            this.returnButton.Click += new System.EventHandler(this.Return_Click);
             // 
             // borrowButton
             // 
             resources.ApplyResources(this.borrowButton, "borrowButton");
             this.borrowButton.Name = "borrowButton";
             this.borrowButton.UseVisualStyleBackColor = true;
-            this.borrowButton.Click += new System.EventHandler(this.BorrowButtonClick);
+            this.borrowButton.Click += new System.EventHandler(this.Borrow_Click);
             // 
             // searchPanel
             // 
@@ -107,14 +107,14 @@
             resources.ApplyResources(this.clearButton, "clearButton");
             this.clearButton.Name = "clearButton";
             this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.ClearButtonClick);
+            this.clearButton.Click += new System.EventHandler(this.Clear_Click);
             // 
             // searchButton
             // 
             resources.ApplyResources(this.searchButton, "searchButton");
             this.searchButton.Name = "searchButton";
             this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.SearchButtonClick);
+            this.searchButton.Click += new System.EventHandler(this.Search_Click);
             // 
             // searchWordTextBox
             // 
@@ -197,6 +197,7 @@
             // 
             // BooksContextMenuStrip
             // 
+            resources.ApplyResources(this.BooksContextMenuStrip, "BooksContextMenuStrip");
             this.BooksContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.貸出ToolStripMenuItem,
             this.返却ToolStripMenuItem,
@@ -204,37 +205,36 @@
             this.書籍追加ToolStripMenuItem,
             this.書籍削除ToolStripMenuItem});
             this.BooksContextMenuStrip.Name = "BooksContextMenuStrip";
-            resources.ApplyResources(this.BooksContextMenuStrip, "BooksContextMenuStrip");
             // 
             // 貸出ToolStripMenuItem
             // 
             this.貸出ToolStripMenuItem.Name = "貸出ToolStripMenuItem";
             resources.ApplyResources(this.貸出ToolStripMenuItem, "貸出ToolStripMenuItem");
-            this.貸出ToolStripMenuItem.Click += new System.EventHandler(this.BorrowButtonClick);
+            this.貸出ToolStripMenuItem.Click += new System.EventHandler(this.Borrow_Click);
             // 
             // 返却ToolStripMenuItem
             // 
             this.返却ToolStripMenuItem.Name = "返却ToolStripMenuItem";
             resources.ApplyResources(this.返却ToolStripMenuItem, "返却ToolStripMenuItem");
-            this.返却ToolStripMenuItem.Click += new System.EventHandler(this.ReturnButtonClick);
+            this.返却ToolStripMenuItem.Click += new System.EventHandler(this.Return_Click);
             // 
             // 検索条件のクリアToolStripMenuItem
             // 
             this.検索条件のクリアToolStripMenuItem.Name = "検索条件のクリアToolStripMenuItem";
             resources.ApplyResources(this.検索条件のクリアToolStripMenuItem, "検索条件のクリアToolStripMenuItem");
-            this.検索条件のクリアToolStripMenuItem.Click += new System.EventHandler(this.ClearButtonClick);
+            this.検索条件のクリアToolStripMenuItem.Click += new System.EventHandler(this.Clear_Click);
             // 
             // 書籍追加ToolStripMenuItem
             // 
             this.書籍追加ToolStripMenuItem.Name = "書籍追加ToolStripMenuItem";
             resources.ApplyResources(this.書籍追加ToolStripMenuItem, "書籍追加ToolStripMenuItem");
-            this.書籍追加ToolStripMenuItem.Click += new System.EventHandler(this.AddBookButtonClick);
+            this.書籍追加ToolStripMenuItem.Click += new System.EventHandler(this.AddBook_Click);
             // 
             // 書籍削除ToolStripMenuItem
             // 
             this.書籍削除ToolStripMenuItem.Name = "書籍削除ToolStripMenuItem";
             resources.ApplyResources(this.書籍削除ToolStripMenuItem, "書籍削除ToolStripMenuItem");
-            this.書籍削除ToolStripMenuItem.Click += new System.EventHandler(this.DeleteBookButtonClick);
+            this.書籍削除ToolStripMenuItem.Click += new System.EventHandler(this.DeleteBook_Click);
             // 
             // booksBindingSource
             // 
@@ -251,14 +251,14 @@
             resources.ApplyResources(this.deleteBookButton, "deleteBookButton");
             this.deleteBookButton.Name = "deleteBookButton";
             this.deleteBookButton.UseVisualStyleBackColor = true;
-            this.deleteBookButton.Click += new System.EventHandler(this.DeleteBookButtonClick);
+            this.deleteBookButton.Click += new System.EventHandler(this.DeleteBook_Click);
             // 
             // addBookButton
             // 
             resources.ApplyResources(this.addBookButton, "addBookButton");
             this.addBookButton.Name = "addBookButton";
             this.addBookButton.UseVisualStyleBackColor = true;
-            this.addBookButton.Click += new System.EventHandler(this.AddBookButtonClick);
+            this.addBookButton.Click += new System.EventHandler(this.AddBook_Click);
             // 
             // LibraForm
             // 
