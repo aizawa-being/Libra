@@ -1,7 +1,5 @@
 ﻿namespace Libra.Models {
-    using System;
     using System.Data.Entity;
-    using System.Linq;
 
     public class BooksDbContext : DbContext {
         // コンテキストは、アプリケーションの構成ファイル (App.config または Web.config) から 'BooksDbContext' 
@@ -12,7 +10,7 @@
         // アプリケーション構成ファイルで 'BooksDbContext' 接続文字列を変更してください。
 
         public BooksDbContext()
-            : base("name=BookDbContext") {
+            : base("name=BooksDbContext") {
         }
 
         // モデルに含めるエンティティ型ごとに DbSet を追加します。Code First モデルの構成および使用の
