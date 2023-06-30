@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Libra {
+    /// <summary>
+    /// 書籍一覧画面：ホーム画面です。
+    /// </summary>
     public partial class LibraForm : Form {
         public LibraForm() {
             InitializeComponent();
