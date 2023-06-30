@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Libra.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -75,9 +76,15 @@ namespace Libra {
         }
 
         private void LibraForm_Load(object sender, EventArgs e) {
+            var libraController = new LibraController();
+            RefreshDataGridView(libraController.ShowBookList());
             if (this.booksDataGridView.RowCount > 0) {
                 this.booksDataGridView.CurrentCell = this.booksDataGridView.FirstDisplayedCell;
             }
+        }
+
+        private void RefreshDataGridView(DataTable vDataTable) {
+            this.booksDataGridView.DataSource = vDataTable;
         }
     }
 }

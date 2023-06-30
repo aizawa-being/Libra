@@ -8,3 +8,8 @@ C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.csproj.CoreCompileInputs.c
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.exe
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.pdb
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.LibraForm.resources
+C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\EntityFramework.dll
+C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\EntityFramework.xml
+C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.csproj.CopyComplete
