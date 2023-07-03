@@ -8,12 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Libra.Models.BooksDataSet;
 
 namespace Libra {
     /// <summary>
     /// 書籍一覧画面：ホーム画面です。
     /// </summary>
     public partial class LibraForm : Form {
+        private LibraController F_LibraController;
+
         public LibraForm() {
             InitializeComponent();
         }
@@ -76,15 +79,19 @@ namespace Libra {
         }
 
         private void LibraForm_Load(object sender, EventArgs e) {
-            var libraController = new LibraController();
-            RefreshDataGridView(libraController.ShowBookList());
+            this.F_LibraController = new LibraController();
+            
+            // 書籍一覧グリッドを初期化します。
+            this.F_LibraController.InitializeBookList();
+            this.RefreshDataGridView();
+
             if (this.booksDataGridView.RowCount > 0) {
                 this.booksDataGridView.CurrentCell = this.booksDataGridView.FirstDisplayedCell;
             }
         }
 
-        private void RefreshDataGridView(DataTable vDataTable) {
-            this.booksDataGridView.DataSource = vDataTable;
+        private void RefreshDataGridView() {
+            this.booksDataGridView.DataSource = this.F_LibraController.GetBooksDateTable();
         }
     }
 }
