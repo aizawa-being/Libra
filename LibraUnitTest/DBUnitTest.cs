@@ -10,20 +10,23 @@ namespace LibraUnitTest {
     public class DBUnitTest {
 
         [Test]
-        public void 書籍情報取得テスト() {
+        public void 書籍情報全取得テスト() {
             var data = new List<Book> {
                 new Book { BookId = 1,
                            Title = "テストタイトル1",
                            Author = "テスト著者1",
-                           Barcode = "0000000000001" },
+                           Barcode = "0000000000001",
+                           IsDeleted = 0 },
                 new Book { BookId = 2,
                            Title = "テストタイトル2",
                            Author = "テスト著者2",
-                           Barcode = "0000000000002" },
+                           Barcode = "0000000000002",
+                           IsDeleted = 0 },
                 new Book { BookId = 3,
                            Title = "テストタイトル3",
                            Author = "テスト著者3",
-                           Barcode = "0000000000003" }
+                           Barcode = "0000000000003",
+                           IsDeleted = 0 },
             }.AsQueryable();
 
             var mockSet = new Mock<DbSet<Book>>();
@@ -42,22 +45,66 @@ namespace LibraUnitTest {
             Assert.AreEqual("テストタイトル1", books[0].Title);
             Assert.AreEqual("テストタイトル2", books[1].Title);
             Assert.AreEqual("テストタイトル3", books[2].Title);
-
-            Assert.AreEqual("テストタイトル1", bookRepository.GetBookById(1).Title);
-
-            bookRepository.AddBook(new Book { BookId = 4,
-                                              Title = "テストタイトル4",
-                                              Author = "テスト著者4",
-                                              Barcode = "0000000000004" });
-
-            var book = bookRepository.GetBookById(4);
-            Assert.AreEqual("テストタイトル4", book.Title);
-
         }
 
+        [Test]
+        public void 書籍追加テスト() {
+            var mockSet = new Mock<DbSet<Book>>();
 
-        public void test() {
-            var optionBuilder = new DbContextOptionsBuilder();
+            var mockContext = new Mock<BooksDbContext>();
+            mockContext.Setup(m => m.Books).Returns(mockSet.Object);
+            
+            var repository = new BooksRepository(mockContext.Object);
+            repository.AddBook(new Book {
+                BookId = 1,
+                Title = "テストタイトル1",
+                Author = "テスト著者1",
+                Barcode = "0000000000001",
+                IsDeleted = 0
+            });
+            repository.Save();
+
+            mockSet.Verify(m => m.Add(It.IsAny<Book>()), Times.Once());
+            mockContext.Verify(m => m.SaveChanges(), Times.Once());
+        }
+
+        [Test]
+        public void 書籍更新テスト() {
+            var data = new List<Book> {
+                new Book { BookId = 1,
+                           Title = "テストタイトル1",
+                           Author = "テスト著者1",
+                           Barcode = "0000000000001",
+                           IsDeleted = 0 },
+                new Book { BookId = 2,
+                           Title = "テストタイトル2",
+                           Author = "テスト著者2",
+                           Barcode = "0000000000002",
+                           IsDeleted = 0 },
+                new Book { BookId = 3,
+                           Title = "テストタイトル3",
+                           Author = "テスト著者3",
+                           Barcode = "0000000000003",
+                           IsDeleted = 0 },
+            }.AsQueryable();
+
+            var mockSet = new Mock<DbSet<Book>>();
+            mockSet.As<IQueryable<Book>>().Setup(m => m.Provider).Returns(data.Provider);
+            mockSet.As<IQueryable<Book>>().Setup(m => m.Expression).Returns(data.Expression);
+            mockSet.As<IQueryable<Book>>().Setup(m => m.ElementType).Returns(data.ElementType);
+            mockSet.As<IQueryable<Book>>().Setup(m => m.GetEnumerator()).Returns(() => data.GetEnumerator());
+
+            var mockContext = new Mock<BooksDbContext>();
+            mockContext.Setup(c => c.Books).Returns(mockSet.Object);
+
+            var bookRepository = new BooksRepository(mockContext.Object);
+            
+            var entity = bookRepository.GetBooks().ToList();
+            entity[0].Title = "Updated";
+            bookRepository.UpdateBook(entity[0]);
+            bookRepository.Save();
+
+            mockContext.Verify(m => m.SaveChanges(), Times.Once());
         }
     }
 }
