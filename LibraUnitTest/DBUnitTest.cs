@@ -54,5 +54,10 @@ namespace LibraUnitTest {
             Assert.AreEqual("テストタイトル4", book.Title);
 
         }
+
+
+        public void test() {
+            var optionBuilder = new DbContextOptionsBuilder();
+        }
     }
 }
