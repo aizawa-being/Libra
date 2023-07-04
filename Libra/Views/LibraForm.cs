@@ -58,6 +58,7 @@ namespace Libra {
 
         private void AddBook_Click(object sender, EventArgs e) {
             this.addBookButton.Focus();
+
         }
 
         private void DeleteBook_Click(object sender, EventArgs e) {
@@ -80,7 +81,7 @@ namespace Libra {
 
         private void LibraForm_Load(object sender, EventArgs e) {
             this.F_LibraController = new LibraController();
-            
+
             // 書籍一覧グリッドを初期化します。
             this.F_LibraController.InitializeBookList();
             this.RefreshDataGridView();

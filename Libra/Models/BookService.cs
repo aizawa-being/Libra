@@ -33,6 +33,5 @@ namespace Libra.Models {
                         select book;
             return books;
         }
-
     }
 }

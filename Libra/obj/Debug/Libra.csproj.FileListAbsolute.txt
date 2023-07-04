@@ -13,3 +13,8 @@ C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\EntityFramework.xml
 C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.csproj.CopyComplete
+C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\SQLite.CodeFirst.dll
+C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\System.Data.SQLite.dll
+C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\System.Data.SQLite.xml
