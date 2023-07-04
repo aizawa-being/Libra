@@ -57,12 +57,22 @@ namespace LibraUnitTest {
             bookRepository.UpdateBook(book);
             bookRepository.Save();
 
-            var updateBooks = bookRepository.GetBooks().ToList();
-            connection.Close();
+            var updateBooks = bookRepository.GetBookById(1);
 
             // 更新できたかテスト
-            Assert.AreEqual(1, updateBooks.Count());
-            Assert.AreEqual("Updatedタイトル", updateBooks[0].Title);
+            Assert.AreEqual("Updatedタイトル", updateBooks.Title);
+
+            // 書籍IDが1の書籍を削除
+            bookRepository.DeleteBook(1);
+            bookRepository.Save();
+
+            var deletedBooks = bookRepository.GetBooks().ToList();
+
+            // 削除できたかテスト
+            Assert.AreEqual(0, deletedBooks.Count());
+
+            bookRepository.Dispose();
+
         }
     }
 }
