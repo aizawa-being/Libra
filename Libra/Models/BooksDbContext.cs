@@ -1,4 +1,5 @@
 ﻿namespace Libra.Models {
+    using SQLite.CodeFirst;
     using System.Data.Entity;
 
     public class BooksDbContext : DbContext {
@@ -15,8 +16,13 @@
 
         // モデルに含めるエンティティ型ごとに DbSet を追加します。Code First モデルの構成および使用の
         // 詳細については、http://go.microsoft.com/fwlink/?LinkId=390109 を参照してください。
-        
+
         public virtual DbSet<Book> Books { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder) {
+            var sqliteConnectionInitializer = new SqliteCreateDatabaseIfNotExists<BooksDbContext>(modelBuilder);
+            Database.SetInitializer(sqliteConnectionInitializer);
+        }
 
     }
 }
