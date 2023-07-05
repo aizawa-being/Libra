@@ -91,7 +91,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBUnitTest.cs" />
+    <Compile Include="DBInterfaceUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
