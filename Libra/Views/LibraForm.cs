@@ -1,4 +1,5 @@
 ﻿using Libra.Controls;
+using Libra.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,6 @@ namespace Libra {
     /// 書籍一覧画面：ホーム画面です。
     /// </summary>
     public partial class LibraForm : Form {
-        private LibraController F_LibraController;
 
         public LibraForm() {
             InitializeComponent();
@@ -80,19 +80,19 @@ namespace Libra {
         }
 
         private void LibraForm_Load(object sender, EventArgs e) {
-            this.F_LibraController = new LibraController();
+            var libraController = new LibraController();
 
             // 書籍一覧グリッドを初期化します。
-            this.F_LibraController.InitializeBookList();
-            this.RefreshDataGridView();
+            libraController.InitializeBookList();
+            this.RefreshDataGridView(libraController);
 
             if (this.booksDataGridView.RowCount > 0) {
                 this.booksDataGridView.CurrentCell = this.booksDataGridView.FirstDisplayedCell;
             }
         }
 
-        private void RefreshDataGridView() {
-            this.booksDataGridView.DataSource = this.F_LibraController.GetBooksDateTable();
+        private void RefreshDataGridView(LibraController vLibraController) {
+            this.booksDataGridView.DataSource = vLibraController.GetBooksDateTable();
         }
     }
 }

@@ -8,18 +8,10 @@ using static Libra.Models.BooksDataSet;
 
 namespace Libra.Models {
     public class BooksTable {
-        private BooksDataTable F_Books;
+        public BooksDataTable Books { get; set; }
 
         public BooksTable() {
-            this.F_Books = new BooksDataTable();
-        }
-
-        public BooksDataTable GetBooksTable() {
-            return this.F_Books;
-        }
-
-        public void SetBooksTable (BooksDataTable vBooksTable) {
-            this.F_Books = vBooksTable;
+            this.Books = new BooksDataTable();
         }
     }
 }

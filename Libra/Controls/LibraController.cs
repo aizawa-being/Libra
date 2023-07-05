@@ -6,18 +6,17 @@ namespace Libra.Controls {
     public class LibraController {
 
         private BooksTable F_BooksTable;
-        private BookService F_BookService;
 
         public LibraController() {
             this.F_BooksTable = new BooksTable();
-            this.F_BookService = new BookService();
         }
 
         /// <summary>
         /// 書籍一覧テーブルを初期化します。
         /// </summary>
         public void InitializeBookList() {
-            var books = this.F_BookService.GetExistBooks();
+            var bookService = new BookService();
+            var books = bookService.GetExistBooks();
             this.SetBooksDataTable(books);
         }
         
@@ -26,7 +25,7 @@ namespace Libra.Controls {
         /// </summary>
         /// <returns>BooksDataTable</returns>
         public BooksDataTable GetBooksDateTable() {
-            return this.F_BooksTable.GetBooksTable();
+            return this.F_BooksTable.Books;
         }
 
         /// <summary>
@@ -44,7 +43,7 @@ namespace Libra.Controls {
                                    book.Description,
                                    book.UserName);
             }
-            this.F_BooksTable.SetBooksTable(dataTable);
+            this.F_BooksTable.Books = dataTable;
         }
     }
 }
