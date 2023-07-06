@@ -41,7 +41,7 @@
             this.addButton.Location = new System.Drawing.Point(12, 224);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(100, 25);
-            this.addButton.TabIndex = 13;
+            this.addButton.TabIndex = 7;
             this.addButton.Text = "追加";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.AddButtonClick);
@@ -54,7 +54,7 @@
             this.cancelButton.Location = new System.Drawing.Point(172, 224);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(100, 25);
-            this.cancelButton.TabIndex = 13;
+            this.cancelButton.TabIndex = 8;
             this.cancelButton.Text = "キャンセル";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.CancelButtonClick);
@@ -67,7 +67,7 @@
             this.isbnLabel.Location = new System.Drawing.Point(12, 20);
             this.isbnLabel.Name = "isbnLabel";
             this.isbnLabel.Size = new System.Drawing.Size(260, 15);
-            this.isbnLabel.TabIndex = 14;
+            this.isbnLabel.TabIndex = 0;
             this.isbnLabel.Text = "バーコード番号（ISBN）を入力してください";
             // 
             // isbnTextBox
@@ -81,7 +81,7 @@
             this.isbnTextBox.MaxLength = 13;
             this.isbnTextBox.Name = "isbnTextBox";
             this.isbnTextBox.Size = new System.Drawing.Size(260, 23);
-            this.isbnTextBox.TabIndex = 15;
+            this.isbnTextBox.TabIndex = 1;
             this.isbnTextBox.Text = "978";
             // 
             // getBookInfoButton
@@ -90,7 +90,7 @@
             this.getBookInfoButton.Location = new System.Drawing.Point(12, 90);
             this.getBookInfoButton.Name = "getBookInfoButton";
             this.getBookInfoButton.Size = new System.Drawing.Size(100, 25);
-            this.getBookInfoButton.TabIndex = 16;
+            this.getBookInfoButton.TabIndex = 2;
             this.getBookInfoButton.Text = "書籍情報取得";
             this.getBookInfoButton.UseVisualStyleBackColor = true;
             this.getBookInfoButton.Click += new System.EventHandler(this.GetBookInfoButtonClick);
@@ -101,7 +101,7 @@
             this.label1.Location = new System.Drawing.Point(9, 130);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 15);
-            this.label1.TabIndex = 17;
+            this.label1.TabIndex = 3;
             this.label1.Text = "書籍名：";
             // 
             // label2
@@ -110,7 +110,7 @@
             this.label2.Location = new System.Drawing.Point(9, 160);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 15);
-            this.label2.TabIndex = 18;
+            this.label2.TabIndex = 5;
             this.label2.Text = "著者名：";
             // 
             // titleLabel
@@ -122,7 +122,7 @@
             this.titleLabel.Location = new System.Drawing.Point(70, 130);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(0, 15);
-            this.titleLabel.TabIndex = 19;
+            this.titleLabel.TabIndex = 4;
             // 
             // authorLabel
             // 
@@ -133,7 +133,7 @@
             this.authorLabel.Location = new System.Drawing.Point(70, 160);
             this.authorLabel.Name = "authorLabel";
             this.authorLabel.Size = new System.Drawing.Size(0, 15);
-            this.authorLabel.TabIndex = 20;
+            this.authorLabel.TabIndex = 6;
             // 
             // AddBookForm
             // 
@@ -157,7 +157,6 @@
             this.MinimumSize = new System.Drawing.Size(255, 275);
             this.Name = "AddBookForm";
             this.Text = "書籍追加";
-            this.Load += new System.EventHandler(this.AddBookFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
 

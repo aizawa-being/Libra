@@ -25,9 +25,5 @@ namespace Libra.Views {
         private void GetBookInfoButtonClick(object sender, EventArgs e) {
 
         }
-
-        private void AddBookFormLoad(object sender, EventArgs e) {
-            this.ActiveControl = this.isbnTextBox;
-        }
     }
 }
