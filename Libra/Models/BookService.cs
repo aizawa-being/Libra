@@ -8,9 +8,9 @@ namespace Libra.Models {
 
     /// <summary>
     /// 書籍関連のサービスを提供します。
-    /// 書籍ごとの個別の処理はサービスを利用してください。
+    /// 書籍関連の個別の処理はサービスで実装してください。
     /// </summary>
-    public class BookService {
+    public class BookService : IDisposable {
 
         private readonly IBookRepository F_BookRepository;
 
@@ -32,6 +32,13 @@ namespace Libra.Models {
                         orderby book.Title
                         select book;
             return books;
+        }
+
+        /// <summary>
+        /// リソースを破棄します。
+        /// </summary>
+        public void Dispose() {
+            this.F_BookRepository.Dispose();
         }
     }
 }

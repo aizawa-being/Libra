@@ -4,7 +4,8 @@ using static Libra.Models.BooksDataSet;
 
 namespace Libra.Controls {
     public class LibraController {
-        private BooksTable F_BooksTable;
+        private readonly BooksTable F_BooksTable;
+
         public LibraController() {
             F_BooksTable = new BooksTable();
         }
@@ -13,9 +14,10 @@ namespace Libra.Controls {
         /// 書籍一覧テーブルを初期化します。
         /// </summary>
         public void InitializeBookList() {
-            var bookService = new BookService();
-            var books = bookService.GetExistBooks();
-            this.SetBooksDataTable(books);
+            using (var bookService = new BookService()) {
+                var books = bookService.GetExistBooks();
+                this.SetBooksDataTable(books);
+            }
         }
 
         /// <summary>
@@ -36,6 +38,10 @@ namespace Libra.Controls {
             this.F_BooksTable.Books = dataTable;
         }
 
+        /// <summary>
+        /// 書籍一覧テーブルの状態を取得します。
+        /// </summary>
+        /// <returns></returns>
         public BooksDataTable GetBooksDataTable() {
             return this.F_BooksTable.Books;
         }
