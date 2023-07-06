@@ -4,11 +4,9 @@ using static Libra.Models.BooksDataSet;
 
 namespace Libra.Controls {
     public class LibraController {
-
         private BooksTable F_BooksTable;
-
         public LibraController() {
-            this.F_BooksTable = new BooksTable();
+            F_BooksTable = new BooksTable();
         }
 
         /// <summary>
@@ -18,14 +16,6 @@ namespace Libra.Controls {
             var bookService = new BookService();
             var books = bookService.GetExistBooks();
             this.SetBooksDataTable(books);
-        }
-        
-        /// <summary>
-        /// 現在の書籍一覧テーブルを取得します。
-        /// </summary>
-        /// <returns>BooksDataTable</returns>
-        public BooksDataTable GetBooksDateTable() {
-            return this.F_BooksTable.Books;
         }
 
         /// <summary>
@@ -44,6 +34,10 @@ namespace Libra.Controls {
                                    book.UserName);
             }
             this.F_BooksTable.Books = dataTable;
+        }
+
+        public BooksDataTable GetBooksDataTable() {
+            return this.F_BooksTable.Books;
         }
     }
 }

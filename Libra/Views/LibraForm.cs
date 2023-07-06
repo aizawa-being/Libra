@@ -84,15 +84,11 @@ namespace Libra {
 
             // 書籍一覧グリッドを初期化します。
             libraController.InitializeBookList();
-            this.RefreshDataGridView(libraController);
+            this.booksDataGridView.DataSource = libraController.GetBooksDataTable();
 
             if (this.booksDataGridView.RowCount > 0) {
                 this.booksDataGridView.CurrentCell = this.booksDataGridView.FirstDisplayedCell;
             }
-        }
-
-        private void RefreshDataGridView(LibraController vLibraController) {
-            this.booksDataGridView.DataSource = vLibraController.GetBooksDateTable();
         }
     }
 }
