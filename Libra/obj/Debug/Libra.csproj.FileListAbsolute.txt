@@ -3,8 +3,15 @@ C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\Libra.exe
 C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\Libra.pdb
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.csprojAssemblyReference.cache
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.Properties.Resources.resources
+<<<<<<< HEAD
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.Views.AddBookForm.resources
+=======
+>>>>>>> develop
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.csproj.GenerateResource.cache
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.csproj.CoreCompileInputs.cache
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.exe
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.pdb
+<<<<<<< HEAD
+=======
+C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.LibraForm.resources
+>>>>>>> develop
