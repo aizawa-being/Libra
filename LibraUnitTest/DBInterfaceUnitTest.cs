@@ -25,7 +25,11 @@ namespace LibraUnitTest {
 
             var dbContext = new BooksDbContext(connection, true);
 
-            bool tableExists = dbContext.Database.SqlQuery<int>("SELECT 1 FROM sqlite_master WHERE type='table' AND name='Book'").Any();
+            bool tableExists = dbContext.Database.SqlQuery<int>(
+                "SELECT 1 " +
+                "FROM sqlite_master " +
+                "WHERE type='table' AND name='Book'"
+                ).Any();
 
             if (!tableExists) {
                 dbContext.Database.ExecuteSqlCommand(@"
@@ -127,12 +131,12 @@ namespace LibraUnitTest {
             }
         }
 
-        [Test]
-        public void 書籍追加テスト() {
+        [TestCase(4, "AddBook書籍名", "AddBook著者名", "0000000000001", 0)]
+        public void 書籍追加テスト(int vBookId, string vTitle, string vAuthor, string vBarcode, int vIsDeleted) {
             using (var dbContext = CreateInMemoryDb()) {
                 var booksRepository = new BooksRepository(dbContext);
                 booksRepository.AddBook(new Book {
-                    BookId = 4,
+                    BookId = vBookId,
                     Title = "AddBook書籍名",
                     Author = "AddBook著者名",
                     Barcode = "0000000000001",
@@ -141,16 +145,16 @@ namespace LibraUnitTest {
                 booksRepository.Save();
                 
                 Assert.AreEqual(4, dbContext.Books.Count());
-                Assert.AreEqual(4, dbContext.Books.OrderByDescending(b => b.BookId).FirstOrDefault().BookId);
-                Assert.AreEqual("AddBook書籍名", dbContext.Books.OrderByDescending(b => b.BookId).FirstOrDefault().Title);
-                Assert.AreEqual("AddBook著者名", dbContext.Books.OrderByDescending(b => b.BookId).FirstOrDefault().Author);
-                Assert.AreEqual("0000000000001", dbContext.Books.OrderByDescending(b => b.BookId).FirstOrDefault().Barcode);
-                Assert.AreEqual(0, dbContext.Books.OrderByDescending(b => b.BookId).FirstOrDefault().IsDeleted);
+                Assert.AreEqual(vBookId, dbContext.Books.OrderByDescending(b => b.BookId).FirstOrDefault().BookId);
+                Assert.AreEqual(vTitle, dbContext.Books.OrderByDescending(b => b.BookId).FirstOrDefault().Title);
+                Assert.AreEqual(vAuthor, dbContext.Books.OrderByDescending(b => b.BookId).FirstOrDefault().Author);
+                Assert.AreEqual(vBarcode, dbContext.Books.OrderByDescending(b => b.BookId).FirstOrDefault().Barcode);
+                Assert.AreEqual(vIsDeleted, dbContext.Books.OrderByDescending(b => b.BookId).FirstOrDefault().IsDeleted);
             }
         }
 
-        [Test]
-        public void 書籍更新テスト() {
+        [TestCase("UpdatedTitle")]
+        public void 書籍更新テスト(string vTitle) {
             using (var dbContext = CreateInMemoryDb()) {
                 var booksRepository = new BooksRepository(dbContext);
 
@@ -158,12 +162,12 @@ namespace LibraUnitTest {
                 var book = booksRepository.GetBookById(1);
 
                 // タイトルを更新
-                book.Title = "UpdatedTitle";
+                book.Title = vTitle;
                 booksRepository.UpdateBook(book);
 
                 var updatedBook = booksRepository.GetBookById(1);
 
-                Assert.AreEqual("UpdatedTitle", updatedBook.Title);
+                Assert.AreEqual(vTitle, updatedBook.Title);
             }
         }
 
