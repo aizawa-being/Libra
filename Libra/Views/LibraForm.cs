@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Libra.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -54,6 +55,8 @@ namespace Libra {
 
         private void AddBook_Click(object sender, EventArgs e) {
             this.addBookButton.Focus();
+            var libraController = new LibraController();
+            libraController.OpenAddForm();
         }
 
         private void DeleteBook_Click(object sender, EventArgs e) {

@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="MyLocation" Type="System.Drawing.Point" Scope="User">
-      <Value Profile="(Default)">0, 0</Value>
+      <Value Profile="(Default)">0, 17</Value>
     </Setting>
   </Settings>
 </SettingsFile>
