@@ -11,8 +11,6 @@ using System.Windows.Forms;
 
 namespace Libra.Views {
     public partial class AddBookForm : Form {
-        public static AddBookForm F_Instance;
-
         public AddBookForm() {
             InitializeComponent();
         }
