@@ -12,25 +12,12 @@ namespace Libra.Controls {
         /// </summary>
         /// <param name="vIsbn"></param>
         /// <returns></returns>
-        public async Task<string> GetBookByIsbn(string vIsbn) {
+        public async Task<HttpResponseMessage> SendRequest(string vIsbn) {
             var baseUrl = "https://api.openbd.jp/v1/get?isbn=";
             var url = baseUrl + vIsbn;
 
             using (HttpClient client = new HttpClient()) {
-                HttpResponseMessage response = await client.GetAsync(url);
-                if (response.IsSuccessStatusCode) {
-                    // レスポンスの取得に成功
-                    return await response.Content.ReadAsStringAsync();
-                } else if (response.StatusCode >= HttpStatusCode.BadRequest && response.StatusCode < HttpStatusCode.InternalServerError) {
-                    // 400番台エラー発生
-                    return ErrorMessageConst.NetworkError + "ステータスコード: " + response.StatusCode;
-                } else if (response.StatusCode >= HttpStatusCode.InternalServerError) {
-                    // 500番台エラー発生
-                    return ErrorMessageConst.ServerError + "ステータスコード: " + response.StatusCode;
-                } else {
-                    // 予期せぬエラー
-                    return ErrorMessageConst.UnexpectedError + "ステータスコード: " + response.StatusCode;
-                }
+                return await client.GetAsync(url);
             }
         }
 

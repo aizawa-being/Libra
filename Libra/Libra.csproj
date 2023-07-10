@@ -108,6 +108,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BooksDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Models\IMessageBoxService.cs" />
+    <Compile Include="Models\MessageBoxService.cs" />
     <Compile Include="Views\LibraForm.cs">
       <SubType>Form</SubType>
     </Compile>

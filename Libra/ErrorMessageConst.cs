@@ -31,9 +31,10 @@
         public const string ServerErrorCaption = "サーバー通信エラー";
 
         /// <summary>
-        /// 予期せぬエラーメッセージ
+        /// API接続時の予期せぬエラーメッセージ
+        /// ステータスコードを記載してください
         /// </summary>
-        public const string UnexpectedError = "予期せぬエラーが発生しました。";
+        public const string UnexpectedError = "予期せぬエラーが発生しました。\r\nステータスコード：{0}";
 
         /// <summary>
         /// 予期せぬエラーキャプション
