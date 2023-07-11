@@ -8,8 +8,6 @@ C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.csproj.GenerateResource.ca
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.csproj.CoreCompileInputs.cache
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.exe
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.pdb
-C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.csprojAssemblyReference.cache
-C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.Form1.resources
 C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\SQLite.CodeFirst.dll
 C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\System.Data.SQLite.dll
 C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\System.Data.SQLite.EF6.dll

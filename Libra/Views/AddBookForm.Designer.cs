@@ -94,7 +94,7 @@
             this.getBookInfoButton.TabIndex = 2;
             this.getBookInfoButton.Text = "書籍情報取得";
             this.getBookInfoButton.UseVisualStyleBackColor = true;
-            this.getBookInfoButton.Click += new System.EventHandler(this.GetBookInfoButtonClick);
+            this.getBookInfoButton.Click += new System.EventHandler(this.GetBookInfoButtonClickAsync);
             // 
             // label1
             // 
@@ -158,7 +158,6 @@
             this.MinimumSize = new System.Drawing.Size(255, 275);
             this.Name = "AddBookForm";
             this.Text = "書籍追加";
-            this.Load += new System.EventHandler(this.AddBookForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

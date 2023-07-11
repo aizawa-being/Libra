@@ -40,5 +40,18 @@ namespace Libra.Models {
         public DialogResult Show(string message, string caption, MessageBoxButtons button) {
             return MessageBox.Show(message, caption, button);
         }
+
+        /// <summary>
+        /// キャプション付きメッセージボックスを表示します。
+        /// 指定したボタンとアイコンを表示します。
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="caption"></param>
+        /// <param name="button"></param>
+        /// <param name="icon"></param>
+        /// <returns></returns>
+        public DialogResult Show(string message, string caption, MessageBoxButtons button, MessageBoxIcon icon) {
+            return MessageBox.Show(message, caption, button, icon);
+        }
     }
 }

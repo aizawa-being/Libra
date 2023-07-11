@@ -29,7 +29,7 @@ namespace LibraUnitTest {
 
             // レスポンスの設定
             var response = new HttpResponseMessage(HttpStatusCode.Accepted);
-            response.Content = new MockHttpContent();
+            response.Content = new MockHttpContent("");
 
             // レスポンスのステータスコードを指定
             openBdConnectMock.Setup(o => o.SendRequest(It.IsAny<string>()))
@@ -48,7 +48,7 @@ namespace LibraUnitTest {
             var messageBoxMock = new Mock<IMessageBoxService>();
 
             messageBoxMock
-                .Setup(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>()))
+                .Setup(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()))
                 .Returns(DialogResult.OK);
 
             var addBookControl = new AddBookFormController(openBdConnectMock.Object, messageBoxMock.Object);
@@ -76,13 +76,13 @@ namespace LibraUnitTest {
             var messageBoxMock = new Mock<IMessageBoxService>();
 
             messageBoxMock
-                .Setup(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>()))
+                .Setup(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()))
                 .Returns(DialogResult.OK);
 
             var addBookControl = new AddBookFormController(openBdConnectMock.Object, messageBoxMock.Object);
             addBookControl.SetAddBook(It.IsAny<string>());
 
-            messageBoxMock.Verify(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>()));
+            messageBoxMock.Verify(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()));
         }
 
         [TestCase("テスト書籍名1", "テスト著者名1", "テスト出版社1", "0123456789012", "テスト概要1")]

@@ -96,7 +96,6 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBUnitTest.cs" />
     <Compile Include="MockHttpContent.cs" />
     <Compile Include="OpenBdUnitTest.cs" />
     <Compile Include="DBInterfaceUnitTest.cs" />

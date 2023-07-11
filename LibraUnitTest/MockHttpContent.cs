@@ -10,11 +10,7 @@ using System.Threading.Tasks;
 namespace LibraUnitTest {
     public class MockHttpContent : HttpContent {
         private readonly string F_content;
-
-        public MockHttpContent() {
-            this.F_content = "";
-        }
-
+        
         public MockHttpContent(string vContent) {
             this.F_content = vContent;
         }

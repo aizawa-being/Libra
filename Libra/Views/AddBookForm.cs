@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Libra.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,8 +24,12 @@ namespace Libra.Views {
             
         }
 
-        private void GetBookInfoButtonClick(object sender, EventArgs e) {
-
+        private async void GetBookInfoButtonClickAsync(object sender, EventArgs e) {
+            var addBookFormConrtoller = new AddBookFormController();
+            if (await addBookFormConrtoller.SetAddBook(this.isbnTextBox.Text)) {
+                this.titleLabel.Text = addBookFormConrtoller.BookToAdd.Title;
+                this.authorLabel.Text = addBookFormConrtoller.BookToAdd.Author;
+            }
         }
 
         private void IsbnTextBox_KeyDown(object sender, KeyEventArgs e) {
@@ -47,11 +52,6 @@ namespace Libra.Views {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
                 e.Handled = true;
             }
-        }
-
-        private void AddBookForm_Load(object sender, EventArgs e) {
-            // 右クリックメニューは利用不可
-            this.isbnTextBox.ContextMenu = new ContextMenu();
         }
     }
 }

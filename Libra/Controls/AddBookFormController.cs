@@ -36,7 +36,7 @@ namespace Libra.Controls {
         /// ISBNコードと一致する書籍情報を設定します。
         /// </summary>
         /// <param name="vIsbn"></param>
-        public async Task SetAddBook(string vIsbn) {
+        public async Task<bool> SetAddBook(string vIsbn) {
             var response = await this.F_OpenBdConnect.SendRequest(vIsbn);
 
             if (response.IsSuccessStatusCode) {
@@ -45,32 +45,38 @@ namespace Libra.Controls {
                 // 文字列をJsonに変換し書籍情報を抽出する
                 var book = this.F_OpenBdConnect.PerseBookInfo(strBook);
                 if (book == null) {
-                    this.F_MessageBoxService.Show(ErrorMessageConst.BookNotFound, ErrorMessageConst.BookNotFoundCaption, MessageBoxButtons.OK);
-                    return;
+                    this.F_MessageBoxService.Show(ErrorMessageConst.BookNotFound,
+                                                  ErrorMessageConst.BookNotFoundCaption,
+                                                  MessageBoxButtons.OK,
+                                                  MessageBoxIcon.Asterisk);
+                    return false;
                 }
                 this.BookToAdd = book;
-                return;
+                return true;
 
             } else if (response.StatusCode >= HttpStatusCode.BadRequest && response.StatusCode < HttpStatusCode.InternalServerError) {
                 // 400番台エラー発生
                 this.F_MessageBoxService.Show(ErrorMessageConst.NetworkError,
                                               ErrorMessageConst.NetworkErrorCaption,
-                                              MessageBoxButtons.OK);
-                return;
+                                              MessageBoxButtons.OK,
+                                              MessageBoxIcon.Error);
+                return false;
 
             } else if (response.StatusCode >= HttpStatusCode.InternalServerError) {
                 // 500番台エラー発生
                 this.F_MessageBoxService.Show(ErrorMessageConst.ServerError,
                                               ErrorMessageConst.ServerErrorCaption,
-                                              MessageBoxButtons.OK);
-                return;
+                                              MessageBoxButtons.OK,
+                                              MessageBoxIcon.Error);
+                return false;
 
             } else {
                 // 予期せぬエラー
                 this.F_MessageBoxService.Show(string.Format(ErrorMessageConst.UnexpectedError, response.StatusCode),
                                               ErrorMessageConst.UnexpectedErrorCaprion,
-                                              MessageBoxButtons.OK);
-                return;
+                                              MessageBoxButtons.OK,
+                                              MessageBoxIcon.Error);
+                return false;
             }
         }
     }

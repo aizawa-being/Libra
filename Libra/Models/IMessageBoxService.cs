@@ -8,5 +8,6 @@ namespace Libra.Models {
         DialogResult Show(string message);
         DialogResult Show(string message, string caption);
         DialogResult Show(string message, string caption, MessageBoxButtons button);
+        DialogResult Show(string message, string caption, MessageBoxButtons button, MessageBoxIcon icon);
     }
 }
