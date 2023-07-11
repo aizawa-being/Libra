@@ -99,31 +99,25 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="Controls\AddBookControl.cs" />
     <Compile Include="Controls\IOpenBdConnect.cs" />
     <Compile Include="Controls\OpenBdConnect.cs" />
     <Compile Include="ErrorMessageConst.cs" />
-=======
     <Compile Include="Controls\AddBookFormController.cs" />
     <Compile Include="Controls\LibraController.cs" />
->>>>>>> feature/#438541
     <Compile Include="Models\BooksDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BooksDataSet.xsd</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Models\IMessageBoxService.cs" />
     <Compile Include="Models\MessageBoxService.cs" />
-=======
     <Compile Include="Views\AddBookForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\AddBookForm.Designer.cs">
       <DependentUpon>AddBookForm.cs</DependentUpon>
     </Compile>
->>>>>>> feature/#438541
     <Compile Include="Views\LibraForm.cs">
       <SubType>Form</SubType>
     </Compile>
