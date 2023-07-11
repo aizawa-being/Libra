@@ -1,8 +1,13 @@
 ﻿using Libra.Models;
 using System.Net;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Libra.Controls {
+
+    /// <summary>
+    /// 追加書籍フォーム用コントローラです
+    /// </summary>
     public class AddBookControl {
         /// <summary>
         /// 追加する書籍情報
@@ -25,7 +30,7 @@ namespace Libra.Controls {
         /// ISBNコードと一致する書籍情報を設定します。
         /// </summary>
         /// <param name="vIsbn"></param>
-        public async void SetAddBook(string vIsbn) {
+        public async Task SetAddBook(string vIsbn) {
             var response = await this.F_OpenBdConnect.SendRequest(vIsbn);
             
             if (response.IsSuccessStatusCode) {
@@ -42,17 +47,23 @@ namespace Libra.Controls {
 
             } else if (response.StatusCode >= HttpStatusCode.BadRequest && response.StatusCode < HttpStatusCode.InternalServerError) {
                 // 400番台エラー発生
-                this.F_MessageBoxService.Show(ErrorMessageConst.NetworkError, ErrorMessageConst.NetworkErrorCaption, MessageBoxButtons.OK);
+                this.F_MessageBoxService.Show(ErrorMessageConst.NetworkError,
+                                              ErrorMessageConst.NetworkErrorCaption,
+                                              MessageBoxButtons.OK);
                 return;
 
             } else if (response.StatusCode >= HttpStatusCode.InternalServerError) {
                 // 500番台エラー発生
-                this.F_MessageBoxService.Show(ErrorMessageConst.ServerError, ErrorMessageConst.ServerErrorCaption, MessageBoxButtons.OK);
+                this.F_MessageBoxService.Show(ErrorMessageConst.ServerError,
+                                              ErrorMessageConst.ServerErrorCaption,
+                                              MessageBoxButtons.OK);
                 return;
 
             } else {
                 // 予期せぬエラー
-                this.F_MessageBoxService.Show(string.Format(ErrorMessageConst.UnexpectedError, response.StatusCode), ErrorMessageConst.UnexpectedErrorCaprion, MessageBoxButtons.OK);
+                this.F_MessageBoxService.Show(string.Format(ErrorMessageConst.UnexpectedError, response.StatusCode),
+                                              ErrorMessageConst.UnexpectedErrorCaprion,
+                                              MessageBoxButtons.OK);
                 return;
             }
         }

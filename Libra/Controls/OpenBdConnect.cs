@@ -11,7 +11,7 @@ namespace Libra.Controls {
         /// ISBNコードで書籍情報を非同期に取得します
         /// </summary>
         /// <param name="vIsbn"></param>
-        /// <returns></returns>
+        /// <returns>Task<HttpResponseMessage></returns>
         public async Task<HttpResponseMessage> SendRequest(string vIsbn) {
             var baseUrl = "https://api.openbd.jp/v1/get?isbn=";
             var url = baseUrl + vIsbn;
