@@ -37,7 +37,16 @@ namespace Libra.Controls {
         /// </summary>
         /// <param name="vIsbn"></param>
         public async Task<bool> SetAddBook(string vIsbn) {
+            // リクエストを送信
             var response = await this.F_OpenBdConnect.SendRequest(vIsbn);
+            if (response == null) {
+                // HttpRequestException発生
+                this.F_MessageBoxService.Show(ErrorMessageConst.NetworkError,
+                                              ErrorMessageConst.NetworkErrorCaption,
+                                              MessageBoxButtons.OK,
+                                              MessageBoxIcon.Error);
+                return false;
+            }
 
             if (response.IsSuccessStatusCode) {
                 // レスポンスの取得に成功

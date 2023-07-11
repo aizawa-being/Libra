@@ -12,8 +12,10 @@ namespace LibraUnitTest {
     public class OpenBdUnitTest {
         
         [TestCase("")]
+        [TestCase("999999999999")]
         [TestCase("0000000000000")]
-        [TestCase("9784065128442")]
+        [TestCase("9999999999999")]
+        [TestCase("00000000000000")]
         public async Task レスポンステスト(string vIsbn) {
             IOpenBdConnect openBdConnect = new OpenBdConnect();
             var response = await openBdConnect.SendRequest(vIsbn);
@@ -85,6 +87,41 @@ namespace LibraUnitTest {
             messageBoxMock.Verify(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()));
         }
 
+        [Test]
+        public void レスポンスがnullの場合のテスト() {
+            // OpenBDConnectのMockを作成
+            var openBdConnectMock = new Mock<IOpenBdConnect>();
+            HttpResponseMessage responceMessage = null;
+            // レスポンスのステータスコードを指定
+            openBdConnectMock.Setup(o => o.SendRequest(It.IsAny<string>()))
+                             .Returns(Task.FromResult(responceMessage));
+
+            // メッセージボックスのモックを作成
+            var messageBoxMock = new Mock<IMessageBoxService>();
+
+            messageBoxMock
+                .Setup(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()))
+                .Returns(DialogResult.OK);
+
+            var addBookControl = new AddBookFormController(openBdConnectMock.Object, messageBoxMock.Object);
+            addBookControl.SetAddBook(It.IsAny<string>());
+
+            messageBoxMock.Verify(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()));
+        }
+
+        [Test]
+        public async Task HttpRequestException発生テスト() {
+            var httpClientMock = new Mock<IHttpClient>();
+            httpClientMock.Setup(x => x.GetAsync(It.IsAny<string>()))
+                          .ThrowsAsync(new HttpRequestException());
+
+            var openBdConnect = new OpenBdConnect(httpClientMock.Object);
+
+            var result = await openBdConnect.SendRequest(It.IsAny<string>());
+
+            Assert.IsNull(result);
+        }
+
         [TestCase("テスト書籍名1", "テスト著者名1", "テスト出版社1", "0123456789012", "テスト概要1")]
         [TestCase("", "", "", "", "")]
         public void 書籍情報抽出テスト(string vTitle, string vAuthor, string vPublisher, string vIsbn, string vDescription) {
@@ -139,7 +176,7 @@ namespace LibraUnitTest {
         }
         
         [Test]
-        public void Null書籍情報抽出テスト() {
+        public void ISBNに一致する書籍がない場合のテスト() {
             string jsonString = "[\n  null\n]";
             IOpenBdConnect openBdConnect = new OpenBdConnect();
             var book = openBdConnect.PerseBookInfo(jsonString);

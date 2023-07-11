@@ -6,7 +6,20 @@ using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Libra.Controls {
+    /// <summary>
+    /// OpenBD関連クラス
+    /// </summary>
     public class OpenBdConnect : IOpenBdConnect {
+        private readonly IHttpClient F_HttpClient;
+
+        public OpenBdConnect() {
+            this.F_HttpClient = new HttpClientWrapper();
+        }
+
+        public OpenBdConnect(IHttpClient httpClient) {
+            F_HttpClient = httpClient;
+        }
+
         /// <summary>
         /// ISBNコードで書籍情報を非同期に取得します
         /// </summary>
@@ -15,9 +28,12 @@ namespace Libra.Controls {
         public async Task<HttpResponseMessage> SendRequest(string vIsbn) {
             var baseUrl = "https://api.openbd.jp/v1/get?isbn=";
             var url = baseUrl + vIsbn;
-
-            using (HttpClient client = new HttpClient()) {
-                return await client.GetAsync(url);
+            using (this.F_HttpClient) {
+                try {
+                    return await this.F_HttpClient.GetAsync(url);
+                } catch (HttpRequestException) {
+                    return null;
+                }
             }
         }
 
