@@ -1,13 +1,6 @@
 ﻿using Libra.Controls;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Libra.Views {
@@ -16,20 +9,25 @@ namespace Libra.Views {
             InitializeComponent();
         }
 
+        private async void GetBookInfoButtonClickAsync(object sender, EventArgs e) {
+            var addBookFormConrtoller = new AddBookFormController();
+            if (await addBookFormConrtoller.SetAddBook(this.isbnTextBox.Text)) {
+                // 書籍取得成功時
+                this.titleLabel.Text = addBookFormConrtoller.BookToAdd.Title;
+                this.authorLabel.Text = addBookFormConrtoller.BookToAdd.Author;
+            } else {
+                // 書籍取得失敗時
+                this.titleLabel.Text = "";
+                this.authorLabel.Text = "";
+            }
+        }
+
         private void AddButtonClick(object sender, EventArgs e) {
 
         }
 
         private void CancelButtonClick(object sender, EventArgs e) {
             
-        }
-
-        private async void GetBookInfoButtonClickAsync(object sender, EventArgs e) {
-            var addBookFormConrtoller = new AddBookFormController();
-            if (await addBookFormConrtoller.SetAddBook(this.isbnTextBox.Text)) {
-                this.titleLabel.Text = addBookFormConrtoller.BookToAdd.Title;
-                this.authorLabel.Text = addBookFormConrtoller.BookToAdd.Author;
-            }
         }
 
         private void IsbnTextBox_KeyDown(object sender, KeyEventArgs e) {
