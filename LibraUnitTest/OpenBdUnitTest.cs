@@ -51,7 +51,7 @@ namespace LibraUnitTest {
                 .Setup(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>()))
                 .Returns(DialogResult.OK);
 
-            var addBookControl = new AddBookControl(openBdConnectMock.Object, messageBoxMock.Object);
+            var addBookControl = new AddBookFormController(openBdConnectMock.Object, messageBoxMock.Object);
             await addBookControl.SetAddBook(It.IsAny<string>());
 
             Assert.AreEqual(vTitle, addBookControl.BookToAdd.Title);
@@ -79,7 +79,7 @@ namespace LibraUnitTest {
                 .Setup(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>()))
                 .Returns(DialogResult.OK);
 
-            var addBookControl = new AddBookControl(openBdConnectMock.Object, messageBoxMock.Object);
+            var addBookControl = new AddBookFormController(openBdConnectMock.Object, messageBoxMock.Object);
             addBookControl.SetAddBook(It.IsAny<string>());
 
             messageBoxMock.Verify(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>()));
