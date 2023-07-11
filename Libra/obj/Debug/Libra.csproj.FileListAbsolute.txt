@@ -3,6 +3,7 @@ C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\Libra.exe
 C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\Libra.pdb
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.csprojAssemblyReference.cache
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.Properties.Resources.resources
+C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.Views.AddBookForm.resources
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.csproj.GenerateResource.cache
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.csproj.CoreCompileInputs.cache
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.exe
@@ -10,6 +11,7 @@ C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.pdb
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.LibraForm.resources
 C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\EntityFramework.dll
 C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\EntityFramework.SqlServer.dll
+<<<<<<< HEAD
 C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\System.Buffers.dll
 C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\System.Memory.dll
@@ -30,4 +32,8 @@ C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\System.Text.Encodings.Web.xml
 C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\System.Text.Json.xml
 C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\System.ValueTuple.xml
+=======
+C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\EntityFramework.xml
+C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\EntityFramework.SqlServer.xml
+>>>>>>> feature/#438541
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.csproj.CopyComplete
