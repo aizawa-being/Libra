@@ -38,7 +38,7 @@
             // 
             this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.addButton.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.addButton.Location = new System.Drawing.Point(12, 224);
+            this.addButton.Location = new System.Drawing.Point(12, 274);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(100, 25);
             this.addButton.TabIndex = 7;
@@ -51,7 +51,7 @@
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.cancelButton.Location = new System.Drawing.Point(172, 224);
+            this.cancelButton.Location = new System.Drawing.Point(247, 274);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(100, 25);
             this.cancelButton.TabIndex = 8;
@@ -66,7 +66,7 @@
             this.isbnLabel.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.isbnLabel.Location = new System.Drawing.Point(12, 20);
             this.isbnLabel.Name = "isbnLabel";
-            this.isbnLabel.Size = new System.Drawing.Size(260, 15);
+            this.isbnLabel.Size = new System.Drawing.Size(335, 15);
             this.isbnLabel.TabIndex = 0;
             this.isbnLabel.Text = "バーコード番号（ISBN）を入力してください";
             // 
@@ -79,7 +79,7 @@
             this.isbnTextBox.Location = new System.Drawing.Point(12, 50);
             this.isbnTextBox.MaxLength = 13;
             this.isbnTextBox.Name = "isbnTextBox";
-            this.isbnTextBox.Size = new System.Drawing.Size(260, 23);
+            this.isbnTextBox.Size = new System.Drawing.Size(335, 23);
             this.isbnTextBox.TabIndex = 1;
             this.isbnTextBox.Text = "978";
             this.isbnTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.IsbnTextBox_KeyDown);
@@ -142,7 +142,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(359, 311);
             this.Controls.Add(this.authorLabel);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.label2);

@@ -86,6 +86,7 @@ namespace LibraUnitTest {
             addBookControl.SetAddBook(It.IsAny<string>());
 
             messageBoxMock.Verify(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()));
+            Assert.IsNull(addBookControl.GetAddBook());
         }
 
         [Test]
@@ -93,6 +94,7 @@ namespace LibraUnitTest {
             // OpenBDConnectのMockを作成
             var openBdConnectMock = new Mock<IOpenBdConnect>();
             HttpResponseMessage responceMessage = null;
+
             // レスポンスのステータスコードを指定
             openBdConnectMock.Setup(o => o.SendRequest(It.IsAny<string>()))
                              .Returns(Task.FromResult(responceMessage));
@@ -108,6 +110,7 @@ namespace LibraUnitTest {
             addBookControl.SetAddBook(It.IsAny<string>());
 
             messageBoxMock.Verify(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()));
+            Assert.IsNull(addBookControl.GetAddBook());
         }
 
         [Test]

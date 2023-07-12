@@ -38,7 +38,7 @@ namespace Libra.Controls {
         /// <param name="vIsbn"></param>
         /// <returns>true  : 成功
         ///          false : 失敗</returns>
-        public async Task<bool> SetAddBook(string vIsbn) {
+        public async Task SetAddBook(string vIsbn) {
             // リクエストを送信
             var response = await this.F_OpenBdConnect.SendRequest(vIsbn);
             if (response == null) {
@@ -47,7 +47,8 @@ namespace Libra.Controls {
                                               ErrorMessageConst.NetworkErrorCaption,
                                               MessageBoxButtons.OK,
                                               MessageBoxIcon.Error);
-                return false;
+                this.AddBook = null;
+                return;
             }
 
             if (response.IsSuccessStatusCode) {
@@ -60,10 +61,11 @@ namespace Libra.Controls {
                                                   ErrorMessageConst.BookNotFoundCaption,
                                                   MessageBoxButtons.OK,
                                                   MessageBoxIcon.Asterisk);
-                    return false;
+                    this.AddBook = null;
+                    return;
                 }
                 this.AddBook = book;
-                return true;
+                return;
 
             } else if (response.StatusCode >= HttpStatusCode.BadRequest && response.StatusCode < HttpStatusCode.InternalServerError) {
                 // 400番台エラー発生
@@ -71,7 +73,8 @@ namespace Libra.Controls {
                                               ErrorMessageConst.ClientErrorCaption,
                                               MessageBoxButtons.OK,
                                               MessageBoxIcon.Error);
-                return false;
+                this.AddBook = null;
+                return;
 
             } else if (response.StatusCode >= HttpStatusCode.InternalServerError) {
                 // 500番台エラー発生
@@ -79,7 +82,8 @@ namespace Libra.Controls {
                                               ErrorMessageConst.ServerErrorCaption,
                                               MessageBoxButtons.OK,
                                               MessageBoxIcon.Error);
-                return false;
+                this.AddBook = null;
+                return;
 
             } else {
                 // 予期せぬエラー
@@ -87,10 +91,15 @@ namespace Libra.Controls {
                                               ErrorMessageConst.UnexpectedErrorCaprion,
                                               MessageBoxButtons.OK,
                                               MessageBoxIcon.Error);
-                return false;
+                this.AddBook = null;
+                return;
             }
         }
 
+        /// <summary>
+        /// 追加用書籍情報の取得
+        /// </summary>
+        /// <returns></returns>
         public Book GetAddBook() {
             return this.AddBook;
         }

@@ -6,8 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Libra.Controls {
+    /// <summary>
+    /// 書籍追加用コントローラーのインターフェースです。
+    /// </summary>
     public interface IAddBookController {
-        Task<bool> SetAddBook(string vIsbn);
+        Task SetAddBook(string vIsbn);
         Book GetAddBook();
     }
 }
