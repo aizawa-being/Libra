@@ -53,5 +53,15 @@
         /// 予期せぬエラーキャプション
         /// </summary>
         public const string UnexpectedErrorCaprion = "予期せぬエラー";
+
+        /// <summary>
+        /// 書籍情報未取得エラーメッセージ
+        /// </summary>
+        public const string BookInfoUnacquiredError = "書籍情報取得後\r\n再度実行してください。";
+
+        /// <summary>
+        /// 書籍情報未取得エラーキャプション
+        /// </summary>
+        public const string BookInfoUnacquiredErrorCaprion = "書籍情報未取得エラー";
     }
 }

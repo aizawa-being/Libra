@@ -1,4 +1,5 @@
 ﻿using Libra.Controls;
+using Libra.Models;
 using System;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -19,20 +20,33 @@ namespace Libra.Views {
 
         private async void GetBookInfoButtonClickAsync(object sender, EventArgs e) {
             await this.F_AddBookController.SetAddBook(this.isbnTextBox.Text);
-            var book = this.F_AddBookController.GetAddBook();
-            if (book == null) {
+            if (this.F_AddBookController.ExistAddBook()) {
+                // 書籍情報取得成功時
+                var book = this.F_AddBookController.GetAddBook();
+                this.titleLabel.Text = book.Title;
+                this.authorLabel.Text = book.Author;
+            } else {
                 // 書籍情報取得失敗時
                 this.titleLabel.Text = "";
                 this.authorLabel.Text = "";
-            } else {
-                // 書籍情報取得成功時
-                this.titleLabel.Text = book.Title;
-                this.authorLabel.Text = book.Author;
             }
         }
 
         private void AddButtonClick(object sender, EventArgs e) {
-
+            if (this.F_AddBookController.ExistAddBook()) {
+                // 書籍情報を取得済み
+                var addBookId = this.F_AddBookController.RegisterAddBook();
+                // フォームを閉じる
+                this.OnClosed(e);
+                return;
+            }
+            // 書籍情報が未取得の場合、書籍追加は行わない。
+            IMessageBoxService messageBoxService = new MessageBoxService();
+            messageBoxService.Show(ErrorMessageConst.BookInfoUnacquiredError,
+                                   ErrorMessageConst.BookInfoUnacquiredErrorCaprion,
+                                   MessageBoxButtons.OK,
+                                   MessageBoxIcon.Asterisk);
+            return;
         }
 
         private void CancelButtonClick(object sender, EventArgs e) {
