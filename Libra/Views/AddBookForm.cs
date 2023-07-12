@@ -5,14 +5,21 @@ using System.Windows.Forms;
 
 namespace Libra.Views {
     public partial class AddBookForm : Form {
+        private readonly IAddBookController F_AddBookController;
+
         public AddBookForm() {
+            this.F_AddBookController = new AddBookFormController();
+            InitializeComponent();
+        }
+
+        public AddBookForm(IAddBookController vAddBookController) {
+            this.F_AddBookController = vAddBookController;
             InitializeComponent();
         }
 
         private async void GetBookInfoButtonClickAsync(object sender, EventArgs e) {
-            IAddBookController addBookController = new AddBookFormController();
-            await addBookController.SetAddBook(this.isbnTextBox.Text);
-            var book = addBookController.GetAddBook();
+            await this.F_AddBookController.SetAddBook(this.isbnTextBox.Text);
+            var book = this.F_AddBookController.GetAddBook();
             if (book == null) {
                 // 書籍情報取得失敗時
                 this.titleLabel.Text = "";

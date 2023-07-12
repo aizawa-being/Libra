@@ -28,12 +28,10 @@ namespace Libra.Controls {
         public async Task<HttpResponseMessage> SendRequest(string vIsbn) {
             var baseUrl = "https://api.openbd.jp/v1/get?isbn=";
             var url = baseUrl + vIsbn;
-            using (this.F_HttpClient) {
-                try {
-                    return await this.F_HttpClient.GetAsync(url);
-                } catch (HttpRequestException) {
-                    return null;
-                }
+            try {
+                return await this.F_HttpClient.GetAsync(url);
+            } catch (HttpRequestException) {
+                return null;
             }
         }
 
