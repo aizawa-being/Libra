@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\HttpClientWrapper.cs" />
+    <Compile Include="Controls\IAddBookController.cs" />
     <Compile Include="Controls\IHttpClient.cs" />
     <Compile Include="Controls\IOpenBdConnect.cs" />
     <Compile Include="Controls\OpenBdConnect.cs" />

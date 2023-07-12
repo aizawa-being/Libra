@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Libra.Controls {
-    public class AddBookFormController {
+    public class AddBookFormController : IAddBookController {
         /// <summary>
         /// 追加する書籍
         /// </summary>
-        public Book BookToAdd { get; private set; }
+        private Book AddBook;
         private readonly IOpenBdConnect F_OpenBdConnect;
         private readonly IMessageBoxService F_MessageBoxService;
 
@@ -31,11 +31,13 @@ namespace Libra.Controls {
                 addBookForm.ShowDialog();
             }
         }
-        
+
         /// <summary>
         /// ISBNコードと一致する書籍情報を設定します。
         /// </summary>
         /// <param name="vIsbn"></param>
+        /// <returns>true  : 成功
+        ///          false : 失敗</returns>
         public async Task<bool> SetAddBook(string vIsbn) {
             // リクエストを送信
             var response = await this.F_OpenBdConnect.SendRequest(vIsbn);
@@ -60,13 +62,13 @@ namespace Libra.Controls {
                                                   MessageBoxIcon.Asterisk);
                     return false;
                 }
-                this.BookToAdd = book;
+                this.AddBook = book;
                 return true;
 
             } else if (response.StatusCode >= HttpStatusCode.BadRequest && response.StatusCode < HttpStatusCode.InternalServerError) {
                 // 400番台エラー発生
-                this.F_MessageBoxService.Show(ErrorMessageConst.NetworkError,
-                                              ErrorMessageConst.NetworkErrorCaption,
+                this.F_MessageBoxService.Show(ErrorMessageConst.ClientError,
+                                              ErrorMessageConst.ClientErrorCaption,
                                               MessageBoxButtons.OK,
                                               MessageBoxIcon.Error);
                 return false;
@@ -87,6 +89,10 @@ namespace Libra.Controls {
                                               MessageBoxIcon.Error);
                 return false;
             }
+        }
+
+        public Book GetAddBook() {
+            return this.AddBook;
         }
     }
 }

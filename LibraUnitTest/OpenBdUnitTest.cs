@@ -53,14 +53,15 @@ namespace LibraUnitTest {
                 .Setup(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()))
                 .Returns(DialogResult.OK);
 
-            var addBookControl = new AddBookFormController(openBdConnectMock.Object, messageBoxMock.Object);
+            IAddBookController addBookControl = new AddBookFormController(openBdConnectMock.Object, messageBoxMock.Object);
             await addBookControl.SetAddBook(It.IsAny<string>());
+            var book = addBookControl.GetAddBook();
 
-            Assert.AreEqual(vTitle, addBookControl.BookToAdd.Title);
-            Assert.AreEqual(vAuthor, addBookControl.BookToAdd.Author);
-            Assert.AreEqual(vPublisher, addBookControl.BookToAdd.Publisher);
-            Assert.AreEqual(vBarcode, addBookControl.BookToAdd.Barcode);
-            Assert.AreEqual(vDescription, addBookControl.BookToAdd.Description);
+            Assert.AreEqual(vTitle, book.Title);
+            Assert.AreEqual(vAuthor, book.Author);
+            Assert.AreEqual(vPublisher, book.Publisher);
+            Assert.AreEqual(vBarcode, book.Barcode);
+            Assert.AreEqual(vDescription, book.Description);
         }
 
         [TestCase(HttpStatusCode.BadRequest)]
@@ -81,7 +82,7 @@ namespace LibraUnitTest {
                 .Setup(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()))
                 .Returns(DialogResult.OK);
 
-            var addBookControl = new AddBookFormController(openBdConnectMock.Object, messageBoxMock.Object);
+            IAddBookController addBookControl = new AddBookFormController(openBdConnectMock.Object, messageBoxMock.Object);
             addBookControl.SetAddBook(It.IsAny<string>());
 
             messageBoxMock.Verify(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()));
@@ -103,7 +104,7 @@ namespace LibraUnitTest {
                 .Setup(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()))
                 .Returns(DialogResult.OK);
 
-            var addBookControl = new AddBookFormController(openBdConnectMock.Object, messageBoxMock.Object);
+            IAddBookController addBookControl = new AddBookFormController(openBdConnectMock.Object, messageBoxMock.Object);
             addBookControl.SetAddBook(It.IsAny<string>());
 
             messageBoxMock.Verify(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()));
@@ -181,7 +182,7 @@ namespace LibraUnitTest {
             IOpenBdConnect openBdConnect = new OpenBdConnect();
             var book = openBdConnect.PerseBookInfo(jsonString);
 
-            Assert.AreEqual(null, book);
+            Assert.IsNull(book);
         }
     }
 }

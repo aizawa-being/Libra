@@ -24,6 +24,16 @@
         public const string NetworkErrorCaption = "ネットワーク接続エラー";
 
         /// <summary>
+        /// クライアントエラーメッセージ
+        /// </summary>
+        public const string ClientError = "リクエストの処理中にエラーが発生しました。\r\nしばらく経ってから再度お試しください。";
+
+        /// <summary>
+        /// クライアントエラーキャプション
+        /// </summary>
+        public const string ClientErrorCaption = "クライアントエラー";
+
+        /// <summary>
         /// サーバー通信エラーメッセージ
         /// </summary>
         public const string ServerError = "サーバーエラーが発生しました。\r\nしばらく経ってから再度お試しください。";
