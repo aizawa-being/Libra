@@ -53,7 +53,9 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.AddBook(It.IsAny<Book>())).Callback<Book>(b => b.BookId = vBookId);
             wMockRepository.Setup(m => m.Save());
 
-            var wAddBookFormController = new AddBookFormController(wMockRepository.Object);
+            IOpenBdConnect wOpenBdConnect = new OpenBdConnect();
+            IMessageBoxService wMessageBoxService = new MessageBoxService();
+            var wAddBookFormController = new AddBookFormController(wOpenBdConnect, wMessageBoxService, wMockRepository.Object);
             
             var wResult = wAddBookFormController.RegisterAddBook(wBook);
 
@@ -69,7 +71,9 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.Save());
 
             // コントローラのモックを作成
-            var wAddBookFormController = new AddBookFormController(wMockRepository.Object);
+            IOpenBdConnect wOpenBdConnect = new OpenBdConnect();
+            IMessageBoxService wMessageBoxService = new MessageBoxService();
+            var wAddBookFormController = new AddBookFormController(wOpenBdConnect, wMessageBoxService, wMockRepository.Object);
 
             var wResult = wAddBookFormController.RegisterAddBook(null);
             
@@ -99,7 +103,8 @@ namespace LibraUnitTest {
             wBookRepositoryMock.Setup(m => m.Save());
             
             // コントローラのモックを作成
-            var wAddControl = new AddBookFormController(wMessageBoxMock.Object, wBookRepositoryMock.Object);
+            IOpenBdConnect wOpenBdConnect = new OpenBdConnect();
+            var wAddControl = new AddBookFormController(wOpenBdConnect, wMessageBoxMock.Object, wBookRepositoryMock.Object);
 
             // privateフィールドのFAddBookを取得
             var wFAddBook = wAddControl.GetType().GetField("FAddBook", BindingFlags.NonPublic | BindingFlags.Instance);

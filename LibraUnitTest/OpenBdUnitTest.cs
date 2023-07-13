@@ -54,7 +54,8 @@ namespace LibraUnitTest {
                 .Setup(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()))
                 .Returns(DialogResult.OK);
 
-            IAddBookController wAddBookControl = new AddBookFormController(wOpenBdConnectMock.Object, wMessageBoxMock.Object);
+            IBookRepository wBookRepository = new BooksRepository(new BooksDbContext());
+            IAddBookController wAddBookControl = new AddBookFormController(wOpenBdConnectMock.Object, wMessageBoxMock.Object, wBookRepository);
             await wAddBookControl.SetAddBook(It.IsAny<string>());
             var wBook = wAddBookControl.GetAddBook();
 
@@ -83,7 +84,8 @@ namespace LibraUnitTest {
                 .Setup(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()))
                 .Returns(DialogResult.OK);
 
-            IAddBookController wAddBookControl = new AddBookFormController(wOpenBdConnectMock.Object, wMessageBoxMock.Object);
+            IBookRepository wBookRepository = new BooksRepository(new BooksDbContext());
+            IAddBookController wAddBookControl = new AddBookFormController(wOpenBdConnectMock.Object, wMessageBoxMock.Object, wBookRepository);
             wAddBookControl.SetAddBook(It.IsAny<string>());
 
             wMessageBoxMock.Verify(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()));
@@ -107,7 +109,8 @@ namespace LibraUnitTest {
                 .Setup(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()))
                 .Returns(DialogResult.OK);
 
-            IAddBookController wAddBookControl = new AddBookFormController(wOpenBdConnectMock.Object, wMessageBoxMock.Object);
+            IBookRepository wBookRepository = new BooksRepository(new BooksDbContext());
+            IAddBookController wAddBookControl = new AddBookFormController(wOpenBdConnectMock.Object, wMessageBoxMock.Object, wBookRepository);
             wAddBookControl.SetAddBook(It.IsAny<string>());
 
             wMessageBoxMock.Verify(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()));

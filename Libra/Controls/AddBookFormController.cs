@@ -18,24 +18,6 @@ namespace Libra {
             this.FBookRepository = new BooksRepository(new BooksDbContext());
         }
 
-        public AddBookFormController(IOpenBdConnect vOpenBdConnect, IMessageBoxService vMessageBoxService) {
-            this.FOpenBdConnect = vOpenBdConnect;
-            this.FMessageBoxService = vMessageBoxService;
-            this.FBookRepository = new BooksRepository(new BooksDbContext());
-        }
-
-        public AddBookFormController(IBookRepository vBookRepository) {
-            this.FOpenBdConnect = new OpenBdConnect();
-            this.FMessageBoxService = new MessageBoxService();
-            this.FBookRepository = vBookRepository;
-        }
-
-        public AddBookFormController(IMessageBoxService vMessageBoxService, IBookRepository vBookRepository) {
-            this.FOpenBdConnect = new OpenBdConnect();
-            this.FMessageBoxService = vMessageBoxService;
-            this.FBookRepository = vBookRepository;
-        }
-
         public AddBookFormController(IOpenBdConnect vOpenBdConnect, IMessageBoxService vMessageBoxService, IBookRepository vBookRepository) {
             this.FOpenBdConnect = vOpenBdConnect;
             this.FMessageBoxService = vMessageBoxService;
