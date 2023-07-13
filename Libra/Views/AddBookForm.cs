@@ -6,6 +6,11 @@ using System.Windows.Forms;
 
 namespace Libra.Views {
     public partial class AddBookForm : Form {
+        /// <summary>
+        /// 追加した書籍のID
+        /// 追加していない場合の初期値は-1
+        /// </summary>
+        public int AddBookId { get; private set; } = -1;
         private readonly IAddBookController F_AddBookController;
 
         public AddBookForm() {
@@ -35,9 +40,9 @@ namespace Libra.Views {
         private void AddButtonClick(object sender, EventArgs e) {
             if (this.F_AddBookController.ExistAddBook()) {
                 // 書籍情報を取得済み
-                var addBookId = this.F_AddBookController.RegisterAddBook();
+                this.AddBookId = this.F_AddBookController.RegisterAddBook();
                 // フォームを閉じる
-                this.OnClosed(e);
+                this.Close();
                 return;
             }
             // 書籍情報が未取得の場合、書籍追加は行わない。

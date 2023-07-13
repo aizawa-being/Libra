@@ -26,9 +26,10 @@ namespace Libra.Controls {
         /// <summary>
         /// 書籍追加画面を開きます。
         /// </summary>
-        public void ShowAddBookForm() {
+        public int ShowAddBookForm() {
             using (var addBookForm = new AddBookForm()) {
                 addBookForm.ShowDialog();
+                return addBookForm.AddBookId;
             }
         }
 
