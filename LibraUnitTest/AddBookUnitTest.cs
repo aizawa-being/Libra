@@ -110,13 +110,7 @@ namespace LibraUnitTest {
             var wFAddBook = wAddControl.GetType().GetField("FAddBook", BindingFlags.NonPublic | BindingFlags.Instance);
 
             // FAddBookに値を設定
-            wFAddBook.SetValue(wAddControl, new Book {
-                Title = "",
-                Author = "",
-                Publisher = "",
-                Description = "",
-                Barcode = ""
-            });
+            wFAddBook.SetValue(wAddControl, new Book());
 
             // フォームのモックを作成
             var wAddForm = new AddBookForm(wAddControl);
