@@ -1,6 +1,8 @@
-﻿using Libra;
+﻿using System.Linq;
+
 using NUnit.Framework;
-using System.Linq;
+
+using Libra;
 
 namespace LibraUnitTest {
     [TestFixture]

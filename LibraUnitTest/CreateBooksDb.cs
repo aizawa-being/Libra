@@ -1,6 +1,7 @@
-﻿using Libra;
-using System.Data.SQLite;
+﻿using System.Data.SQLite;
 using System.Linq;
+
+using Libra;
 
 namespace LibraUnitTest {
     public class CreateBooksDb {

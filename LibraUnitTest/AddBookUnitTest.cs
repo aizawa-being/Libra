@@ -1,6 +1,7 @@
-﻿using Libra;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
+
+using Libra;
 
 namespace LibraUnitTest {
     [TestFixture]
