@@ -4,6 +4,9 @@ using System.Linq;
 using Libra;
 
 namespace LibraUnitTest {
+    /// <summary>
+    /// テスト用書籍DBの作成用クラスです。
+    /// </summary>
     public class CreateBooksDb {
 
         /// <summary>
@@ -12,21 +15,21 @@ namespace LibraUnitTest {
         /// <returns></returns>
         public BooksDbContext CreateInMemoryDb() {
             // メモリ上にDBを構築する
-            string connectionString = "Data Source=:memory:;Version=3;New=True;";
+            string wConnectionString = "Data Source=:memory:;Version=3;New=True;";
 
-            var connection = new SQLiteConnection(connectionString);
-            connection.Open();
+            var wConnection = new SQLiteConnection(wConnectionString);
+            wConnection.Open();
 
-            var dbContext = new BooksDbContext(connection, true);
+            var wDbContext = new BooksDbContext(wConnection, true);
 
-            bool tableExists = dbContext.Database.SqlQuery<int>(
+            bool wTableExists = wDbContext.Database.SqlQuery<int>(
                 "SELECT 1 " +
                 "FROM sqlite_master " +
                 "WHERE type='table' AND name='Book'"
                 ).Any();
 
-            if (!tableExists) {
-                dbContext.Database.ExecuteSqlCommand(@"
+            if (!wTableExists) {
+                wDbContext.Database.ExecuteSqlCommand(@"
                     CREATE TABLE Book (
                         BookId INTEGER PRIMARY KEY,
                         Title TEXT,
@@ -39,10 +42,10 @@ namespace LibraUnitTest {
                         BorrowingDate TEXT
                     )");
             }
-            SetDefaultBooks(dbContext);
-            dbContext.SaveChanges();
+            SetDefaultBooks(wDbContext);
+            wDbContext.SaveChanges();
 
-            return dbContext;
+            return wDbContext;
         }
 
         /// <summary>

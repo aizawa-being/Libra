@@ -11,7 +11,7 @@
         }
 
         /// <summary>
-        /// 書籍情報をDbに登録し、自動採番された書籍IDを通知します。
+        /// 書籍情報をDBに追加し、自動採番された書籍IDを通知します。
         /// </summary>
         /// <param name="vBook"></param>
         /// <returns>int</returns>

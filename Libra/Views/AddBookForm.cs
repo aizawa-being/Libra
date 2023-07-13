@@ -8,7 +8,7 @@ namespace Libra {
         /// 追加した書籍のID
         /// 書籍を追加していない場合の初期値は-1
         /// </summary>
-        public int AddBookId { get; private set; } = -1;
+        public int AddBookId { get; private set; }
         private readonly IAddBookController FAddBookController;
 
         public AddBookForm() {
@@ -36,19 +36,18 @@ namespace Libra {
         }
 
         private void AddButtonClick(object sender, EventArgs e) {
-            if (this.FAddBookController.ExistAddBook()) {
-                // 書籍情報を取得済み
-                this.AddBookId = this.FAddBookController.RegisterAddBook();
-                // フォームを閉じる
-                this.Close();
+            this.AddBookId = this.FAddBookController.RegisterAddBook(this.FAddBookController.GetAddBook());
+            if (this.AddBookId == -1) {
+                // 書籍情報が未取得の場合、書籍追加は行わない。
+                this.FAddBookController.MessageBoxShow(ErrorMessageConst.C_BookInfoUnacquiredError,
+                                       ErrorMessageConst.C_BookInfoUnacquiredErrorCaprion,
+                                       MessageBoxButtons.OK,
+                                       MessageBoxIcon.Asterisk);
                 return;
             }
-            // 書籍情報が未取得の場合、書籍追加は行わない。
-            IMessageBoxService wMessageBoxService = new MessageBoxService();
-            wMessageBoxService.Show(ErrorMessageConst.C_BookInfoUnacquiredError,
-                                   ErrorMessageConst.C_BookInfoUnacquiredErrorCaprion,
-                                   MessageBoxButtons.OK,
-                                   MessageBoxIcon.Asterisk);
+            // 書籍情報を取得済みの場合
+            // フォームを閉じる
+            this.Close();
             return;
         }
 

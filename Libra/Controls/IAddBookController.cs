@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Libra {
     /// <summary>
@@ -8,6 +9,7 @@ namespace Libra {
         Task SetAddBook(string vIsbn);
         Book GetAddBook();
         bool ExistAddBook();
-        int RegisterAddBook();
+        int RegisterAddBook(Book vBook);
+        DialogResult MessageBoxShow(string vMessage, string vCaption, MessageBoxButtons vButton, MessageBoxIcon vIcon);
     }
 }
