@@ -97,7 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddBookUnitTest.cs" />
-    <Compile Include="CreateDb.cs" />
+    <Compile Include="CreateBooksDb.cs" />
     <Compile Include="MockHttpContent.cs" />
     <Compile Include="OpenBdUnitTest.cs" />
     <Compile Include="DBInterfaceUnitTest.cs" />

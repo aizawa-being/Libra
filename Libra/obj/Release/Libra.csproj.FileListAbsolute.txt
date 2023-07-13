@@ -30,10 +30,10 @@ C:\Users\aizawa\source\gitRepos\Libra\bin\Release\System.Text.Encodings.Web.xml
 C:\Users\aizawa\source\gitRepos\Libra\bin\Release\System.Text.Json.xml
 C:\Users\aizawa\source\gitRepos\Libra\bin\Release\System.Threading.Tasks.Extensions.xml
 C:\Users\aizawa\source\gitRepos\Libra\bin\Release\System.ValueTuple.xml
-C:\Users\aizawa\source\gitRepos\Libra\obj\Release\Libra.Views.AddBookForm.resources
 C:\Users\aizawa\source\gitRepos\Libra\obj\Release\Libra.csproj.CopyComplete
 C:\Users\aizawa\source\gitRepos\Libra\bin\Release\SQLite.CodeFirst.dll
 C:\Users\aizawa\source\gitRepos\Libra\bin\Release\System.Data.SQLite.dll
 C:\Users\aizawa\source\gitRepos\Libra\bin\Release\System.Data.SQLite.EF6.dll
 C:\Users\aizawa\source\gitRepos\Libra\bin\Release\System.Data.SQLite.Linq.dll
 C:\Users\aizawa\source\gitRepos\Libra\bin\Release\System.Data.SQLite.xml
+C:\Users\aizawa\source\gitRepos\Libra\obj\Release\Libra.AddBookForm.resources
