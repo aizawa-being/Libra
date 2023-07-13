@@ -1,35 +1,33 @@
-﻿using Libra.Models;
-using Libra.Views;
-using System.Net;
+﻿using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Libra.Controls {
+namespace Libra {
     public class AddBookFormController : IAddBookController {
         /// <summary>
         /// 追加する書籍
         /// </summary>
-        private Book F_AddBook;
-        private readonly IOpenBdConnect F_OpenBdConnect;
-        private readonly IMessageBoxService F_MessageBoxService;
+        private Book FAddBook;
+        private readonly IOpenBdConnect FOpenBdConnect;
+        private readonly IMessageBoxService FMessageBoxService;
 
         public AddBookFormController() {
-            this.F_OpenBdConnect = new OpenBdConnect();
-            this.F_MessageBoxService = new MessageBoxService();
+            this.FOpenBdConnect = new OpenBdConnect();
+            this.FMessageBoxService = new MessageBoxService();
         }
 
         public AddBookFormController(IOpenBdConnect vOpenBdConnect, IMessageBoxService vMessageBoxService) {
-            this.F_OpenBdConnect = vOpenBdConnect;
-            this.F_MessageBoxService = vMessageBoxService;
+            this.FOpenBdConnect = vOpenBdConnect;
+            this.FMessageBoxService = vMessageBoxService;
         }
 
         /// <summary>
         /// 書籍追加画面を開きます。
         /// </summary>
         public int ShowAddBookForm() {
-            using (var addBookForm = new AddBookForm()) {
-                addBookForm.ShowDialog();
-                return addBookForm.AddBookId;
+            using (var wAddBookForm = new AddBookForm()) {
+                wAddBookForm.ShowDialog();
+                return wAddBookForm.AddBookId;
             }
         }
 
@@ -41,58 +39,58 @@ namespace Libra.Controls {
         ///          false : 失敗</returns>
         public async Task SetAddBook(string vIsbn) {
             // リクエストを送信
-            var response = await this.F_OpenBdConnect.SendRequest(vIsbn);
-            if (response == null) {
+            var wResponse = await this.FOpenBdConnect.SendRequest(vIsbn);
+            if (wResponse == null) {
                 // HttpRequestException発生
-                this.F_MessageBoxService.Show(ErrorMessageConst.NetworkError,
-                                              ErrorMessageConst.NetworkErrorCaption,
+                this.FMessageBoxService.Show(ErrorMessageConst.C_NetworkError,
+                                              ErrorMessageConst.C_NetworkErrorCaption,
                                               MessageBoxButtons.OK,
                                               MessageBoxIcon.Error);
-                this.F_AddBook = null;
+                this.FAddBook = null;
                 return;
             }
 
-            if (response.IsSuccessStatusCode) {
+            if (wResponse.IsSuccessStatusCode) {
                 // レスポンスの取得に成功
-                var strBook = await response.Content.ReadAsStringAsync();
+                var wStrBook = await wResponse.Content.ReadAsStringAsync();
                 // 文字列をJsonに変換し書籍情報を抽出する
-                var book = this.F_OpenBdConnect.PerseBookInfo(strBook);
-                if (book == null) {
-                    this.F_MessageBoxService.Show(ErrorMessageConst.BookNotFound,
-                                                  ErrorMessageConst.BookNotFoundCaption,
+                var wBook = this.FOpenBdConnect.PerseBookInfo(wStrBook);
+                if (wBook == null) {
+                    this.FMessageBoxService.Show(ErrorMessageConst.C_BookNotFound,
+                                                  ErrorMessageConst.C_BookNotFoundCaption,
                                                   MessageBoxButtons.OK,
                                                   MessageBoxIcon.Asterisk);
-                    this.F_AddBook = null;
+                    this.FAddBook = null;
                     return;
                 }
-                this.F_AddBook = book;
+                this.FAddBook = wBook;
                 return;
 
-            } else if (response.StatusCode >= HttpStatusCode.BadRequest && response.StatusCode < HttpStatusCode.InternalServerError) {
+            } else if (wResponse.StatusCode >= HttpStatusCode.BadRequest && wResponse.StatusCode < HttpStatusCode.InternalServerError) {
                 // 400番台エラー発生
-                this.F_MessageBoxService.Show(ErrorMessageConst.ClientError,
-                                              ErrorMessageConst.ClientErrorCaption,
+                this.FMessageBoxService.Show(ErrorMessageConst.C_ClientError,
+                                              ErrorMessageConst.C_ClientErrorCaption,
                                               MessageBoxButtons.OK,
                                               MessageBoxIcon.Error);
-                this.F_AddBook = null;
+                this.FAddBook = null;
                 return;
 
-            } else if (response.StatusCode >= HttpStatusCode.InternalServerError) {
+            } else if (wResponse.StatusCode >= HttpStatusCode.InternalServerError) {
                 // 500番台エラー発生
-                this.F_MessageBoxService.Show(ErrorMessageConst.ServerError,
-                                              ErrorMessageConst.ServerErrorCaption,
+                this.FMessageBoxService.Show(ErrorMessageConst.C_ServerError,
+                                              ErrorMessageConst.C_ServerErrorCaption,
                                               MessageBoxButtons.OK,
                                               MessageBoxIcon.Error);
-                this.F_AddBook = null;
+                this.FAddBook = null;
                 return;
 
             } else {
                 // 予期せぬエラー
-                this.F_MessageBoxService.Show(string.Format(ErrorMessageConst.UnexpectedError, response.StatusCode),
-                                              ErrorMessageConst.UnexpectedErrorCaprion,
+                this.FMessageBoxService.Show(string.Format(ErrorMessageConst.C_UnexpectedError, wResponse.StatusCode),
+                                              ErrorMessageConst.C_UnexpectedErrorCaprion,
                                               MessageBoxButtons.OK,
                                               MessageBoxIcon.Error);
-                this.F_AddBook = null;
+                this.FAddBook = null;
                 return;
             }
         }
@@ -102,7 +100,7 @@ namespace Libra.Controls {
         /// </summary>
         /// <returns></returns>
         public Book GetAddBook() {
-            return this.F_AddBook;
+            return this.FAddBook;
         }
 
         /// <summary>
@@ -111,7 +109,7 @@ namespace Libra.Controls {
         /// <returns>true : 存在する
         ///         false : null</returns>
         public bool ExistAddBook() {
-            return this.F_AddBook != null;
+            return this.FAddBook != null;
         }
 
         /// <summary>
@@ -119,8 +117,8 @@ namespace Libra.Controls {
         /// </summary>
         /// <returns></returns>
         public int RegisterAddBook() {
-            var bookService = new BookService();
-            return bookService.AddBook(this.F_AddBook);
+            var wBookService = new BookService();
+            return wBookService.AddBook(this.FAddBook);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Libra.Views {
+﻿namespace Libra {
     partial class AddBookForm {
         /// <summary>
         /// Required designer variable.

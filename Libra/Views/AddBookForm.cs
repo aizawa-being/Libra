@@ -1,35 +1,33 @@
-﻿using Libra.Controls;
-using Libra.Models;
-using System;
+﻿using System;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace Libra.Views {
+namespace Libra {
     public partial class AddBookForm : Form {
         /// <summary>
         /// 追加した書籍のID
-        /// 追加していない場合の初期値は-1
+        /// 書籍を追加していない場合の初期値は-1
         /// </summary>
         public int AddBookId { get; private set; } = -1;
-        private readonly IAddBookController F_AddBookController;
+        private readonly IAddBookController FAddBookController;
 
         public AddBookForm() {
-            this.F_AddBookController = new AddBookFormController();
+            this.FAddBookController = new AddBookFormController();
             InitializeComponent();
         }
 
         public AddBookForm(IAddBookController vAddBookController) {
-            this.F_AddBookController = vAddBookController;
+            this.FAddBookController = vAddBookController;
             InitializeComponent();
         }
 
         private async void GetBookInfoButtonClickAsync(object sender, EventArgs e) {
-            await this.F_AddBookController.SetAddBook(this.isbnTextBox.Text);
-            if (this.F_AddBookController.ExistAddBook()) {
+            await this.FAddBookController.SetAddBook(this.isbnTextBox.Text);
+            if (this.FAddBookController.ExistAddBook()) {
                 // 書籍情報取得成功時
-                var book = this.F_AddBookController.GetAddBook();
-                this.titleLabel.Text = book.Title;
-                this.authorLabel.Text = book.Author;
+                var wBook = this.FAddBookController.GetAddBook();
+                this.titleLabel.Text = wBook.Title;
+                this.authorLabel.Text = wBook.Author;
             } else {
                 // 書籍情報取得失敗時
                 this.titleLabel.Text = "";
@@ -38,17 +36,17 @@ namespace Libra.Views {
         }
 
         private void AddButtonClick(object sender, EventArgs e) {
-            if (this.F_AddBookController.ExistAddBook()) {
+            if (this.FAddBookController.ExistAddBook()) {
                 // 書籍情報を取得済み
-                this.AddBookId = this.F_AddBookController.RegisterAddBook();
+                this.AddBookId = this.FAddBookController.RegisterAddBook();
                 // フォームを閉じる
                 this.Close();
                 return;
             }
             // 書籍情報が未取得の場合、書籍追加は行わない。
-            IMessageBoxService messageBoxService = new MessageBoxService();
-            messageBoxService.Show(ErrorMessageConst.BookInfoUnacquiredError,
-                                   ErrorMessageConst.BookInfoUnacquiredErrorCaprion,
+            IMessageBoxService wMessageBoxService = new MessageBoxService();
+            wMessageBoxService.Show(ErrorMessageConst.C_BookInfoUnacquiredError,
+                                   ErrorMessageConst.C_BookInfoUnacquiredErrorCaprion,
                                    MessageBoxButtons.OK,
                                    MessageBoxIcon.Asterisk);
             return;
@@ -61,8 +59,8 @@ namespace Libra.Views {
         private void IsbnTextBox_KeyDown(object sender, KeyEventArgs e) {
             // クリップボード内に半角数字以外が含まれている場合、ペースト不可。
             if (e.KeyData == (Keys.Control | Keys.V)) {
-                string clipboardText = Clipboard.GetText();
-                if (!Regex.IsMatch(clipboardText, @"^[0-9]+$")) {
+                string wClipboardText = Clipboard.GetText();
+                if (!Regex.IsMatch(wClipboardText, @"^[0-9]+$")) {
                     e.SuppressKeyPress = true;
                 }
             }

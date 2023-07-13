@@ -49,7 +49,7 @@
             this.書籍追加ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.書籍削除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.booksDataSet = new Libra.Models.BooksDataSet();
+            this.booksDataSet = new Libra.BooksDataSet();
             this.deleteBookButton = new System.Windows.Forms.Button();
             this.addBookButton = new System.Windows.Forms.Button();
             this.rentalPanel.SuspendLayout();
@@ -313,7 +313,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn publisherDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource booksBindingSource;
-        private Models.BooksDataSet booksDataSet;
+        private BooksDataSet booksDataSet;
     }
 }
 

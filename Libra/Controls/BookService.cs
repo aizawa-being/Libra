@@ -1,15 +1,13 @@
-﻿using Libra.Models;
-
-namespace Libra.Controls {
+﻿namespace Libra {
     public class BookService {
-        private IBookRepository F_BooksRepository;
+        private IBookRepository FBooksRepository;
 
         public BookService() {
-            this.F_BooksRepository = new BooksRepository(new BooksDbContext());
+            this.FBooksRepository = new BooksRepository(new BooksDbContext());
         }
 
         public BookService(IBookRepository vBookRepository) {
-            this.F_BooksRepository = vBookRepository;
+            this.FBooksRepository = vBookRepository;
         }
 
         /// <summary>
@@ -18,8 +16,8 @@ namespace Libra.Controls {
         /// <param name="vBook"></param>
         /// <returns>int</returns>
         public int AddBook(Book vBook) {
-            this.F_BooksRepository.AddBook(vBook);
-            this.F_BooksRepository.Save();
+            this.FBooksRepository.AddBook(vBook);
+            this.FBooksRepository.Save();
             return vBook.BookId;
         }
     }

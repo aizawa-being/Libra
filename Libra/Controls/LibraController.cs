@@ -1,4 +1,4 @@
-﻿namespace Libra.Controls {
+﻿namespace Libra {
     public class LibraController {
 
         public LibraController() {
@@ -8,8 +8,8 @@
         /// 書籍追加画面を開きます。
         /// </summary>
         public void OpenAddForm() {
-            var addBookFormController = new AddBookFormController();
-            addBookFormController.ShowAddBookForm();
+            var wAddBookFormController = new AddBookFormController();
+            wAddBookFormController.ShowAddBookForm();
         }
     }
 }

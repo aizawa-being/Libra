@@ -12,76 +12,10 @@ namespace LibraUnitTest {
     [TestFixture]
     public class DBInterfaceUnitTest {
 
-        /// <summary>
-        /// インメモリデータベースを構築します。
-        /// </summary>
-        /// <returns></returns>
-        public BooksDbContext CreateInMemoryDb() {
-            // メモリ上にDBを構築する
-            string connectionString = "Data Source=:memory:;Version=3;New=True;";
-
-            var connection = new SQLiteConnection(connectionString);
-            connection.Open();
-
-            var dbContext = new BooksDbContext(connection, true);
-
-            bool tableExists = dbContext.Database.SqlQuery<int>(
-                "SELECT 1 " +
-                "FROM sqlite_master " +
-                "WHERE type='table' AND name='Book'"
-                ).Any();
-
-            if (!tableExists) {
-                dbContext.Database.ExecuteSqlCommand(@"
-                    CREATE TABLE Book (
-                        BookId INTEGER PRIMARY KEY,
-                        Title TEXT,
-                        Author TEXT,
-                        Publisher TEXT,
-                        Description TEXT,
-                        Barcode TEXT,
-                        IsDeleted INTEGER,
-                        UserName TEXT,
-                        BorrowingDate TEXT
-                    )");
-            }
-            SetDefaultBooks(dbContext);
-            dbContext.SaveChanges();
-
-            return dbContext;
-        }
-
-        /// <summary>
-        /// DBに初期データを格納します。
-        /// </summary>
-        /// <param name="vDbContext"></param>
-        private void SetDefaultBooks(BooksDbContext vDbContext) {
-            vDbContext.Books.Add(new Book {
-                BookId = 1,
-                Title = "テストタイトル1",
-                Author = "テスト著者1",
-                Barcode = "0000000000001",
-                IsDeleted = 0
-            });
-            vDbContext.Books.Add(new Book {
-                BookId = 2,
-                Title = "テストタイトル2",
-                Author = "テスト著者2",
-                Barcode = "0000000000002",
-                IsDeleted = 0
-            });
-            vDbContext.Books.Add(new Book {
-                BookId = 3,
-                Title = "テストタイトル3",
-                Author = "テスト著者3",
-                Barcode = "0000000000003",
-                IsDeleted = 0
-            });
-        }
-
         [Test]
         public void 書籍削除テスト() {
-            using (var dbContext = CreateInMemoryDb()) {
+            var createDb = new CreateBooksDb();
+            using (var dbContext = createDb.CreateInMemoryDb()) {
                 var booksRepository = new BooksRepository(dbContext);
 
                 var books = booksRepository.GetBooks();
@@ -101,7 +35,8 @@ namespace LibraUnitTest {
 
         [Test]
         public void 書籍全取得テスト() {
-            using (var dbContext = CreateInMemoryDb()) {
+            var createDb = new CreateBooksDb();
+            using (var dbContext = createDb.CreateInMemoryDb()) {
 
                 var booksRepository = new BooksRepository(dbContext);
 
@@ -117,8 +52,8 @@ namespace LibraUnitTest {
 
         [Test]
         public void 書籍1冊取得テスト() {
-
-            using (var dbContext = CreateInMemoryDb()) {
+            var createDb = new CreateBooksDb();
+            using (var dbContext = createDb.CreateInMemoryDb()) {
                 var booksRepository = new BooksRepository(dbContext);
 
                 var book = booksRepository.GetBookById(1);
@@ -133,7 +68,8 @@ namespace LibraUnitTest {
 
         [TestCase(4, "AddBook書籍名", "AddBook著者名", "0000000000001", 0)]
         public void 書籍追加テスト(int vBookId, string vTitle, string vAuthor, string vBarcode, int vIsDeleted) {
-            using (var dbContext = CreateInMemoryDb()) {
+            var createDb = new CreateBooksDb();
+            using (var dbContext = createDb.CreateInMemoryDb()) {
                 var booksRepository = new BooksRepository(dbContext);
                 booksRepository.AddBook(new Book {
                     BookId = vBookId,
@@ -155,7 +91,8 @@ namespace LibraUnitTest {
 
         [TestCase("UpdatedTitle")]
         public void 書籍更新テスト(string vTitle) {
-            using (var dbContext = CreateInMemoryDb()) {
+            var createDb = new CreateBooksDb();
+            using (var dbContext = createDb.CreateInMemoryDb()) {
                 var booksRepository = new BooksRepository(dbContext);
 
                 // 1冊取り出す

@@ -1,13 +1,13 @@
 ﻿using System.Windows.Forms;
 
-namespace Libra.Models {
+namespace Libra {
     /// <summary>
     /// メッセージボックスのカスタム用インターフェースです。
     /// </summary>
     public interface IMessageBoxService {
-        DialogResult Show(string message);
-        DialogResult Show(string message, string caption);
-        DialogResult Show(string message, string caption, MessageBoxButtons button);
-        DialogResult Show(string message, string caption, MessageBoxButtons button, MessageBoxIcon icon);
+        DialogResult Show(string vMessage);
+        DialogResult Show(string vMessage, string vCaption);
+        DialogResult Show(string vMessage, string vCaption, MessageBoxButtons vButton);
+        DialogResult Show(string vMessage, string vCaption, MessageBoxButtons vButton, MessageBoxIcon vIcon);
     }
 }

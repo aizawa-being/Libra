@@ -1,7 +1,6 @@
-﻿using Libra.Models;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace Libra.Controls {
+namespace Libra {
     /// <summary>
     /// 書籍追加用コントローラーのインターフェースです。
     /// </summary>

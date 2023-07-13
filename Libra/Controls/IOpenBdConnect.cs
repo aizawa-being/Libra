@@ -1,8 +1,7 @@
-﻿using Libra.Models;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Libra.Controls {
+namespace Libra {
     /// <summary>
     /// OpenBDアクセス用インターフェースです。
     /// </summary>

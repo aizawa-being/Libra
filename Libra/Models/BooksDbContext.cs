@@ -1,4 +1,4 @@
-﻿namespace Libra.Models {
+﻿namespace Libra {
     using SQLite.CodeFirst;
     using System.Data.Common;
     using System.Data.Entity;
@@ -29,8 +29,8 @@
         /// </summary>
         /// <param name="vModelBuilder"></param>
         protected override void OnModelCreating(DbModelBuilder vModelBuilder) {
-            var sqliteConnectionInitializer = new SqliteCreateDatabaseIfNotExists<BooksDbContext>(vModelBuilder);
-            Database.SetInitializer(sqliteConnectionInitializer);
+            var wSqliteConnectionInitializer = new SqliteCreateDatabaseIfNotExists<BooksDbContext>(vModelBuilder);
+            Database.SetInitializer(wSqliteConnectionInitializer);
         }
 
     }

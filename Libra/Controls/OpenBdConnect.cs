@@ -1,23 +1,21 @@
-﻿using Libra.Models;
-using System.Collections.Generic;
-using System.Net;
+﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Libra.Controls {
+namespace Libra {
     /// <summary>
     /// OpenBD関連クラス
     /// </summary>
     public class OpenBdConnect : IOpenBdConnect {
-        private readonly IHttpClient F_HttpClient;
+        private readonly IHttpClient FHttpClient;
 
         public OpenBdConnect() {
-            this.F_HttpClient = new HttpClientWrapper();
+            this.FHttpClient = new HttpClientWrapper();
         }
 
-        public OpenBdConnect(IHttpClient httpClient) {
-            F_HttpClient = httpClient;
+        public OpenBdConnect(IHttpClient vHttpClient) {
+            this.FHttpClient = vHttpClient;
         }
 
         /// <summary>
@@ -26,10 +24,10 @@ namespace Libra.Controls {
         /// <param name="vIsbn"></param>
         /// <returns>Task<HttpResponseMessage></returns>
         public async Task<HttpResponseMessage> SendRequest(string vIsbn) {
-            var baseUrl = "https://api.openbd.jp/v1/get?isbn=";
-            var url = baseUrl + vIsbn;
+            var wBaseUrl = "https://api.openbd.jp/v1/get?isbn=";
+            var wUrl = wBaseUrl + vIsbn;
             try {
-                return await this.F_HttpClient.GetAsync(url);
+                return await this.FHttpClient.GetAsync(wUrl);
             } catch (HttpRequestException) {
                 return null;
             }
@@ -40,37 +38,37 @@ namespace Libra.Controls {
         /// </summary>
         /// <param name="vBookInfo"></param>
         public Book PerseBookInfo(string vBookInfo) {
-            var jsonDocument = JsonDocument.Parse(vBookInfo);
-            var rootElement = jsonDocument.RootElement[0];
+            var wJsonDocument = JsonDocument.Parse(vBookInfo);
+            var wRootElement = wJsonDocument.RootElement[0];
 
             // 指定したISBNコードの書籍が存在しない場合
-            if (rootElement.ValueKind.ToString() == "Null") {
+            if (wRootElement.ValueKind.ToString() == "Null") {
                 return null;
             }
 
-            var book = new Book();
+            var wBook = new Book();
 
             // 書籍名を設定
-            book.Title = rootElement
+            wBook.Title = wRootElement
                 .GetProperty("summary")
                 .GetProperty("title")
                 .GetString();
 
             // 著者名を設定
-            book.Author = rootElement
+            wBook.Author = wRootElement
                 .GetProperty("summary")
                 .GetProperty("author")
                 .GetString();
 
             // 出版社を設定
-            book.Publisher = rootElement
+            wBook.Publisher = wRootElement
                 .GetProperty("summary")
                 .GetProperty("publisher")
                 .GetString();
 
             // 概要を設定
             try {
-                book.Description = rootElement
+                wBook.Description = wRootElement
                 .GetProperty("onix")
                 .GetProperty("CollateralDetail")
                 .GetProperty("TextContent")[0]
@@ -78,16 +76,16 @@ namespace Libra.Controls {
                 .GetString();
             } catch (KeyNotFoundException) {
                 // Jsonファイル内にKeyが存在しない場合
-                book.Description = "";
+                wBook.Description = "";
             }
 
             // ISBNコードを設定
-            book.Barcode = rootElement
+            wBook.Barcode = wRootElement
                 .GetProperty("summary")
                 .GetProperty("isbn")
                 .GetString();
 
-            return book;
+            return wBook;
         }
     }
 }
