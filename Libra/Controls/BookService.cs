@@ -1,5 +1,7 @@
-﻿namespace Libra {
-    public class BookService {
+﻿using System;
+
+namespace Libra {
+    public class BookService : IDisposable {
         private IBookRepository FBooksRepository;
 
         public BookService() {
@@ -16,9 +18,26 @@
         /// <param name="vBook"></param>
         /// <returns>int</returns>
         public int AddBook(Book vBook) {
-            this.FBooksRepository.AddBook(vBook);
-            this.FBooksRepository.Save();
-            return vBook.BookId;
+            this.FBooksRepository.BeginTransaction();
+            try {
+                this.FBooksRepository.AddBook(vBook);
+                this.FBooksRepository.Save();
+                this.FBooksRepository.CommitTransaction();
+
+                return vBook.BookId;
+
+            } catch (Exception) {
+                // ロールバック
+                this.FBooksRepository.RollbackTransaction();
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// リソースを破棄します。
+        /// </summary>
+        public void Dispose() {
+            this.FBooksRepository.Dispose();
         }
     }
 }

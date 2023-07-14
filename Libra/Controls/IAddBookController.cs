@@ -9,7 +9,7 @@ namespace Libra {
         Task SetAddBook(string vIsbn);
         Book GetAddBook();
         bool ExistAddBook();
-        int RegisterAddBook(Book vBook);
+        bool TryRegisterAddBook(Book vAddBook, out int vBookId);
         DialogResult MessageBoxShow(string vMessage, string vCaption, MessageBoxButtons vButton, MessageBoxIcon vIcon);
     }
 }

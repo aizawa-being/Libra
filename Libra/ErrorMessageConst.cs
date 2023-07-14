@@ -63,5 +63,15 @@
         /// 書籍情報未取得エラーキャプション
         /// </summary>
         public const string C_BookInfoUnacquiredErrorCaprion = "書籍の追加に失敗しました";
+
+        /// <summary>
+        /// データベースエラーメッセージ
+        /// </summary>
+        public const string C_DbError = "データベースエラーが発生しました。\r\n恐れ入りますが、再度お試しください。";
+
+        /// <summary>
+        /// データベースエラーキャプション
+        /// </summary>
+        public const string C_DbErrorCaprion = "データベースエラー";
     }
 }

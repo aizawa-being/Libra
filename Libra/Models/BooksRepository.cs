@@ -11,6 +11,7 @@ namespace Libra {
     /// </summary>
     public class BooksRepository : IBookRepository, IDisposable {
         private BooksDbContext FContext;
+        private DbContextTransaction FTransaction;
 
         /// <summary>
         /// 新しいコンテキストインスタンスを作成します。
@@ -81,6 +82,32 @@ namespace Libra {
                 }
             }
             this.FDisposed = true;
+        }
+
+        /// <summary>
+        /// トランザクションを開始します。
+        /// </summary>
+        /// <returns></returns>
+        public void BeginTransaction() {
+            this.FTransaction = this.FContext.Database.BeginTransaction();
+        }
+        
+        /// <summary>
+        /// トランザクションをコミットします。
+        /// </summary>
+        public void CommitTransaction() {
+            this.FTransaction.Commit();
+            this.FTransaction.Dispose();
+            this.FTransaction = null;
+        }
+        
+        /// <summary>
+        /// トランザクションをロールバックします。
+        /// </summary>
+        public void RollbackTransaction() {
+            this.FTransaction.Rollback();
+            this.FTransaction.Dispose();
+            this.FTransaction = null;
         }
 
         /// <summary>

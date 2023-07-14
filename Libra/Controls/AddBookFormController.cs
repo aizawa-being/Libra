@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Data.Common;
+using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -116,12 +117,37 @@ namespace Libra {
         }
 
         /// <summary>
-        /// 取得した書籍情報をDBに登録し、追加した書籍のIDを通知します。
+        /// 取得した書籍情報をDBに登録します。
+        /// 書籍追加成功時、追加した書籍のIDが通知されます。
+        /// 書籍追加失敗時は、-1が渡されます。
         /// </summary>
-        /// <returns></returns>
-        public int RegisterAddBook(Book vBook) {
-            var wBookService = new BookService(this.FBookRepository);
-            return vBook == null ? -1 : wBookService.AddBook(vBook);
+        /// <returns>int </returns>
+        public bool TryRegisterAddBook(Book vAddBook, out int vBookId) {
+            if (vAddBook != null) {
+                try {
+                    using (var wBookService = new BookService(this.FBookRepository)) {
+                        vBookId = wBookService.AddBook(vAddBook);
+
+                        // 書籍追加成功
+                        return true;
+                    }
+                } catch (DbException) {
+                    // データベースエラーを表示
+                    this.MessageBoxShow(ErrorMessageConst.C_DbError,
+                                        ErrorMessageConst.C_DbErrorCaprion,
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Error);
+                }
+            } else {
+                // 書籍情報未取得エラーを表示
+                this.MessageBoxShow(ErrorMessageConst.C_BookInfoUnacquiredError,
+                                       ErrorMessageConst.C_BookInfoUnacquiredErrorCaprion,
+                                       MessageBoxButtons.OK,
+                                       MessageBoxIcon.Asterisk);
+            }
+            // 書籍情報取得失敗
+            vBookId = -1;
+            return false;
         }
 
         /// <summary>
