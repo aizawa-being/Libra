@@ -1,38 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Data.Entity;
-using System.Data.SQLite;
 using System.Linq;
-using Libra.Models;
-using Moq;
+using System.Collections.Generic;
 using NUnit.Framework;
+using System.Data.SQLite;
+using Libra;
 
 namespace LibraUnitTest {
     [TestFixture]
     public class DBInterfaceUnitTest {
+        private readonly Dictionary<int, Book> Books = new Dictionary<int, Book>() {
+            {
+                1, new Book {
+                    BookId = 1,
+                    Title = "テストタイトル1",
+                    Author = "テスト著者1",
+                    Barcode = "0000000000001",
+                    IsDeleted = 0 }
+            },
+            {
+                2, new Book {
+                    BookId = 2,
+                    Title = "テストタイトル2",
+                    Author = "テスト著者2",
+                    Barcode = "0000000000002",
+                    IsDeleted = 0 }
+            },
+            {
+                3, new Book {
+                    BookId = 3,
+                    Title = "テストタイトル3",
+                    Author = "テスト著者3",
+                    Barcode = "0000000000003",
+                    IsDeleted = 0
+                }
+            }
+        };
 
         /// <summary>
         /// インメモリデータベースを構築します。
         /// </summary>
+        /// <param name="vIsDataSet">true:初期データを設定する</param>
         /// <returns></returns>
-        public BooksDbContext CreateInMemoryDb() {
+        public BooksDbContext CreateInMemoryDb(bool vIsDataSet) {
             // メモリ上にDBを構築する
-            string connectionString = "Data Source=:memory:;Version=3;New=True;";
+            var wConnectionString = "Data Source=:memory:;Version=3;New=True;";
+            var wConnection = new SQLiteConnection(wConnectionString);
 
-            var connection = new SQLiteConnection(connectionString);
-            connection.Open();
+            wConnection.Open();
 
-            var dbContext = new BooksDbContext(connection, true);
+            var wDbContext = new BooksDbContext(wConnection, true);
+            var wTableExists = wDbContext.Database.SqlQuery<int>("SELECT 1 FROM sqlite_master WHERE type='table' AND name='Book'").Any();
 
-            bool tableExists = dbContext.Database.SqlQuery<int>(
-                "SELECT 1 " +
-                "FROM sqlite_master " +
-                "WHERE type='table' AND name='Book'"
-                ).Any();
-
-            if (!tableExists) {
-                dbContext.Database.ExecuteSqlCommand(@"
+            // テーブルが存在しない場合、テーブルの再定義
+            if (!wTableExists) {
+                wDbContext.Database.ExecuteSqlCommand(@"
                     CREATE TABLE Book (
                         BookId INTEGER PRIMARY KEY,
                         Title TEXT,
@@ -45,10 +65,12 @@ namespace LibraUnitTest {
                         BorrowingDate TEXT
                     )");
             }
-            SetDefaultBooks(dbContext);
-            dbContext.SaveChanges();
+            if (vIsDataSet) {
+                this.SetDefaultBooks(wDbContext);
+            }
+            wDbContext.SaveChanges();
 
-            return dbContext;
+            return wDbContext;
         }
 
         /// <summary>
@@ -56,120 +78,129 @@ namespace LibraUnitTest {
         /// </summary>
         /// <param name="vDbContext"></param>
         private void SetDefaultBooks(BooksDbContext vDbContext) {
-            vDbContext.Books.Add(new Book {
-                BookId = 1,
-                Title = "テストタイトル1",
-                Author = "テスト著者1",
-                Barcode = "0000000000001",
-                IsDeleted = 0
-            });
-            vDbContext.Books.Add(new Book {
-                BookId = 2,
-                Title = "テストタイトル2",
-                Author = "テスト著者2",
-                Barcode = "0000000000002",
-                IsDeleted = 0
-            });
-            vDbContext.Books.Add(new Book {
-                BookId = 3,
-                Title = "テストタイトル3",
-                Author = "テスト著者3",
-                Barcode = "0000000000003",
-                IsDeleted = 0
-            });
+            vDbContext.Books.Add(this.Books[1]);
+            vDbContext.Books.Add(this.Books[2]);
+            vDbContext.Books.Add(this.Books[3]);
         }
 
         [Test]
         public void 書籍削除テスト() {
-            using (var dbContext = CreateInMemoryDb()) {
-                var booksRepository = new BooksRepository(dbContext);
+            using (var wDbContext = CreateInMemoryDb(true)) {
+                var wBooksRepository = new BookRepository(wDbContext);
+                var wBooks = wBooksRepository.GetBooks();
 
-                var books = booksRepository.GetBooks();
+                // 書籍IDが1の書籍を削除
+                wBooksRepository.DeleteBook(1);
+                wBooksRepository.Save();
 
-                booksRepository.DeleteBook(1);
-                booksRepository.Save();
+                var wDeletedBooks = wBooksRepository.GetBooks().ToList();
 
-                var deletedBooks = booksRepository.GetBooks().ToList();
-
-                Assert.AreEqual(3, books.Count());
-                Assert.AreEqual(2, deletedBooks.Count());
-                Assert.AreEqual(false, deletedBooks.Exists(b => b.BookId.Equals(1)));
-                Assert.AreEqual(true, deletedBooks.Exists(b => b.BookId.Equals(2)));
-                Assert.AreEqual(true, deletedBooks.Exists(b => b.BookId.Equals(3)));
+                Assert.AreEqual(3, wBooks.Count());
+                Assert.AreEqual(2, wDeletedBooks.Count());
+                Assert.AreEqual(false, wDeletedBooks.Exists(b => b.BookId.Equals(1)));
+                Assert.AreEqual(true, wDeletedBooks.Exists(b => b.BookId.Equals(2)));
+                Assert.AreEqual(true, wDeletedBooks.Exists(b => b.BookId.Equals(3)));
             }
         }
 
         [Test]
         public void 書籍全取得テスト() {
-            using (var dbContext = CreateInMemoryDb()) {
+            using (var wDbContext = CreateInMemoryDb(true)) {
+                var wBookRepository = new BookRepository(wDbContext);
+                var wBooks = wBookRepository.GetBooks().ToList();
 
-                var booksRepository = new BooksRepository(dbContext);
-
-                var books = booksRepository.GetBooks().ToList();
-
-                Assert.AreEqual(3, books.Count());
-                Assert.AreEqual("テストタイトル1", books[0].Title);
-                Assert.AreEqual("テストタイトル2", books[1].Title);
-                Assert.AreEqual("テストタイトル3", books[2].Title);
+                Assert.AreEqual(3, wBooks.Count());
+                Assert.AreEqual(this.Books[1].Title, wBooks[0].Title);
+                Assert.AreEqual(this.Books[2].Title, wBooks[1].Title);
+                Assert.AreEqual(this.Books[3].Title, wBooks[2].Title);
             }
-
         }
 
         [Test]
-        public void 書籍1冊取得テスト() {
+        public void テーブルにレコードが存在しない場合に書籍情報を全取得するテスト() {
+            using (var wDbContext = CreateInMemoryDb(false)) {
+                var wBookRepository = new BookRepository(wDbContext);
+                var wBooks = wBookRepository.GetBooks().ToList();
 
-            using (var dbContext = CreateInMemoryDb()) {
-                var booksRepository = new BooksRepository(dbContext);
-
-                var book = booksRepository.GetBookById(1);
-
-                Assert.AreEqual(1, book.BookId);
-                Assert.AreEqual("テストタイトル1", book.Title);
-                Assert.AreEqual("テスト著者1", book.Author);
-                Assert.AreEqual("0000000000001", book.Barcode);
-                Assert.AreEqual(0, book.IsDeleted);
+                Assert.IsNotNull(wBooks);
+                Assert.AreEqual(0, wBooks.Count());
             }
         }
 
-        [TestCase(4, "AddBook書籍名", "AddBook著者名", "0000000000001", 0)]
-        public void 書籍追加テスト(int vBookId, string vTitle, string vAuthor, string vBarcode, int vIsDeleted) {
-            using (var dbContext = CreateInMemoryDb()) {
-                var booksRepository = new BooksRepository(dbContext);
-                booksRepository.AddBook(new Book {
-                    BookId = vBookId,
+        [TestCase(1)]
+        public void 書籍1冊取得テスト(int vBookId) {
+            using (var wDbContext = CreateInMemoryDb(true)) {
+                var wBookRepository = new BookRepository(wDbContext);
+                var wBook = wBookRepository.GetBookById(vBookId);
+
+                Assert.AreEqual(vBookId, wBook.BookId);
+                Assert.AreEqual(this.Books[1].Title, wBook.Title);
+                Assert.AreEqual(this.Books[1].Author, wBook.Author);
+                Assert.AreEqual(this.Books[1].Barcode, wBook.Barcode);
+                Assert.AreEqual(this.Books[1].IsDeleted, wBook.IsDeleted);
+            }
+        }
+
+        [Test]
+        public void テーブルにレコードが存在しない場合に書籍情報を1件取得するテスト() {
+            using (var wDbContext = CreateInMemoryDb(false)) {
+                var wBookRepository = new BookRepository(wDbContext);
+                var wBook = wBookRepository.GetBookById(1);
+
+                Assert.IsNull(wBook);
+            }
+        }
+
+        [TestCase(0)]
+        [TestCase(null)]
+        public void 存在しないIDの書籍取得テスト(int vBookId) {
+            using (var wDbContext = CreateInMemoryDb(true)) {
+                var wBookRepository = new BookRepository(wDbContext);
+                var wBook = wBookRepository.GetBookById(vBookId);
+
+                Assert.IsNull(wBook);
+            }
+        }
+
+        [Test]
+        public void 書籍追加テスト() {
+            using (var wDbContext = CreateInMemoryDb(true)) {
+                var wBooksRepository = new BookRepository(wDbContext);
+
+                wBooksRepository.AddBook(new Book {
+                    BookId = 4,
                     Title = "AddBook書籍名",
                     Author = "AddBook著者名",
                     Barcode = "0000000000001",
                     IsDeleted = 0
                 });
-                booksRepository.Save();
+                wBooksRepository.Save();
+
+                Assert.AreEqual(4, wDbContext.Books.Count());
+                Assert.AreEqual(4, wDbContext.Books.OrderByDescending(b => b.BookId).FirstOrDefault().BookId);
+                Assert.AreEqual("AddBook書籍名", wDbContext.Books.OrderByDescending(b => b.BookId).FirstOrDefault().Title);
+                Assert.AreEqual("AddBook著者名", wDbContext.Books.OrderByDescending(b => b.BookId).FirstOrDefault().Author);
+                Assert.AreEqual("0000000000001", wDbContext.Books.OrderByDescending(b => b.BookId).FirstOrDefault().Barcode);
+                Assert.AreEqual(0, wDbContext.Books.OrderByDescending(b => b.BookId).FirstOrDefault().IsDeleted);
+            }
+        }
+
+        [Test]
+        public void 書籍更新テスト() {
+            using (var wDbContext = CreateInMemoryDb(true)) {
+                var wBookRepository = new BookRepository(wDbContext);
                 
-                Assert.AreEqual(4, dbContext.Books.Count());
-                Assert.AreEqual(vBookId, dbContext.Books.OrderByDescending(b => b.BookId).FirstOrDefault().BookId);
-                Assert.AreEqual(vTitle, dbContext.Books.OrderByDescending(b => b.BookId).FirstOrDefault().Title);
-                Assert.AreEqual(vAuthor, dbContext.Books.OrderByDescending(b => b.BookId).FirstOrDefault().Author);
-                Assert.AreEqual(vBarcode, dbContext.Books.OrderByDescending(b => b.BookId).FirstOrDefault().Barcode);
-                Assert.AreEqual(vIsDeleted, dbContext.Books.OrderByDescending(b => b.BookId).FirstOrDefault().IsDeleted);
+                // 書籍IDが1の書籍を取り出す
+                var wBook = wBookRepository.GetBookById(1);
+                
+                // 書籍名を更新
+                wBook.Title = "UpdatedTitle";
+                wBookRepository.UpdateBook(wBook);
+
+                var wUpdatedBook = wBookRepository.GetBookById(1);
+
+                Assert.AreEqual("UpdatedTitle", wUpdatedBook.Title);
             }
         }
-
-        [TestCase("UpdatedTitle")]
-        public void 書籍更新テスト(string vTitle) {
-            using (var dbContext = CreateInMemoryDb()) {
-                var booksRepository = new BooksRepository(dbContext);
-
-                // 1冊取り出す
-                var book = booksRepository.GetBookById(1);
-
-                // タイトルを更新
-                book.Title = vTitle;
-                booksRepository.UpdateBook(book);
-
-                var updatedBook = booksRepository.GetBookById(1);
-
-                Assert.AreEqual(vTitle, updatedBook.Title);
-            }
-        }
-
     }
 }
