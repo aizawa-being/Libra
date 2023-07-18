@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Libra.Models.BooksDataSet;
+﻿using static Libra.BooksDataSet;
 
-namespace Libra.Models {
+namespace Libra {
+    /// <summary>
+    /// 書籍テーブル
+    /// </summary>
     public class BooksTable {
         public BooksDataTable Books { get; set; } = new BooksDataTable();
     }

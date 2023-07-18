@@ -1,4 +1,4 @@
-﻿namespace Libra.Models {
+﻿namespace Libra {
 
 
     partial class BooksDataSet {

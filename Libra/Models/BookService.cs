@@ -4,22 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Libra.Models {
+namespace Libra {
 
     /// <summary>
     /// 書籍関連のサービスを提供します。
     /// 書籍関連の個別の処理はサービスで実装してください。
     /// </summary>
     public class BookService : IDisposable {
+        private readonly IBookRepository FBookRepository;
 
-        private readonly IBookRepository F_BookRepository;
-
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public BookService () {
-            this.F_BookRepository = new BooksRepository(new BooksDbContext());
+            this.FBookRepository = new BookRepository(new BooksDbContext());
         }
         
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="vBookRepository"></param>
         public BookService(IBookRepository vBookRepository) {
-            this.F_BookRepository = vBookRepository;
+            this.FBookRepository = vBookRepository;
         }
 
         /// <summary>
@@ -27,18 +33,18 @@ namespace Libra.Models {
         /// </summary>
         /// <returns>books</returns>
         public IEnumerable<Book> GetExistBooks() {
-            var books = from book in F_BookRepository.GetBooks()
-                        where book.IsDeleted is 0
-                        orderby book.Title
-                        select book;
-            return books;
+            var wBooks = from book in FBookRepository.GetBooks()
+                         where book.IsDeleted is 0
+                         orderby book.Title
+                         select book;
+            return wBooks;
         }
 
         /// <summary>
         /// リソースを破棄します。
         /// </summary>
         public void Dispose() {
-            this.F_BookRepository.Dispose();
+            this.FBookRepository.Dispose();
         }
     }
 }

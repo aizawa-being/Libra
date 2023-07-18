@@ -45,7 +45,7 @@
             this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.deleteBookButton = new System.Windows.Forms.Button();
             this.addBookButton = new System.Windows.Forms.Button();
-            this.booksDataSet = new Libra.Models.BooksDataSet();
+            this.booksDataSet = new Libra.BooksDataSet();
             this.bookIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -144,6 +144,7 @@
             this.publisherDataGridViewTextBoxColumn,
             this.descriptionDataGridViewTextBoxColumn});
             this.booksDataGridView.ContextMenuStrip = this.BooksContextMenuStrip;
+            this.booksDataGridView.DataMember = "Books";
             this.booksDataGridView.DataSource = this.booksBindingSource;
             this.booksDataGridView.MultiSelect = false;
             this.booksDataGridView.Name = "booksDataGridView";
@@ -196,8 +197,8 @@
             // 
             // booksBindingSource
             // 
-            this.booksBindingSource.DataMember = "Books";
             this.booksBindingSource.DataSource = this.booksDataSet;
+            this.booksBindingSource.Position = 0;
             // 
             // deleteBookButton
             // 
@@ -307,7 +308,7 @@
         private System.Windows.Forms.ToolStripMenuItem 書籍追加ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 書籍削除ToolStripMenuItem;
         private System.Windows.Forms.BindingSource booksBindingSource;
-        private Models.BooksDataSet booksDataSet;
+        private BooksDataSet booksDataSet;
         private System.Windows.Forms.DataGridViewTextBoxColumn bookIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn userNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;

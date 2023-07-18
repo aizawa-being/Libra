@@ -1,8 +1,8 @@
-﻿using Libra.Controls;
-using Libra.Models;
-using NUnit.Framework;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using NUnit.Framework;
+using Libra;
+
 
 namespace LibraUnitTest {
     [TestFixture]
@@ -11,9 +11,9 @@ namespace LibraUnitTest {
         [TestCase(0, "", "", "", "")]
         public void 書籍一覧グリッド表示テスト(int vBookId, string vTitle, string vAuthor, string vPublisher, string vDescription) {
 
-            var libraController = new LibraController();
+            var wLibraController = new LibraController();
 
-            var books = new List<Book> {
+            var wBooks = new List<Book> {
                 new Book { BookId = vBookId,
                            Title = vTitle,
                            Author = vAuthor,
@@ -31,15 +31,15 @@ namespace LibraUnitTest {
                            Description = "テスト概要3" }
             };
 
-            libraController.SetBooksDataTable(books);
-            var booksDataTable = libraController.GetBooksDataTable();
+            wLibraController.SetBooksDataTable(wBooks);
+            var wBooksDataTable = wLibraController.GetBooksDataTable();
             
-            Assert.AreEqual(3, booksDataTable.Count);
-            Assert.AreEqual(vBookId, booksDataTable.First(b => b.BookId == vBookId).BookId);
-            Assert.AreEqual(vTitle, booksDataTable.First(b => b.Title == vTitle).Title);
-            Assert.AreEqual(vAuthor, booksDataTable.First(b => b.Author == vAuthor).Author);
-            Assert.AreEqual(vPublisher, booksDataTable.First(b => b.Publisher == vPublisher).Publisher);
-            Assert.AreEqual(vDescription, booksDataTable.First(b => b.Description == vDescription).Description);
+            Assert.AreEqual(3, wBooksDataTable.Count);
+            Assert.AreEqual(vBookId, wBooksDataTable.First(b => b.BookId == vBookId).BookId);
+            Assert.AreEqual(vTitle, wBooksDataTable.First(b => b.Title == vTitle).Title);
+            Assert.AreEqual(vAuthor, wBooksDataTable.First(b => b.Author == vAuthor).Author);
+            Assert.AreEqual(vPublisher, wBooksDataTable.First(b => b.Publisher == vPublisher).Publisher);
+            Assert.AreEqual(vDescription, wBooksDataTable.First(b => b.Description == vDescription).Description);
         }
     }
 }

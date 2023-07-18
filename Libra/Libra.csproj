@@ -85,7 +85,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\LibraController.cs" />
+    <Compile Include="Controls\ILibraControl.cs" />
+    <Compile Include="Controls\LibraControl.cs" />
     <Compile Include="Models\BooksDataSet.cs">
       <DependentUpon>BooksDataSet.xsd</DependentUpon>
     </Compile>
@@ -104,7 +105,7 @@
     </Compile>
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BooksDbContext.cs" />
-    <Compile Include="Models\BooksRepository.cs" />
+    <Compile Include="Models\BookRepository.cs" />
     <Compile Include="Models\IBookRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

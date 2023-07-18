@@ -1,22 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
+using System.Data.Entity;
 
-namespace Libra.Models {
+namespace Libra {
     /// <summary>
     /// 書籍情報テーブルのCRUD操作用クラス。
     /// CRUD操作時は、Contextではなくリポジトリを呼び出してください。
     /// </summary>
-    public class BooksRepository : IBookRepository, IDisposable {
-        private BooksDbContext F_Context;
+    public class BookRepository : IBookRepository, IDisposable {
+        private BooksDbContext FContext;
+        private DbContextTransaction FTransaction;
 
         /// <summary>
         /// 新しいコンテキストインスタンスを作成します。
         /// </summary>
         /// <param name="vContext"></param>
-        public BooksRepository(BooksDbContext vContext) {
-            this.F_Context = vContext;
+        public BookRepository(BooksDbContext vContext) {
+            this.FContext = vContext;
         }
 
         /// <summary>
@@ -24,7 +25,7 @@ namespace Libra.Models {
         /// </summary>
         /// <returns>IEnumerable<Book></returns>
         public IEnumerable<Book> GetBooks() {
-            return this.F_Context.Books.ToList();
+            return this.FContext.Books.ToList();
         }
 
         /// <summary>
@@ -33,7 +34,7 @@ namespace Libra.Models {
         /// <param name="vBookId"></param>
         /// <returns>Book</returns>
         public Book GetBookById(int vBookId) {
-            return this.F_Context.Books.Find(vBookId);
+            return this.FContext.Books.Find(vBookId);
         }
 
         /// <summary>
@@ -41,7 +42,7 @@ namespace Libra.Models {
         /// </summary>
         /// <param name="vBook"></param>
         public void AddBook(Book vBook) {
-            this.F_Context.Books.Add(vBook);
+            this.FContext.Books.Add(vBook);
         }
 
         /// <summary>
@@ -49,7 +50,7 @@ namespace Libra.Models {
         /// </summary>
         /// <param name="vBook"></param>
         public void UpdateBook(Book vBook) {
-            this.F_Context.Entry(vBook).State = EntityState.Modified;
+            this.FContext.Entry(vBook).State = EntityState.Modified;
         }
 
         /// <summary>
@@ -57,36 +58,36 @@ namespace Libra.Models {
         /// </summary>
         /// <param name="vBookId"></param>
         public void DeleteBook(int vBookId) {
-            Book book = F_Context.Books.Find(vBookId);
-            this.F_Context.Books.Remove(book);
+            Book wBook = FContext.Books.Find(vBookId);
+            this.FContext.Books.Remove(wBook);
         }
 
         /// <summary>
         /// DBの変更を保存します。
         /// </summary>
         public void Save() {
-            this.F_Context.SaveChanges();
+            this.FContext.SaveChanges();
         }
 
-        private bool F_disposed = false;
+        private bool FDisposed = false;
         /// <summary>
         /// リソースを破棄します。
         /// </summary>
         /// <param name="vDisposing"></param>
         protected virtual void Dispose(bool vDisposing) {
-            if (!this.F_disposed) {
+            if (!this.FDisposed) {
                 if (vDisposing) {
-                    this.F_Context.Dispose();
+                    this.FContext.Dispose();
                 }
             }
-            this.F_disposed = true;
+            this.FDisposed = true;
         }
 
         /// <summary>
         /// リソースを破棄します。
         /// </summary>
         public void Dispose() {
-            Dispose(true);
+            this.Dispose(true);
             GC.SuppressFinalize(this);
         }
     }

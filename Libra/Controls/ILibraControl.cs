@@ -1,0 +1,28 @@
+﻿using System.Collections.Generic;
+using static Libra.BooksDataSet;
+
+namespace Libra {
+    /// <summary>
+    /// 書籍一覧画面のコントローラ用インターフェース
+    /// </summary>
+    public interface ILibraControl {
+
+        /// <summary>
+        /// 書籍一覧テーブルを初期化します。
+        /// </summary>
+        void InitializeBookList();
+
+        /// <summary>
+        /// 書籍一覧テーブルを書籍一覧グリッドに設定します。
+        /// </summary>
+        /// <param name="vBooks"></param>
+        /// <returns></returns>
+        void SetBooksDataTable(IEnumerable<Book> vBooks);
+
+        /// <summary>
+        /// 書籍一覧テーブルの状態を取得します。
+        /// </summary>
+        /// <returns></returns>
+        BooksDataTable GetBooksDataTable();
+    }
+}
