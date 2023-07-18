@@ -5,13 +5,13 @@ namespace Libra {
     /// <summary>
     /// 書籍一覧画面のコントローラ
     /// </summary>
-    public class LibraController : ILibraControl {
+    public class LibraControl : ILibraControl {
         private readonly BooksTable FBooksTable;
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public LibraController() {
+        public LibraControl() {
             this.FBooksTable = new BooksTable();
         }
 
@@ -49,6 +49,14 @@ namespace Libra {
         /// <returns></returns>
         public BooksDataTable GetBooksDataTable() {
             return this.FBooksTable.Books;
+        }
+
+        /// <summary>
+        /// 書籍追加画面を開きます。
+        /// </summary>
+        public void OpenAddForm() {
+            IAddBookControl wAddBookControl = new AddBookControl();
+            wAddBookControl.ShowAddBookForm();
         }
     }
 }

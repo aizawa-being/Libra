@@ -1,16 +1,4 @@
-<<<<<<< HEAD
-﻿using Libra.Controls;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-=======
-﻿using System;
->>>>>>> develop
 using System.Windows.Forms;
 
 namespace Libra {
@@ -24,7 +12,7 @@ namespace Libra {
         /// コンストラクタ
         /// </summary>
         public LibraForm() {
-            this.FLibraControl = new LibraController();
+            this.FLibraControl = new LibraControl();
             InitializeComponent();
         }
 
@@ -95,8 +83,7 @@ namespace Libra {
         /// <param name="e"></param>
         private void AddBook_Click(object sender, EventArgs e) {
             this.addBookButton.Focus();
-            var libraController = new LibraController();
-            libraController.OpenAddForm();
+            this.FLibraControl.OpenAddForm();
         }
 
         /// <summary>

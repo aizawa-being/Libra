@@ -24,5 +24,10 @@ namespace Libra {
         /// </summary>
         /// <returns></returns>
         BooksDataTable GetBooksDataTable();
+
+        /// <summary>
+        /// 書籍追加画面を開きます。
+        /// </summary>
+        void OpenAddForm();
     }
 }
