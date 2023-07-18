@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Libra.Models {
+namespace Libra {
 
     /// <summary>
     /// 書籍クラス
@@ -8,6 +9,7 @@ namespace Libra.Models {
     /// <remarks>
     /// DBの書籍情報テーブルを定義しています。
     /// </remarks>
+    [Table("Book")]
     public class Book {
         [Key]
         public int BookId { get; set; }
