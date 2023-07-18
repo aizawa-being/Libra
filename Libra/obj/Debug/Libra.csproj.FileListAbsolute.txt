@@ -16,3 +16,5 @@ C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\System.Data.SQLite.dll
 C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\System.Data.SQLite.EF6.dll
 C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\System.Data.SQLite.Linq.dll
 C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\System.Data.SQLite.xml
+C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.exe
+C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.pdb
