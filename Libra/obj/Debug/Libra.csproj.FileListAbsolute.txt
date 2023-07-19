@@ -7,6 +7,12 @@ C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.csproj.GenerateResource.ca
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.csproj.CoreCompileInputs.cache
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.exe
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.pdb
+C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.LibraForm.resources
+C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\EntityFramework.dll
+C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\EntityFramework.xml
+C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.csproj.CopyComplete
 C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\SQLite.CodeFirst.dll
 C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\System.Data.SQLite.dll
 C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\System.Data.SQLite.EF6.dll
@@ -37,3 +43,5 @@ C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\System.Threading.Tasks.Extension
 C:\Users\aizawa\source\gitRepos\Libra\bin\Debug\System.ValueTuple.xml
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.csproj.CopyComplete
 C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.AddBookForm.resources
+C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.exe
+C:\Users\aizawa\source\gitRepos\Libra\obj\Debug\Libra.pdb

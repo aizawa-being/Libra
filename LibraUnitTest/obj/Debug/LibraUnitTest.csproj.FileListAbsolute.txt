@@ -50,10 +50,10 @@ C:\Users\aizawa\source\gitRepos\LibraUnitTest\bin\Debug\System.Text.Encodings.We
 C:\Users\aizawa\source\gitRepos\LibraUnitTest\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\aizawa\source\gitRepos\LibraUnitTest\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
 C:\Users\aizawa\source\gitRepos\LibraUnitTest\bin\Debug\System.Buffers.xml
+C:\Users\aizawa\source\gitRepos\LibraUnitTest\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\aizawa\source\gitRepos\LibraUnitTest\bin\Debug\SQLite.CodeFirst.dll
 C:\Users\aizawa\source\gitRepos\LibraUnitTest\bin\Debug\System.Data.SQLite.dll
 C:\Users\aizawa\source\gitRepos\LibraUnitTest\bin\Debug\System.Data.SQLite.EF6.dll
-C:\Users\aizawa\source\gitRepos\LibraUnitTest\bin\Debug\System.Data.SQLite.Linq.dll
-C:\Users\aizawa\source\gitRepos\LibraUnitTest\bin\Debug\System.Data.SQLite.xml
-C:\Users\aizawa\source\gitRepos\LibraUnitTest\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\aizawa\source\gitRepos\LibraUnitTest\bin\Debug\System.Data.SQLite.Linq.d
 C:\Users\aizawa\source\gitRepos\LibraUnitTest\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\aizawa\source\gitRepos\LibraUnitTest\bin\Debug\System.Data.SQLite.xml

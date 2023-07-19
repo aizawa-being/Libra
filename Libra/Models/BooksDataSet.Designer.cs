@@ -24,7 +24,7 @@ namespace Libra {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class BooksDataSet : global::System.Data.DataSet {
         
-        private BooksDataTableDataTable tableBooksDataTable;
+        private BooksDataTable tableBooks;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -54,8 +54,8 @@ namespace Libra {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["BooksDataTable"] != null)) {
-                    base.Tables.Add(new BooksDataTableDataTable(ds.Tables["BooksDataTable"]));
+                if ((ds.Tables["Books"] != null)) {
+                    base.Tables.Add(new BooksDataTable(ds.Tables["Books"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace Libra {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public BooksDataTableDataTable BooksDataTable {
+        public BooksDataTable Books {
             get {
-                return this.tableBooksDataTable;
+                return this.tableBooks;
             }
         }
         
@@ -152,8 +152,8 @@ namespace Libra {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["BooksDataTable"] != null)) {
-                    base.Tables.Add(new BooksDataTableDataTable(ds.Tables["BooksDataTable"]));
+                if ((ds.Tables["Books"] != null)) {
+                    base.Tables.Add(new BooksDataTable(ds.Tables["Books"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace Libra {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableBooksDataTable = ((BooksDataTableDataTable)(base.Tables["BooksDataTable"]));
+            this.tableBooks = ((BooksDataTable)(base.Tables["Books"]));
             if ((initTable == true)) {
-                if ((this.tableBooksDataTable != null)) {
-                    this.tableBooksDataTable.InitVars();
+                if ((this.tableBooks != null)) {
+                    this.tableBooks.InitVars();
                 }
             }
         }
@@ -204,13 +204,13 @@ namespace Libra {
             this.Namespace = "http://tempuri.org/BooksDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableBooksDataTable = new BooksDataTableDataTable();
-            base.Tables.Add(this.tableBooksDataTable);
+            this.tableBooks = new BooksDataTable();
+            base.Tables.Add(this.tableBooks);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeBooksDataTable() {
+        private bool ShouldSerializeBooks() {
             return false;
         }
         
@@ -270,14 +270,14 @@ namespace Libra {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void BooksDataTableRowChangeEventHandler(object sender, BooksDataTableRowChangeEvent e);
+        public delegate void BooksRowChangeEventHandler(object sender, BooksRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class BooksDataTableDataTable : global::System.Data.TypedTableBase<BooksDataTableRow> {
+        public partial class BooksDataTable : global::System.Data.TypedTableBase<BooksRow> {
             
             private global::System.Data.DataColumn columnBookId;
             
@@ -293,8 +293,8 @@ namespace Libra {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public BooksDataTableDataTable() {
-                this.TableName = "BooksDataTable";
+            public BooksDataTable() {
+                this.TableName = "Books";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -302,7 +302,7 @@ namespace Libra {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal BooksDataTableDataTable(global::System.Data.DataTable table) {
+            internal BooksDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -319,7 +319,7 @@ namespace Libra {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected BooksDataTableDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected BooksDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -383,34 +383,34 @@ namespace Libra {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public BooksDataTableRow this[int index] {
+            public BooksRow this[int index] {
                 get {
-                    return ((BooksDataTableRow)(this.Rows[index]));
+                    return ((BooksRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event BooksDataTableRowChangeEventHandler BooksDataTableRowChanging;
+            public event BooksRowChangeEventHandler BooksRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event BooksDataTableRowChangeEventHandler BooksDataTableRowChanged;
+            public event BooksRowChangeEventHandler BooksRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event BooksDataTableRowChangeEventHandler BooksDataTableRowDeleting;
+            public event BooksRowChangeEventHandler BooksRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event BooksDataTableRowChangeEventHandler BooksDataTableRowDeleted;
+            public event BooksRowChangeEventHandler BooksRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddBooksDataTableRow(BooksDataTableRow row) {
+            public void AddBooksRow(BooksRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public BooksDataTableRow AddBooksDataTableRow(string BookId, string Title, string Author, string Publisher, string Description, string UserName) {
-                BooksDataTableRow rowBooksDataTableRow = ((BooksDataTableRow)(this.NewRow()));
+            public BooksRow AddBooksRow(int BookId, string Title, string Author, string Publisher, string Description, string UserName) {
+                BooksRow rowBooksRow = ((BooksRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         BookId,
                         Title,
@@ -418,15 +418,15 @@ namespace Libra {
                         Publisher,
                         Description,
                         UserName};
-                rowBooksDataTableRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowBooksDataTableRow);
-                return rowBooksDataTableRow;
+                rowBooksRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowBooksRow);
+                return rowBooksRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                BooksDataTableDataTable cln = ((BooksDataTableDataTable)(base.Clone()));
+                BooksDataTable cln = ((BooksDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -434,7 +434,7 @@ namespace Libra {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new BooksDataTableDataTable();
+                return new BooksDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -451,7 +451,7 @@ namespace Libra {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnBookId = new global::System.Data.DataColumn("BookId", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnBookId = new global::System.Data.DataColumn("BookId", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBookId);
                 this.columnTitle = new global::System.Data.DataColumn("Title", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTitle);
@@ -467,28 +467,28 @@ namespace Libra {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public BooksDataTableRow NewBooksDataTableRow() {
-                return ((BooksDataTableRow)(this.NewRow()));
+            public BooksRow NewBooksRow() {
+                return ((BooksRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new BooksDataTableRow(builder);
+                return new BooksRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(BooksDataTableRow);
+                return typeof(BooksRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.BooksDataTableRowChanged != null)) {
-                    this.BooksDataTableRowChanged(this, new BooksDataTableRowChangeEvent(((BooksDataTableRow)(e.Row)), e.Action));
+                if ((this.BooksRowChanged != null)) {
+                    this.BooksRowChanged(this, new BooksRowChangeEvent(((BooksRow)(e.Row)), e.Action));
                 }
             }
             
@@ -496,8 +496,8 @@ namespace Libra {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.BooksDataTableRowChanging != null)) {
-                    this.BooksDataTableRowChanging(this, new BooksDataTableRowChangeEvent(((BooksDataTableRow)(e.Row)), e.Action));
+                if ((this.BooksRowChanging != null)) {
+                    this.BooksRowChanging(this, new BooksRowChangeEvent(((BooksRow)(e.Row)), e.Action));
                 }
             }
             
@@ -505,8 +505,8 @@ namespace Libra {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.BooksDataTableRowDeleted != null)) {
-                    this.BooksDataTableRowDeleted(this, new BooksDataTableRowChangeEvent(((BooksDataTableRow)(e.Row)), e.Action));
+                if ((this.BooksRowDeleted != null)) {
+                    this.BooksRowDeleted(this, new BooksRowChangeEvent(((BooksRow)(e.Row)), e.Action));
                 }
             }
             
@@ -514,14 +514,14 @@ namespace Libra {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.BooksDataTableRowDeleting != null)) {
-                    this.BooksDataTableRowDeleting(this, new BooksDataTableRowChangeEvent(((BooksDataTableRow)(e.Row)), e.Action));
+                if ((this.BooksRowDeleting != null)) {
+                    this.BooksRowDeleting(this, new BooksRowChangeEvent(((BooksRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemoveBooksDataTableRow(BooksDataTableRow row) {
+            public void RemoveBooksRow(BooksRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -548,7 +548,7 @@ namespace Libra {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "BooksDataTableDataTable";
+                attribute2.FixedValue = "BooksDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -592,30 +592,30 @@ namespace Libra {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class BooksDataTableRow : global::System.Data.DataRow {
+        public partial class BooksRow : global::System.Data.DataRow {
             
-            private BooksDataTableDataTable tableBooksDataTable;
+            private BooksDataTable tableBooks;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal BooksDataTableRow(global::System.Data.DataRowBuilder rb) : 
+            internal BooksRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableBooksDataTable = ((BooksDataTableDataTable)(this.Table));
+                this.tableBooks = ((BooksDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string BookId {
+            public int BookId {
                 get {
                     try {
-                        return ((string)(this[this.tableBooksDataTable.BookIdColumn]));
+                        return ((int)(this[this.tableBooks.BookIdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'BooksDataTable\' にある列 \'BookId\' の値は DBNull です。", e);
+                        throw new global::System.Data.StrongTypingException("テーブル \'Books\' にある列 \'BookId\' の値は DBNull です。", e);
                     }
                 }
                 set {
-                    this[this.tableBooksDataTable.BookIdColumn] = value;
+                    this[this.tableBooks.BookIdColumn] = value;
                 }
             }
             
@@ -624,14 +624,14 @@ namespace Libra {
             public string Title {
                 get {
                     try {
-                        return ((string)(this[this.tableBooksDataTable.TitleColumn]));
+                        return ((string)(this[this.tableBooks.TitleColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'BooksDataTable\' にある列 \'Title\' の値は DBNull です。", e);
+                        throw new global::System.Data.StrongTypingException("テーブル \'Books\' にある列 \'Title\' の値は DBNull です。", e);
                     }
                 }
                 set {
-                    this[this.tableBooksDataTable.TitleColumn] = value;
+                    this[this.tableBooks.TitleColumn] = value;
                 }
             }
             
@@ -640,14 +640,14 @@ namespace Libra {
             public string Author {
                 get {
                     try {
-                        return ((string)(this[this.tableBooksDataTable.AuthorColumn]));
+                        return ((string)(this[this.tableBooks.AuthorColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'BooksDataTable\' にある列 \'Author\' の値は DBNull です。", e);
+                        throw new global::System.Data.StrongTypingException("テーブル \'Books\' にある列 \'Author\' の値は DBNull です。", e);
                     }
                 }
                 set {
-                    this[this.tableBooksDataTable.AuthorColumn] = value;
+                    this[this.tableBooks.AuthorColumn] = value;
                 }
             }
             
@@ -656,14 +656,14 @@ namespace Libra {
             public string Publisher {
                 get {
                     try {
-                        return ((string)(this[this.tableBooksDataTable.PublisherColumn]));
+                        return ((string)(this[this.tableBooks.PublisherColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'BooksDataTable\' にある列 \'Publisher\' の値は DBNull です。", e);
+                        throw new global::System.Data.StrongTypingException("テーブル \'Books\' にある列 \'Publisher\' の値は DBNull です。", e);
                     }
                 }
                 set {
-                    this[this.tableBooksDataTable.PublisherColumn] = value;
+                    this[this.tableBooks.PublisherColumn] = value;
                 }
             }
             
@@ -672,14 +672,14 @@ namespace Libra {
             public string Description {
                 get {
                     try {
-                        return ((string)(this[this.tableBooksDataTable.DescriptionColumn]));
+                        return ((string)(this[this.tableBooks.DescriptionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'BooksDataTable\' にある列 \'Description\' の値は DBNull です。", e);
+                        throw new global::System.Data.StrongTypingException("テーブル \'Books\' にある列 \'Description\' の値は DBNull です。", e);
                     }
                 }
                 set {
-                    this[this.tableBooksDataTable.DescriptionColumn] = value;
+                    this[this.tableBooks.DescriptionColumn] = value;
                 }
             }
             
@@ -688,87 +688,87 @@ namespace Libra {
             public string UserName {
                 get {
                     try {
-                        return ((string)(this[this.tableBooksDataTable.UserNameColumn]));
+                        return ((string)(this[this.tableBooks.UserNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'BooksDataTable\' にある列 \'UserName\' の値は DBNull です。", e);
+                        throw new global::System.Data.StrongTypingException("テーブル \'Books\' にある列 \'UserName\' の値は DBNull です。", e);
                     }
                 }
                 set {
-                    this[this.tableBooksDataTable.UserNameColumn] = value;
+                    this[this.tableBooks.UserNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsBookIdNull() {
-                return this.IsNull(this.tableBooksDataTable.BookIdColumn);
+                return this.IsNull(this.tableBooks.BookIdColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetBookIdNull() {
-                this[this.tableBooksDataTable.BookIdColumn] = global::System.Convert.DBNull;
+                this[this.tableBooks.BookIdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsTitleNull() {
-                return this.IsNull(this.tableBooksDataTable.TitleColumn);
+                return this.IsNull(this.tableBooks.TitleColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetTitleNull() {
-                this[this.tableBooksDataTable.TitleColumn] = global::System.Convert.DBNull;
+                this[this.tableBooks.TitleColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsAuthorNull() {
-                return this.IsNull(this.tableBooksDataTable.AuthorColumn);
+                return this.IsNull(this.tableBooks.AuthorColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetAuthorNull() {
-                this[this.tableBooksDataTable.AuthorColumn] = global::System.Convert.DBNull;
+                this[this.tableBooks.AuthorColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsPublisherNull() {
-                return this.IsNull(this.tableBooksDataTable.PublisherColumn);
+                return this.IsNull(this.tableBooks.PublisherColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetPublisherNull() {
-                this[this.tableBooksDataTable.PublisherColumn] = global::System.Convert.DBNull;
+                this[this.tableBooks.PublisherColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsDescriptionNull() {
-                return this.IsNull(this.tableBooksDataTable.DescriptionColumn);
+                return this.IsNull(this.tableBooks.DescriptionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetDescriptionNull() {
-                this[this.tableBooksDataTable.DescriptionColumn] = global::System.Convert.DBNull;
+                this[this.tableBooks.DescriptionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsUserNameNull() {
-                return this.IsNull(this.tableBooksDataTable.UserNameColumn);
+                return this.IsNull(this.tableBooks.UserNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetUserNameNull() {
-                this[this.tableBooksDataTable.UserNameColumn] = global::System.Convert.DBNull;
+                this[this.tableBooks.UserNameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -776,22 +776,22 @@ namespace Libra {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class BooksDataTableRowChangeEvent : global::System.EventArgs {
+        public class BooksRowChangeEvent : global::System.EventArgs {
             
-            private BooksDataTableRow eventRow;
+            private BooksRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public BooksDataTableRowChangeEvent(BooksDataTableRow row, global::System.Data.DataRowAction action) {
+            public BooksRowChangeEvent(BooksRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public BooksDataTableRow Row {
+            public BooksRow Row {
                 get {
                     return this.eventRow;
                 }
