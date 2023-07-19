@@ -50,8 +50,8 @@ namespace Libra {
         private void IsbnTextBox_KeyDown(object sender, KeyEventArgs e) {
             // クリップボード内に半角数字以外が含まれている場合、ペースト不可。
             if (e.KeyData == (Keys.Control | Keys.V)) {
-                string clipboardText = Clipboard.GetText();
-                if (!Regex.IsMatch(clipboardText, @"^[0-9]+$")) {
+                string wClipboardText = Clipboard.GetText();
+                if (!Regex.IsMatch(wClipboardText, @"^[0-9]+$")) {
                     e.SuppressKeyPress = true;
                 }
             }
