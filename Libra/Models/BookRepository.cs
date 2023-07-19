@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 
 using System.Data.Entity;
+using System.Data.SQLite;
+using System.IO;
 
 namespace Libra {
     /// <summary>
     /// 書籍情報テーブルのCRUD操作用クラス。
     /// CRUD操作時は、Contextではなくリポジトリを呼び出してください。
     /// </summary>
-    public class BooksRepository : IBookRepository, IDisposable {
+    public class BookRepository : IBookRepository, IDisposable {
         private BooksDbContext FContext;
         private DbContextTransaction FTransaction;
 
@@ -17,7 +19,7 @@ namespace Libra {
         /// 新しいコンテキストインスタンスを作成します。
         /// </summary>
         /// <param name="vContext"></param>
-        public BooksRepository(BooksDbContext vContext) {
+        public BookRepository(BooksDbContext vContext) {
             this.FContext = vContext;
         }
 
@@ -70,20 +72,6 @@ namespace Libra {
             this.FContext.SaveChanges();
         }
 
-        private bool FDisposed = false;
-        /// <summary>
-        /// リソースを破棄します。
-        /// </summary>
-        /// <param name="vDisposing"></param>
-        protected virtual void Dispose(bool vDisposing) {
-            if (!this.FDisposed) {
-                if (vDisposing) {
-                    this.FContext.Dispose();
-                }
-            }
-            this.FDisposed = true;
-        }
-
         /// <summary>
         /// トランザクションを開始します。
         /// </summary>
@@ -108,6 +96,37 @@ namespace Libra {
             this.FTransaction.Rollback();
             this.FTransaction.Dispose();
             this.FTransaction = null;
+        }
+
+        /// <summary>
+        /// データベースが存在するか確認します。
+        /// </summary>
+        /// <returns></returns>
+        public bool DatabaseExists() {
+            var wConnectionString = this.FContext.Database.Connection.ConnectionString;
+            var wDataSource = new SQLiteConnectionStringBuilder(wConnectionString).DataSource;
+            return File.Exists(wDataSource);
+        }
+
+        /// <summary>
+        /// スキーマ情報のキャッシュをリフレッシュします。
+        /// </summary>
+        public void InitializeDatabase() {
+            this.FContext.Database.Initialize(true);
+        }
+
+        private bool FDisposed = false;
+        /// <summary>
+        /// リソースを破棄します。
+        /// </summary>
+        /// <param name="vDisposing"></param>
+        protected virtual void Dispose(bool vDisposing) {
+            if (!this.FDisposed) {
+                if (vDisposing) {
+                    this.FContext.Dispose();
+                }
+            }
+            this.FDisposed = true;
         }
 
         /// <summary>

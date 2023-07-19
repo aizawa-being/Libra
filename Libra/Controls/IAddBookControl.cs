@@ -5,7 +5,7 @@ namespace Libra {
     /// <summary>
     /// 書籍追加用コントローラーのインターフェースです。
     /// </summary>
-    public interface IAddBookController {
+    public interface IAddBookControl {
         Task SetAddBook(string vIsbn);
         Book GetAddBook();
         bool ExistAddBook();

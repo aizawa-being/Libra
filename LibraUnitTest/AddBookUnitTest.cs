@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 using Libra;
 using System.Windows.Forms;
-using System.Data.Entity;
+using System;
 
 namespace LibraUnitTest {
     [TestFixture]
@@ -16,7 +16,7 @@ namespace LibraUnitTest {
             var wCreateBookDb = new CreateBooksDb();
             using (var wDbContext = wCreateBookDb.CreateInMemoryDb()) {
                 // InMemoryDatabaseを利用
-                IBookRepository wBookRepository = new BooksRepository(wDbContext);
+                IBookRepository wBookRepository = new BookRepository(wDbContext);
                 var wBookService = new BookService(wBookRepository);
                 var wAddBook = new Book{
                     Title = vTitle,
@@ -80,7 +80,7 @@ namespace LibraUnitTest {
                 .Returns(DialogResult.OK);
 
             IOpenBdConnect wOpenBdConnect = new OpenBdConnect();
-            var wAddBookFormController = new AddBookFormController(wOpenBdConnect, wMessageBoxMock.Object, wMockRepository.Object);
+            var wAddBookControl = new AddBookControl(wOpenBdConnect, wMessageBoxMock.Object, wMockRepository.Object);
             
             var wBook = new Book {
                 BookId = 1,
@@ -91,7 +91,7 @@ namespace LibraUnitTest {
                 Barcode = "0000000000000"
             };
 
-            var wResult = wAddBookFormController.TryRegisterAddBook(wBook, out int wBookId);
+            var wResult = wAddBookControl.TryRegisterAddBook(wBook, out int wBookId);
 
             wMockRepository.Verify(m => m.AddBook(It.IsAny<Book>()), Times.Once);
             wMockRepository.Verify(m => m.Save(), Times.Once);
@@ -123,9 +123,9 @@ namespace LibraUnitTest {
 
             // コントローラのモックを作成
             IOpenBdConnect wOpenBdConnect = new OpenBdConnect();
-            var wAddBookFormController = new AddBookFormController(wOpenBdConnect, wMessageBoxMock.Object, wMockRepository.Object);
+            var wAddBookControl = new AddBookControl(wOpenBdConnect, wMessageBoxMock.Object, wMockRepository.Object);
 
-            var wResult = wAddBookFormController.TryRegisterAddBook(null, out int vBookId);
+            var wResult = wAddBookControl.TryRegisterAddBook(null, out int vBookId);
             
             Assert.IsFalse(wResult);
             Assert.AreEqual(-1, vBookId);
@@ -138,7 +138,7 @@ namespace LibraUnitTest {
         }
 
         [Test]
-        public void DBアクセスでエラー発生テスト() {
+        public void DBアクセスでDBException発生テスト() {
             // ブックリポジトリのモックを作成
             var wMockRepository = new Mock<IBookRepository>();
 
@@ -157,9 +157,9 @@ namespace LibraUnitTest {
 
             // コントローラのモックを作成
             IOpenBdConnect wOpenBdConnect = new OpenBdConnect();
-            var wAddBookFormController = new AddBookFormController(wOpenBdConnect, wMessageBoxMock.Object, wMockRepository.Object);
+            var wAddBookControl = new AddBookControl(wOpenBdConnect, wMessageBoxMock.Object, wMockRepository.Object);
 
-            var wResult = wAddBookFormController.TryRegisterAddBook(new Book(), out int vBookId);
+            var wResult = wAddBookControl.TryRegisterAddBook(new Book(), out int vBookId);
             
             Assert.IsFalse(wResult);
             Assert.AreEqual(-1, vBookId);
@@ -170,7 +170,51 @@ namespace LibraUnitTest {
             wMockRepository.Verify(m => m.CommitTransaction(), Times.Never);
             wMockRepository.Verify(m => m.RollbackTransaction(), Times.Once);
 
-            wMessageBoxMock.Verify(m => m.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()), Times.Once);
+            wMessageBoxMock.Verify(m => m.Show(ErrorMessageConst.C_DbError,
+                                               ErrorMessageConst.C_DbErrorCaprion,
+                                               MessageBoxButtons.OK,
+                                               MessageBoxIcon.Error),
+                                        Times.Once);
+        }
+
+        [Test]
+        public void DBアクセスで予期せぬ例外発生テスト() {
+            // ブックリポジトリのモックを作成
+            var wMockRepository = new Mock<IBookRepository>();
+
+            wMockRepository.Setup(m => m.BeginTransaction());
+            wMockRepository.Setup(m => m.AddBook(It.IsAny<Book>()));
+            wMockRepository.Setup(m => m.Save()).Throws<Exception>();
+            wMockRepository.Setup(m => m.CommitTransaction());
+            wMockRepository.Setup(m => m.RollbackTransaction());
+
+            // メッセージボックスのモックを作成
+            var wMessageBoxMock = new Mock<IMessageBoxService>();
+
+            wMessageBoxMock
+                .Setup(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()))
+                .Returns(DialogResult.OK);
+
+            // コントローラのモックを作成
+            IOpenBdConnect wOpenBdConnect = new OpenBdConnect();
+            var wAddBookControl = new AddBookControl(wOpenBdConnect, wMessageBoxMock.Object, wMockRepository.Object);
+
+            var wResult = wAddBookControl.TryRegisterAddBook(new Book(), out int vBookId);
+
+            Assert.IsFalse(wResult);
+            Assert.AreEqual(-1, vBookId);
+
+            wMockRepository.Verify(m => m.BeginTransaction(), Times.Once);
+            wMockRepository.Verify(m => m.AddBook(It.IsAny<Book>()), Times.Once);
+            wMockRepository.Verify(m => m.Save(), Times.Once);
+            wMockRepository.Verify(m => m.CommitTransaction(), Times.Never);
+            wMockRepository.Verify(m => m.RollbackTransaction(), Times.Once);
+
+            wMessageBoxMock.Verify(m => m.Show(It.IsAny<string>(),
+                                               ErrorMessageConst.C_UnexpectedErrorCaprion,
+                                               MessageBoxButtons.OK,
+                                               MessageBoxIcon.Error),
+                                          Times.Once);
         }
 
         /// <summary>

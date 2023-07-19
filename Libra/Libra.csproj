@@ -121,13 +121,13 @@
   <ItemGroup>
     <Compile Include="Controls\BookService.cs" />
     <Compile Include="Controls\HttpClientWrapper.cs" />
-    <Compile Include="Controls\IAddBookController.cs" />
+    <Compile Include="Controls\IAddBookControl.cs" />
     <Compile Include="Controls\IHttpClient.cs" />
     <Compile Include="Controls\IOpenBdConnect.cs" />
     <Compile Include="Controls\OpenBdConnect.cs" />
     <Compile Include="ErrorMessageConst.cs" />
-    <Compile Include="Controls\AddBookFormController.cs" />
-    <Compile Include="Controls\LibraController.cs" />
+    <Compile Include="Controls\AddBookControl.cs" />
+    <Compile Include="Controls\LibraControl.cs" />
     <Compile Include="Models\BooksDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -149,7 +149,7 @@
     </Compile>
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BooksDbContext.cs" />
-    <Compile Include="Models\BooksRepository.cs" />
+    <Compile Include="Models\BookRepository.cs" />
     <Compile Include="Models\IBookRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

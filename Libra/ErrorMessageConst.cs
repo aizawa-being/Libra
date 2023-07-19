@@ -45,9 +45,9 @@
 
         /// <summary>
         /// API接続時の予期せぬエラーメッセージ
-        /// ステータスコードを記載してください
+        /// エラー内容を指定してください
         /// </summary>
-        public const string C_UnexpectedError = "予期せぬエラーが発生しました。\r\nステータスコード：{0}";
+        public const string C_UnexpectedError = "予期せぬエラーが発生しました。\r\nエラー：{0}";
 
         /// <summary>
         /// 予期せぬエラーキャプション

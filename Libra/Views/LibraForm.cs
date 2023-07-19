@@ -47,8 +47,8 @@ namespace Libra {
 
         private void AddBook_Click(object sender, EventArgs e) {
             this.addBookButton.Focus();
-            var wLibraController = new LibraController();
-            wLibraController.OpenAddForm();
+            var wLibraControl = new LibraControl();
+            wLibraControl.OpenAddForm();
         }
 
         private void DeleteBook_Click(object sender, EventArgs e) {

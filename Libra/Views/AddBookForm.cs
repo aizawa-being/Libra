@@ -9,23 +9,23 @@ namespace Libra {
         /// 書籍を追加していない場合の初期値は-1
         /// </summary>
         public int AddBookId { get; private set; } = -1;
-        private readonly IAddBookController FAddBookController;
+        private readonly IAddBookControl FAddBookControl;
 
         public AddBookForm() {
-            this.FAddBookController = new AddBookFormController();
+            this.FAddBookControl = new AddBookControl();
             InitializeComponent();
         }
 
-        public AddBookForm(IAddBookController vAddBookController) {
-            this.FAddBookController = vAddBookController;
+        public AddBookForm(IAddBookControl vAddBookControl) {
+            this.FAddBookControl = vAddBookControl;
             InitializeComponent();
         }
 
         private async void GetBookInfoButtonClickAsync(object sender, EventArgs e) {
-            await this.FAddBookController.SetAddBook(this.isbnTextBox.Text);
-            if (this.FAddBookController.ExistAddBook()) {
+            await this.FAddBookControl.SetAddBook(this.isbnTextBox.Text);
+            if (this.FAddBookControl.ExistAddBook()) {
                 // 書籍情報取得成功時
-                var wBook = this.FAddBookController.GetAddBook();
+                var wBook = this.FAddBookControl.GetAddBook();
                 this.titleLabel.Text = wBook.Title;
                 this.authorLabel.Text = wBook.Author;
             } else {
@@ -36,8 +36,8 @@ namespace Libra {
         }
 
         private void AddButtonClick(object sender, EventArgs e) {
-            var wAddBook = this.FAddBookController.GetAddBook();
-            if (this.FAddBookController.TryRegisterAddBook(wAddBook, out int vBookId)) {
+            var wAddBook = this.FAddBookControl.GetAddBook();
+            if (this.FAddBookControl.TryRegisterAddBook(wAddBook, out int vBookId)) {
                 // 書籍追加に成功した場合
                 this.AddBookId = vBookId;
                 // フォームを閉じる

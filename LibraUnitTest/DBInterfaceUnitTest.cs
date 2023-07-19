@@ -12,14 +12,14 @@ namespace LibraUnitTest {
         public void 書籍削除テスト() {
             var wCreateBookDb = new CreateBooksDb();
             using (var wDbContext = wCreateBookDb.CreateInMemoryDb()) {
-                var wBooksRepository = new BooksRepository(wDbContext);
+                var wBookRepository = new BookRepository(wDbContext);
 
-                var wBooks = wBooksRepository.GetBooks();
+                var wBooks = wBookRepository.GetBooks();
 
-                wBooksRepository.DeleteBook(1);
-                wBooksRepository.Save();
+                wBookRepository.DeleteBook(1);
+                wBookRepository.Save();
 
-                var wDeletedBooks = wBooksRepository.GetBooks().ToList();
+                var wDeletedBooks = wBookRepository.GetBooks().ToList();
 
                 Assert.AreEqual(3, wBooks.Count());
                 Assert.AreEqual(2, wDeletedBooks.Count());
@@ -34,7 +34,7 @@ namespace LibraUnitTest {
             var wCreateBookDb = new CreateBooksDb();
             using (var wDbContext = wCreateBookDb.CreateInMemoryDb()) {
 
-                var wBooksRepository = new BooksRepository(wDbContext);
+                var wBooksRepository = new BookRepository(wDbContext);
 
                 var wBooks = wBooksRepository.GetBooks().ToList();
 
@@ -50,9 +50,9 @@ namespace LibraUnitTest {
         public void 書籍1冊取得テスト() {
             var wCreateBookDb = new CreateBooksDb();
             using (var wDbContext = wCreateBookDb.CreateInMemoryDb()) {
-                var wBooksRepository = new BooksRepository(wDbContext);
+                var wBookRepository = new BookRepository(wDbContext);
 
-                var wBook = wBooksRepository.GetBookById(1);
+                var wBook = wBookRepository.GetBookById(1);
 
                 Assert.AreEqual(1, wBook.BookId);
                 Assert.AreEqual("テストタイトル1", wBook.Title);
@@ -66,15 +66,15 @@ namespace LibraUnitTest {
         public void 書籍追加テスト(int vBookId, string vTitle, string vAuthor, string vBarcode, int vIsDeleted) {
             var wCreateBookDb = new CreateBooksDb();
             using (var wDbContext = wCreateBookDb.CreateInMemoryDb()) {
-                var wBooksRepository = new BooksRepository(wDbContext);
-                wBooksRepository.AddBook(new Book {
+                var wBookRepository = new BookRepository(wDbContext);
+                wBookRepository.AddBook(new Book {
                     BookId = vBookId,
                     Title = "AddBook書籍名",
                     Author = "AddBook著者名",
                     Barcode = "0000000000001",
                     IsDeleted = 0
                 });
-                wBooksRepository.Save();
+                wBookRepository.Save();
                 
                 Assert.AreEqual(4, wDbContext.Books.Count());
                 Assert.AreEqual(vBookId, wDbContext.Books.OrderByDescending(b => b.BookId).FirstOrDefault().BookId);
@@ -89,16 +89,16 @@ namespace LibraUnitTest {
         public void 書籍更新テスト(string vTitle) {
             var wCreateBookDb = new CreateBooksDb();
             using (var wDbContext = wCreateBookDb.CreateInMemoryDb()) {
-                var wBooksRepository = new BooksRepository(wDbContext);
+                var wBookRepository = new BookRepository(wDbContext);
 
                 // 1冊取り出す
-                var wBook = wBooksRepository.GetBookById(1);
+                var wBook = wBookRepository.GetBookById(1);
 
                 // タイトルを更新
                 wBook.Title = vTitle;
-                wBooksRepository.UpdateBook(wBook);
+                wBookRepository.UpdateBook(wBook);
 
-                var wUpdatedBook = wBooksRepository.GetBookById(1);
+                var wUpdatedBook = wBookRepository.GetBookById(1);
 
                 Assert.AreEqual(vTitle, wUpdatedBook.Title);
             }

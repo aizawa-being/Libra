@@ -1,10 +1,11 @@
-﻿using System.Data.Common;
+﻿using System;
+using System.Data.Common;
 using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Libra {
-    public class AddBookFormController : IAddBookController {
+    public class AddBookControl : IAddBookControl {
         /// <summary>
         /// 追加する書籍
         /// </summary>
@@ -13,13 +14,13 @@ namespace Libra {
         private readonly IMessageBoxService FMessageBoxService;
         private readonly IBookRepository FBookRepository;
 
-        public AddBookFormController() {
+        public AddBookControl() {
             this.FOpenBdConnect = new OpenBdConnect();
             this.FMessageBoxService = new MessageBoxService();
-            this.FBookRepository = new BooksRepository(new BooksDbContext());
+            this.FBookRepository = new BookRepository(new BooksDbContext());
         }
 
-        public AddBookFormController(IOpenBdConnect vOpenBdConnect, IMessageBoxService vMessageBoxService, IBookRepository vBookRepository) {
+        public AddBookControl(IOpenBdConnect vOpenBdConnect, IMessageBoxService vMessageBoxService, IBookRepository vBookRepository) {
             this.FOpenBdConnect = vOpenBdConnect;
             this.FMessageBoxService = vMessageBoxService;
             this.FBookRepository = vBookRepository;
@@ -124,6 +125,11 @@ namespace Libra {
         /// <returns>int </returns>
         public bool TryRegisterAddBook(Book vAddBook, out int vBookId) {
             if (vAddBook != null) {
+                // データ追加前にデータベースが削除されている場合、テーブルを再構築する。
+                // EF6の場合、キャッシュにテーブル情報が残っているとテーブルが自動作成されない。
+                if (!this.FBookRepository.DatabaseExists()) {
+                    this.FBookRepository.InitializeDatabase();
+                }
                 try {
                     using (var wBookService = new BookService(this.FBookRepository)) {
                         vBookId = wBookService.AddBook(vAddBook);
@@ -137,6 +143,12 @@ namespace Libra {
                                         ErrorMessageConst.C_DbErrorCaprion,
                                         MessageBoxButtons.OK,
                                         MessageBoxIcon.Error);
+                } catch (Exception e) {
+                    // 予期せぬエラー
+                    this.MessageBoxShow(string.Format(ErrorMessageConst.C_UnexpectedError, e.Message),
+                                                  ErrorMessageConst.C_UnexpectedErrorCaprion,
+                                                  MessageBoxButtons.OK,
+                                                  MessageBoxIcon.Error);
                 }
             } else {
                 // 書籍情報未取得エラーを表示
