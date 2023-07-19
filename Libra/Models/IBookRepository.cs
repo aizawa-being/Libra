@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Libra.Models {
+namespace Libra {
     /// <summary>
     /// 書籍データアクセス用のインターフェースです。
     /// </summary>

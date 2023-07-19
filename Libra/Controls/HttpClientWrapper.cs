@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Libra.Controls {
+namespace Libra {
     /// <summary>
     /// HttpClientのラッパークラスです
     /// </summary>
     public class HttpClientWrapper : IHttpClient {
-        private readonly HttpClient F_HttpClient;
-        
+        private readonly HttpClient FHttpClient;
+
         public HttpClientWrapper() {
-            this.F_HttpClient = new HttpClient();
+            this.FHttpClient = new HttpClient();
         }
 
         /// <summary>
@@ -22,14 +18,14 @@ namespace Libra.Controls {
         /// <param name="vUrl"></param>
         /// <returns>HttpResponseMessage</returns>
         public Task<HttpResponseMessage> GetAsync(string vUrl) {
-            return this.F_HttpClient.GetAsync(vUrl);
+            return this.FHttpClient.GetAsync(vUrl);
         }
 
         /// <summary>
         /// リリースで使用されるアンマネージ リソースおよびマネージ リソースを破棄
         /// </summary>
         public void Dispose() {
-            this.F_HttpClient.Dispose();
+            this.FHttpClient.Dispose();
         }
     }
 }

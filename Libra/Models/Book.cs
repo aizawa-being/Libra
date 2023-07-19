@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Libra.Models {
+namespace Libra {
 
     /// <summary>
     /// 書籍クラス

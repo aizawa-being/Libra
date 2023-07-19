@@ -1,33 +1,37 @@
-﻿using Libra.Controls;
-using System;
+﻿using System;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace Libra.Views {
+namespace Libra {
     public partial class AddBookForm : Form {
-        private readonly IAddBookController F_AddBookController;
+        /// <summary>
+        /// 追加した書籍のID
+        /// 書籍を追加していない場合の初期値は-1
+        /// </summary>
+        public int AddBookId { get; private set; } = -1;
+        private readonly IAddBookControl FAddBookControl;
 
         public AddBookForm() {
-            this.F_AddBookController = new AddBookFormController();
+            this.FAddBookControl = new AddBookControl();
             InitializeComponent();
         }
 
-        public AddBookForm(IAddBookController vAddBookController) {
-            this.F_AddBookController = vAddBookController;
+        public AddBookForm(IAddBookControl vAddBookController) {
+            this.FAddBookControl = vAddBookController;
             InitializeComponent();
         }
 
         private async void GetBookInfoButtonClickAsync(object sender, EventArgs e) {
-            await this.F_AddBookController.SetAddBook(this.isbnTextBox.Text);
-            var book = this.F_AddBookController.GetAddBook();
-            if (book == null) {
+            await this.FAddBookControl.SetAddBook(this.isbnTextBox.Text);
+            if (this.FAddBookControl.ExistAddBook()) {
+                // 書籍情報取得成功時
+                var wBook = this.FAddBookControl.GetAddBook();
+                this.titleLabel.Text = wBook.Title;
+                this.authorLabel.Text = wBook.Author;
+            } else {
                 // 書籍情報取得失敗時
                 this.titleLabel.Text = "";
                 this.authorLabel.Text = "";
-            } else {
-                // 書籍情報取得成功時
-                this.titleLabel.Text = book.Title;
-                this.authorLabel.Text = book.Author;
             }
         }
 

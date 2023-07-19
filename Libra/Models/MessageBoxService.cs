@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
-namespace Libra.Models {
+namespace Libra {
     /// <summary>
     /// メッセージボックスをラップします。
     /// </summary>
@@ -13,45 +8,45 @@ namespace Libra.Models {
         /// <summary>
         /// メッセージボックスを表示します。
         /// </summary>
-        /// <param name="message"></param>
+        /// <param name="vMessage"></param>
         /// <returns>DialogResult</returns>
-        public DialogResult Show(string message) {
-            return MessageBox.Show(message);
+        public DialogResult Show(string vMessage) {
+            return MessageBox.Show(vMessage);
         }
 
         /// <summary>
         /// キャプション付きメッセージボックスを表示します。
         /// </summary>
-        /// <param name="message"></param>
-        /// <param name="caption"></param>
+        /// <param name="vMessage"></param>
+        /// <param name="vCaption"></param>
         /// <returns>DialogResult</returns>
-        public DialogResult Show(string message, string caption) {
-            return MessageBox.Show(message, caption);
+        public DialogResult Show(string vMessage, string vCaption) {
+            return MessageBox.Show(vMessage, vCaption);
         }
 
         /// <summary>
         /// キャプション付きメッセージボックスを表示します。
         /// 指定したボタンを表示します。
         /// </summary>
-        /// <param name="message"></param>
-        /// <param name="caption"></param>
-        /// <param name="button"></param>
+        /// <param name="vMessage"></param>
+        /// <param name="vCaption"></param>
+        /// <param name="vButton"></param>
         /// <returns>DialogResult</returns>
-        public DialogResult Show(string message, string caption, MessageBoxButtons button) {
-            return MessageBox.Show(message, caption, button);
+        public DialogResult Show(string vMessage, string vCaption, MessageBoxButtons vButton) {
+            return MessageBox.Show(vMessage, vCaption, vButton);
         }
 
         /// <summary>
         /// キャプション付きメッセージボックスを表示します。
         /// 指定したボタンとアイコンを表示します。
         /// </summary>
-        /// <param name="message"></param>
-        /// <param name="caption"></param>
-        /// <param name="button"></param>
-        /// <param name="icon"></param>
+        /// <param name="vMessage"></param>
+        /// <param name="vCaption"></param>
+        /// <param name="vButton"></param>
+        /// <param name="vIcon"></param>
         /// <returns></returns>
-        public DialogResult Show(string message, string caption, MessageBoxButtons button, MessageBoxIcon icon) {
-            return MessageBox.Show(message, caption, button, icon);
+        public DialogResult Show(string vMessage, string vCaption, MessageBoxButtons vButton, MessageBoxIcon vIcon) {
+            return MessageBox.Show(vMessage, vCaption, vButton, vIcon);
         }
     }
 }

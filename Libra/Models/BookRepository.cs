@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 
-namespace Libra.Models {
+using System.Data.Entity;
+
+namespace Libra {
     /// <summary>
     /// 書籍情報テーブルのCRUD操作用クラス。
     /// CRUD操作時は、Contextではなくリポジトリを呼び出してください。
     /// </summary>
-    public class BooksRepository : IBookRepository, IDisposable {
+    public class BookRepository : IBookRepository, IDisposable {
         private BooksDbContext F_Context;
 
         /// <summary>
         /// 新しいコンテキストインスタンスを作成します。
         /// </summary>
         /// <param name="vContext"></param>
-        public BooksRepository(BooksDbContext vContext) {
+        public BookRepository(BooksDbContext vContext) {
             this.F_Context = vContext;
         }
 
