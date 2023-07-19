@@ -29,8 +29,8 @@ namespace Libra {
         /// </summary>
         /// <param name="vModelBuilder"></param>
         protected override void OnModelCreating(DbModelBuilder vModelBuilder) {
-            var sqliteConnectionInitializer = new SqliteCreateDatabaseIfNotExists<BooksDbContext>(vModelBuilder);
-            Database.SetInitializer(sqliteConnectionInitializer);
+            var wSqliteConnectionInitializer = new SqliteCreateDatabaseIfNotExists<BooksDbContext>(vModelBuilder);
+            Database.SetInitializer(wSqliteConnectionInitializer);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 
 namespace Libra {
@@ -12,7 +12,7 @@ namespace Libra {
         /// コンストラクタ
         /// </summary>
         public LibraForm() {
-            this.FLibraControl = new LibraController();
+            this.FLibraControl = new LibraControl();
             InitializeComponent();
         }
 
@@ -83,6 +83,7 @@ namespace Libra {
         /// <param name="e"></param>
         private void AddBook_Click(object sender, EventArgs e) {
             this.addBookButton.Focus();
+            this.FLibraControl.OpenAddForm();
         }
 
         /// <summary>
