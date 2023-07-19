@@ -14,7 +14,7 @@ namespace LibraUnitTest {
         [TestCase("追加書籍名", "追加著者名", "追加出版社", "追加概要", "0000000000000")]
         public void DBに書籍を追加するテスト(string vTitle, string vAuthor, string vPublisher, string vDescription, string vBarcode) {
             var wCreateBookDb = new CreateBooksDb();
-            using (var wDbContext = wCreateBookDb.CreateInMemoryDb()) {
+            using (var wDbContext = wCreateBookDb.CreateInMemoryDb(true)) {
                 // InMemoryDatabaseを利用
                 IBookRepository wBookRepository = new BookRepository(wDbContext);
                 var wBookService = new BookService(wBookRepository);

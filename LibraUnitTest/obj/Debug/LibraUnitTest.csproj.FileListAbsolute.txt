@@ -54,6 +54,6 @@ C:\Users\aizawa\source\gitRepos\LibraUnitTest\bin\Debug\EntityFramework.SqlServe
 C:\Users\aizawa\source\gitRepos\LibraUnitTest\bin\Debug\SQLite.CodeFirst.dll
 C:\Users\aizawa\source\gitRepos\LibraUnitTest\bin\Debug\System.Data.SQLite.dll
 C:\Users\aizawa\source\gitRepos\LibraUnitTest\bin\Debug\System.Data.SQLite.EF6.dll
-C:\Users\aizawa\source\gitRepos\LibraUnitTest\bin\Debug\System.Data.SQLite.Linq.d
 C:\Users\aizawa\source\gitRepos\LibraUnitTest\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\aizawa\source\gitRepos\LibraUnitTest\bin\Debug\System.Data.SQLite.xml
+C:\Users\aizawa\source\gitRepos\LibraUnitTest\bin\Debug\System.Data.SQLite.Linq.dll

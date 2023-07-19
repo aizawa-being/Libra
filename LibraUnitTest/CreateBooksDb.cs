@@ -13,7 +13,7 @@ namespace LibraUnitTest {
         /// インメモリデータベースを構築します。
         /// </summary>
         /// <returns></returns>
-        public BooksDbContext CreateInMemoryDb() {
+        public BooksDbContext CreateInMemoryDb(bool vIsDataSet) {
             // メモリ上にDBを構築する
             string wConnectionString = "Data Source=:memory:;Version=3;New=True;";
 
@@ -42,7 +42,9 @@ namespace LibraUnitTest {
                         BorrowingDate TEXT
                     )");
             }
-            SetDefaultBooks(wDbContext);
+            if (vIsDataSet) {
+                this.SetDefaultBooks(wDbContext);
+            }
             wDbContext.SaveChanges();
 
             return wDbContext;

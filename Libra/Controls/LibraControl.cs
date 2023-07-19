@@ -18,9 +18,10 @@ namespace Libra {
         /// <summary>
         /// 書籍追加画面を開きます。
         /// </summary>
-        public void OpenAddForm() {
-            var wAddBookControl = new AddBookControl();
-            wAddBookControl.ShowAddBookForm();
+        public int OpenAddForm() {
+            IAddBookControl wAddBookControl = new AddBookControl();
+            return wAddBookControl.ShowAddBookForm();
+        }
 
         /// <summary>
         /// 書籍一覧テーブルを初期化します。
@@ -41,11 +42,11 @@ namespace Libra {
             var wDataTable = new BooksDataTable();
             foreach (var wBook in vBooks) {
                 wDataTable.Rows.Add(wBook.BookId,
-                                   wBook.Title,
-                                   wBook.Author,
-                                   wBook.Publisher,
-                                   wBook.Description,
-                                   wBook.UserName);
+                                    wBook.Title,
+                                    wBook.Author,
+                                    wBook.Publisher,
+                                    wBook.Description,
+                                    wBook.UserName);
             }
             this.FBooksTable.Books = wDataTable;
         }

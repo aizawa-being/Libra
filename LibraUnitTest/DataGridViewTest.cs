@@ -11,7 +11,7 @@ namespace LibraUnitTest {
         [TestCase(0, "", "", "", "")]
         public void 書籍一覧グリッド表示テスト(int vBookId, string vTitle, string vAuthor, string vPublisher, string vDescription) {
 
-            var wLibraController = new LibraController();
+            var wLibraControl = new LibraControl();
 
             var wBooks = new List<Book> {
                 new Book { BookId = vBookId,
@@ -31,8 +31,8 @@ namespace LibraUnitTest {
                            Description = "テスト概要3" }
             };
 
-            wLibraController.SetBooksDataTable(wBooks);
-            var wBooksDataTable = wLibraController.GetBooksDataTable();
+            wLibraControl.SetBooksDataTable(wBooks);
+            var wBooksDataTable = wLibraControl.GetBooksDataTable();
             
             Assert.AreEqual(3, wBooksDataTable.Count);
             Assert.AreEqual(vBookId, wBooksDataTable.First(b => b.BookId == vBookId).BookId);

@@ -37,7 +37,3 @@ C:\Users\aizawa\source\gitRepos\Libra\bin\Release\System.Data.SQLite.EF6.dll
 C:\Users\aizawa\source\gitRepos\Libra\bin\Release\System.Data.SQLite.Linq.dll
 C:\Users\aizawa\source\gitRepos\Libra\bin\Release\System.Data.SQLite.xml
 C:\Users\aizawa\source\gitRepos\Libra\obj\Release\Libra.AddBookForm.resources
-C:\Users\aizawa\source\gitRepos\Libra\bin\Release\EntityFramework.xml
-C:\Users\aizawa\source\gitRepos\Libra\bin\Release\EntityFramework.SqlServer.xml
-C:\Users\aizawa\source\gitRepos\Libra\bin\Release\System.Data.SQLite.xml
-C:\Users\aizawa\source\gitRepos\Libra\obj\Release\Libra.csproj.CopyComplete

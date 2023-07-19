@@ -36,6 +36,7 @@ namespace Libra {
         }
 
         private void AddButtonClick(object sender, EventArgs e) {
+            this.addButton.Focus();
             var wAddBook = this.FAddBookControl.GetAddBook();
             if (this.FAddBookControl.TryRegisterAddBook(wAddBook, out int vBookId)) {
                 // 書籍追加に成功した場合
