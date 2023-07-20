@@ -6,5 +6,4 @@ packages/
 *.suo
 *.user
 *.cache
-sqlite3/
 out/
