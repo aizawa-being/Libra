@@ -1,0 +1,10 @@
+bin/
+obj/
+.vs/
+packages/
+*.bak
+*.suo
+*.user
+*.cache
+*sqlite3/
+out/
