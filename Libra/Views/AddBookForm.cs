@@ -40,6 +40,9 @@ namespace Libra {
                 var wBook = this.FAddBookControl.GetAddBook();
                 this.titleLabel.Text = wBook.Title;
                 this.authorLabel.Text = wBook.Author;
+
+                // 書籍情報取得ボタンにフォーカスを移動する。
+                this.getBookInfoButton.Focus();
             } else {
                 // 書籍情報取得失敗時
                 this.titleLabel.Text = "";

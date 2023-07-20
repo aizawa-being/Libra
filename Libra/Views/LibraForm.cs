@@ -83,9 +83,7 @@ namespace Libra {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void AddBook_Click(object sender, EventArgs e) {
-            var wLibraControl = new LibraControl();
-
-            var wAddBookId = wLibraControl.OpenAddForm();
+            var wAddBookId = this.FLibraControl.OpenAddForm();
             if (wAddBookId == -1) {
                 // 書籍を追加していない場合は何もしない
                 return;
@@ -97,7 +95,7 @@ namespace Libra {
 
             // 追加した書籍にフォーカスします。
             int wColumnIndex = this.booksDataGridView.Columns[0].Index;
-            foreach (DataGridViewRow wRow in booksDataGridView.Rows) {
+            foreach (DataGridViewRow wRow in this.booksDataGridView.Rows) {
                 if (wRow.Cells[wColumnIndex].Value != null && (int)wRow.Cells[wColumnIndex].Value == wAddBookId) {
                     wRow.Selected = true;
                     this.booksDataGridView.FirstDisplayedScrollingRowIndex = wRow.Index;
