@@ -75,7 +75,7 @@ namespace Libra {
                 return;
 
             } else if (wResponse.StatusCode >= HttpStatusCode.BadRequest && wResponse.StatusCode < HttpStatusCode.InternalServerError) {
-                // 400番台エラー発生
+                // 400番台クライアントエラー発生
                 this.MessageBoxShow(ErrorMessageConst.C_ClientError,
                                               ErrorMessageConst.C_ClientErrorCaption,
                                               MessageBoxButtons.OK,
@@ -84,7 +84,7 @@ namespace Libra {
                 return;
 
             } else if (wResponse.StatusCode >= HttpStatusCode.InternalServerError) {
-                // 500番台エラー発生
+                // 500番台サーバーエラー発生
                 this.MessageBoxShow(ErrorMessageConst.C_ServerError,
                                               ErrorMessageConst.C_ServerErrorCaption,
                                               MessageBoxButtons.OK,
@@ -93,7 +93,7 @@ namespace Libra {
                 return;
 
             } else {
-                // 予期せぬエラー
+                // 予期せぬエラー発生
                 this.MessageBoxShow(string.Format(ErrorMessageConst.C_UnexpectedError, wResponse.StatusCode),
                                               ErrorMessageConst.C_UnexpectedErrorCaprion,
                                               MessageBoxButtons.OK,
