@@ -57,7 +57,6 @@
             this.cancelButton.TabIndex = 8;
             this.cancelButton.Text = "キャンセル";
             this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.CancelButtonClick);
             // 
             // isbnLabel
             // 

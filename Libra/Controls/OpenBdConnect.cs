@@ -11,10 +11,17 @@ namespace Libra {
     public class OpenBdConnect : IOpenBdConnect {
         private readonly IHttpClient FHttpClient;
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public OpenBdConnect() {
             this.FHttpClient = new HttpClientWrapper();
         }
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="vHttpClient"></param>
         public OpenBdConnect(IHttpClient vHttpClient) {
             this.FHttpClient = vHttpClient;
         }

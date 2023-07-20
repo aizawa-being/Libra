@@ -13,7 +13,7 @@ namespace Libra {
         }
 
         /// <summary>
-        /// 指定された URI に GET 要求を非同期操作として送信します。
+        /// 指定されたURlにGET要求を非同期操作として送信します。
         /// </summary>
         /// <param name="vUrl"></param>
         /// <returns>HttpResponseMessage</returns>
@@ -22,7 +22,7 @@ namespace Libra {
         }
 
         /// <summary>
-        /// リリースで使用されるアンマネージ リソースおよびマネージ リソースを破棄
+        /// リリースで使用されるアンマネージリソースおよびマネージリソースを破棄
         /// </summary>
         public void Dispose() {
             this.FHttpClient.Dispose();
