@@ -13,7 +13,7 @@ namespace Libra {
         }
 
         /// <summary>
-        /// 指定された URI に GET 要求を非同期操作として送信します。
+        /// 指定されたURlにGET要求を非同期操作として送信します。
         /// </summary>
         /// <param name="vUrl"></param>
         /// <returns>HttpResponseMessage</returns>

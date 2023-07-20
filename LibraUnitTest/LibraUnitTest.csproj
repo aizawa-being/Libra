@@ -96,6 +96,7 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateBooksDb.cs" />
     <Compile Include="MockHttpContent.cs" />
     <Compile Include="OpenBdUnitTest.cs" />
     <Compile Include="DBInterfaceUnitTest.cs" />

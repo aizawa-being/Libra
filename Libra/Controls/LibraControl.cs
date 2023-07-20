@@ -1,6 +1,9 @@
 ﻿namespace Libra {
     public class LibraControl : ILibraControl {
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public LibraControl() {
         }
         

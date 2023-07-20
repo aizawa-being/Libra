@@ -11,16 +11,28 @@ namespace Libra {
         public int AddBookId { get; private set; } = -1;
         private readonly IAddBookControl FAddBookControl;
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public AddBookForm() {
             this.FAddBookControl = new AddBookControl();
             InitializeComponent();
         }
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="vAddBookController"></param>
         public AddBookForm(IAddBookControl vAddBookController) {
             this.FAddBookControl = vAddBookController;
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 書籍情報取得ボタン押下のイベントハンドラ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void GetBookInfoButtonClickAsync(object sender, EventArgs e) {
             await this.FAddBookControl.SetAddBook(this.isbnTextBox.Text);
             if (this.FAddBookControl.ExistAddBook()) {
@@ -28,6 +40,9 @@ namespace Libra {
                 var wBook = this.FAddBookControl.GetAddBook();
                 this.titleLabel.Text = wBook.Title;
                 this.authorLabel.Text = wBook.Author;
+
+                // 書籍情報取得ボタンにフォーカスを移動する。
+                this.getBookInfoButton.Focus();
             } else {
                 // 書籍情報取得失敗時
                 this.titleLabel.Text = "";
@@ -35,24 +50,35 @@ namespace Libra {
             }
         }
 
+        /// <summary>
+        /// 追加ボタン押下のイベントハンドラ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddButtonClick(object sender, EventArgs e) {
 
         }
 
-        private void CancelButtonClick(object sender, EventArgs e) {
-            
-        }
-
+        /// <summary>
+        /// ISBNコード入力欄のキー入力イベントハンドラ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void IsbnTextBox_KeyDown(object sender, KeyEventArgs e) {
             // クリップボード内に半角数字以外が含まれている場合、ペースト不可。
             if (e.KeyData == (Keys.Control | Keys.V)) {
-                string clipboardText = Clipboard.GetText();
-                if (!Regex.IsMatch(clipboardText, @"^[0-9]+$")) {
+                string wClipboardText = Clipboard.GetText();
+                if (!Regex.IsMatch(wClipboardText, @"^[0-9]+$")) {
                     e.SuppressKeyPress = true;
                 }
             }
         }
 
+        /// <summary>
+        /// ISBNコード入力欄のキー入力イベントハンドラ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void IsbnTextBox_KeyPress(object sender, KeyPressEventArgs e) {
             // バックスペースは利用可
             if (e.KeyChar == '\b') {

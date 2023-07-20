@@ -11,11 +11,19 @@ namespace Libra {
         private readonly IOpenBdConnect FOpenBdConnect;
         private readonly IMessageBoxService FMessageBoxService;
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public AddBookControl() {
             this.FOpenBdConnect = new OpenBdConnect();
             this.FMessageBoxService = new MessageBoxService();
         }
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="vOpenBdConnect"></param>
+        /// <param name="vMessageBoxService"></param>
         public AddBookControl(IOpenBdConnect vOpenBdConnect, IMessageBoxService vMessageBoxService) {
             this.FOpenBdConnect = vOpenBdConnect;
             this.FMessageBoxService = vMessageBoxService;
