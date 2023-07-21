@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace Libra {
+namespace Libra.Models {
     
     
     /// <summary>
@@ -409,7 +409,7 @@ namespace Libra {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public BooksRow AddBooksRow(string BookId, string Title, string Author, string Publisher, string Description, string UserName) {
+            public BooksRow AddBooksRow(int BookId, string Title, string Author, string Publisher, string Description, string UserName) {
                 BooksRow rowBooksRow = ((BooksRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         BookId,
@@ -451,7 +451,7 @@ namespace Libra {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnBookId = new global::System.Data.DataColumn("BookId", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnBookId = new global::System.Data.DataColumn("BookId", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBookId);
                 this.columnTitle = new global::System.Data.DataColumn("Title", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTitle);
@@ -605,10 +605,10 @@ namespace Libra {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string BookId {
+            public int BookId {
                 get {
                     try {
-                        return ((string)(this[this.tableBooks.BookIdColumn]));
+                        return ((int)(this[this.tableBooks.BookIdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("テーブル \'Books\' にある列 \'BookId\' の値は DBNull です。", e);
