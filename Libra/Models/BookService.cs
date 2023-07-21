@@ -48,9 +48,11 @@ namespace Libra {
             try {
                 var wBook = this.FBookRepository.GetBookById(vBookId);
                 if (wBook.IsDeleted == 1) {
+                    // 削除済み
                     throw new InvalidOperationException("Book is already deleted.");
                 }
                 if (wBook.UserName != null) {
+                    // 貸出中
                     throw new InvalidOperationException("Book is borrowed by a user and cannot be deleted.");
                 }
                 wBook.IsDeleted = 1;

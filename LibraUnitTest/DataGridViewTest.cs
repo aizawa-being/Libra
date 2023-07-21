@@ -11,7 +11,7 @@ namespace LibraUnitTest {
         [TestCase(0, "", "", "", "")]
         public void 書籍一覧グリッド表示テスト(int vBookId, string vTitle, string vAuthor, string vPublisher, string vDescription) {
 
-            var wLibraController = new LibraController();
+            var wLibraController = new LibraControl();
 
             var wBooks = new List<Book> {
                 new Book { BookId = vBookId,

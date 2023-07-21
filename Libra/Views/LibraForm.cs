@@ -101,8 +101,8 @@ namespace Libra {
             DataGridViewRow wSelectedRow = wSelectedCell.OwningRow;
 
             // 削除する書籍のIDと書籍名を取得
-            int wBookId = (int)wSelectedRow.Cells["bookIdDataGridViewTextBoxColumn"].Value;
-            string wTitle = (string)wSelectedRow.Cells["titleDataGridViewTextBoxColumn"].Value;
+            int wBookId = (int)wSelectedRow.Cells["bookIdDataGridViewTextBoxColumn1"].Value;
+            string wTitle = (string)wSelectedRow.Cells["titleDataGridViewTextBoxColumn1"].Value;
 
             // TODO: MessageBoxServiceを利用するように修正する。
             if (MessageBox.Show(string.Format("{0}を\r\n本当に削除しますか？", wTitle), "削除確認メッセージ", MessageBoxButtons.OKCancel) == DialogResult.OK) {
