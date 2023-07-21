@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Libra {
 
@@ -41,10 +39,37 @@ namespace Libra {
         }
 
         /// <summary>
+        /// 削除フラグを立てます
+        /// </summary>
+        /// <param name="vBookId"></param>
+        public void SetDeleteFlag(int vBookId) {
+            // トランザクション開始
+            this.FBookRepository.BeginTransaction();
+            try {
+                var wBook = this.FBookRepository.GetBookById(vBookId);
+                if (wBook.IsDeleted == 1) {
+                    throw new InvalidOperationException("Book is already deleted.");
+                }
+                if (wBook.UserName != null) {
+                    throw new InvalidOperationException("Book is borrowed by a user and cannot be deleted.");
+                }
+                wBook.IsDeleted = 1;
+                this.FBookRepository.UpdateBook(wBook);
+                this.FBookRepository.Save();
+                this.FBookRepository.CommitTransaction();
+
+            } catch (Exception) {
+                // ロールバック
+                this.FBookRepository.RollbackTransaction();
+                throw;
+            }
+        }
+
+        /// <summary>
         /// リソースを破棄します。
         /// </summary>
         public void Dispose() {
-            this.FBookRepository.Dispose();
+
         }
     }
 }

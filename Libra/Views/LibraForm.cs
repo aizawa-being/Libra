@@ -92,7 +92,24 @@ namespace Libra {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void DeleteBook_Click(object sender, EventArgs e) {
-            this.deleteBookButton.Focus();
+            if (booksDataGridView.SelectedCells.Count == 0) {
+                return;
+            }
+
+            // 選択されている行を取得
+            DataGridViewCell wSelectedCell = this.booksDataGridView.SelectedCells[0];
+            DataGridViewRow wSelectedRow = wSelectedCell.OwningRow;
+
+            // 削除する書籍のIDと書籍名を取得
+            int wBookId = (int)wSelectedRow.Cells["bookIdDataGridViewTextBoxColumn"].Value;
+            string wTitle = (string)wSelectedRow.Cells["titleDataGridViewTextBoxColumn"].Value;
+
+            // TODO: MessageBoxServiceを利用するように修正する。
+            if (MessageBox.Show(string.Format("{0}を\r\n本当に削除しますか？", wTitle), "削除確認メッセージ", MessageBoxButtons.OKCancel) == DialogResult.OK) {
+                this.FLibraControl.SetDeleteFlag(wBookId);
+                this.FLibraControl.InitializeBookList();
+                this.booksDataGridView.DataSource = this.FLibraControl.GetBooksDataTable();
+            }
         }
 
         /// <summary>

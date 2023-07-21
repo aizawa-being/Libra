@@ -29,5 +29,10 @@ namespace Libra {
         /// 書籍追加画面を開きます。
         /// </summary>
         void OpenAddForm();
+
+        /// <summary>
+        /// 削除フラグを立てます。
+        /// </summary>
+        void SetDeleteFlag(int vBookId);
     }
 }

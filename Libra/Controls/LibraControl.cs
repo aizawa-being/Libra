@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Common;
 using static Libra.BooksDataSet;
 
 namespace Libra {
@@ -7,19 +9,21 @@ namespace Libra {
     /// </summary>
     public class LibraControl : ILibraControl {
         private readonly BooksTable FBooksTable;
+        private readonly IBookRepository FBookRepository;
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
         public LibraControl() {
             this.FBooksTable = new BooksTable();
+            this.FBookRepository = new BookRepository(new BooksDbContext());
         }
 
         /// <summary>
         /// 書籍一覧テーブルを初期化します。
         /// </summary>
         public void InitializeBookList() {
-            using (var wBookService = new BookService()) {
+            using (var wBookService = new BookService(this.FBookRepository)) {
                 var wBooks = wBookService.GetExistBooks();
                 this.SetBooksDataTable(wBooks);
             }
@@ -57,6 +61,32 @@ namespace Libra {
         public void OpenAddForm() {
             IAddBookControl wAddBookControl = new AddBookControl();
             wAddBookControl.ShowAddBookForm();
+        }
+
+        /// <summary>
+        /// 削除フラグを立てます。
+        /// </summary>
+        public void SetDeleteFlag(int vBookId) {
+            try {
+                using (var wBooksService = new BookService(this.FBookRepository)) {
+                    wBooksService.SetDeleteFlag(vBookId);
+                }
+            } catch (InvalidOperationException e) {
+                Console.WriteLine("---------------------------------------------------------");
+                Console.WriteLine(e);
+                Console.WriteLine("---------------------------------------------------------");
+
+            } catch (DbException e) {
+                Console.WriteLine("---------------------------------------------------------");
+                Console.WriteLine(e);
+                Console.WriteLine("---------------------------------------------------------");
+
+            } catch (Exception e) {
+                // 予期せぬエラー
+                Console.WriteLine("---------------------------------------------------------");
+                Console.WriteLine(e);
+                Console.WriteLine("---------------------------------------------------------");
+            }
         }
     }
 }
