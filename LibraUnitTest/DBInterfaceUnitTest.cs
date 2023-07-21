@@ -1,7 +1,9 @@
 using System.Linq;
 using System.Collections.Generic;
+
 using NUnit.Framework;
 using System.Data.SQLite;
+
 using Libra;
 
 namespace LibraUnitTest {
@@ -35,65 +37,18 @@ namespace LibraUnitTest {
             }
         };
 
-        /// <summary>
-        /// インメモリデータベースを構築します。
-        /// </summary>
-        /// <param name="vIsDataSet">true:初期データを設定する</param>
-        /// <returns></returns>
-        public BooksDbContext CreateInMemoryDb(bool vIsDataSet) {
-            // メモリ上にDBを構築する
-            var wConnectionString = "Data Source=:memory:;Version=3;New=True;";
-            var wConnection = new SQLiteConnection(wConnectionString);
-
-            wConnection.Open();
-
-            var wDbContext = new BooksDbContext(wConnection, true);
-            var wTableExists = wDbContext.Database.SqlQuery<int>("SELECT 1 FROM sqlite_master WHERE type='table' AND name='Book'").Any();
-
-            // テーブルが存在しない場合、テーブルの再定義
-            if (!wTableExists) {
-                wDbContext.Database.ExecuteSqlCommand(@"
-                    CREATE TABLE Book (
-                        BookId INTEGER PRIMARY KEY,
-                        Title TEXT,
-                        Author TEXT,
-                        Publisher TEXT,
-                        Description TEXT,
-                        Barcode TEXT,
-                        IsDeleted INTEGER,
-                        UserName TEXT,
-                        BorrowingDate TEXT
-                    )");
-            }
-            if (vIsDataSet) {
-                this.SetDefaultBooks(wDbContext);
-            }
-            wDbContext.SaveChanges();
-
-            return wDbContext;
-        }
-
-        /// <summary>
-        /// DBに初期データを格納します。
-        /// </summary>
-        /// <param name="vDbContext"></param>
-        private void SetDefaultBooks(BooksDbContext vDbContext) {
-            vDbContext.Books.Add(this.Books[1]);
-            vDbContext.Books.Add(this.Books[2]);
-            vDbContext.Books.Add(this.Books[3]);
-        }
-
         [Test]
         public void 書籍削除テスト() {
-            using (var wDbContext = CreateInMemoryDb(true)) {
-                var wBooksRepository = new BookRepository(wDbContext);
-                var wBooks = wBooksRepository.GetBooks();
+            var wCreateBookDb = new CreateBooksDb();
+            using (var wDbContext = wCreateBookDb.CreateInMemoryDb(true)) {
+                var wBookRepository = new BookRepository(wDbContext);
 
-                // 書籍IDが1の書籍を削除
-                wBooksRepository.DeleteBook(1);
-                wBooksRepository.Save();
+                var wBooks = wBookRepository.GetBooks();
 
-                var wDeletedBooks = wBooksRepository.GetBooks().ToList();
+                wBookRepository.DeleteBook(1);
+                wBookRepository.Save();
+
+                var wDeletedBooks = wBookRepository.GetBooks().ToList();
 
                 Assert.AreEqual(3, wBooks.Count());
                 Assert.AreEqual(2, wDeletedBooks.Count());
@@ -105,6 +60,7 @@ namespace LibraUnitTest {
 
         [Test]
         public void 書籍全取得テスト() {
+            var wCreateBookDb = new CreateBooksDb();
             using (var wDbContext = CreateInMemoryDb(true)) {
                 var wBookRepository = new BookRepository(wDbContext);
                 var wBooks = wBookRepository.GetBooks().ToList();
@@ -119,6 +75,8 @@ namespace LibraUnitTest {
         [Test]
         public void テーブルにレコードが存在しない場合に書籍情報を全取得するテスト() {
             using (var wDbContext = CreateInMemoryDb(false)) {
+            var wCreateBookDb = new CreateBooksDb();
+            using (var wDbContext = wCreateBookDb.CreateInMemoryDb(false)) {
                 var wBookRepository = new BookRepository(wDbContext);
                 var wBooks = wBookRepository.GetBooks().ToList();
 
@@ -129,7 +87,8 @@ namespace LibraUnitTest {
 
         [TestCase(1)]
         public void 書籍1冊取得テスト(int vBookId) {
-            using (var wDbContext = CreateInMemoryDb(true)) {
+            var wCreateBookDb = new CreateBooksDb();
+            using (var wDbContext = wCreateBookDb.CreateInMemoryDb(true)) {
                 var wBookRepository = new BookRepository(wDbContext);
                 var wBook = wBookRepository.GetBookById(vBookId);
 
@@ -143,7 +102,8 @@ namespace LibraUnitTest {
 
         [Test]
         public void テーブルにレコードが存在しない場合に書籍情報を1件取得するテスト() {
-            using (var wDbContext = CreateInMemoryDb(false)) {
+            var wCreateBookDb = new CreateBooksDb();
+            using (var wDbContext = wCreateBookDb.CreateInMemoryDb(false)) {
                 var wBookRepository = new BookRepository(wDbContext);
                 var wBook = wBookRepository.GetBookById(1);
 
@@ -154,7 +114,8 @@ namespace LibraUnitTest {
         [TestCase(0)]
         [TestCase(null)]
         public void 存在しないIDの書籍取得テスト(int vBookId) {
-            using (var wDbContext = CreateInMemoryDb(true)) {
+            var wCreateBookDb = new CreateBooksDb();
+            using (var wDbContext = wCreateBookDb.CreateInMemoryDb(true)) {
                 var wBookRepository = new BookRepository(wDbContext);
                 var wBook = wBookRepository.GetBookById(vBookId);
 
@@ -164,7 +125,8 @@ namespace LibraUnitTest {
 
         [Test]
         public void 書籍追加テスト() {
-            using (var wDbContext = CreateInMemoryDb(true)) {
+            var wCreateBookDb = new CreateBooksDb();
+            using (var wDbContext = wCreateBookDb.CreateInMemoryDb(true)) {
                 var wBooksRepository = new BookRepository(wDbContext);
 
                 wBooksRepository.AddBook(new Book {
@@ -187,12 +149,13 @@ namespace LibraUnitTest {
 
         [Test]
         public void 書籍更新テスト() {
-            using (var wDbContext = CreateInMemoryDb(true)) {
+            var wCreateBookDb = new CreateBooksDb();
+            using (var wDbContext = wCreateBookDb.CreateInMemoryDb(true)) {
                 var wBookRepository = new BookRepository(wDbContext);
-                
+
                 // 書籍IDが1の書籍を取り出す
                 var wBook = wBookRepository.GetBookById(1);
-                
+
                 // 書籍名を更新
                 wBook.Title = "UpdatedTitle";
                 wBookRepository.UpdateBook(wBook);

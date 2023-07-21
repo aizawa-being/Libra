@@ -7,11 +7,27 @@ namespace Libra {
     /// 書籍追加画面
     /// </summary>
     public partial class AddBookForm : Form {
+        /// <summary>
+        /// 追加した書籍のID
+        /// 書籍を追加していない場合の初期値は-1
+        /// </summary>
+        public int AddBookId { get; private set; } = -1;
+        private readonly IAddBookControl FAddBookControl;
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
         public AddBookForm() {
+            this.FAddBookControl = new AddBookControl();
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="vAddBookController"></param>
+        public AddBookForm(IAddBookControl vAddBookController) {
+            this.FAddBookControl = vAddBookController;
             InitializeComponent();
         }
 
@@ -20,8 +36,21 @@ namespace Libra {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void GetBookInfoButtonClick(object sender, EventArgs e) {
+        private async void GetBookInfoButtonClickAsync(object sender, EventArgs e) {
+            await this.FAddBookControl.SetAddBook(this.isbnTextBox.Text);
+            if (this.FAddBookControl.ExistAddBook()) {
+                // 書籍情報取得成功時
+                var wBook = this.FAddBookControl.GetAddBook();
+                this.titleLabel.Text = wBook.Title;
+                this.authorLabel.Text = wBook.Author;
 
+                // 書籍情報取得ボタンにフォーカスを移動する。
+                this.getBookInfoButton.Focus();
+            } else {
+                // 書籍情報取得失敗時
+                this.titleLabel.Text = "";
+                this.authorLabel.Text = "";
+            }
         }
 
         /// <summary>
@@ -43,7 +72,7 @@ namespace Libra {
         }
 
         /// <summary>
-        /// ISBNコード入力欄のキー押下イベントハンドラ
+        /// ISBNコード入力欄のキー入力イベントハンドラ
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -58,7 +87,7 @@ namespace Libra {
         }
 
         /// <summary>
-        /// ISBNコード入力欄のキー押下イベントハンドラ
+        /// ISBNコード入力欄のキー入力イベントハンドラ
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

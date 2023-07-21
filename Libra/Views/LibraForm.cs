@@ -64,7 +64,7 @@ namespace Libra {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Search_Click(object sender, EventArgs e) {
-            
+
         }
 
         /// <summary>

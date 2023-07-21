@@ -12,7 +12,7 @@ namespace Libra {
         public BooksDbContext()
             : base("name=BooksDbContext") {
         }
-        
+
         /// <summary>
         /// コンストラクタ
         /// 既存の接続を利用してコンテキストを作成します。
