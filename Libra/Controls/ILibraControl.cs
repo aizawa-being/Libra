@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using static Libra.BooksDataSet;
 
-namespace Libra {
+﻿namespace Libra {
     /// <summary>
     /// 書籍一覧画面のコントローラ用インターフェース
     /// </summary>
@@ -28,6 +28,6 @@ namespace Libra {
         /// <summary>
         /// 書籍追加画面を開きます。
         /// </summary>
-        void OpenAddForm();
+        int OpenAddForm();
     }
 }

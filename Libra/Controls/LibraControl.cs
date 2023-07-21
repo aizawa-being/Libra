@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using static Libra.BooksDataSet;
 
 namespace Libra {
@@ -50,13 +50,13 @@ namespace Libra {
         public BooksDataTable GetBooksDataTable() {
             return this.FBooksTable.Books;
         }
-
+        
         /// <summary>
         /// 書籍追加画面を開きます。
         /// </summary>
-        public void OpenAddForm() {
+        public int OpenAddForm() {
             IAddBookControl wAddBookControl = new AddBookControl();
-            wAddBookControl.ShowAddBookForm();
+            return wAddBookControl.ShowAddBookForm();
         }
     }
 }
