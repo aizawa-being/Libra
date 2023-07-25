@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Windows.Forms;
 using static Libra.BooksDataSet;
 
 ﻿namespace Libra {
@@ -33,6 +34,6 @@ using static Libra.BooksDataSet;
         /// <summary>
         /// 削除フラグを立てます。
         /// </summary>
-        void SetDeleteFlag(int vBookId);
+        bool SetDeleteFlag(int vBookId);
     }
 }

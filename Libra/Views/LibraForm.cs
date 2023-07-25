@@ -99,16 +99,33 @@ namespace Libra {
             // 選択されている行を取得
             DataGridViewCell wSelectedCell = this.booksDataGridView.SelectedCells[0];
             DataGridViewRow wSelectedRow = wSelectedCell.OwningRow;
+            int wSelectedCellIndex = this.booksDataGridView.SelectedRows[0].Index;
 
             // 削除する書籍のIDと書籍名を取得
-            int wBookId = (int)wSelectedRow.Cells["bookIdDataGridViewTextBoxColumn1"].Value;
-            string wTitle = (string)wSelectedRow.Cells["titleDataGridViewTextBoxColumn1"].Value;
+            int wBookId = (int)wSelectedRow.Cells["bookIdColumn"].Value;
+            string wTitle = (string)wSelectedRow.Cells["titleColumn"].Value;
+            
+            // 削除確認メッセージボックスの表示
+            IMessageBoxService wMessageBoxService = new MessageBoxService();
+            if (MessageBox.Show(string.Format("{0}を\r\n本当に削除しますか？", wTitle), "削除確認メッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2)
+                != DialogResult.OK) {
+                return;
+            }
+            // メッセージボックスでOKが選択された場合のみ削除する
+            var wResult = this.FLibraControl.SetDeleteFlag(wBookId);
 
-            // TODO: MessageBoxServiceを利用するように修正する。
-            if (MessageBox.Show(string.Format("{0}を\r\n本当に削除しますか？", wTitle), "削除確認メッセージ", MessageBoxButtons.OKCancel) == DialogResult.OK) {
-                this.FLibraControl.SetDeleteFlag(wBookId);
-                this.FLibraControl.InitializeBookList();
-                this.booksDataGridView.DataSource = this.FLibraControl.GetBooksDataTable();
+            // 書籍一覧グリッドの初期化
+            this.FLibraControl.InitializeBookList();
+            this.booksDataGridView.DataSource = this.FLibraControl.GetBooksDataTable();
+
+            // フォーカスする行を指定
+            if (wResult) {
+                if (wSelectedCellIndex > 0) {
+                    // 削除成功時は1行前をフォーカスする
+                    this.booksDataGridView.CurrentCell = this.booksDataGridView.Rows[wSelectedCellIndex - 1].Cells[1];
+                }
+            } else {
+                this.booksDataGridView.CurrentCell = this.booksDataGridView.Rows[wSelectedCellIndex].Cells[1];
             }
         }
 

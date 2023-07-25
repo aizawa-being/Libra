@@ -46,14 +46,15 @@ namespace Libra {
             // トランザクション開始
             this.FBookRepository.BeginTransaction();
             try {
+
                 var wBook = this.FBookRepository.GetBookById(vBookId);
                 if (wBook.IsDeleted == 1) {
                     // 削除済み
-                    throw new InvalidOperationException("Book is already deleted.");
+                    throw new BookOperationException(ErrorTypeEnum.AlreadyDeleted, wBook.Title);
                 }
                 if (wBook.UserName != null) {
                     // 貸出中
-                    throw new InvalidOperationException("Book is borrowed by a user and cannot be deleted.");
+                    throw new BookOperationException(ErrorTypeEnum.IsBorrowed, wBook.Title);
                 }
                 wBook.IsDeleted = 1;
                 this.FBookRepository.UpdateBook(wBook);

@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 
 using System.Data.Common;
-
+using System.Data.Entity.Infrastructure;
+using System.Windows.Forms;
 using static Libra.BooksDataSet;
 
 namespace Libra {
@@ -12,6 +13,7 @@ namespace Libra {
     public class LibraControl : ILibraControl {
         private readonly BooksTable FBooksTable;
         private readonly IBookRepository FBookRepository;
+        private readonly IMessageBoxService FMessageBoxService;
 
         /// <summary>
         /// コンストラクタ
@@ -19,6 +21,16 @@ namespace Libra {
         public LibraControl() {
             this.FBooksTable = new BooksTable();
             this.FBookRepository = new BookRepository(new BooksDbContext());
+            this.FMessageBoxService = new MessageBoxService();
+        }
+
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        public LibraControl(BooksTable vBooksTable, IBookRepository vBookRepository, IMessageBoxService vMessageBoxService) {
+            this.FBooksTable = vBooksTable;
+            this.FBookRepository = vBookRepository;
+            this.FMessageBoxService = vMessageBoxService;
         }
 
         /// <summary>
@@ -68,27 +80,38 @@ namespace Libra {
         /// <summary>
         /// 削除フラグを立てます。
         /// </summary>
-        public void SetDeleteFlag(int vBookId) {
+        public bool SetDeleteFlag(int vBookId) {
+            var wResult = false;
             try {
                 using (var wBooksService = new BookService(this.FBookRepository)) {
                     wBooksService.SetDeleteFlag(vBookId);
+                    wResult = true;
                 }
-            } catch (InvalidOperationException e) {
-                Console.WriteLine("---------------------------------------------------------");
-                Console.WriteLine(e);
-                Console.WriteLine("---------------------------------------------------------");
+            } catch (BookOperationException vException) {
+                var wBookError = new BookErrorDefine(vException.ErrorType);
+                this.FMessageBoxService.Show(string.Format(wBookError.ErrorMessage, vException.BookTitle), wBookError.ErrorCaption, wBookError.BoxButton, wBookError.BoxIcon);
+            } catch (DbException) {
+                // DBエラー発生
+                this.FMessageBoxService.Show(ErrorMessageConst.C_DbError,
+                                             ErrorMessageConst.C_DbErrorCaption,
+                                             MessageBoxButtons.OK,
+                                             MessageBoxIcon.Error);
 
-            } catch (DbException e) {
-                Console.WriteLine("---------------------------------------------------------");
-                Console.WriteLine(e);
-                Console.WriteLine("---------------------------------------------------------");
+            } catch (DbUpdateException) {
+                // DBエラー発生
+                this.FMessageBoxService.Show(ErrorMessageConst.C_DbError,
+                                             ErrorMessageConst.C_DbErrorCaption,
+                                             MessageBoxButtons.OK,
+                                             MessageBoxIcon.Error);
 
-            } catch (Exception e) {
-                // 予期せぬエラー
-                Console.WriteLine("---------------------------------------------------------");
-                Console.WriteLine(e);
-                Console.WriteLine("---------------------------------------------------------");
+            } catch (Exception vException) {
+                // 予期せぬエラー発生
+                this.FMessageBoxService.Show(string.Format(ErrorMessageConst.C_UnexpectedError, vException),
+                                             ErrorMessageConst.C_UnexpectedErrorCaption,
+                                             MessageBoxButtons.OK,
+                                             MessageBoxIcon.Error);
             }
+            return wResult;
         }
     }
 }

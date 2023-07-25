@@ -98,7 +98,7 @@ namespace Libra {
             } else {
                 // 予期せぬエラー発生
                 this.MessageBoxShow(string.Format(ErrorMessageConst.C_UnexpectedError, wResponse.StatusCode),
-                                              ErrorMessageConst.C_UnexpectedErrorCaprion,
+                                              ErrorMessageConst.C_UnexpectedErrorCaption,
                                               MessageBoxButtons.OK,
                                               MessageBoxIcon.Error);
                 this.FAddBook = null;
