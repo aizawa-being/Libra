@@ -123,10 +123,13 @@ namespace Libra {
                 if (wSelectedCellIndex > 0) {
                     // 削除成功時は1行前をフォーカスする
                     this.booksDataGridView.CurrentCell = this.booksDataGridView.Rows[wSelectedCellIndex - 1].Cells[1];
+                    return;
                 }
-            } else {
-                this.booksDataGridView.CurrentCell = this.booksDataGridView.Rows[wSelectedCellIndex].Cells[1];
             }
+            if (this.booksDataGridView.Rows.Count == 0) {
+                return;
+            }
+            this.booksDataGridView.CurrentCell = this.booksDataGridView.Rows[wSelectedCellIndex].Cells[1];
         }
 
         /// <summary>
