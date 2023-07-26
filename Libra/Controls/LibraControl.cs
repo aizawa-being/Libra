@@ -78,14 +78,6 @@ namespace Libra {
         }
 
         /// <summary>
-        /// 書籍追加画面を開きます。
-        /// </summary>
-        public int OpenAddForm() {
-            IAddBookControl wAddBookControl = new AddBookControl();
-            return wAddBookControl.ShowAddBookForm();
-        }
-
-        /// <summary>
         /// 削除フラグを立てます。
         /// </summary>
         public bool SetDeleteFlag(int vBookId) {
