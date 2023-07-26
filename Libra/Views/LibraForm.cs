@@ -126,7 +126,7 @@ namespace Libra {
                     return;
                 }
             }
-            if (this.booksDataGridView.Rows.Count == 0) {
+            if (wSelectedCellIndex > this.booksDataGridView.Rows.Count) {
                 return;
             }
             this.booksDataGridView.CurrentCell = this.booksDataGridView.Rows[wSelectedCellIndex].Cells[1];
