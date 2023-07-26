@@ -123,7 +123,6 @@
     <Compile Include="Controls\HttpClientWrapper.cs" />
     <Compile Include="Controls\IAddBookControl.cs" />
     <Compile Include="Controls\IHttpClient.cs" />
-    <Compile Include="Controls\ILibraControl.cs" />
     <Compile Include="Controls\IOpenBdConnect.cs" />
     <Compile Include="Controls\OpenBdConnect.cs" />
     <Compile Include="ErrorMessageConst.cs" />

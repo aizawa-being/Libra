@@ -267,48 +267,6 @@
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
-            // bookIdDataGridViewTextBoxColumn1
-            // 
-            this.bookIdDataGridViewTextBoxColumn1.DataPropertyName = "BookId";
-            resources.ApplyResources(this.bookIdDataGridViewTextBoxColumn1, "bookIdDataGridViewTextBoxColumn1");
-            this.bookIdDataGridViewTextBoxColumn1.Name = "bookIdDataGridViewTextBoxColumn1";
-            this.bookIdDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // userNameDataGridViewTextBoxColumn1
-            // 
-            this.userNameDataGridViewTextBoxColumn1.DataPropertyName = "UserName";
-            resources.ApplyResources(this.userNameDataGridViewTextBoxColumn1, "userNameDataGridViewTextBoxColumn1");
-            this.userNameDataGridViewTextBoxColumn1.Name = "userNameDataGridViewTextBoxColumn1";
-            this.userNameDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // titleDataGridViewTextBoxColumn1
-            // 
-            this.titleDataGridViewTextBoxColumn1.DataPropertyName = "Title";
-            resources.ApplyResources(this.titleDataGridViewTextBoxColumn1, "titleDataGridViewTextBoxColumn1");
-            this.titleDataGridViewTextBoxColumn1.Name = "titleDataGridViewTextBoxColumn1";
-            this.titleDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // authorDataGridViewTextBoxColumn1
-            // 
-            this.authorDataGridViewTextBoxColumn1.DataPropertyName = "Author";
-            resources.ApplyResources(this.authorDataGridViewTextBoxColumn1, "authorDataGridViewTextBoxColumn1");
-            this.authorDataGridViewTextBoxColumn1.Name = "authorDataGridViewTextBoxColumn1";
-            this.authorDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // publisherDataGridViewTextBoxColumn1
-            // 
-            this.publisherDataGridViewTextBoxColumn1.DataPropertyName = "Publisher";
-            resources.ApplyResources(this.publisherDataGridViewTextBoxColumn1, "publisherDataGridViewTextBoxColumn1");
-            this.publisherDataGridViewTextBoxColumn1.Name = "publisherDataGridViewTextBoxColumn1";
-            this.publisherDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // descriptionDataGridViewTextBoxColumn1
-            // 
-            this.descriptionDataGridViewTextBoxColumn1.DataPropertyName = "Description";
-            resources.ApplyResources(this.descriptionDataGridViewTextBoxColumn1, "descriptionDataGridViewTextBoxColumn1");
-            this.descriptionDataGridViewTextBoxColumn1.Name = "descriptionDataGridViewTextBoxColumn1";
-            this.descriptionDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
             // LibraForm
             // 
             resources.ApplyResources(this, "$this");

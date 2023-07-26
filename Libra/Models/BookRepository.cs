@@ -13,7 +13,7 @@ namespace Libra {
     /// </summary>
     public class BookRepository : IBookRepository, IDisposable {
         private BooksDbContext FContext;
-        private readonly DbContextTransaction FTransaction;
+        private DbContextTransaction FTransaction;
 
         /// <summary>
         /// 新しいコンテキストインスタンスを作成します。
