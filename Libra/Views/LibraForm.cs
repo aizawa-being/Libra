@@ -107,7 +107,7 @@ namespace Libra {
             
             // 削除確認メッセージボックスの表示
             IMessageBoxService wMessageBoxService = new MessageBoxService();
-            if (MessageBox.Show(string.Format("{0}を\r\n本当に削除しますか？", wTitle), "削除確認メッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2)
+            if (wMessageBoxService.Show(string.Format("{0}を\r\n本当に削除しますか？", wTitle), "削除確認メッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2)
                 != DialogResult.OK) {
                 return;
             }
