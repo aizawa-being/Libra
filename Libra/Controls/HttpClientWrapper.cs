@@ -22,7 +22,7 @@ namespace Libra {
         }
 
         /// <summary>
-        /// リリースで使用されるアンマネージ リソースおよびマネージ リソースを破棄
+        /// リリースで使用されるアンマネージリソースおよびマネージリソースを破棄
         /// </summary>
         public void Dispose() {
             this.FHttpClient.Dispose();

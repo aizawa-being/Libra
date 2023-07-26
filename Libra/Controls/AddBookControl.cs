@@ -54,9 +54,9 @@ namespace Libra {
             if (wResponse == null) {
                 // HttpRequestException発生
                 this.MessageBoxShow(ErrorMessageConst.C_NetworkError,
-                                              ErrorMessageConst.C_NetworkErrorCaption,
-                                              MessageBoxButtons.OK,
-                                              MessageBoxIcon.Error);
+                                    ErrorMessageConst.C_NetworkErrorCaption,
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
                 this.FAddBook = null;
                 return;
             }
@@ -68,9 +68,9 @@ namespace Libra {
                 var wBook = this.FOpenBdConnect.PerseBookInfo(wStrBook);
                 if (wBook == null) {
                     this.MessageBoxShow(ErrorMessageConst.C_BookNotFound,
-                                                  ErrorMessageConst.C_BookNotFoundCaption,
-                                                  MessageBoxButtons.OK,
-                                                  MessageBoxIcon.Asterisk);
+                                        ErrorMessageConst.C_BookNotFoundCaption,
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Asterisk);
                     this.FAddBook = null;
                     return;
                 }
@@ -80,27 +80,27 @@ namespace Libra {
             } else if (wResponse.StatusCode >= HttpStatusCode.BadRequest && wResponse.StatusCode < HttpStatusCode.InternalServerError) {
                 // 400番台クライアントエラー発生
                 this.MessageBoxShow(ErrorMessageConst.C_ClientError,
-                                              ErrorMessageConst.C_ClientErrorCaption,
-                                              MessageBoxButtons.OK,
-                                              MessageBoxIcon.Error);
+                                    ErrorMessageConst.C_ClientErrorCaption,
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
                 this.FAddBook = null;
                 return;
 
             } else if (wResponse.StatusCode >= HttpStatusCode.InternalServerError) {
                 // 500番台サーバーエラー発生
                 this.MessageBoxShow(ErrorMessageConst.C_ServerError,
-                                              ErrorMessageConst.C_ServerErrorCaption,
-                                              MessageBoxButtons.OK,
-                                              MessageBoxIcon.Error);
+                                    ErrorMessageConst.C_ServerErrorCaption,
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
                 this.FAddBook = null;
                 return;
 
             } else {
-                // 予期せぬエラー発生
+                // 予期せぬエラー
                 this.MessageBoxShow(string.Format(ErrorMessageConst.C_UnexpectedError, wResponse.StatusCode),
-                                              ErrorMessageConst.C_UnexpectedErrorCaption,
-                                              MessageBoxButtons.OK,
-                                              MessageBoxIcon.Error);
+                                    ErrorMessageConst.C_UnexpectedErrorCaption,
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
                 this.FAddBook = null;
                 return;
             }

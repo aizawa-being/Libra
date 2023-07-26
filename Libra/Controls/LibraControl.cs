@@ -52,11 +52,11 @@ namespace Libra {
             var wDataTable = new BooksDataTable();
             foreach (var wBook in vBooks) {
                 wDataTable.Rows.Add(wBook.BookId,
-                                   wBook.Title,
-                                   wBook.Author,
-                                   wBook.Publisher,
-                                   wBook.Description,
-                                   wBook.UserName);
+                                    wBook.Title,
+                                    wBook.Author,
+                                    wBook.Publisher,
+                                    wBook.Description,
+                                    wBook.UserName);
             }
             this.FBooksTable.Books = wDataTable;
         }
@@ -68,7 +68,7 @@ namespace Libra {
         public BooksDataTable GetBooksDataTable() {
             return this.FBooksTable.Books;
         }
-        
+
         /// <summary>
         /// 書籍追加画面を開きます。
         /// </summary>
