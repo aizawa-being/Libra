@@ -46,13 +46,18 @@
             this.booksDataSet = new Libra.BooksDataSet();
             this.deleteBookButton = new System.Windows.Forms.Button();
             this.addBookButton = new System.Windows.Forms.Button();
-            this.booksDataSet = new Libra.BooksDataSet();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.authorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.publisherDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.authorColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.publisherColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rentalPanel.SuspendLayout();
             this.searchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.booksDataGridView)).BeginInit();
@@ -138,12 +143,12 @@
             this.booksDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.booksDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.booksDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5});
+            this.bookIdColumn,
+            this.userNameColumn,
+            this.titleColumn,
+            this.authorColumn,
+            this.publisherColumn,
+            this.descriptionColumn});
             this.booksDataGridView.ContextMenuStrip = this.BooksContextMenuStrip;
             this.booksDataGridView.DataMember = "Books";
             this.booksDataGridView.DataSource = this.booksBindingSource;
@@ -267,6 +272,48 @@
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
+            // bookIdColumn
+            // 
+            this.bookIdColumn.DataPropertyName = "BookId";
+            resources.ApplyResources(this.bookIdColumn, "bookIdColumn");
+            this.bookIdColumn.Name = "bookIdColumn";
+            this.bookIdColumn.ReadOnly = true;
+            // 
+            // userNameColumn
+            // 
+            this.userNameColumn.DataPropertyName = "UserName";
+            resources.ApplyResources(this.userNameColumn, "userNameColumn");
+            this.userNameColumn.Name = "userNameColumn";
+            this.userNameColumn.ReadOnly = true;
+            // 
+            // titleColumn
+            // 
+            this.titleColumn.DataPropertyName = "Title";
+            resources.ApplyResources(this.titleColumn, "titleColumn");
+            this.titleColumn.Name = "titleColumn";
+            this.titleColumn.ReadOnly = true;
+            // 
+            // authorColumn
+            // 
+            this.authorColumn.DataPropertyName = "Author";
+            resources.ApplyResources(this.authorColumn, "authorColumn");
+            this.authorColumn.Name = "authorColumn";
+            this.authorColumn.ReadOnly = true;
+            // 
+            // publisherColumn
+            // 
+            this.publisherColumn.DataPropertyName = "Publisher";
+            resources.ApplyResources(this.publisherColumn, "publisherColumn");
+            this.publisherColumn.Name = "publisherColumn";
+            this.publisherColumn.ReadOnly = true;
+            // 
+            // descriptionColumn
+            // 
+            this.descriptionColumn.DataPropertyName = "Description";
+            resources.ApplyResources(this.descriptionColumn, "descriptionColumn");
+            this.descriptionColumn.Name = "descriptionColumn";
+            this.descriptionColumn.ReadOnly = true;
+            // 
             // LibraForm
             // 
             resources.ApplyResources(this, "$this");
@@ -320,12 +367,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn authorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn publisherDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
-        private BooksDataSet booksDataSet;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bookIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn titleColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn authorColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn publisherColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionColumn;
     }
 }

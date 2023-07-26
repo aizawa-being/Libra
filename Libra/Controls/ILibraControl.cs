@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Windows.Forms;
 using static Libra.BooksDataSet;
 
 ﻿namespace Libra {
@@ -29,5 +30,10 @@ using static Libra.BooksDataSet;
         /// 書籍追加画面を開きます。
         /// </summary>
         int OpenAddForm();
+
+        /// <summary>
+        /// 削除フラグを立てます。
+        /// </summary>
+        bool SetDeleteFlag(int vBookId);
     }
 }

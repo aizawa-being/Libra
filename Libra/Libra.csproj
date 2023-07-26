@@ -120,6 +120,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookErrorDefine.cs" />
+    <Compile Include="BookOperationException.cs" />
     <Compile Include="Controls\HttpClientWrapper.cs" />
     <Compile Include="Controls\IAddBookControl.cs" />
     <Compile Include="Controls\IHttpClient.cs" />
