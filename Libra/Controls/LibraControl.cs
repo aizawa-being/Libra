@@ -76,7 +76,7 @@ namespace Libra {
         public BooksDataTable GetBooksDataTable() {
             return this.FBooksTable.Books;
         }
-        
+
         /// <summary>
         /// 書籍追加画面を開きます。
         /// </summary>

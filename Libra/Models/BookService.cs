@@ -14,10 +14,10 @@ namespace Libra {
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public BookService () {
+        public BookService() {
             this.FBookRepository = new BookRepository(new BooksDbContext());
         }
-        
+
         /// <summary>
         /// コンストラクタ
         /// </summary>
