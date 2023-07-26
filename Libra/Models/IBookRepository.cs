@@ -42,5 +42,32 @@ namespace Libra {
         /// データベースを保存する。
         /// </summary>
         void Save();
+
+        /// <summary>
+        /// トランザクションを開始する。
+        /// </summary>
+        /// <returns></returns>
+        void BeginTransaction();
+
+        /// <summary>
+        /// トランザクションをコミットする。
+        /// </summary>
+        void CommitTransaction();
+
+        /// <summary>
+        /// トランザクションをロールバックする。
+        /// </summary>
+        void RollbackTransaction();
+
+        /// <summary>
+        /// データベースが存在するか確認します。
+        /// </summary>
+        /// <returns></returns>
+        bool DatabaseExists();
+
+        /// <summary>
+        /// スキーマ情報のキャッシュをリフレッシュします。
+        /// </summary>
+        void InitializeDatabase();
     }
 }

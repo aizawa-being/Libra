@@ -534,25 +534,25 @@
   <data name="booksDataGridView.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="bookIdDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
     <value>書籍ID</value>
   </data>
-  <data name="bookIdDataGridViewTextBoxColumn1.Visible" type="System.Boolean, mscorlib">
+  <data name="dataGridViewTextBoxColumn1.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="userNameDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+  <data name="dataGridViewTextBoxColumn6.HeaderText" xml:space="preserve">
     <value>利用者名</value>
   </data>
-  <data name="titleDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
     <value>書籍名</value>
   </data>
-  <data name="authorDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+  <data name="dataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
     <value>著者名</value>
   </data>
-  <data name="publisherDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+  <data name="dataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
     <value>出版社</value>
   </data>
-  <data name="descriptionDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+  <data name="dataGridViewTextBoxColumn5.HeaderText" xml:space="preserve">
     <value>概要</value>
   </data>
   <metadata name="BooksContextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -771,40 +771,40 @@
   <data name="&gt;&gt;booksDataSet.Type" xml:space="preserve">
     <value>Libra.BooksDataSet, Models.BooksDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;bookIdDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>bookIdDataGridViewTextBoxColumn</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn1</value>
   </data>
-  <data name="&gt;&gt;bookIdDataGridViewTextBoxColumn.Type" xml:space="preserve">
+  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;userNameDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>userNameDataGridViewTextBoxColumn</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn6.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn6</value>
   </data>
-  <data name="&gt;&gt;userNameDataGridViewTextBoxColumn.Type" xml:space="preserve">
+  <data name="&gt;&gt;dataGridViewTextBoxColumn6.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;titleDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>titleDataGridViewTextBoxColumn</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn2</value>
   </data>
-  <data name="&gt;&gt;titleDataGridViewTextBoxColumn.Type" xml:space="preserve">
+  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;authorDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>authorDataGridViewTextBoxColumn</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn3.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn3</value>
   </data>
-  <data name="&gt;&gt;authorDataGridViewTextBoxColumn.Type" xml:space="preserve">
+  <data name="&gt;&gt;dataGridViewTextBoxColumn3.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;publisherDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>publisherDataGridViewTextBoxColumn</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn4.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn4</value>
   </data>
-  <data name="&gt;&gt;publisherDataGridViewTextBoxColumn.Type" xml:space="preserve">
+  <data name="&gt;&gt;dataGridViewTextBoxColumn4.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>descriptionDataGridViewTextBoxColumn</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn5.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn5</value>
   </data>
-  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn.Type" xml:space="preserve">
+  <data name="&gt;&gt;dataGridViewTextBoxColumn5.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bookIdDataGridViewTextBoxColumn1.Name" xml:space="preserve">

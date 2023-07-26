@@ -49,7 +49,7 @@ namespace LibraUnitTest {
                 wBookRepository.Save();
 
                 var wDeletedBooks = wBookRepository.GetBooks().ToList();
-
+                
                 Assert.AreEqual(3, wBooks.Count());
                 Assert.AreEqual(2, wDeletedBooks.Count());
                 Assert.AreEqual(false, wDeletedBooks.Exists(b => b.BookId.Equals(1)));
@@ -62,13 +62,14 @@ namespace LibraUnitTest {
         public void 書籍全取得テスト() {
             var wCreateBookDb = new CreateBooksDb();
             using (var wDbContext = wCreateBookDb.CreateInMemoryDb(true)) {
-                var wBookRepository = new BookRepository(wDbContext);
-                var wBooks = wBookRepository.GetBooks().ToList();
+
+                var wBooksRepository = new BookRepository(wDbContext);
+                var wBooks = wBooksRepository.GetBooks().ToList();
 
                 Assert.AreEqual(3, wBooks.Count());
-                Assert.AreEqual(this.Books[1].Title, wBooks[0].Title);
-                Assert.AreEqual(this.Books[2].Title, wBooks[1].Title);
-                Assert.AreEqual(this.Books[3].Title, wBooks[2].Title);
+                Assert.AreEqual("テストタイトル1", wBooks[0].Title);
+                Assert.AreEqual("テストタイトル2", wBooks[1].Title);
+                Assert.AreEqual("テストタイトル3", wBooks[2].Title);
             }
         }
 

@@ -34,6 +34,14 @@ namespace Libra {
         bool ExistAddBook();
 
         /// <summary>
+        /// 取得した書籍情報をDBに登録します。
+        /// 書籍追加成功時、追加した書籍のIDが通知されます。
+        /// 書籍追加失敗時は、-1が渡されます。
+        /// </summary>
+        /// <returns>int </returns>
+        bool TryRegisterAddBook(Book vAddBook, out int vBookId);
+
+        /// <summary>
         /// メッセージボックスを表示します。
         /// </summary>
         /// <param name="vMessage"></param>

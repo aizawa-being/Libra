@@ -25,12 +25,12 @@ namespace Libra {
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        /// <param name="vAddBookController"></param>
-        public AddBookForm(IAddBookControl vAddBookController) {
-            this.FAddBookControl = vAddBookController;
+        /// <param name="vAddBookControl"></param>
+        public AddBookForm(IAddBookControl vAddBookControl) {
+            this.FAddBookControl = vAddBookControl;
             InitializeComponent();
         }
-
+        
         /// <summary>
         /// 書籍情報取得ボタン押下のイベントハンドラ
         /// </summary>
@@ -52,23 +52,22 @@ namespace Libra {
                 this.authorLabel.Text = "";
             }
         }
-
+        
         /// <summary>
         /// 追加ボタン押下のイベントハンドラ
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void AddButtonClick(object sender, EventArgs e) {
-
-        }
-
-        /// <summary>
-        /// キャンセルボタン押下のイベントハンドラ
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void CancelButtonClick(object sender, EventArgs e) {
-            
+            this.addButton.Focus();
+            var wAddBook = this.FAddBookControl.GetAddBook();
+            if (this.FAddBookControl.TryRegisterAddBook(wAddBook, out int vBookId)) {
+                // 書籍追加に成功した場合
+                this.AddBookId = vBookId;
+                // フォームを閉じる
+                this.Close();
+            }
+            return;
         }
 
         /// <summary>

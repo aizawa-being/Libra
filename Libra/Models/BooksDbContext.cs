@@ -1,4 +1,4 @@
-namespace Libra {
+﻿namespace Libra {
     using SQLite.CodeFirst;
     using System.Data.Common;
     using System.Data.Entity;

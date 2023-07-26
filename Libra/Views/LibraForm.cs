@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 using System.Windows.Forms;
 
 namespace Libra {
@@ -82,8 +83,25 @@ namespace Libra {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void AddBook_Click(object sender, EventArgs e) {
-            this.addBookButton.Focus();
-            this.FLibraControl.OpenAddForm();
+            var wAddBookId = this.FLibraControl.OpenAddForm();
+            if (wAddBookId == -1) {
+                // 書籍を追加していない場合は何もしない
+                return;
+            }
+            // 書籍を追加した場合
+            // 書籍一覧グリッドを更新します。
+            this.FLibraControl.InitializeBookList();
+            this.booksDataGridView.DataSource = this.FLibraControl.GetBooksDataTable();
+
+            // 追加した書籍にフォーカスします。
+            int wColumnIndex = this.booksDataGridView.Columns[0].Index;
+            foreach (DataGridViewRow wRow in this.booksDataGridView.Rows) {
+                if (wRow.Cells[wColumnIndex].Value != null && (int)wRow.Cells[wColumnIndex].Value == wAddBookId) {
+                    wRow.Selected = true;
+                    this.booksDataGridView.FirstDisplayedScrollingRowIndex = wRow.Index;
+                    break;
+                }
+            }
         }
 
         /// <summary>

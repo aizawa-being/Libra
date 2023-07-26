@@ -95,13 +95,14 @@
       <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataGridViewTest.cs" />
+    <Compile Include="AddBookUnitTest.cs" />
     <Compile Include="CreateBooksDb.cs" />
     <Compile Include="MockHttpContent.cs" />
     <Compile Include="OpenBdUnitTest.cs" />
+    <Reference Include="System.Xml" />
+    <Compile Include="DataGridViewTest.cs" />
     <Compile Include="DBInterfaceUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace LibraUnitTest {
     public class MockHttpContent : HttpContent {
         private readonly string FContent;
-
+        
         public MockHttpContent(string vContent) {
             this.FContent = vContent;
         }
