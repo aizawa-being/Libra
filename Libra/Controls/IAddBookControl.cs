@@ -40,14 +40,5 @@ namespace Libra {
         /// </summary>
         /// <returns>int </returns>
         bool TryRegisterAddBook(Book vAddBook, out int vBookId);
-
-        /// <summary>
-        /// メッセージボックスを表示します。
-        /// </summary>
-        /// <param name="vMessage"></param>
-        /// <param name="vCaption"></param>
-        /// <param name="vButton"></param>
-        /// <param name="vIcon"></param>
-        DialogResult MessageBoxShow(string vMessage, string vCaption, MessageBoxButtons vButton, MessageBoxIcon vIcon);
     }
 }

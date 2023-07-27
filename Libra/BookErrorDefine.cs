@@ -1,29 +1,9 @@
-﻿using System.Windows.Forms;
-
-namespace Libra {
+﻿namespace Libra {
     /// <summary>
-    /// 書籍エラー列挙型クラス
+    /// 書籍エラー定義クラス
     /// </summary>
     public class BookErrorDefine {
-        /// <summary>
-        /// エラーメッセージ
-        /// </summary>
-        public string ErrorMessage { get; private set; }
-
-        /// <summary>
-        /// エラーキャプション
-        /// </summary>
-        public string ErrorCaption { get; private set; }
-
-        /// <summary>
-        /// メッセージボックスボタン
-        /// </summary>
-        public MessageBoxButtons BoxButton { get; private set; }
-
-        /// <summary>
-        /// メッセージボックスアイコン
-        /// </summary>
-        public MessageBoxIcon BoxIcon { get; private set; }
+        public MessageTypeEnum FMessageType { get; set; }
 
         /// <summary>
         /// コンストラクタ
@@ -41,26 +21,17 @@ namespace Libra {
             switch (vErrorType) {
                 case ErrorTypeEnum.AlreadyDeleted:
                     // 削除済みエラー
-                    this.ErrorMessage = ErrorMessageConst.C_AlreadyDeleted;
-                    this.ErrorCaption = ErrorMessageConst.C_AlreadyDeletedCaption;
-                    this.BoxButton = MessageBoxButtons.OK;
-                    this.BoxIcon = MessageBoxIcon.Information;
+                    this.FMessageType = MessageTypeEnum.AlreadyDeleted;
                     return;
 
                 case ErrorTypeEnum.IsBorrowed:
                     // 貸出中エラー
-                    this.ErrorMessage = ErrorMessageConst.C_IsBorrowed;
-                    this.ErrorCaption = ErrorMessageConst.C_IsBorrowedCaption;
-                    this.BoxButton = MessageBoxButtons.OK;
-                    this.BoxIcon = MessageBoxIcon.Information;
+                    this.FMessageType = MessageTypeEnum.IsBorrowed;
                     return;
 
                 default:
                     // 予期せぬエラー
-                    this.ErrorMessage = ErrorMessageConst.C_UnexpectedError;
-                    this.ErrorCaption = ErrorMessageConst.C_UnexpectedErrorCaption;
-                    this.BoxButton = MessageBoxButtons.OK;
-                    this.BoxIcon = MessageBoxIcon.Error;
+                    this.FMessageType = MessageTypeEnum.UnexpectedError;
                     return;
             }
         }

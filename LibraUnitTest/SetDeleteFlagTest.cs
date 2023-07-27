@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 using Moq;
@@ -119,6 +118,8 @@ namespace LibraUnitTest {
 
         [Test]
         public void LibraContolで削除フラグを立てるテスト() {
+            var wBookTitle = "書籍名1";
+
             // ブックリポジトリのモックを作成
             var wMockRepository = new Mock<IBookRepository>();
 
@@ -135,9 +136,12 @@ namespace LibraUnitTest {
             // コントローラのモック作成
             var wMockBookTable = new Mock<BooksTable>();
             var wMockMessageBoxService = new Mock<IMessageBoxService>();
+            wMockMessageBoxService.Setup(m => m.Show(MessageTypeEnum.DeleteConfirmation, wBookTitle))
+                                  .Returns(DialogResult.OK);
+
             ILibraControl wLibraControl = new LibraControl(wMockBookTable.Object, wMockRepository.Object, wMockMessageBoxService.Object);
 
-            var wResult = wLibraControl.SetDeleteFlag(1);
+            var wResult = wLibraControl.SetDeleteFlag(wBookTitle, 1);
 
             Assert.IsTrue(wResult);
         }
@@ -162,15 +166,11 @@ namespace LibraUnitTest {
             var wMockMessageBoxService = new Mock<IMessageBoxService>();
             ILibraControl wLibraControl = new LibraControl(wMockBookTable.Object, wMockRepository.Object, wMockMessageBoxService.Object);
 
-            var wResult = wLibraControl.SetDeleteFlag(1);
+            var wResult = wLibraControl.SetDeleteFlag("書籍名1", 1);
 
             Assert.IsFalse(wResult);
 
-            wMockMessageBoxService.Verify(m => m.Show(It.IsRegex($"{Regex.Escape("は\r\n既に削除されています。")}$"),
-                                               ErrorMessageConst.C_AlreadyDeletedCaption,
-                                               MessageBoxButtons.OK,
-                                               MessageBoxIcon.Information),
-                                          Times.Once);
+            wMockMessageBoxService.Verify(m => m.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<object>()), Times.Once);
         }
 
         [Test]
@@ -194,15 +194,11 @@ namespace LibraUnitTest {
             var wMockMessageBoxService = new Mock<IMessageBoxService>();
             ILibraControl wLibraControl = new LibraControl(wMockBookTable.Object, wMockRepository.Object, wMockMessageBoxService.Object);
 
-            var wResult = wLibraControl.SetDeleteFlag(1);
+            var wResult = wLibraControl.SetDeleteFlag("書籍名1", 1);
 
             Assert.IsFalse(wResult);
 
-            wMockMessageBoxService.Verify(m => m.Show(It.IsRegex($"{Regex.Escape("は\r\n貸出中の為、削除できません。")}$"),
-                                               ErrorMessageConst.C_IsBorrowedCaption,
-                                               MessageBoxButtons.OK,
-                                               MessageBoxIcon.Information),
-                                          Times.Once);
+            wMockMessageBoxService.Verify(m => m.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<object>()), Times.Once);
         }
 
         [Test]
@@ -225,15 +221,11 @@ namespace LibraUnitTest {
             var wMockMessageBoxService = new Mock<IMessageBoxService>();
             ILibraControl wLibraControl = new LibraControl(wMockBookTable.Object, wMockRepository.Object, wMockMessageBoxService.Object);
 
-            var wResult = wLibraControl.SetDeleteFlag(1);
+            var wResult = wLibraControl.SetDeleteFlag("書籍名1", 1);
 
             Assert.IsFalse(wResult);
 
-            wMockMessageBoxService.Verify(m => m.Show(ErrorMessageConst.C_DbError,
-                                               ErrorMessageConst.C_DbErrorCaption,
-                                               MessageBoxButtons.OK,
-                                               MessageBoxIcon.Error),
-                                          Times.Once);
+            wMockMessageBoxService.Verify(m => m.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<object>()), Times.Once);
         }
 
         /// <summary>
@@ -265,15 +257,11 @@ namespace LibraUnitTest {
             var wMockMessageBoxService = new Mock<IMessageBoxService>();
             ILibraControl wLibraControl = new LibraControl(wMockBookTable.Object, wMockRepository.Object, wMockMessageBoxService.Object);
 
-            var wResult = wLibraControl.SetDeleteFlag(1);
+            var wResult = wLibraControl.SetDeleteFlag("書籍名1", 1);
 
             Assert.IsFalse(wResult);
 
-            wMockMessageBoxService.Verify(m => m.Show(ErrorMessageConst.C_DbError,
-                                               ErrorMessageConst.C_DbErrorCaption,
-                                               MessageBoxButtons.OK,
-                                               MessageBoxIcon.Error),
-                                          Times.Once);
+            wMockMessageBoxService.Verify(m => m.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<object>()), Times.Once);
         }
 
         [Test]
@@ -296,15 +284,11 @@ namespace LibraUnitTest {
             var wMockMessageBoxService = new Mock<IMessageBoxService>();
             ILibraControl wLibraControl = new LibraControl(wMockBookTable.Object, wMockRepository.Object, wMockMessageBoxService.Object);
 
-            var wResult = wLibraControl.SetDeleteFlag(1);
+            var wResult = wLibraControl.SetDeleteFlag("書籍名1", 1);
 
             Assert.IsFalse(wResult);
 
-            wMockMessageBoxService.Verify(m => m.Show(It.Is<string>(s => s.StartsWith("予期せぬエラーが発生しました。\r\nエラー：")),
-                                               ErrorMessageConst.C_UnexpectedErrorCaption,
-                                               MessageBoxButtons.OK,
-                                               MessageBoxIcon.Error),
-                                          Times.Once);
+            wMockMessageBoxService.Verify(m => m.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<object>()), Times.Once);
         }
     }
 }

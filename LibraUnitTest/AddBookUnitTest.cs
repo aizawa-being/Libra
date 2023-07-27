@@ -76,7 +76,7 @@ namespace LibraUnitTest {
             var wMessageBoxMock = new Mock<IMessageBoxService>();
 
             wMessageBoxMock
-                .Setup(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()))
+                .Setup(x => x.Show(It.IsAny<MessageTypeEnum>()))
                 .Returns(DialogResult.OK);
 
             IOpenBdConnect wOpenBdConnect = new OpenBdConnect();
@@ -98,7 +98,7 @@ namespace LibraUnitTest {
             wMockRepository.Verify(m => m.BeginTransaction(), Times.Once);
             wMockRepository.Verify(m => m.CommitTransaction(), Times.Once);
             wMockRepository.Verify(m => m.RollbackTransaction(), Times.Never);
-            wMessageBoxMock.Verify(m => m.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()), Times.Never);
+            wMessageBoxMock.Verify(m => m.Show(It.IsAny<MessageTypeEnum>()), Times.Never);
             Assert.IsTrue(wResult);
             Assert.AreEqual(vBookId, wBookId);
         }
@@ -118,7 +118,7 @@ namespace LibraUnitTest {
             var wMessageBoxMock = new Mock<IMessageBoxService>();
 
             wMessageBoxMock
-                .Setup(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()))
+                .Setup(x => x.Show(It.IsAny<MessageTypeEnum>()))
                 .Returns(DialogResult.OK);
 
             // コントローラのモックを作成
@@ -134,7 +134,7 @@ namespace LibraUnitTest {
             wMockRepository.Verify(m => m.BeginTransaction(), Times.Never);
             wMockRepository.Verify(m => m.CommitTransaction(), Times.Never);
             wMockRepository.Verify(m => m.RollbackTransaction(), Times.Never);
-            wMessageBoxMock.Verify(m => m.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()), Times.Once);
+            wMessageBoxMock.Verify(m => m.Show(It.IsAny<MessageTypeEnum>()), Times.Once);
         }
 
         [Test]
@@ -151,9 +151,8 @@ namespace LibraUnitTest {
             // メッセージボックスのモックを作成
             var wMessageBoxMock = new Mock<IMessageBoxService>();
 
-            wMessageBoxMock
-                .Setup(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()))
-                .Returns(DialogResult.OK);
+            wMessageBoxMock.Setup(x => x.Show(It.IsAny<MessageTypeEnum>()))
+                           .Returns(DialogResult.Cancel);
 
             // コントローラのモックを作成
             IOpenBdConnect wOpenBdConnect = new OpenBdConnect();
@@ -170,10 +169,7 @@ namespace LibraUnitTest {
             wMockRepository.Verify(m => m.CommitTransaction(), Times.Never);
             wMockRepository.Verify(m => m.RollbackTransaction(), Times.Once);
 
-            wMessageBoxMock.Verify(m => m.Show(ErrorMessageConst.C_DbError,
-                                               ErrorMessageConst.C_DbErrorCaprion,
-                                               MessageBoxButtons.OK,
-                                               MessageBoxIcon.Error),
+            wMessageBoxMock.Verify(m => m.Show(MessageTypeEnum.DbError),
                                         Times.Once);
         }
 
@@ -192,7 +188,7 @@ namespace LibraUnitTest {
             var wMessageBoxMock = new Mock<IMessageBoxService>();
 
             wMessageBoxMock
-                .Setup(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()))
+                .Setup(x => x.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<object>()))
                 .Returns(DialogResult.OK);
 
             // コントローラのモックを作成
@@ -210,11 +206,7 @@ namespace LibraUnitTest {
             wMockRepository.Verify(m => m.CommitTransaction(), Times.Never);
             wMockRepository.Verify(m => m.RollbackTransaction(), Times.Once);
 
-            wMessageBoxMock.Verify(m => m.Show(It.IsAny<string>(),
-                                               ErrorMessageConst.C_UnexpectedErrorCaprion,
-                                               MessageBoxButtons.OK,
-                                               MessageBoxIcon.Error),
-                                          Times.Once);
+            wMessageBoxMock.Verify(m => m.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<object>()), Times.Once);
         }
 
         /// <summary>

@@ -127,7 +127,7 @@
     <Compile Include="Controls\IHttpClient.cs" />
     <Compile Include="Controls\IOpenBdConnect.cs" />
     <Compile Include="Controls\OpenBdConnect.cs" />
-    <Compile Include="ErrorMessageConst.cs" />
+    <Compile Include="MessageConst.cs" />
     <Compile Include="Controls\AddBookControl.cs" />
     <Compile Include="Controls\LibraControl.cs" />
     <Compile Include="Controls\ILibraControl.cs" />

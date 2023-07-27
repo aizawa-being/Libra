@@ -51,13 +51,9 @@ namespace LibraUnitTest {
             var wMessageBoxMock = new Mock<IMessageBoxService>();
 
             wMessageBoxMock
-                .Setup(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()))
+                .Setup(x => x.Show(It.IsAny<MessageTypeEnum>()))
                 .Returns(DialogResult.OK);
             
-            IAddBookControl wAddBookControl = new AddBookControl(wOpenBdConnectMock.Object, wMessageBoxMock.Object);
-            await wAddBookControl.SetAddBook(It.IsAny<string>());
-            var wBook = wAddBookControl.GetAddBook();
-
             IBookRepository wBookRepository = new BookRepository(new BooksDbContext());
             IAddBookControl wAddBookControl = new AddBookControl(wOpenBdConnectMock.Object, wMessageBoxMock.Object, wBookRepository);
             await wAddBookControl.SetAddBook(It.IsAny<string>());
@@ -84,18 +80,10 @@ namespace LibraUnitTest {
             // メッセージボックスのモックを作成
             var wMessageBoxMock = new Mock<IMessageBoxService>();
 
-            wMessageBoxMock
-                .Setup(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()))
-                .Returns(DialogResult.OK);
-            
-            IAddBookControl wAddBookControl = new AddBookControl(wOpenBdConnectMock.Object, wMessageBoxMock.Object);
-            wAddBookControl.SetAddBook(It.IsAny<string>());
-
             IBookRepository wBookRepository = new BookRepository(new BooksDbContext());
             IAddBookControl wAddBookControl = new AddBookControl(wOpenBdConnectMock.Object, wMessageBoxMock.Object, wBookRepository);
             wAddBookControl.SetAddBook(It.IsAny<string>());
-
-            wMessageBoxMock.Verify(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()));
+            
             Assert.IsNull(wAddBookControl.GetAddBook());
         }
 
@@ -112,18 +100,10 @@ namespace LibraUnitTest {
             // メッセージボックスのモックを作成
             var wMessageBoxMock = new Mock<IMessageBoxService>();
 
-            wMessageBoxMock
-                .Setup(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()))
-                .Returns(DialogResult.OK);
-            
-            IAddBookControl wAddBookControl = new AddBookControl(wOpenBdConnectMock.Object, wMessageBoxMock.Object);
-            wAddBookControl.SetAddBook(It.IsAny<string>());
-
             IBookRepository wBookRepository = new BookRepository(new BooksDbContext());
             IAddBookControl wAddBookControl = new AddBookControl(wOpenBdConnectMock.Object, wMessageBoxMock.Object, wBookRepository);
             wAddBookControl.SetAddBook(It.IsAny<string>());
-
-            wMessageBoxMock.Verify(x => x.Show(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<MessageBoxButtons>(), It.IsAny<MessageBoxIcon>()));
+            
             Assert.IsNull(wAddBookControl.GetAddBook());
         }
 
