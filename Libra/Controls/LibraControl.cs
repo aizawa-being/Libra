@@ -15,24 +15,24 @@ namespace Libra {
     /// </summary>
     public class LibraControl : ILibraControl {
         private readonly BooksTable FBooksTable;
-        private readonly IBookRepository FBookRepository;
+        private readonly Func<IBookRepository> FBookRepository;
         private readonly IMessageBoxService FMessageBoxService;
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public LibraControl() {
+        public LibraControl(Func<IBookRepository> vFunc) {
             this.FBooksTable = new BooksTable();
-            this.FBookRepository = new BookRepository(new BooksDbContext());
+            this.FBookRepository = vFunc;
             this.FMessageBoxService = new MessageBoxService();
         }
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public LibraControl(BooksTable vBooksTable, IBookRepository vBookRepository, IMessageBoxService vMessageBoxService) {
+        public LibraControl(BooksTable vBooksTable, Func<IBookRepository> vFunc, IMessageBoxService vMessageBoxService) {
             this.FBooksTable = vBooksTable;
-            this.FBookRepository = vBookRepository;
+            this.FBookRepository = vFunc;
             this.FMessageBoxService = vMessageBoxService;
         }
 
@@ -40,7 +40,7 @@ namespace Libra {
         /// 書籍追加画面を開きます。
         /// </summary>
         public int OpenAddForm() {
-            IAddBookControl wAddBookControl = new AddBookControl();
+            IAddBookControl wAddBookControl = new AddBookControl(this.FBookRepository);
             return wAddBookControl.ShowAddBookForm();
         }
 
@@ -106,8 +106,8 @@ namespace Libra {
             }
 
             try {
-                using (var wBooksService = new BookService(this.FBookRepository)) {
-                    wBooksService.SetDeleteFlag(vBookId);
+                using (var wBookService = new BookService(this.FBookRepository)) {
+                    wBookService.SetDeleteFlag(vBookId);
                     wResult = true;
                 }
             } catch (BookOperationException vException) {

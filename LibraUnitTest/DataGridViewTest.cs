@@ -2,6 +2,7 @@
 using System.Linq;
 using NUnit.Framework;
 using Libra;
+using Moq;
 
 namespace LibraUnitTest {
     [TestFixture]
@@ -10,7 +11,8 @@ namespace LibraUnitTest {
         [TestCase(0, "", "", "", "")]
         public void 書籍一覧グリッド表示テスト(int vBookId, string vTitle, string vAuthor, string vPublisher, string vDescription) {
 
-            var wLibraControl = new LibraControl();
+            var MockContext = new Mock<BooksDbContext>();
+            var wLibraControl = new LibraControl(() => new BookRepository(MockContext.Object));
 
             var wBooks = new List<Book> {
                 new Book { BookId = vBookId,

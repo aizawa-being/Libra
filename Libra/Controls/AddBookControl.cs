@@ -15,15 +15,15 @@ namespace Libra {
         private Book FAddBook;
         private readonly IOpenBdConnect FOpenBdConnect;
         private readonly IMessageBoxService FMessageBoxService;
-        private readonly IBookRepository FBookRepository;
+        private readonly Func<IBookRepository> FBookRepository;
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public AddBookControl() {
+        public AddBookControl(Func<IBookRepository> vFunc) {
             this.FOpenBdConnect = new OpenBdConnect();
             this.FMessageBoxService = new MessageBoxService();
-            this.FBookRepository = new BookRepository(new BooksDbContext());
+            this.FBookRepository = vFunc;
         }
 
         /// <summary>
@@ -32,10 +32,10 @@ namespace Libra {
         /// <param name="vOpenBdConnect"></param>
         /// <param name="vMessageBoxService"></param>
         /// <param name="vBookRepository"></param>
-        public AddBookControl(IOpenBdConnect vOpenBdConnect, IMessageBoxService vMessageBoxService, IBookRepository vBookRepository) {
+        public AddBookControl(IOpenBdConnect vOpenBdConnect, IMessageBoxService vMessageBoxService, Func<IBookRepository> vFunc) {
             this.FOpenBdConnect = vOpenBdConnect;
             this.FMessageBoxService = vMessageBoxService;
-            this.FBookRepository = vBookRepository;
+            this.FBookRepository = vFunc;
         }
 
         /// <summary>
@@ -122,11 +122,6 @@ namespace Libra {
         /// <returns>int </returns>
         public bool TryRegisterAddBook(Book vAddBook, out int vBookId) {
             if (vAddBook != null) {
-                // データ追加前にデータベースが削除されている場合、テーブルを再構築する。
-                // EF6の場合、キャッシュにテーブル情報が残っているとテーブルが自動作成されない。
-                if (!this.FBookRepository.DatabaseExists()) {
-                    this.FBookRepository.InitializeDatabase();
-                }
                 try {
                     using (var wBookService = new BookService(this.FBookRepository)) {
                         vBookId = wBookService.AddBook(vAddBook);

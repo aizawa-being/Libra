@@ -98,23 +98,6 @@ namespace Libra {
             this.FTransaction = null;
         }
 
-        /// <summary>
-        /// データベースが存在するか確認します。
-        /// </summary>
-        /// <returns></returns>
-        public bool DatabaseExists() {
-            var wConnectionString = this.FContext.Database.Connection.ConnectionString;
-            var wDataSource = new SQLiteConnectionStringBuilder(wConnectionString).DataSource;
-            return File.Exists(wDataSource);
-        }
-
-        /// <summary>
-        /// スキーマ情報のキャッシュをリフレッシュします。
-        /// </summary>
-        public void InitializeDatabase() {
-            this.FContext.Database.Initialize(true);
-        }
-
         private bool FDisposed = false;
         /// <summary>
         /// リソースを破棄します。

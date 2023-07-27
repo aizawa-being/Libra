@@ -55,7 +55,7 @@ namespace LibraUnitTest {
                 .Returns(DialogResult.OK);
             
             IBookRepository wBookRepository = new BookRepository(new BooksDbContext());
-            IAddBookControl wAddBookControl = new AddBookControl(wOpenBdConnectMock.Object, wMessageBoxMock.Object, wBookRepository);
+            IAddBookControl wAddBookControl = new AddBookControl(wOpenBdConnectMock.Object, wMessageBoxMock.Object, () => wBookRepository);
             await wAddBookControl.SetAddBook(It.IsAny<string>());
             var wBook = wAddBookControl.GetAddBook();
 
@@ -81,7 +81,7 @@ namespace LibraUnitTest {
             var wMessageBoxMock = new Mock<IMessageBoxService>();
 
             IBookRepository wBookRepository = new BookRepository(new BooksDbContext());
-            IAddBookControl wAddBookControl = new AddBookControl(wOpenBdConnectMock.Object, wMessageBoxMock.Object, wBookRepository);
+            IAddBookControl wAddBookControl = new AddBookControl(wOpenBdConnectMock.Object, wMessageBoxMock.Object, () => wBookRepository);
             wAddBookControl.SetAddBook(It.IsAny<string>());
             
             Assert.IsNull(wAddBookControl.GetAddBook());
@@ -101,7 +101,7 @@ namespace LibraUnitTest {
             var wMessageBoxMock = new Mock<IMessageBoxService>();
 
             IBookRepository wBookRepository = new BookRepository(new BooksDbContext());
-            IAddBookControl wAddBookControl = new AddBookControl(wOpenBdConnectMock.Object, wMessageBoxMock.Object, wBookRepository);
+            IAddBookControl wAddBookControl = new AddBookControl(wOpenBdConnectMock.Object, wMessageBoxMock.Object, () => wBookRepository);
             wAddBookControl.SetAddBook(It.IsAny<string>());
             
             Assert.IsNull(wAddBookControl.GetAddBook());

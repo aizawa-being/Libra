@@ -18,7 +18,7 @@ namespace Libra {
         /// コンストラクタ
         /// </summary>
         public AddBookForm() {
-            this.FAddBookControl = new AddBookControl();
+            this.FAddBookControl = new AddBookControl(() => new BookRepository(new BooksDbContext()));
             InitializeComponent();
         }
 
