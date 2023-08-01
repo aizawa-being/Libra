@@ -1,6 +1,6 @@
 ﻿namespace Libra {
     /// <summary>
-    /// エラーメッセージの定数クラスです。
+    /// メッセージの定数クラスです。
     /// </summary>
     public static class MessageConst {
         /// <summary>

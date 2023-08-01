@@ -113,6 +113,7 @@ namespace Libra {
             } catch (BookOperationException vException) {
                 var wBookError = new BookErrorDefine(vException.ErrorType);
                 this.FMessageBoxService.Show(wBookError.FMessageType, vException.BookTitle);
+
             } catch (DbException) {
                 // DBエラー発生
                 this.FMessageBoxService.Show(MessageTypeEnum.DbError);

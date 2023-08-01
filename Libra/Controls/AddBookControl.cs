@@ -3,6 +3,7 @@ using System.Net;
 using System.Threading.Tasks;
 
 using System.Data.Common;
+using System.Data.Entity.Infrastructure;
 
 namespace Libra {
     /// <summary>
@@ -130,6 +131,10 @@ namespace Libra {
                         return true;
                     }
                 } catch (DbException) {
+                    // データベースエラー発生
+                    this.FMessageBoxService.Show(MessageTypeEnum.DbError);
+
+                } catch (DbUpdateException) {
                     // データベースエラー発生
                     this.FMessageBoxService.Show(MessageTypeEnum.DbError);
 
