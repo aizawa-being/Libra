@@ -120,14 +120,14 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BookErrorDefine.cs" />
-    <Compile Include="BookOperationException.cs" />
+    <Compile Include="Models\BookErrorDefine.cs" />
+    <Compile Include="Models\BookOperationException.cs" />
     <Compile Include="Controls\HttpClientWrapper.cs" />
     <Compile Include="Controls\IAddBookControl.cs" />
     <Compile Include="Controls\IHttpClient.cs" />
     <Compile Include="Controls\IOpenBdConnect.cs" />
     <Compile Include="Controls\OpenBdConnect.cs" />
-    <Compile Include="MessageConst.cs" />
+    <Compile Include="Models\MessageConst.cs" />
     <Compile Include="Controls\AddBookControl.cs" />
     <Compile Include="Controls\LibraControl.cs" />
     <Compile Include="Controls\ILibraControl.cs" />
@@ -139,15 +139,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BooksDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Models\IMessageBoxService.cs" />
-    <Compile Include="Models\MessageBoxService.cs" />
+    <Compile Include="Controls\IMessageBoxService.cs" />
+    <Compile Include="Controls\MessageBoxService.cs" />
     <Compile Include="Views\AddBookForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\AddBookForm.Designer.cs">
       <DependentUpon>AddBookForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\BookService.cs" />
+    <Compile Include="Controls\BookService.cs" />
     <Compile Include="Models\BooksTable.cs" />
     <Compile Include="Views\LibraForm.cs">
       <SubType>Form</SubType>
