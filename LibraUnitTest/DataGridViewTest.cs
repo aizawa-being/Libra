@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+
 using NUnit.Framework;
-using Libra;
 using Moq;
+
+using Libra;
 
 namespace LibraUnitTest {
     [TestFixture]

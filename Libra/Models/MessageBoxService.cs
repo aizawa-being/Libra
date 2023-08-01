@@ -104,6 +104,9 @@ namespace Libra {
         }
     }
 
+    /// <summary>
+    /// メッセージ種別の列挙クラス
+    /// </summary>
     public enum MessageTypeEnum {
 
         /// <summary>
