@@ -51,7 +51,7 @@ namespace LibraUnitTest {
             var wMessageBoxMock = new Mock<IMessageBoxService>();
 
             wMessageBoxMock
-                .Setup(x => x.Show(It.IsAny<MessageTypeEnum>()))
+                .Setup(x => x.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<string>()))
                 .Returns(DialogResult.OK);
             
             IBookRepository wBookRepository = new BookRepository(new BooksDbContext());

@@ -5,15 +5,6 @@ namespace Libra {
     /// メッセージボックスを表示します。
     /// </summary>
     public class MessageBoxService : IMessageBoxService {
-        
-        /// <summary>
-        /// メッセージタイプ毎に既定のメッセージボックスを表示します。
-        /// </summary>
-        /// <param name="vMessageType"></param>
-        /// <returns></returns>
-        public DialogResult Show(MessageTypeEnum vMessageType) {
-            return this.Show(vMessageType, "");
-        }
 
         /// <summary>
         /// メッセージタイプ毎に既定のメッセージボックスを表示します。
@@ -21,7 +12,7 @@ namespace Libra {
         /// <param name="vMessageType"></param>
         /// <param name="vAppendMessage"></param>
         /// <returns></returns>
-        public DialogResult Show(MessageTypeEnum vMessageType, object vAppendMessage) {
+        public DialogResult Show(MessageTypeEnum vMessageType, object vAppendMessage = null) {
             switch (vMessageType) {
                 case MessageTypeEnum.BookInfoUnacquiredError:
                     // 書籍情報未取得

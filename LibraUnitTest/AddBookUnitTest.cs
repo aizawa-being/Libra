@@ -76,7 +76,7 @@ namespace LibraUnitTest {
             var wMessageBoxMock = new Mock<IMessageBoxService>();
 
             wMessageBoxMock
-                .Setup(x => x.Show(It.IsAny<MessageTypeEnum>()))
+                .Setup(x => x.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<string>()))
                 .Returns(DialogResult.OK);
 
             IOpenBdConnect wOpenBdConnect = new OpenBdConnect();
@@ -98,7 +98,7 @@ namespace LibraUnitTest {
             wMockRepository.Verify(m => m.BeginTransaction(), Times.Once);
             wMockRepository.Verify(m => m.CommitTransaction(), Times.Once);
             wMockRepository.Verify(m => m.RollbackTransaction(), Times.Never);
-            wMessageBoxMock.Verify(m => m.Show(It.IsAny<MessageTypeEnum>()), Times.Never);
+            wMessageBoxMock.Verify(m => m.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<string>()), Times.Never);
             Assert.IsTrue(wResult);
             Assert.AreEqual(vBookId, wBookId);
         }
@@ -118,7 +118,7 @@ namespace LibraUnitTest {
             var wMessageBoxMock = new Mock<IMessageBoxService>();
 
             wMessageBoxMock
-                .Setup(x => x.Show(It.IsAny<MessageTypeEnum>()))
+                .Setup(x => x.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<string>()))
                 .Returns(DialogResult.OK);
 
             // コントローラのモックを作成
@@ -134,7 +134,7 @@ namespace LibraUnitTest {
             wMockRepository.Verify(m => m.BeginTransaction(), Times.Never);
             wMockRepository.Verify(m => m.CommitTransaction(), Times.Never);
             wMockRepository.Verify(m => m.RollbackTransaction(), Times.Never);
-            wMessageBoxMock.Verify(m => m.Show(It.IsAny<MessageTypeEnum>()), Times.Once);
+            wMessageBoxMock.Verify(m => m.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<string>()), Times.Once);
         }
 
         [Test]
@@ -151,7 +151,7 @@ namespace LibraUnitTest {
             // メッセージボックスのモックを作成
             var wMessageBoxMock = new Mock<IMessageBoxService>();
 
-            wMessageBoxMock.Setup(x => x.Show(It.IsAny<MessageTypeEnum>()))
+            wMessageBoxMock.Setup(x => x.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<string>()))
                            .Returns(DialogResult.Cancel);
 
             // コントローラのモックを作成
@@ -169,7 +169,7 @@ namespace LibraUnitTest {
             wMockRepository.Verify(m => m.CommitTransaction(), Times.Never);
             wMockRepository.Verify(m => m.RollbackTransaction(), Times.Once);
 
-            wMessageBoxMock.Verify(m => m.Show(MessageTypeEnum.DbError),
+            wMessageBoxMock.Verify(m => m.Show(MessageTypeEnum.DbError, It.IsAny<string>()),
                                         Times.Once);
         }
 
