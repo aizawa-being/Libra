@@ -129,6 +129,7 @@
     <Compile Include="Controls\IHttpClient.cs" />
     <Compile Include="Controls\IOpenBdConnect.cs" />
     <Compile Include="Controls\OpenBdConnect.cs" />
+    <Compile Include="Models\ErrorTypeEnum.cs" />
     <Compile Include="Models\MessageConst.cs" />
     <Compile Include="Controls\AddBookControl.cs" />
     <Compile Include="Controls\LibraControl.cs" />
@@ -143,6 +144,7 @@
     </Compile>
     <Compile Include="Controls\IMessageBoxService.cs" />
     <Compile Include="Controls\MessageBoxService.cs" />
+    <Compile Include="Models\MessageTypeEnum.cs" />
     <Compile Include="Views\AddBookForm.cs">
       <SubType>Form</SubType>
     </Compile>
