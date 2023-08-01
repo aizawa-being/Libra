@@ -137,6 +137,7 @@
             // 
             this.booksDataGridView.AllowUserToAddRows = false;
             this.booksDataGridView.AllowUserToDeleteRows = false;
+            this.booksDataGridView.AllowUserToResizeRows = false;
             resources.ApplyResources(this.booksDataGridView, "booksDataGridView");
             this.booksDataGridView.AutoGenerateColumns = false;
             this.booksDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -157,6 +158,7 @@
             this.booksDataGridView.ReadOnly = true;
             this.booksDataGridView.RowTemplate.Height = 21;
             this.booksDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.booksDataGridView.StandardTab = true;
             this.booksDataGridView.TabStop = false;
             this.booksDataGridView.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.BooksGridCellPainting);
             // 
