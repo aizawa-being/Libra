@@ -17,7 +17,7 @@ namespace LibraUnitTest {
             using (var wDbContext = wCreateBookDb.CreateInMemoryDb(true)) {
                 // InMemoryDatabaseを利用
                 IBookRepository wBookRepository = new BookRepository(wDbContext);
-                var wBookService = new BookService(() => wBookRepository);
+                IBookService wBookService = new BookService(() => wBookRepository);
                 var wAddBook = new Book{
                     Title = vTitle,
                     Author = vAuthor,
@@ -48,7 +48,7 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.RollbackTransaction());
 
             // BookServiceのモックを作成
-            var wBookService = new BookService(() => wMockRepository.Object);
+            IBookService wBookService = new BookService(() => wMockRepository.Object);
 
             Assert.Throws<CustomDbException>(() => wBookService.AddBook(new Book()));
 

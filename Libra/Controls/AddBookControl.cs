@@ -124,7 +124,7 @@ namespace Libra {
         public bool TryRegisterAddBook(Book vAddBook, out int vBookId) {
             if (vAddBook != null) {
                 try {
-                    using (var wBookService = new BookService(this.FBookRepository)) {
+                    using (IBookService wBookService = new BookService(this.FBookRepository)) {
                         vBookId = wBookService.AddBook(vAddBook);
 
                         // 書籍追加成功
