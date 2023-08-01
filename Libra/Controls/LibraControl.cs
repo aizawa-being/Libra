@@ -48,7 +48,7 @@ namespace Libra {
         /// 書籍一覧テーブルを初期化します。
         /// </summary>
         public void InitializeBookList() {
-            using (IBookService wBookService = new BookService(this.FBookRepository)) {
+            using (ILibraBookService wBookService = new BookService(this.FBookRepository)) {
                 try {
                     var wBooks = wBookService.GetExistBooks();
                     this.SetBooksDataTable(wBooks);
@@ -106,7 +106,7 @@ namespace Libra {
             }
 
             try {
-                using (IBookService wBookService = new BookService(this.FBookRepository)) {
+                using (ILibraBookService wBookService = new BookService(this.FBookRepository)) {
                     wBookService.SetDeleteFlag(vBookId);
                     wResult = true;
                 }

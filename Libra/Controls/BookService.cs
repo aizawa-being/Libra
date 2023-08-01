@@ -8,7 +8,7 @@ namespace Libra {
     /// 書籍関連のサービスを提供します。
     /// 書籍関連の個別の処理はサービスで実装してください。
     /// </summary>
-    public class BookService : IBookService {
+    public class BookService : ILibraBookService, IAddBookService {
         private readonly Func<IBookRepository> FBookRepository;
 
         /// <summary>

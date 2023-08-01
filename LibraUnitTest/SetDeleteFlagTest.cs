@@ -20,7 +20,7 @@ namespace LibraUnitTest {
             using (var wDbContext = wCreateBookDb.CreateInMemoryDb(true)) {
                 // InMemoryDatabaseを利用
                 IBookRepository wBookRepository = new BookRepository(wDbContext);
-                IBookService wBookService = new BookService(() => wBookRepository);
+                ILibraBookService wBookService = new BookService(() => wBookRepository);
 
                 var wBeforeDeleteFlag = wDbContext.Books.Find(vBookId).IsDeleted;
 
@@ -46,7 +46,7 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.RollbackTransaction());
 
             // BookServiceのモックを作成
-            IBookService wBookService = new BookService(() => wMockRepository.Object);
+            ILibraBookService wBookService = new BookService(() => wMockRepository.Object);
 
             var wException = Assert.Throws<BookOperationException>(() => wBookService.SetDeleteFlag(It.IsAny<int>()));
 
@@ -75,7 +75,7 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.RollbackTransaction());
 
             // BookServiceのモックを作成
-            IBookService wBookService = new BookService(() => wMockRepository.Object);
+            ILibraBookService wBookService = new BookService(() => wMockRepository.Object);
 
             var wException = Assert.Throws<BookOperationException>(() => wBookService.SetDeleteFlag(It.IsAny<int>()));
 
@@ -104,7 +104,7 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.RollbackTransaction());
 
             // BookServiceのモックを作成
-            IBookService wBookService = new BookService(() => wMockRepository.Object);
+            ILibraBookService wBookService = new BookService(() => wMockRepository.Object);
 
             var wException = Assert.Throws<Exception>(() => wBookService.SetDeleteFlag(It.IsAny<int>()));
             
