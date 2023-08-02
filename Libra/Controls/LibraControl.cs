@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using System.Data.Common;
 using System.Data.Entity.Core;
 using System.Data.Entity.Infrastructure;
-using System.Data.SQLite;
 
 using static Libra.BooksDataSet;
 
@@ -53,7 +52,7 @@ namespace Libra {
                     var wBooks = wBookService.GetExistBooks();
                     this.SetBooksDataTable(wBooks);
 
-                } catch (SQLiteException) {
+                } catch (DbException) {
                     // DBエラー発生
                     this.FMessageBoxService.Show(MessageTypeEnum.DbError);
 
@@ -119,6 +118,10 @@ namespace Libra {
                 this.FMessageBoxService.Show(MessageTypeEnum.DbError);
 
             } catch (DbUpdateException) {
+                // DBエラー発生
+                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
+
+            } catch (EntityException) {
                 // DBエラー発生
                 this.FMessageBoxService.Show(MessageTypeEnum.DbError);
 

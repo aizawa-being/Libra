@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 using System.Data.Common;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Core;
 
 namespace Libra {
     /// <summary>
@@ -135,6 +136,10 @@ namespace Libra {
                     this.FMessageBoxService.Show(MessageTypeEnum.DbError);
 
                 } catch (DbUpdateException) {
+                    // データベースエラー発生
+                    this.FMessageBoxService.Show(MessageTypeEnum.DbError);
+
+                } catch (EntityException) {
                     // データベースエラー発生
                     this.FMessageBoxService.Show(MessageTypeEnum.DbError);
 
