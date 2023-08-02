@@ -21,10 +21,10 @@ namespace Libra {
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public AddBookControl(Func<IBookRepository> vFunc) {
+        public AddBookControl() {
             this.FOpenBdConnect = new OpenBdConnect();
             this.FMessageBoxService = new MessageBoxService();
-            this.FBookRepository = vFunc;
+            this.FBookRepository = () => new BookRepository(new BooksDbContext());
         }
 
         /// <summary>

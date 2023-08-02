@@ -14,7 +14,7 @@ namespace LibraUnitTest {
         public void 書籍一覧グリッド表示テスト(int vBookId, string vTitle, string vAuthor, string vPublisher, string vDescription) {
 
             var MockContext = new Mock<BooksDbContext>();
-            var wLibraControl = new LibraControl(() => new BookRepository(MockContext.Object));
+            var wLibraControl = new LibraControl();
 
             var wBooks = new List<Book> {
                 new Book { BookId = vBookId,

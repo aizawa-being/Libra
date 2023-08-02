@@ -12,7 +12,7 @@ namespace Libra {
         /// コンストラクタ
         /// </summary>
         public LibraForm() {
-            this.FLibraControl = new LibraControl(() => new BookRepository(new BooksDbContext()));
+            this.FLibraControl = new LibraControl();
             InitializeComponent();
         }
 

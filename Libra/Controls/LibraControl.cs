@@ -21,9 +21,9 @@ namespace Libra {
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public LibraControl(Func<IBookRepository> vFunc) {
+        public LibraControl() {
             this.FBooksTable = new BooksTable();
-            this.FBookRepository = vFunc;
+            this.FBookRepository = () => new BookRepository(new BooksDbContext());
             this.FMessageBoxService = new MessageBoxService();
         }
 
@@ -40,7 +40,7 @@ namespace Libra {
         /// 書籍追加画面を開きます。
         /// </summary>
         public int OpenAddForm() {
-            IAddBookControl wAddBookControl = new AddBookControl(this.FBookRepository);
+            IAddBookControl wAddBookControl = new AddBookControl();
             return wAddBookControl.ShowAddBookForm();
         }
 
