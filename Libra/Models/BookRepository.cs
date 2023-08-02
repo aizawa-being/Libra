@@ -79,7 +79,7 @@ namespace Libra {
         public void BeginTransaction() {
             this.FTransaction = this.FContext.Database.BeginTransaction();
         }
-        
+
         /// <summary>
         /// トランザクションをコミットします。
         /// </summary>
@@ -88,7 +88,7 @@ namespace Libra {
             this.FTransaction.Dispose();
             this.FTransaction = null;
         }
-        
+
         /// <summary>
         /// トランザクションをロールバックします。
         /// </summary>
@@ -97,7 +97,6 @@ namespace Libra {
             this.FTransaction.Dispose();
             this.FTransaction = null;
         }
-
         /// <summary>
         /// データベースが存在するか確認します。
         /// </summary>

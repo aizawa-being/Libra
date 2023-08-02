@@ -117,87 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;userNameLabel.Name" xml:space="preserve">
-    <value>userNameLabel</value>
-  </data>
-  <data name="&gt;&gt;userNameLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;userNameLabel.Parent" xml:space="preserve">
-    <value>rentalPanel</value>
-  </data>
-  <data name="&gt;&gt;userNameLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;userNameTextBox.Name" xml:space="preserve">
-    <value>userNameTextBox</value>
-  </data>
-  <data name="&gt;&gt;userNameTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;userNameTextBox.Parent" xml:space="preserve">
-    <value>rentalPanel</value>
-  </data>
-  <data name="&gt;&gt;userNameTextBox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;returnButton.Name" xml:space="preserve">
-    <value>returnButton</value>
-  </data>
-  <data name="&gt;&gt;returnButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;returnButton.Parent" xml:space="preserve">
-    <value>rentalPanel</value>
-  </data>
-  <data name="&gt;&gt;returnButton.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;borrowButton.Name" xml:space="preserve">
-    <value>borrowButton</value>
-  </data>
-  <data name="&gt;&gt;borrowButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;borrowButton.Parent" xml:space="preserve">
-    <value>rentalPanel</value>
-  </data>
-  <data name="&gt;&gt;borrowButton.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="rentalPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 9</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="rentalPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="rentalPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 75</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="rentalPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;rentalPanel.Name" xml:space="preserve">
-    <value>rentalPanel</value>
-  </data>
-  <data name="&gt;&gt;rentalPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rentalPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;rentalPanel.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="userNameLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="userNameLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="userNameLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 12</value>
   </data>
@@ -324,80 +252,32 @@
   <data name="&gt;&gt;borrowButton.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="searchPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="rentalPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 9</value>
   </data>
-  <data name="&gt;&gt;clearButton.Name" xml:space="preserve">
-    <value>clearButton</value>
-  </data>
-  <data name="&gt;&gt;clearButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;clearButton.Parent" xml:space="preserve">
-    <value>searchPanel</value>
-  </data>
-  <data name="&gt;&gt;clearButton.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;searchButton.Name" xml:space="preserve">
-    <value>searchButton</value>
-  </data>
-  <data name="&gt;&gt;searchButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;searchButton.Parent" xml:space="preserve">
-    <value>searchPanel</value>
-  </data>
-  <data name="&gt;&gt;searchButton.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;searchWordTextBox.Name" xml:space="preserve">
-    <value>searchWordTextBox</value>
-  </data>
-  <data name="&gt;&gt;searchWordTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;searchWordTextBox.Parent" xml:space="preserve">
-    <value>searchPanel</value>
-  </data>
-  <data name="&gt;&gt;searchWordTextBox.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;searchWordLabel.Name" xml:space="preserve">
-    <value>searchWordLabel</value>
-  </data>
-  <data name="&gt;&gt;searchWordLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;searchWordLabel.Parent" xml:space="preserve">
-    <value>searchPanel</value>
-  </data>
-  <data name="&gt;&gt;searchWordLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="searchPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>220, 9</value>
-  </data>
-  <data name="searchPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="rentalPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="searchPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>553, 75</value>
+  <data name="rentalPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 75</value>
   </data>
-  <data name="searchPanel.TabIndex" type="System.Int32, mscorlib">
+  <data name="rentalPanel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;searchPanel.Name" xml:space="preserve">
-    <value>searchPanel</value>
+  <data name="&gt;&gt;rentalPanel.Name" xml:space="preserve">
+    <value>rentalPanel</value>
   </data>
-  <data name="&gt;&gt;searchPanel.Type" xml:space="preserve">
+  <data name="&gt;&gt;rentalPanel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;searchPanel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;rentalPanel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;searchPanel.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;rentalPanel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="searchPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <data name="clearButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -531,28 +411,52 @@
   <data name="&gt;&gt;searchWordLabel.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="searchPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>220, 9</value>
+  </data>
+  <data name="searchPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="searchPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>553, 75</value>
+  </data>
+  <data name="searchPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;searchPanel.Name" xml:space="preserve">
+    <value>searchPanel</value>
+  </data>
+  <data name="&gt;&gt;searchPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;searchPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;searchPanel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="booksDataGridView.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+  <data name="bookIdColumn.HeaderText" xml:space="preserve">
     <value>書籍ID</value>
   </data>
-  <data name="dataGridViewTextBoxColumn1.Visible" type="System.Boolean, mscorlib">
+  <data name="bookIdColumn.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="dataGridViewTextBoxColumn6.HeaderText" xml:space="preserve">
+  <data name="userNameColumn.HeaderText" xml:space="preserve">
     <value>利用者名</value>
   </data>
-  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+  <data name="titleColumn.HeaderText" xml:space="preserve">
     <value>書籍名</value>
   </data>
-  <data name="dataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
+  <data name="authorColumn.HeaderText" xml:space="preserve">
     <value>著者名</value>
   </data>
-  <data name="dataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
+  <data name="publisherColumn.HeaderText" xml:space="preserve">
     <value>出版社</value>
   </data>
-  <data name="dataGridViewTextBoxColumn5.HeaderText" xml:space="preserve">
+  <data name="descriptionColumn.HeaderText" xml:space="preserve">
     <value>概要</value>
   </data>
   <metadata name="BooksContextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -560,42 +464,6 @@
   </metadata>
   <data name="BooksContextMenuStrip.Font" type="System.Drawing.Font, System.Drawing">
     <value>Meiryo UI, 9pt</value>
-  </data>
-  <data name="BooksContextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 114</value>
-  </data>
-  <data name="&gt;&gt;BooksContextMenuStrip.Name" xml:space="preserve">
-    <value>BooksContextMenuStrip</value>
-  </data>
-  <data name="&gt;&gt;BooksContextMenuStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <metadata name="booksBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>335, 17</value>
-  </metadata>
-  <metadata name="booksDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>499, 17</value>
-  </metadata>
-  <data name="booksDataGridView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 89</value>
-  </data>
-  <data name="booksDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>764, 333</value>
-  </data>
-  <data name="booksDataGridView.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;booksDataGridView.Name" xml:space="preserve">
-    <value>booksDataGridView</value>
-  </data>
-  <data name="&gt;&gt;booksDataGridView.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;booksDataGridView.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;booksDataGridView.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="貸出ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>156, 22</value>
@@ -633,9 +501,42 @@
   <data name="書籍削除ToolStripMenuItem.Text" xml:space="preserve">
     <value>書籍削除</value>
   </data>
+  <data name="BooksContextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 114</value>
+  </data>
+  <data name="&gt;&gt;BooksContextMenuStrip.Name" xml:space="preserve">
+    <value>BooksContextMenuStrip</value>
+  </data>
+  <data name="&gt;&gt;BooksContextMenuStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="booksBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>335, 17</value>
+  </metadata>
   <metadata name="booksDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>499, 17</value>
   </metadata>
+  <data name="booksDataGridView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 89</value>
+  </data>
+  <data name="booksDataGridView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>764, 333</value>
+  </data>
+  <data name="booksDataGridView.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;booksDataGridView.Name" xml:space="preserve">
+    <value>booksDataGridView</value>
+  </data>
+  <data name="&gt;&gt;booksDataGridView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;booksDataGridView.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;booksDataGridView.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="deleteBookButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
@@ -807,40 +708,40 @@
   <data name="&gt;&gt;dataGridViewTextBoxColumn5.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;bookIdDataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>bookIdDataGridViewTextBoxColumn1</value>
+  <data name="&gt;&gt;bookIdColumn.Name" xml:space="preserve">
+    <value>bookIdColumn</value>
   </data>
-  <data name="&gt;&gt;bookIdDataGridViewTextBoxColumn1.Type" xml:space="preserve">
+  <data name="&gt;&gt;bookIdColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;userNameDataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>userNameDataGridViewTextBoxColumn1</value>
+  <data name="&gt;&gt;userNameColumn.Name" xml:space="preserve">
+    <value>userNameColumn</value>
   </data>
-  <data name="&gt;&gt;userNameDataGridViewTextBoxColumn1.Type" xml:space="preserve">
+  <data name="&gt;&gt;userNameColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;titleDataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>titleDataGridViewTextBoxColumn1</value>
+  <data name="&gt;&gt;titleColumn.Name" xml:space="preserve">
+    <value>titleColumn</value>
   </data>
-  <data name="&gt;&gt;titleDataGridViewTextBoxColumn1.Type" xml:space="preserve">
+  <data name="&gt;&gt;titleColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;authorDataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>authorDataGridViewTextBoxColumn1</value>
+  <data name="&gt;&gt;authorColumn.Name" xml:space="preserve">
+    <value>authorColumn</value>
   </data>
-  <data name="&gt;&gt;authorDataGridViewTextBoxColumn1.Type" xml:space="preserve">
+  <data name="&gt;&gt;authorColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;publisherDataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>publisherDataGridViewTextBoxColumn1</value>
+  <data name="&gt;&gt;publisherColumn.Name" xml:space="preserve">
+    <value>publisherColumn</value>
   </data>
-  <data name="&gt;&gt;publisherDataGridViewTextBoxColumn1.Type" xml:space="preserve">
+  <data name="&gt;&gt;publisherColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>descriptionDataGridViewTextBoxColumn1</value>
+  <data name="&gt;&gt;descriptionColumn.Name" xml:space="preserve">
+    <value>descriptionColumn</value>
   </data>
-  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn1.Type" xml:space="preserve">
+  <data name="&gt;&gt;descriptionColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

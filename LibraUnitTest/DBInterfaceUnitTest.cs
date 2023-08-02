@@ -2,7 +2,6 @@ using System.Linq;
 using System.Collections.Generic;
 
 using NUnit.Framework;
-using System.Data.SQLite;
 
 using Libra;
 
@@ -32,8 +31,7 @@ namespace LibraUnitTest {
                     Title = "テストタイトル3",
                     Author = "テスト著者3",
                     Barcode = "0000000000003",
-                    IsDeleted = 0
-                }
+                    IsDeleted = 0 }
             }
         };
 
@@ -62,9 +60,8 @@ namespace LibraUnitTest {
         public void 書籍全取得テスト() {
             var wCreateBookDb = new CreateBooksDb();
             using (var wDbContext = wCreateBookDb.CreateInMemoryDb(true)) {
-
-                var wBooksRepository = new BookRepository(wDbContext);
-                var wBooks = wBooksRepository.GetBooks().ToList();
+                var wBookRepository = new BookRepository(wDbContext);
+                var wBooks = wBookRepository.GetBooks().ToList();
 
                 Assert.AreEqual(3, wBooks.Count());
                 Assert.AreEqual("テストタイトル1", wBooks[0].Title);

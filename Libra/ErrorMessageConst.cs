@@ -44,7 +44,7 @@
         public const string C_ServerErrorCaption = "サーバー通信エラー";
 
         /// <summary>
-        /// API接続時の予期せぬエラーメッセージ
+        /// 予期せぬエラーメッセージ
         /// エラー内容を指定してください
         /// </summary>
         public const string C_UnexpectedError = "予期せぬエラーが発生しました。\r\nエラー：{0}";
@@ -52,7 +52,7 @@
         /// <summary>
         /// 予期せぬエラーキャプション
         /// </summary>
-        public const string C_UnexpectedErrorCaprion = "予期せぬエラー";
+        public const string C_UnexpectedErrorCaption = "予期せぬエラー";
 
         /// <summary>
         /// 書籍情報未取得エラーメッセージ
@@ -62,7 +62,7 @@
         /// <summary>
         /// 書籍情報未取得エラーキャプション
         /// </summary>
-        public const string C_BookInfoUnacquiredErrorCaprion = "書籍の追加に失敗しました";
+        public const string C_BookInfoUnacquiredErrorCaption = "書籍の追加に失敗しました";
 
         /// <summary>
         /// データベースエラーメッセージ
@@ -72,6 +72,26 @@
         /// <summary>
         /// データベースエラーキャプション
         /// </summary>
-        public const string C_DbErrorCaprion = "データベースエラー";
+        public const string C_DbErrorCaption = "データベースエラー";
+
+        /// <summary>
+        /// 削除済みエラーメッセージ
+        /// </summary>
+        public const string C_AlreadyDeleted = "{0} は\r\n既に削除されています。";
+
+        /// <summary>
+        /// 削除済みエラーキャプション
+        /// </summary>
+        public const string C_AlreadyDeletedCaption = "削除済エラー";
+
+        /// <summary>
+        /// 貸出中エラーメッセージ
+        /// </summary>
+        public const string C_IsBorrowed = "{0} は\r\n貸出中の為、削除できません。";
+
+        /// <summary>
+        /// 貸出中エラーキャプション
+        /// </summary>
+        public const string C_IsBorrowedCaption = "貸出中エラー";
     }
 }

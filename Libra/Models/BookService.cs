@@ -14,10 +14,10 @@ namespace Libra {
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public BookService () {
+        public BookService() {
             this.FBookRepository = new BookRepository(new BooksDbContext());
         }
-        
+
         /// <summary>
         /// コンストラクタ
         /// </summary>
@@ -59,11 +59,40 @@ namespace Libra {
             }
         }
 
+        /// 削除フラグを立てます
+        /// </summary>
+        /// <param name="vBookId"></param>
+        public void SetDeleteFlag(int vBookId) {
+            // トランザクション開始
+            this.FBookRepository.BeginTransaction();
+            try {
+
+                var wBook = this.FBookRepository.GetBookById(vBookId);
+                if (wBook.IsDeleted == 1) {
+                    // 削除済み
+                    throw new BookOperationException(ErrorTypeEnum.AlreadyDeleted, wBook.Title);
+                }
+                if (wBook.UserName != null) {
+                    // 貸出中
+                    throw new BookOperationException(ErrorTypeEnum.IsBorrowed, wBook.Title);
+                }
+                wBook.IsDeleted = 1;
+                this.FBookRepository.UpdateBook(wBook);
+                this.FBookRepository.Save();
+                this.FBookRepository.CommitTransaction();
+
+            } catch (Exception) {
+                // ロールバック
+                this.FBookRepository.RollbackTransaction();
+                throw;
+            }
+        }
+
         /// <summary>
         /// リソースを破棄します。
         /// </summary>
         public void Dispose() {
-            this.FBookRepository.Dispose();
+
         }
     }
 }
