@@ -77,7 +77,7 @@ namespace Libra {
         public void BeginTransaction() {
             this.FTransaction = this.FContext.Database.BeginTransaction();
         }
-        
+
         /// <summary>
         /// トランザクションをコミットします。
         /// </summary>

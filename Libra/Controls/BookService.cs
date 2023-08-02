@@ -52,7 +52,7 @@ namespace Libra {
                 throw;
             }
         }
-        
+
         /// 削除フラグを立てます
         /// </summary>
         /// <param name="vBookId"></param>
