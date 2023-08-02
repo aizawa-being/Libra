@@ -86,7 +86,7 @@ namespace Libra {
             this.FTransaction.Dispose();
             this.FTransaction = null;
         }
-        
+
         /// <summary>
         /// トランザクションをロールバックします。
         /// </summary>
