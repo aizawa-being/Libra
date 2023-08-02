@@ -131,13 +131,14 @@ namespace Libra {
 
             // フォーカスする行を指定
             if (wResult) {
-                if (wSelectedCellIndex > 0) {
-                    // 削除成功時は1行前をフォーカスする
-                    this.booksDataGridView.CurrentCell = this.booksDataGridView.Rows[wSelectedCellIndex - 1].Cells[1];
+                if (wSelectedCellIndex == 0 || wSelectedCellIndex >= this.booksDataGridView.Rows.Count) {
                     return;
                 }
+                // 削除成功時は1行前をフォーカスする
+                this.booksDataGridView.CurrentCell = this.booksDataGridView.Rows[wSelectedCellIndex - 1].Cells[1];
+                return;
             }
-            if (wSelectedCellIndex > this.booksDataGridView.Rows.Count || this.booksDataGridView.Rows.Count == 0) {
+            if (wSelectedCellIndex >= this.booksDataGridView.Rows.Count || this.booksDataGridView.Rows.Count == 0) {
                 return;
             }
             this.booksDataGridView.CurrentCell = this.booksDataGridView.Rows[wSelectedCellIndex].Cells[1];
