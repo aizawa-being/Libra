@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 using System.Data.Entity;
-using System.Data.SQLite;
 
 namespace Libra {
     /// <summary>
