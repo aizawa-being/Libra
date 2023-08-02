@@ -1,8 +1,8 @@
 ﻿namespace Libra {
     /// <summary>
-    /// エラーメッセージの定数クラスです。
+    /// メッセージの定数クラスです。
     /// </summary>
-    public static class ErrorMessageConst {
+    public static class MessageConst {
         /// <summary>
         /// 書籍情報エラーメッセージ
         /// </summary>
@@ -93,5 +93,15 @@
         /// 貸出中エラーキャプション
         /// </summary>
         public const string C_IsBorrowedCaption = "貸出中エラー";
+
+        /// <summary>
+        /// 削除確認メッセージ
+        /// </summary>
+        public const string C_DeleteConfirmation = "{0}を\r\n本当に削除しますか？";
+
+        /// <summary>
+        /// 削除確認メッセージキャプション
+        /// </summary>
+        public const string C_DeleteConfirmationCaption = "削除確認メッセージ";
     }
 }

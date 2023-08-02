@@ -36,6 +36,12 @@
             this.searchWordTextBox = new System.Windows.Forms.TextBox();
             this.searchWordLabel = new System.Windows.Forms.Label();
             this.booksDataGridView = new System.Windows.Forms.DataGridView();
+            this.bookIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.authorColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.publisherColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BooksContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.貸出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.返却ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,12 +58,6 @@
             this.authorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.publisherDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bookIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.authorColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.publisherColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rentalPanel.SuspendLayout();
             this.searchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.booksDataGridView)).BeginInit();
@@ -137,6 +137,7 @@
             // 
             this.booksDataGridView.AllowUserToAddRows = false;
             this.booksDataGridView.AllowUserToDeleteRows = false;
+            this.booksDataGridView.AllowUserToResizeRows = false;
             resources.ApplyResources(this.booksDataGridView, "booksDataGridView");
             this.booksDataGridView.AutoGenerateColumns = false;
             this.booksDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -157,8 +158,51 @@
             this.booksDataGridView.ReadOnly = true;
             this.booksDataGridView.RowTemplate.Height = 21;
             this.booksDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.booksDataGridView.StandardTab = true;
             this.booksDataGridView.TabStop = false;
             this.booksDataGridView.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.BooksGridCellPainting);
+            // 
+            // bookIdColumn
+            // 
+            this.bookIdColumn.DataPropertyName = "BookId";
+            resources.ApplyResources(this.bookIdColumn, "bookIdColumn");
+            this.bookIdColumn.Name = "bookIdColumn";
+            this.bookIdColumn.ReadOnly = true;
+            // 
+            // userNameColumn
+            // 
+            this.userNameColumn.DataPropertyName = "UserName";
+            resources.ApplyResources(this.userNameColumn, "userNameColumn");
+            this.userNameColumn.Name = "userNameColumn";
+            this.userNameColumn.ReadOnly = true;
+            // 
+            // titleColumn
+            // 
+            this.titleColumn.DataPropertyName = "Title";
+            resources.ApplyResources(this.titleColumn, "titleColumn");
+            this.titleColumn.Name = "titleColumn";
+            this.titleColumn.ReadOnly = true;
+            // 
+            // authorColumn
+            // 
+            this.authorColumn.DataPropertyName = "Author";
+            resources.ApplyResources(this.authorColumn, "authorColumn");
+            this.authorColumn.Name = "authorColumn";
+            this.authorColumn.ReadOnly = true;
+            // 
+            // publisherColumn
+            // 
+            this.publisherColumn.DataPropertyName = "Publisher";
+            resources.ApplyResources(this.publisherColumn, "publisherColumn");
+            this.publisherColumn.Name = "publisherColumn";
+            this.publisherColumn.ReadOnly = true;
+            // 
+            // descriptionColumn
+            // 
+            this.descriptionColumn.DataPropertyName = "Description";
+            resources.ApplyResources(this.descriptionColumn, "descriptionColumn");
+            this.descriptionColumn.Name = "descriptionColumn";
+            this.descriptionColumn.ReadOnly = true;
             // 
             // BooksContextMenuStrip
             // 
@@ -225,52 +269,29 @@
             this.addBookButton.UseVisualStyleBackColor = true;
             this.addBookButton.Click += new System.EventHandler(this.AddBook_Click);
             // 
-            // booksDataSet
+            // bookIdDataGridViewTextBoxColumn
             // 
-            this.booksDataSet.DataSetName = "BooksDataSet";
-            this.booksDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.bookIdDataGridViewTextBoxColumn.Name = "bookIdDataGridViewTextBoxColumn";
             // 
-            // bookIdColumn
+            // userNameDataGridViewTextBoxColumn
             // 
-            this.bookIdColumn.DataPropertyName = "BookId";
-            resources.ApplyResources(this.bookIdColumn, "bookIdColumn");
-            this.bookIdColumn.Name = "bookIdColumn";
-            this.bookIdColumn.ReadOnly = true;
+            this.userNameDataGridViewTextBoxColumn.Name = "userNameDataGridViewTextBoxColumn";
             // 
-            // userNameColumn
+            // titleDataGridViewTextBoxColumn
             // 
-            this.userNameColumn.DataPropertyName = "UserName";
-            resources.ApplyResources(this.userNameColumn, "userNameColumn");
-            this.userNameColumn.Name = "userNameColumn";
-            this.userNameColumn.ReadOnly = true;
+            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
             // 
-            // titleColumn
+            // authorDataGridViewTextBoxColumn
             // 
-            this.titleColumn.DataPropertyName = "Title";
-            resources.ApplyResources(this.titleColumn, "titleColumn");
-            this.titleColumn.Name = "titleColumn";
-            this.titleColumn.ReadOnly = true;
+            this.authorDataGridViewTextBoxColumn.Name = "authorDataGridViewTextBoxColumn";
             // 
-            // authorColumn
+            // publisherDataGridViewTextBoxColumn
             // 
-            this.authorColumn.DataPropertyName = "Author";
-            resources.ApplyResources(this.authorColumn, "authorColumn");
-            this.authorColumn.Name = "authorColumn";
-            this.authorColumn.ReadOnly = true;
+            this.publisherDataGridViewTextBoxColumn.Name = "publisherDataGridViewTextBoxColumn";
             // 
-            // publisherColumn
+            // descriptionDataGridViewTextBoxColumn
             // 
-            this.publisherColumn.DataPropertyName = "Publisher";
-            resources.ApplyResources(this.publisherColumn, "publisherColumn");
-            this.publisherColumn.Name = "publisherColumn";
-            this.publisherColumn.ReadOnly = true;
-            // 
-            // descriptionColumn
-            // 
-            this.descriptionColumn.DataPropertyName = "Description";
-            resources.ApplyResources(this.descriptionColumn, "descriptionColumn");
-            this.descriptionColumn.Name = "descriptionColumn";
-            this.descriptionColumn.ReadOnly = true;
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
             // 
             // LibraForm
             // 

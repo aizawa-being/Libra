@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 using System.Data.Entity;
-using System.Data.SQLite;
 
 namespace Libra {
     /// <summary>
@@ -96,22 +94,6 @@ namespace Libra {
             this.FTransaction.Rollback();
             this.FTransaction.Dispose();
             this.FTransaction = null;
-        }
-        /// <summary>
-        /// データベースが存在するか確認します。
-        /// </summary>
-        /// <returns></returns>
-        public bool DatabaseExists() {
-            var wConnectionString = this.FContext.Database.Connection.ConnectionString;
-            var wDataSource = new SQLiteConnectionStringBuilder(wConnectionString).DataSource;
-            return File.Exists(wDataSource);
-        }
-
-        /// <summary>
-        /// スキーマ情報のキャッシュをリフレッシュします。
-        /// </summary>
-        public void InitializeDatabase() {
-            this.FContext.Database.Initialize(true);
         }
 
         private bool FDisposed = false;

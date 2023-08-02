@@ -35,7 +35,14 @@ namespace Libra {
             : base(vInfo, vContext) {
         }
         
+        /// <summary>
+        /// エラー種別
+        /// </summary>
         public ErrorTypeEnum ErrorType { get; }
+
+        /// <summary>
+        /// 書籍名
+        /// </summary>
         public string BookTitle { get; }
 
         /// <summary>

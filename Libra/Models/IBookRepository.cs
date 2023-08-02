@@ -58,16 +58,5 @@ namespace Libra {
         /// トランザクションをロールバックする。
         /// </summary>
         void RollbackTransaction();
-
-        /// <summary>
-        /// データベースが存在するか確認します。
-        /// </summary>
-        /// <returns></returns>
-        bool DatabaseExists();
-
-        /// <summary>
-        /// スキーマ情報のキャッシュをリフレッシュします。
-        /// </summary>
-        void InitializeDatabase();
     }
 }

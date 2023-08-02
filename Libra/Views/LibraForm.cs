@@ -1,5 +1,4 @@
 using System;
-using System.Data;
 using System.Windows.Forms;
 
 namespace Libra {
@@ -123,15 +122,9 @@ namespace Libra {
             int wBookId = (int)wSelectedRow.Cells["bookIdColumn"].Value;
             string wTitle = (string)wSelectedRow.Cells["titleColumn"].Value;
             
-            // 削除確認メッセージボックスの表示
-            IMessageBoxService wMessageBoxService = new MessageBoxService();
-            if (wMessageBoxService.Show(string.Format("{0}を\r\n本当に削除しますか？", wTitle), "削除確認メッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2)
-                != DialogResult.OK) {
-                return;
-            }
-            // メッセージボックスでOKが選択された場合のみ削除する
-            var wResult = this.FLibraControl.SetDeleteFlag(wBookId);
-
+            // 削除実施し、結果を取得する
+            var wResult = this.FLibraControl.SetDeleteFlag(wTitle, wBookId);
+            
             // 書籍一覧グリッドの初期化
             this.FLibraControl.InitializeBookList();
             this.booksDataGridView.DataSource = this.FLibraControl.GetBooksDataTable();
