@@ -319,6 +319,7 @@
         private System.Windows.Forms.ToolStripMenuItem 書籍追加ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 書籍削除ToolStripMenuItem;
         private System.Windows.Forms.BindingSource booksBindingSource;
+        private BooksDataSet booksDataSet;
         private System.Windows.Forms.DataGridViewTextBoxColumn bookIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn userNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;

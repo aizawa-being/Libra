@@ -153,20 +153,20 @@ namespace Libra {
                 } catch (DbException) {
                     // データベースエラーを表示
                     this.MessageBoxShow(ErrorMessageConst.C_DbError,
-                                        ErrorMessageConst.C_DbErrorCaprion,
+                                        ErrorMessageConst.C_DbErrorCaption,
                                         MessageBoxButtons.OK,
                                         MessageBoxIcon.Error);
                 } catch (Exception e) {
                     // 予期せぬエラー
                     this.MessageBoxShow(string.Format(ErrorMessageConst.C_UnexpectedError, e.Message),
-                                        ErrorMessageConst.C_UnexpectedErrorCaprion,
+                                        ErrorMessageConst.C_UnexpectedErrorCaption,
                                         MessageBoxButtons.OK,
                                         MessageBoxIcon.Error);
                 }
             } else {
                 // 書籍情報未取得エラーを表示
                 this.MessageBoxShow(ErrorMessageConst.C_BookInfoUnacquiredError,
-                                    ErrorMessageConst.C_BookInfoUnacquiredErrorCaprion,
+                                    ErrorMessageConst.C_BookInfoUnacquiredErrorCaption,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Asterisk);
             }
