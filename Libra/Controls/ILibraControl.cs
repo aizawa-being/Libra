@@ -34,5 +34,11 @@ using static Libra.BooksDataSet;
         /// 削除フラグを立てます。
         /// </summary>
         bool SetDeleteFlag(string vTitle, int vBookId);
+        
+        /// <summary>
+        /// 書籍を検索します。
+        /// </summary>
+        /// <param name="vSearchWord"></param>
+        void SearchBooks(string vSearchString);
     }
 }

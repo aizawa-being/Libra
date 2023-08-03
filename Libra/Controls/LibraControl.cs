@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 using System.Data.Common;
@@ -130,6 +131,33 @@ namespace Libra {
                 this.FMessageBoxService.Show(MessageTypeEnum.UnexpectedError, vException);
             }
             return wResult;
+        }
+
+        /// <summary>
+        /// 書籍を検索します。
+        /// </summary>
+        /// <param name="vSearchWord"></param>
+        public void SearchBooks(string vSearchString) {
+            // 検索ワードを半角空白で分割する。
+            IEnumerable<string> wSearchWords = vSearchString.Split(' ').Select(s => s.Trim());
+
+            try {
+                using (ILibraBookService wBookService = new BookService(this.FBookRepository)) {
+                    var wBooks = wBookService.SearchBooks(wSearchWords);
+                    this.SetBooksDataTable(wBooks);
+                }
+            } catch (DbException) {
+                // DBエラー発生
+                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
+
+            } catch (EntityException) {
+                // DBエラー発生
+                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
+
+            } catch (Exception vException) {
+                // 予期せぬエラー発生
+                this.FMessageBoxService.Show(MessageTypeEnum.UnexpectedError, vException);
+            }
         }
     }
 }

@@ -64,7 +64,8 @@ namespace Libra {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Search_Click(object sender, EventArgs e) {
-
+            this.FLibraControl.SearchBooks(this.searchWordTextBox.Text);
+            this.booksDataGridView.DataSource = this.FLibraControl.GetBooksDataTable();
         }
 
         /// <summary>
@@ -73,7 +74,12 @@ namespace Libra {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Clear_Click(object sender, EventArgs e) {
+            // 検索ワード入力欄を初期化します。
+            this.searchWordTextBox.Text = "";
 
+            // 書籍一覧グリッドを初期化します。
+            this.FLibraControl.InitializeBookList();
+            this.booksDataGridView.DataSource = this.FLibraControl.GetBooksDataTable();
         }
 
         /// <summary>
