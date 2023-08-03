@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Linq;
 
 namespace Libra {
@@ -8,22 +9,14 @@ namespace Libra {
     /// 書籍関連のサービスを提供します。
     /// 書籍関連の個別の処理はサービスで実装してください。
     /// </summary>
-    public class BookService : IDisposable {
-        private readonly IBookRepository FBookRepository;
+    public class BookService : ILibraBookService, IAddBookService {
+        private readonly Func<IBookRepository> FBookRepository;
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public BookService() {
-            this.FBookRepository = new BookRepository(new BooksDbContext());
-        }
-
-        /// <summary>
-        /// コンストラクタ
-        /// </summary>
-        /// <param name="vBookRepository"></param>
-        public BookService(IBookRepository vBookRepository) {
-            this.FBookRepository = vBookRepository;
+        public BookService(Func<IBookRepository> vFunc) {
+            this.FBookRepository = vFunc;
         }
 
         /// <summary>
@@ -31,7 +24,8 @@ namespace Libra {
         /// </summary>
         /// <returns>books</returns>
         public IEnumerable<Book> GetExistBooks() {
-            var wBooks = from book in FBookRepository.GetBooks()
+            IBookRepository wInstance = this.FBookRepository();
+            var wBooks = from book in wInstance.GetBooks()
                          where book.IsDeleted is 0
                          orderby book.Title
                          select book;
@@ -44,17 +38,18 @@ namespace Libra {
         /// <param name="vBook"></param>
         /// <returns>int</returns>
         public int AddBook(Book vBook) {
-            this.FBookRepository.BeginTransaction();
+            IBookRepository wInstance = this.FBookRepository();
+
+            wInstance.BeginTransaction();
             try {
-                this.FBookRepository.AddBook(vBook);
-                this.FBookRepository.Save();
-                this.FBookRepository.CommitTransaction();
+                wInstance.AddBook(vBook);
+                wInstance.Save();
+                wInstance.CommitTransaction();
 
                 return vBook.BookId;
-
             } catch (Exception) {
                 // ロールバック
-                this.FBookRepository.RollbackTransaction();
+                wInstance.RollbackTransaction();
                 throw;
             }
         }
@@ -63,11 +58,14 @@ namespace Libra {
         /// </summary>
         /// <param name="vBookId"></param>
         public void SetDeleteFlag(int vBookId) {
+            IBookRepository wInstance = this.FBookRepository();
             // トランザクション開始
-            this.FBookRepository.BeginTransaction();
+            wInstance.BeginTransaction();
             try {
-
-                var wBook = this.FBookRepository.GetBookById(vBookId);
+                var wBook = wInstance.GetBookById(vBookId);
+                if (wBook == null) {
+                    throw new SQLiteException();
+                }
                 if (wBook.IsDeleted == 1) {
                     // 削除済み
                     throw new BookOperationException(ErrorTypeEnum.AlreadyDeleted, wBook.Title);
@@ -77,13 +75,13 @@ namespace Libra {
                     throw new BookOperationException(ErrorTypeEnum.IsBorrowed, wBook.Title);
                 }
                 wBook.IsDeleted = 1;
-                this.FBookRepository.UpdateBook(wBook);
-                this.FBookRepository.Save();
-                this.FBookRepository.CommitTransaction();
+                wInstance.UpdateBook(wBook);
+                wInstance.Save();
+                wInstance.CommitTransaction();
 
             } catch (Exception) {
                 // ロールバック
-                this.FBookRepository.RollbackTransaction();
+                wInstance.RollbackTransaction();
                 throw;
             }
         }

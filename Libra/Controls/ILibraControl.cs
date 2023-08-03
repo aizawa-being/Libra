@@ -33,6 +33,6 @@ using static Libra.BooksDataSet;
         /// <summary>
         /// 削除フラグを立てます。
         /// </summary>
-        bool SetDeleteFlag(int vBookId);
+        bool SetDeleteFlag(string vTitle, int vBookId);
     }
 }

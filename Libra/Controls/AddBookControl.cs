@@ -1,9 +1,10 @@
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 using System.Data.Common;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Core;
 
 namespace Libra {
     /// <summary>
@@ -16,7 +17,7 @@ namespace Libra {
         private Book FAddBook;
         private readonly IOpenBdConnect FOpenBdConnect;
         private readonly IMessageBoxService FMessageBoxService;
-        private readonly IBookRepository FBookRepository;
+        private readonly Func<IBookRepository> FBookRepository;
 
         /// <summary>
         /// コンストラクタ
@@ -24,7 +25,7 @@ namespace Libra {
         public AddBookControl() {
             this.FOpenBdConnect = new OpenBdConnect();
             this.FMessageBoxService = new MessageBoxService();
-            this.FBookRepository = new BookRepository(new BooksDbContext());
+            this.FBookRepository = () => new BookRepository(new BooksDbContext());
         }
 
         /// <summary>
@@ -33,10 +34,10 @@ namespace Libra {
         /// <param name="vOpenBdConnect"></param>
         /// <param name="vMessageBoxService"></param>
         /// <param name="vBookRepository"></param>
-        public AddBookControl(IOpenBdConnect vOpenBdConnect, IMessageBoxService vMessageBoxService, IBookRepository vBookRepository) {
+        public AddBookControl(IOpenBdConnect vOpenBdConnect, IMessageBoxService vMessageBoxService, Func<IBookRepository> vFunc) {
             this.FOpenBdConnect = vOpenBdConnect;
             this.FMessageBoxService = vMessageBoxService;
-            this.FBookRepository = vBookRepository;
+            this.FBookRepository = vFunc;
         }
 
         /// <summary>
@@ -60,10 +61,7 @@ namespace Libra {
             var wResponse = await this.FOpenBdConnect.SendRequest(vIsbn);
             if (wResponse == null) {
                 // HttpRequestException発生
-                this.MessageBoxShow(ErrorMessageConst.C_NetworkError,
-                                    ErrorMessageConst.C_NetworkErrorCaption,
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error);
+                this.FMessageBoxService.Show(MessageTypeEnum.NetworkError);
                 this.FAddBook = null;
                 return;
             }
@@ -74,10 +72,7 @@ namespace Libra {
                 // 文字列をJsonに変換し書籍情報を抽出する
                 var wBook = this.FOpenBdConnect.PerseBookInfo(wStrBook);
                 if (wBook == null) {
-                    this.MessageBoxShow(ErrorMessageConst.C_BookNotFound,
-                                        ErrorMessageConst.C_BookNotFoundCaption,
-                                        MessageBoxButtons.OK,
-                                        MessageBoxIcon.Asterisk);
+                    this.FMessageBoxService.Show(MessageTypeEnum.BookNotFound);
                     this.FAddBook = null;
                     return;
                 }
@@ -86,28 +81,19 @@ namespace Libra {
 
             } else if (wResponse.StatusCode >= HttpStatusCode.BadRequest && wResponse.StatusCode < HttpStatusCode.InternalServerError) {
                 // 400番台クライアントエラー発生
-                this.MessageBoxShow(ErrorMessageConst.C_ClientError,
-                                    ErrorMessageConst.C_ClientErrorCaption,
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error);
+                this.FMessageBoxService.Show(MessageTypeEnum.ClientError);
                 this.FAddBook = null;
                 return;
 
             } else if (wResponse.StatusCode >= HttpStatusCode.InternalServerError) {
                 // 500番台サーバーエラー発生
-                this.MessageBoxShow(ErrorMessageConst.C_ServerError,
-                                    ErrorMessageConst.C_ServerErrorCaption,
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error);
+                this.FMessageBoxService.Show(MessageTypeEnum.ServerError);
                 this.FAddBook = null;
                 return;
 
             } else {
-                // 予期せぬエラー
-                this.MessageBoxShow(string.Format(ErrorMessageConst.C_UnexpectedError, wResponse.StatusCode),
-                                    ErrorMessageConst.C_UnexpectedErrorCaption,
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error);
+                // 予期せぬエラー発生
+                this.FMessageBoxService.Show(MessageTypeEnum.UnexpectedError, wResponse.StatusCode);
                 this.FAddBook = null;
                 return;
             }
@@ -138,52 +124,36 @@ namespace Libra {
         /// <returns>int </returns>
         public bool TryRegisterAddBook(Book vAddBook, out int vBookId) {
             if (vAddBook != null) {
-                // データ追加前にデータベースが削除されている場合、テーブルを再構築する。
-                // EF6の場合、キャッシュにテーブル情報が残っているとテーブルが自動作成されない。
-                if (!this.FBookRepository.DatabaseExists()) {
-                    this.FBookRepository.InitializeDatabase();
-                }
                 try {
-                    using (var wBookService = new BookService(this.FBookRepository)) {
+                    using (IAddBookService wBookService = new BookService(this.FBookRepository)) {
                         vBookId = wBookService.AddBook(vAddBook);
 
                         // 書籍追加成功
                         return true;
                     }
                 } catch (DbException) {
-                    // データベースエラーを表示
-                    this.MessageBoxShow(ErrorMessageConst.C_DbError,
-                                        ErrorMessageConst.C_DbErrorCaption,
-                                        MessageBoxButtons.OK,
-                                        MessageBoxIcon.Error);
-                } catch (Exception e) {
-                    // 予期せぬエラー
-                    this.MessageBoxShow(string.Format(ErrorMessageConst.C_UnexpectedError, e.Message),
-                                        ErrorMessageConst.C_UnexpectedErrorCaption,
-                                        MessageBoxButtons.OK,
-                                        MessageBoxIcon.Error);
+                    // データベースエラー発生
+                    this.FMessageBoxService.Show(MessageTypeEnum.DbError);
+
+                } catch (DbUpdateException) {
+                    // データベースエラー発生
+                    this.FMessageBoxService.Show(MessageTypeEnum.DbError);
+
+                } catch (EntityException) {
+                    // データベースエラー発生
+                    this.FMessageBoxService.Show(MessageTypeEnum.DbError);
+
+                } catch (Exception vException) {
+                    // 予期せぬエラー発生
+                    this.FMessageBoxService.Show(MessageTypeEnum.UnexpectedError, vException);
                 }
             } else {
-                // 書籍情報未取得エラーを表示
-                this.MessageBoxShow(ErrorMessageConst.C_BookInfoUnacquiredError,
-                                    ErrorMessageConst.C_BookInfoUnacquiredErrorCaption,
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Asterisk);
+                // 書籍情報未取得エラー発生
+                this.FMessageBoxService.Show(MessageTypeEnum.BookInfoUnacquiredError);
             }
             // 書籍情報取得失敗
             vBookId = -1;
             return false;
-        }
-
-        /// <summary>
-        /// メッセージボックスを表示します。
-        /// </summary>
-        /// <param name="vMessage"></param>
-        /// <param name="vCaption"></param>
-        /// <param name="vButton"></param>
-        /// <param name="vIcon"></param>
-        public DialogResult MessageBoxShow(string vMessage, string vCaption, MessageBoxButtons vButton, MessageBoxIcon vIcon) {
-            return this.FMessageBoxService.Show(vMessage, vCaption, vButton, vIcon);
         }
     }
 }
