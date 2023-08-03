@@ -11,7 +11,7 @@
         /// <summary>
         /// 書籍情報エラーキャプション
         /// </summary>
-        public const string C_BookNotFoundCaption = "書籍情報が見つかりません";
+        public const string C_BookNotFoundCaption = "書籍情報不明";
 
         /// <summary>
         /// ネットワーク接続エラーメッセージ
@@ -31,15 +31,15 @@
         /// <summary>
         /// クライアントエラーキャプション
         /// </summary>
-        public const string C_ClientErrorCaption = "クライアントエラー";
+        public const string C_ClientErrorCaption = "サーバー通信エラー";
 
         /// <summary>
-        /// サーバー通信エラーメッセージ
+        /// サーバーエラーメッセージ
         /// </summary>
         public const string C_ServerError = "サーバーエラーが発生しました。\r\nしばらく経ってから再度お試しください。";
 
         /// <summary>
-        /// サーバー通信エラーキャプション
+        /// サーバーエラーキャプション
         /// </summary>
         public const string C_ServerErrorCaption = "サーバー通信エラー";
 
@@ -52,7 +52,7 @@
         /// <summary>
         /// 予期せぬエラーキャプション
         /// </summary>
-        public const string C_UnexpectedErrorCaption = "予期せぬエラー";
+        public const string C_UnexpectedErrorCaption = "システムエラー";
 
         /// <summary>
         /// 書籍情報未取得エラーメッセージ
@@ -67,7 +67,7 @@
         /// <summary>
         /// データベースエラーメッセージ
         /// </summary>
-        public const string C_DbError = "データベースエラーが発生しました。\r\n恐れ入りますが、再度お試しください。";
+        public const string C_DbError = "データベースエラーが発生しました。\r\n再度お試しください。";
 
         /// <summary>
         /// データベースエラーキャプション
@@ -102,6 +102,6 @@
         /// <summary>
         /// 削除確認メッセージキャプション
         /// </summary>
-        public const string C_DeleteConfirmationCaption = "削除確認メッセージ";
+        public const string C_DeleteConfirmationCaption = "書籍削除確認";
     }
 }
