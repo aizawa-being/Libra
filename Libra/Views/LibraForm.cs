@@ -169,7 +169,6 @@ namespace Libra {
         /// <param name="e"></param>
         private void SearchWordTextBoxKeyDown(object sender, KeyEventArgs e) {
             if (e.KeyData == Keys.Enter) {
-                this.searchButton.Focus();
                 this.searchButton.PerformClick();
             }
         }
