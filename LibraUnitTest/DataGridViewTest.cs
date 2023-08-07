@@ -12,8 +12,6 @@ namespace LibraUnitTest {
         [TestCase(1234567890, "1１aAａＡあｱ! 　", "1１aAａＡあｱ! 　", "1１aAａＡあｱ! 　", "1１aAａＡあｱ! 　")]
         [TestCase(0, "", "", "", "")]
         public void 書籍一覧グリッド表示テスト(int vBookId, string vTitle, string vAuthor, string vPublisher, string vDescription) {
-
-            var MockContext = new Mock<BooksDbContext>();
             var wLibraControl = new LibraControl();
 
             var wBooks = new List<Book> {
