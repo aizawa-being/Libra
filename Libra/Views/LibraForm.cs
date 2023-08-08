@@ -78,7 +78,7 @@ namespace Libra {
             this.searchWordTextBox.Text = "";
 
             // 書籍一覧グリッドを初期化します。
-            var wBooks = this.FLibraControl.SetAllBooks();
+            var wBooks = this.FLibraControl.GetAllBooks();
             this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
         }
 
@@ -95,7 +95,7 @@ namespace Libra {
             }
             // 書籍を追加した場合
             // 書籍一覧グリッドを更新します。
-            var wBooks = this.FLibraControl.SetAllBooks();
+            var wBooks = this.FLibraControl.GetAllBooks();
             this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
 
             // 追加した書籍にフォーカスします。
@@ -132,7 +132,7 @@ namespace Libra {
             var wResult = this.FLibraControl.SetDeleteFlag(wTitle, wBookId);
 
             // 書籍一覧グリッドの初期化
-            var wBooks = this.FLibraControl.SetAllBooks();
+            var wBooks = this.FLibraControl.GetAllBooks();
             this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
 
             // フォーカスする行を指定
@@ -177,7 +177,7 @@ namespace Libra {
         /// <param name="e"></param>
         private void LibraForm_Load(object sender, EventArgs e) {
             // 書籍一覧グリッドを初期化します。
-            var wBooks = this.FLibraControl.SetAllBooks();
+            var wBooks = this.FLibraControl.GetAllBooks();
             this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
 
             if (this.booksDataGridView.Rows.Count > 0) {

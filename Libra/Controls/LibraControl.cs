@@ -42,9 +42,9 @@ namespace Libra {
         }
 
         /// <summary>
-        /// 書籍一覧テーブルを初期化します。
+        /// 書籍一覧を取得します。
         /// </summary>
-        public IEnumerable<Book> SetAllBooks() {
+        public IEnumerable<Book> GetAllBooks() {
             using (ILibraBookService wBookService = new BookService(this.FBookRepository)) {
                 try {
                     return wBookService.GetExistBooks();

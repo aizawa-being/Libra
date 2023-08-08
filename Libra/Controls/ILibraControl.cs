@@ -8,9 +8,9 @@ using static Libra.BooksDataSet;
     public interface ILibraControl {
 
         /// <summary>
-        /// 書籍一覧テーブルを初期化します。
+        /// 書籍一覧を取得します。
         /// </summary>
-        IEnumerable<Book> SetAllBooks();
+        IEnumerable<Book> GetAllBooks();
 
         /// <summary>
         /// 書籍一覧をBooksDataTableに変換します。

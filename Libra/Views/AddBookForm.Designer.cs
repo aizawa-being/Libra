@@ -156,7 +156,7 @@
             this.Location = global::Libra.Properties.Settings.Default.MyLocation;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(255, 275);
+            this.MinimumSize = new System.Drawing.Size(255, 330);
             this.Name = "AddBookForm";
             this.Text = "書籍追加";
             this.Load += new System.EventHandler(this.AddBookForm_Load);
