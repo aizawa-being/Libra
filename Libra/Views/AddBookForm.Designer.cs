@@ -154,6 +154,8 @@
             this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::Libra.Properties.Settings.Default, "MyLocation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Location = global::Libra.Properties.Settings.Default.MyLocation;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(255, 275);
             this.Name = "AddBookForm";
             this.Text = "書籍追加";
