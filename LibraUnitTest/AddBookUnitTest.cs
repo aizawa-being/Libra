@@ -73,7 +73,7 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.RollbackTransaction());
 
             // メッセージボックスのモックを作成
-            var wMessageBoxMock = new Mock<IMessageBoxService>();
+            var wMessageBoxMock = new Mock<IMessageBoxUtil>();
 
             wMessageBoxMock
                 .Setup(x => x.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<string>()))
@@ -115,7 +115,7 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.RollbackTransaction());
 
             // メッセージボックスのモックを作成
-            var wMessageBoxMock = new Mock<IMessageBoxService>();
+            var wMessageBoxMock = new Mock<IMessageBoxUtil>();
 
             wMessageBoxMock
                 .Setup(x => x.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<string>()))
@@ -149,7 +149,7 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.RollbackTransaction());
 
             // メッセージボックスのモックを作成
-            var wMessageBoxMock = new Mock<IMessageBoxService>();
+            var wMessageBoxMock = new Mock<IMessageBoxUtil>();
 
             wMessageBoxMock.Setup(x => x.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<string>()))
                            .Returns(DialogResult.Cancel);
@@ -185,7 +185,7 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.RollbackTransaction());
 
             // メッセージボックスのモックを作成
-            var wMessageBoxMock = new Mock<IMessageBoxService>();
+            var wMessageBoxMock = new Mock<IMessageBoxUtil>();
 
             wMessageBoxMock
                 .Setup(x => x.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<object>()))

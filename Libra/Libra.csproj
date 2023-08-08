@@ -142,8 +142,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BooksDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Controls\IMessageBoxService.cs" />
-    <Compile Include="Controls\MessageBoxService.cs" />
+    <Compile Include="Views\IMessageBoxUtil.cs" />
+    <Compile Include="Views\MessageBoxUtil.cs" />
     <Compile Include="Models\MessageTypeEnum.cs" />
     <Compile Include="Views\AddBookForm.cs">
       <SubType>Form</SubType>
@@ -152,7 +152,6 @@
       <DependentUpon>AddBookForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\BookService.cs" />
-    <Compile Include="Models\BooksTable.cs" />
     <Compile Include="Views\LibraForm.cs">
       <SubType>Form</SubType>
     </Compile>

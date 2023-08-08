@@ -222,11 +222,11 @@ namespace LibraUnitTest {
 
                 IBookRepository wBookRepository = new BookRepository(wDbContext);
 
-                var wMockMessageService = new Mock<MessageBoxService>();
-                ILibraControl wLibraControl = new LibraControl(new BooksTable(), () => wBookRepository, wMockMessageService.Object);
+                var wMockMessageService = new Mock<IMessageBoxUtil>();
+                ILibraControl wLibraControl = new LibraControl(() => wBookRepository, wMockMessageService.Object);
 
-                wLibraControl.SearchBooks(vSearchWord);
-                Assert.AreEqual(0, wLibraControl.GetBooksDataTable().Count);
+                var wBooks = wLibraControl.SearchBooks(vSearchWord);
+                Assert.AreEqual(0, wBooks.Count());
             }
         }
 
@@ -253,12 +253,12 @@ namespace LibraUnitTest {
 
                 IBookRepository wBookRepository = new BookRepository(wDbContext);
 
-                var wMockMessageService = new Mock<MessageBoxService>();
-                ILibraControl wLibraControl = new LibraControl(new BooksTable(), () => wBookRepository, wMockMessageService.Object);
+                var wMockMessageService = new Mock<IMessageBoxUtil>();
+                ILibraControl wLibraControl = new LibraControl(() => wBookRepository, wMockMessageService.Object);
 
-                wLibraControl.SearchBooks(vSearchWord);
-                Assert.AreEqual(1, wLibraControl.GetBooksDataTable().Count);
-                Assert.AreEqual("テストタイトル1", wLibraControl.GetBooksDataTable().ElementAt(0).Title);
+                var wBooks = wLibraControl.SearchBooks(vSearchWord);
+                Assert.AreEqual(1, wBooks.Count());
+                Assert.AreEqual("テストタイトル1", wBooks.ElementAt(0).Title);
             }
         }
 
@@ -280,14 +280,14 @@ namespace LibraUnitTest {
 
                 IBookRepository wBookRepository = new BookRepository(wDbContext);
                 
-                var wMockMessageService = new Mock<MessageBoxService>();
-                ILibraControl wLibraControl = new LibraControl(new BooksTable(), () => wBookRepository, wMockMessageService.Object);
+                var wMockMessageService = new Mock<IMessageBoxUtil>();
+                ILibraControl wLibraControl = new LibraControl(() => wBookRepository, wMockMessageService.Object);
 
-                wLibraControl.SearchBooks(vSearchWord);
-                Assert.AreEqual(3, wLibraControl.GetBooksDataTable().Count);
-                Assert.AreEqual("テストタイトル1", wLibraControl.GetBooksDataTable().ElementAt(0).Title);
-                Assert.AreEqual("テストタイトル2", wLibraControl.GetBooksDataTable().ElementAt(1).Title);
-                Assert.AreEqual("テストタイトル3", wLibraControl.GetBooksDataTable().ElementAt(2).Title);
+                var wBooks = wLibraControl.SearchBooks(vSearchWord);
+                Assert.AreEqual(3, wBooks.Count());
+                Assert.AreEqual("テストタイトル1", wBooks.ElementAt(0).Title);
+                Assert.AreEqual("テストタイトル2", wBooks.ElementAt(1).Title);
+                Assert.AreEqual("テストタイトル3", wBooks.ElementAt(2).Title);
             }
         }
 
@@ -298,15 +298,14 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.GetBooks()).Throws(new SQLiteException());
 
             // メッセージボックスのモックを作成
-            var wMessageBoxMock = new Mock<IMessageBoxService>();
+            var wMessageBoxMock = new Mock<IMessageBoxUtil>();
             wMessageBoxMock
                 .Setup(x => x.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<object>()))
                 .Returns(DialogResult.OK);
 
             // LibraControlのインスタンスにモックを注入
-            var wMockTable = new Mock<BooksTable>();
-            ILibraControl wLibraControl = new LibraControl(wMockTable.Object, () => wMockRepository.Object, wMessageBoxMock.Object);
-            wLibraControl.SearchBooks(string.Empty);
+            ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMessageBoxMock.Object);
+            var wBooks = wLibraControl.SearchBooks(string.Empty);
 
             // 例外発生時、メッセージボックスが表示されていることを確認
             wMessageBoxMock.Verify(m => m.Show(MessageTypeEnum.DbError, It.IsAny<object>()), Times.Once);
@@ -319,15 +318,14 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.GetBooks()).Throws(new EntityException());
             
             // メッセージボックスのモックを作成
-            var wMessageBoxMock = new Mock<IMessageBoxService>();
+            var wMessageBoxMock = new Mock<IMessageBoxUtil>();
             wMessageBoxMock
                 .Setup(x => x.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<object>()))
                 .Returns(DialogResult.OK);
 
             // LibraControlのインスタンスにモックを注入
-            var wMockTable = new Mock<BooksTable>();
-            ILibraControl wLibraControl = new LibraControl(wMockTable.Object, () => wMockRepository.Object, wMessageBoxMock.Object);
-            wLibraControl.SearchBooks(string.Empty);
+            ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMessageBoxMock.Object);
+            var wBooks = wLibraControl.SearchBooks(string.Empty);
 
             // 例外発生時、メッセージボックスが表示されていることを確認
             wMessageBoxMock.Verify(m => m.Show(MessageTypeEnum.DbError, It.IsAny<object>()), Times.Once);
@@ -339,15 +337,13 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.GetBooks()).Throws(new Exception());
 
             // メッセージボックスのモックを作成
-            var wMessageBoxMock = new Mock<IMessageBoxService>();
+            var wMessageBoxMock = new Mock<IMessageBoxUtil>();
             wMessageBoxMock
                 .Setup(x => x.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<object>()))
                 .Returns(DialogResult.OK);
 
-            var wMockTable = new Mock<BooksTable>();
-
-            ILibraControl wLibraControl = new LibraControl(wMockTable.Object, () => wMockRepository.Object, wMessageBoxMock.Object);
-            wLibraControl.SearchBooks(string.Empty);
+            ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMessageBoxMock.Object);
+            var wBooks = wLibraControl.SearchBooks(string.Empty);
 
             // 例外発生時、メッセージボックスが表示されていることを確認
             wMessageBoxMock.Verify(m => m.Show(MessageTypeEnum.UnexpectedError, It.IsAny<object>()), Times.Once);

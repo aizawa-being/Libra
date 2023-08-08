@@ -134,12 +134,11 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.RollbackTransaction());
 
             // コントローラのモック作成
-            var wMockBookTable = new Mock<BooksTable>();
-            var wMockMessageBoxService = new Mock<IMessageBoxService>();
+            var wMockMessageBoxService = new Mock<IMessageBoxUtil>();
             wMockMessageBoxService.Setup(m => m.Show(MessageTypeEnum.DeleteConfirmation, wBookTitle))
                                   .Returns(DialogResult.OK);
 
-            ILibraControl wLibraControl = new LibraControl(wMockBookTable.Object, () => wMockRepository.Object, wMockMessageBoxService.Object);
+            ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMockMessageBoxService.Object);
 
             var wResult = wLibraControl.SetDeleteFlag(wBookTitle, 1);
 
@@ -162,9 +161,8 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.RollbackTransaction());
 
             // コントローラのモック作成
-            var wMockBookTable = new Mock<BooksTable>();
-            var wMockMessageBoxService = new Mock<IMessageBoxService>();
-            ILibraControl wLibraControl = new LibraControl(wMockBookTable.Object, () => wMockRepository.Object, wMockMessageBoxService.Object);
+            var wMockMessageBoxService = new Mock<IMessageBoxUtil>();
+            ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMockMessageBoxService.Object);
 
             var wResult = wLibraControl.SetDeleteFlag("書籍名1", 1);
 
@@ -190,9 +188,8 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.RollbackTransaction());
 
             // コントローラのモック作成
-            var wMockBookTable = new Mock<BooksTable>();
-            var wMockMessageBoxService = new Mock<IMessageBoxService>();
-            ILibraControl wLibraControl = new LibraControl(wMockBookTable.Object, () => wMockRepository.Object, wMockMessageBoxService.Object);
+            var wMockMessageBoxService = new Mock<IMessageBoxUtil>();
+            ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMockMessageBoxService.Object);
 
             var wResult = wLibraControl.SetDeleteFlag("書籍名1", 1);
 
@@ -217,9 +214,8 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.RollbackTransaction());
 
             // コントローラのモック作成
-            var wMockBookTable = new Mock<BooksTable>();
-            var wMockMessageBoxService = new Mock<IMessageBoxService>();
-            ILibraControl wLibraControl = new LibraControl(wMockBookTable.Object, () => wMockRepository.Object, wMockMessageBoxService.Object);
+            var wMockMessageBoxService = new Mock<IMessageBoxUtil>();
+            ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMockMessageBoxService.Object);
 
             var wResult = wLibraControl.SetDeleteFlag("書籍名1", 1);
 
@@ -253,9 +249,8 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.RollbackTransaction());
 
             // コントローラのモック作成
-            var wMockBookTable = new Mock<BooksTable>();
-            var wMockMessageBoxService = new Mock<IMessageBoxService>();
-            ILibraControl wLibraControl = new LibraControl(wMockBookTable.Object, () => wMockRepository.Object, wMockMessageBoxService.Object);
+            var wMockMessageBoxService = new Mock<IMessageBoxUtil>();
+            ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMockMessageBoxService.Object);
 
             var wResult = wLibraControl.SetDeleteFlag("書籍名1", 1);
 
@@ -280,9 +275,8 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.RollbackTransaction());
 
             // コントローラのモック作成
-            var wMockBookTable = new Mock<BooksTable>();
-            var wMockMessageBoxService = new Mock<IMessageBoxService>();
-            ILibraControl wLibraControl = new LibraControl(wMockBookTable.Object, () => wMockRepository.Object, wMockMessageBoxService.Object);
+            var wMockMessageBoxService = new Mock<IMessageBoxUtil>();
+            ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMockMessageBoxService.Object);
 
             var wResult = wLibraControl.SetDeleteFlag("書籍名1", 1);
 

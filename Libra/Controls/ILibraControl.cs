@@ -10,20 +10,14 @@ using static Libra.BooksDataSet;
         /// <summary>
         /// 書籍一覧テーブルを初期化します。
         /// </summary>
-        void InitializeBookList();
+        IEnumerable<Book> SetAllBooks();
 
         /// <summary>
-        /// 書籍一覧テーブルを書籍一覧グリッドに設定します。
+        /// 書籍一覧をBooksDataTableに変換します。
         /// </summary>
         /// <param name="vBooks"></param>
         /// <returns></returns>
-        void SetBooksDataTable(IEnumerable<Book> vBooks);
-
-        /// <summary>
-        /// 書籍一覧テーブルの状態を取得します。
-        /// </summary>
-        /// <returns></returns>
-        BooksDataTable GetBooksDataTable();
+        BooksDataTable ConvertBooksDataTable(IEnumerable<Book> vBooks);
 
         /// <summary>
         /// 書籍追加画面を開きます。
@@ -34,11 +28,11 @@ using static Libra.BooksDataSet;
         /// 削除フラグを立てます。
         /// </summary>
         bool SetDeleteFlag(string vTitle, int vBookId);
-        
+
         /// <summary>
         /// 書籍を検索します。
         /// </summary>
         /// <param name="vSearchWord"></param>
-        void SearchBooks(string vSearchString);
+        IEnumerable<Book> SearchBooks(string vSearchString);
     }
 }

@@ -628,7 +628,7 @@
     <value>530, 135</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>書籍管理システム</value>
+    <value>書籍レンタルシステム</value>
   </data>
   <data name="&gt;&gt;bookIdColumn.Name" xml:space="preserve">
     <value>bookIdColumn</value>

@@ -64,8 +64,8 @@ namespace Libra {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Search_Click(object sender, EventArgs e) {
-            this.FLibraControl.SearchBooks(this.searchWordTextBox.Text);
-            this.booksDataGridView.DataSource = this.FLibraControl.GetBooksDataTable();
+            var wBooks = this.FLibraControl.SearchBooks(this.searchWordTextBox.Text);
+            this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
         }
 
         /// <summary>
@@ -78,8 +78,8 @@ namespace Libra {
             this.searchWordTextBox.Text = "";
 
             // 書籍一覧グリッドを初期化します。
-            this.FLibraControl.InitializeBookList();
-            this.booksDataGridView.DataSource = this.FLibraControl.GetBooksDataTable();
+            var wBooks = this.FLibraControl.SetAllBooks();
+            this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
         }
 
         /// <summary>
@@ -95,8 +95,8 @@ namespace Libra {
             }
             // 書籍を追加した場合
             // 書籍一覧グリッドを更新します。
-            this.FLibraControl.InitializeBookList();
-            this.booksDataGridView.DataSource = this.FLibraControl.GetBooksDataTable();
+            var wBooks = this.FLibraControl.SetAllBooks();
+            this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
 
             // 追加した書籍にフォーカスします。
             int wColumnIndex = this.booksDataGridView.Columns[0].Index;
@@ -130,21 +130,18 @@ namespace Libra {
             
             // 削除実施し、結果を取得する
             var wResult = this.FLibraControl.SetDeleteFlag(wTitle, wBookId);
-            
+
             // 書籍一覧グリッドの初期化
-            this.FLibraControl.InitializeBookList();
-            this.booksDataGridView.DataSource = this.FLibraControl.GetBooksDataTable();
+            var wBooks = this.FLibraControl.SetAllBooks();
+            this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
 
             // フォーカスする行を指定
-            if (wResult) {
-                if (wSelectedCellIndex == 0 || wSelectedCellIndex >= this.booksDataGridView.Rows.Count) {
-                    return;
-                }
-                // 削除成功時は1行前をフォーカスする
-                this.booksDataGridView.CurrentCell = this.booksDataGridView.Rows[wSelectedCellIndex - 1].Cells[1];
+            if (wSelectedCellIndex == 0 || wSelectedCellIndex > this.booksDataGridView.Rows.Count || this.booksDataGridView.Rows.Count == 0) {
                 return;
             }
-            if (wSelectedCellIndex >= this.booksDataGridView.Rows.Count || this.booksDataGridView.Rows.Count == 0) {
+            if (wResult) {
+                // 削除成功時は1行前をフォーカスする
+                this.booksDataGridView.CurrentCell = this.booksDataGridView.Rows[wSelectedCellIndex - 1].Cells[1];
                 return;
             }
             this.booksDataGridView.CurrentCell = this.booksDataGridView.Rows[wSelectedCellIndex].Cells[1];
@@ -180,8 +177,8 @@ namespace Libra {
         /// <param name="e"></param>
         private void LibraForm_Load(object sender, EventArgs e) {
             // 書籍一覧グリッドを初期化します。
-            this.FLibraControl.InitializeBookList();
-            this.booksDataGridView.DataSource = this.FLibraControl.GetBooksDataTable();
+            var wBooks = this.FLibraControl.SetAllBooks();
+            this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
 
             if (this.booksDataGridView.Rows.Count > 0) {
                 this.booksDataGridView.CurrentCell = this.booksDataGridView.FirstDisplayedCell;

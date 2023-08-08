@@ -31,9 +31,8 @@ namespace LibraUnitTest {
                            Publisher = "テスト出版社3",
                            Description = "テスト概要3" }
             };
-
-            wLibraControl.SetBooksDataTable(wBooks);
-            var wBooksDataTable = wLibraControl.GetBooksDataTable();
+            
+            var wBooksDataTable = wLibraControl.ConvertBooksDataTable(wBooks);
             
             Assert.AreEqual(3, wBooksDataTable.Count);
             Assert.AreEqual(vBookId, wBooksDataTable.First(b => b.BookId == vBookId).BookId);
