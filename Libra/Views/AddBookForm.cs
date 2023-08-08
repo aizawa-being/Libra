@@ -110,6 +110,9 @@ namespace Libra {
         private void AddBookForm_Load(object sender, EventArgs e) {
             // 右クリックメニューは利用不可
             this.isbnTextBox.ContextMenu = new ContextMenu();
+            
+            // 初期フォーカスを指定
+            this.isbnTextBox.SelectionStart = 3;
         }
     }
 }

@@ -36,9 +36,9 @@
             // 
             // addButton
             // 
-            this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.addButton.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.addButton.Location = new System.Drawing.Point(12, 274);
+            this.addButton.Location = new System.Drawing.Point(416, 324);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(100, 25);
             this.addButton.TabIndex = 7;
@@ -51,7 +51,7 @@
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.cancelButton.Location = new System.Drawing.Point(247, 274);
+            this.cancelButton.Location = new System.Drawing.Point(522, 324);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(100, 25);
             this.cancelButton.TabIndex = 8;
@@ -65,7 +65,7 @@
             this.isbnLabel.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.isbnLabel.Location = new System.Drawing.Point(12, 20);
             this.isbnLabel.Name = "isbnLabel";
-            this.isbnLabel.Size = new System.Drawing.Size(335, 15);
+            this.isbnLabel.Size = new System.Drawing.Size(610, 15);
             this.isbnLabel.TabIndex = 0;
             this.isbnLabel.Text = "バーコード番号（ISBN）を入力してください";
             // 
@@ -75,10 +75,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.isbnTextBox.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.isbnTextBox.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.isbnTextBox.Location = new System.Drawing.Point(12, 50);
+            this.isbnTextBox.Location = new System.Drawing.Point(12, 60);
             this.isbnTextBox.MaxLength = 13;
             this.isbnTextBox.Name = "isbnTextBox";
-            this.isbnTextBox.Size = new System.Drawing.Size(335, 23);
+            this.isbnTextBox.Size = new System.Drawing.Size(610, 23);
             this.isbnTextBox.TabIndex = 1;
             this.isbnTextBox.Text = "978";
             this.isbnTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.IsbnTextBox_KeyDown);
@@ -87,7 +87,7 @@
             // getBookInfoButton
             // 
             this.getBookInfoButton.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.getBookInfoButton.Location = new System.Drawing.Point(12, 90);
+            this.getBookInfoButton.Location = new System.Drawing.Point(12, 110);
             this.getBookInfoButton.Name = "getBookInfoButton";
             this.getBookInfoButton.Size = new System.Drawing.Size(100, 25);
             this.getBookInfoButton.TabIndex = 2;
@@ -98,7 +98,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(9, 130);
+            this.label1.Location = new System.Drawing.Point(12, 170);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 15);
             this.label1.TabIndex = 3;
@@ -107,7 +107,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(9, 160);
+            this.label2.Location = new System.Drawing.Point(12, 220);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 15);
             this.label2.TabIndex = 5;
@@ -119,7 +119,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.titleLabel.AutoSize = true;
             this.titleLabel.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.titleLabel.Location = new System.Drawing.Point(70, 130);
+            this.titleLabel.Location = new System.Drawing.Point(70, 170);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(0, 15);
             this.titleLabel.TabIndex = 4;
@@ -130,7 +130,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.authorLabel.AutoSize = true;
             this.authorLabel.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.authorLabel.Location = new System.Drawing.Point(70, 160);
+            this.authorLabel.Location = new System.Drawing.Point(70, 220);
             this.authorLabel.Name = "authorLabel";
             this.authorLabel.Size = new System.Drawing.Size(0, 15);
             this.authorLabel.TabIndex = 6;
@@ -141,7 +141,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(359, 311);
+            this.ClientSize = new System.Drawing.Size(634, 361);
             this.Controls.Add(this.authorLabel);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.label2);
@@ -154,9 +154,12 @@
             this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::Libra.Properties.Settings.Default, "MyLocation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Location = global::Libra.Properties.Settings.Default.MyLocation;
-            this.MinimumSize = new System.Drawing.Size(255, 275);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(255, 330);
             this.Name = "AddBookForm";
             this.Text = "書籍追加";
+            this.Load += new System.EventHandler(this.AddBookForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

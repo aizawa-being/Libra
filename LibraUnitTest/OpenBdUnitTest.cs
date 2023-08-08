@@ -48,7 +48,7 @@ namespace LibraUnitTest {
                              });
             
             // メッセージボックスのモックを作成
-            var wMessageBoxMock = new Mock<IMessageBoxService>();
+            var wMessageBoxMock = new Mock<IMessageBoxUtil>();
 
             wMessageBoxMock
                 .Setup(x => x.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<string>()))
@@ -78,7 +78,7 @@ namespace LibraUnitTest {
                              .Returns(Task.FromResult(wResponceMessage));
 
             // メッセージボックスのモックを作成
-            var wMessageBoxMock = new Mock<IMessageBoxService>();
+            var wMessageBoxMock = new Mock<IMessageBoxUtil>();
 
             IBookRepository wBookRepository = new BookRepository(new BooksDbContext());
             IAddBookControl wAddBookControl = new AddBookControl(wOpenBdConnectMock.Object, wMessageBoxMock.Object, () => wBookRepository);
@@ -98,7 +98,7 @@ namespace LibraUnitTest {
                              .Returns(Task.FromResult(wResponceMessage));
 
             // メッセージボックスのモックを作成
-            var wMessageBoxMock = new Mock<IMessageBoxService>();
+            var wMessageBoxMock = new Mock<IMessageBoxUtil>();
 
             IBookRepository wBookRepository = new BookRepository(new BooksDbContext());
             IAddBookControl wAddBookControl = new AddBookControl(wOpenBdConnectMock.Object, wMessageBoxMock.Object, () => wBookRepository);
