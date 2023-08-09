@@ -20,9 +20,9 @@
         DeleteConfirmation,
 
         /// <summary>
-        /// 貸出中エラー
+        /// 貸出中に削除不可エラー
         /// </summary>
-        IsBorrowed,
+        DeleteWhileBorrowed,
 
         /// <summary>
         /// 削除済みエラー
@@ -48,6 +48,21 @@
         /// サーバーエラー
         /// </summary>
         ServerError,
+
+        /// <summary>
+        /// 既に貸出中エラー
+        /// </summary>
+        AlreadyBorrowed,
+
+        /// <summary>
+        /// 利用者名未入力エラー
+        /// </summary>
+        UserNameNotInput,
+
+        /// <summary>
+        /// 貸出中ではないエラー
+        /// </summary>
+        NotBorrowed,
 
         /// <summary>
         /// 予期せぬエラー

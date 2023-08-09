@@ -54,6 +54,7 @@ namespace Libra {
             }
         }
 
+        /// <summary>
         /// 削除フラグを立てます
         /// </summary>
         /// <param name="vBookId"></param>
@@ -72,9 +73,69 @@ namespace Libra {
                 }
                 if (wBook.UserName != null) {
                     // 貸出中
-                    throw new BookOperationException(ErrorTypeEnum.IsBorrowed, wBook.Title);
+                    throw new BookOperationException(ErrorTypeEnum.DeleteWhileBorrowed, wBook.Title);
                 }
                 wBook.IsDeleted = 1;
+                wInstance.UpdateBook(wBook);
+                wInstance.Save();
+                wInstance.CommitTransaction();
+
+            } catch (Exception) {
+                // ロールバック
+                wInstance.RollbackTransaction();
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 書籍を貸出中にします。
+        /// </summary>
+        /// <param name="vBookId"></param>
+        /// <param name="vUserName"></param>
+        public void BorrowBook(int vBookId, string vUserName) {
+            IBookRepository wInstance = this.FBookRepository();
+            // トランザクション開始
+            wInstance.BeginTransaction();
+            try {
+                var wBook = wInstance.GetBookById(vBookId);
+                if (wBook == null) {
+                    throw new SQLiteException();
+                }
+                if (wBook.UserName != null) {
+                    // 貸出中
+                    throw new BookOperationException(ErrorTypeEnum.AlreadyBorrowed, wBook.Title);
+                }
+                wBook.UserName = vUserName;
+                wInstance.UpdateBook(wBook);
+                wInstance.Save();
+                wInstance.CommitTransaction();
+
+            } catch (Exception) {
+                // ロールバック
+                wInstance.RollbackTransaction();
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 書籍を返却します。
+        /// </summary>
+        /// <param name="vBookId"></param>
+        /// <param name="vUserName"></param>
+        public void ReturnBook(int vBookId) {
+            IBookRepository wInstance = this.FBookRepository();
+            // トランザクション開始
+            wInstance.BeginTransaction();
+            try {
+                var wBook = wInstance.GetBookById(vBookId);
+                if (wBook == null) {
+                    throw new SQLiteException();
+                }
+                if (wBook.UserName == null) {
+                    // 貸出されていない
+                    throw new BookOperationException(ErrorTypeEnum.NotBorrowed, wBook.Title);
+                }
+                wBook.UserName = null;
                 wInstance.UpdateBook(wBook);
                 wInstance.Save();
                 wInstance.CommitTransaction();

@@ -34,5 +34,20 @@ using static Libra.BooksDataSet;
         /// 削除フラグを立てます。
         /// </summary>
         bool SetDeleteFlag(string vTitle, int vBookId);
+
+        /// <summary>
+        /// 書籍を貸出中にします。
+        /// </summary>
+        /// <param name="vUserName"></param>
+        /// <param name="vBookId"></param>
+        /// <returns></returns>
+        void BorrowBook(string vUserName, int vBookId);
+
+        /// <summary>
+        /// 書籍を返却します。
+        /// </summary>
+        /// <param name="vBookId"></param>
+        /// <returns></returns>
+        void ReturnBook(int wBookId);
     }
 }

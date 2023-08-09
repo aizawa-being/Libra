@@ -3,7 +3,9 @@
     /// エラータイプを列挙します。
     /// </summary>
     public enum ErrorTypeEnum {
-        IsBorrowed,
+        DeleteWhileBorrowed,
         AlreadyDeleted,
+        AlreadyBorrowed,
+        NotBorrowed,
     }
 }
