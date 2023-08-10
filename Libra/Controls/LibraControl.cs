@@ -52,17 +52,8 @@ namespace Libra {
                     var wBooks = wBookService.GetExistBooks();
                     this.SetBooksDataTable(wBooks);
 
-                } catch (DbException) {
-                    // DBエラー発生
-                    this.FMessageBoxService.Show(MessageTypeEnum.DbError);
-
-                } catch (EntityException) {
-                    // DBエラー発生
-                    this.FMessageBoxService.Show(MessageTypeEnum.DbError);
-
                 } catch (Exception vException) {
-                    // 予期せぬエラー発生
-                    this.FMessageBoxService.Show(MessageTypeEnum.UnexpectedError, vException);
+                    this.HandleException(vException);
                 }
             }
         }
@@ -107,25 +98,9 @@ namespace Libra {
                     wBookService.SetDeleteFlag(vBookId);
                     return true;
                 }
-            } catch (BookOperationException vException) {
-                var wBookError = new BookErrorDefine(vException.ErrorType);
-                this.FMessageBoxService.Show(wBookError.FMessageType, vException.BookTitle);
-
-            } catch (DbException) {
-                // DBエラー発生
-                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
-
-            } catch (DbUpdateException) {
-                // DBエラー発生
-                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
-
-            } catch (EntityException) {
-                // DBエラー発生
-                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
 
             } catch (Exception vException) {
-                // 予期せぬエラー発生
-                this.FMessageBoxService.Show(MessageTypeEnum.UnexpectedError, vException);
+                this.HandleException(vException);
             }
             return false;
         }
@@ -146,28 +121,16 @@ namespace Libra {
                 using (ILibraBookService wBookService = new BookService(this.FBookRepository)) {
                     wBookService.BorrowBook(vBookId, vUserName);
                 }
-            } catch (BookOperationException vException) {
-                var wBookError = new BookErrorDefine(vException.ErrorType);
-                this.FMessageBoxService.Show(wBookError.FMessageType, vException.BookTitle);
-
-            } catch (DbException) {
-                // DBエラー発生
-                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
-
-            } catch (DbUpdateException) {
-                // DBエラー発生
-                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
-
-            } catch (EntityException) {
-                // DBエラー発生
-                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
 
             } catch (Exception vException) {
-                // 予期せぬエラー発生
-                this.FMessageBoxService.Show(MessageTypeEnum.UnexpectedError, vException);
+                this.HandleException(vException);
             }
         }
 
+        /// <summary>
+        /// 書籍を返却します。
+        /// </summary>
+        /// <param name="vBookId"></param>
         public void ReturnBook(int vBookId) {
             try {
                 using (ILibraBookService wBookService = new BookService(this.FBookRepository)) {
@@ -177,19 +140,26 @@ namespace Libra {
                 var wBookError = new BookErrorDefine(vException.ErrorType);
                 this.FMessageBoxService.Show(wBookError.FMessageType, vException.BookTitle);
 
-            } catch (DbException) {
-                // DBエラー発生
-                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
-
-            } catch (DbUpdateException) {
-                // DBエラー発生
-                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
-
-            } catch (EntityException) {
-                // DBエラー発生
-                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
-
             } catch (Exception vException) {
+                this.HandleException(vException);
+            }
+        }
+
+        /// <summary>
+        /// 例外ハンドラ
+        /// </summary>
+        /// <param name="vException"></param>
+        private void HandleException(Exception vException) {
+            if (vException is BookOperationException wBookOperationException) {
+                // Libra独自の例外発生
+                var wBookError = new BookErrorDefine(wBookOperationException.ErrorType);
+                this.FMessageBoxService.Show(wBookError.FMessageType, wBookOperationException.BookTitle);
+
+            } else if (vException is DbException || vException is DbUpdateException || vException is EntityException) {
+                // DBエラー発生
+                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
+
+            } else {
                 // 予期せぬエラー発生
                 this.FMessageBoxService.Show(MessageTypeEnum.UnexpectedError, vException);
             }

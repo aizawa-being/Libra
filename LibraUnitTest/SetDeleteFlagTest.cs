@@ -79,7 +79,7 @@ namespace LibraUnitTest {
 
             var wException = Assert.Throws<BookOperationException>(() => wBookService.SetDeleteFlag(It.IsAny<int>()));
 
-            Assert.AreEqual(ErrorTypeEnum.IsBorrowed, wException.ErrorType);
+            Assert.AreEqual(ErrorTypeEnum.DeleteWhileBorrowed, wException.ErrorType);
             wMockRepository.Verify(m => m.BeginTransaction(), Times.Once);
             wMockRepository.Verify(m => m.GetBookById(It.IsAny<int>()), Times.Once);
             wMockRepository.Verify(m => m.UpdateBook(It.IsAny<Book>()), Times.Never);
