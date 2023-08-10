@@ -71,7 +71,7 @@ namespace Libra {
         }
 
         /// <summary>
-        /// 削除フラグを立てます
+        /// 削除フラグを設定します。
         /// </summary>
         /// <param name="vBookId"></param>
         public void SetDeleteFlag(int vBookId) {

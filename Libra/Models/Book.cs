@@ -7,7 +7,7 @@ namespace Libra {
     /// 書籍クラス
     /// </summary>
     /// <remarks>
-    /// DBの書籍情報テーブルを定義しています。
+    /// DBの書籍情報テーブルを定義します。
     /// </remarks>
     [Table("Book")]
     public class Book {

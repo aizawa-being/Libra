@@ -10,7 +10,7 @@ using static Libra.BooksDataSet;
 
 namespace Libra {
     /// <summary>
-    /// 書籍一覧画面のコントローラ
+    /// 書籍一覧画面のコントローラクラスです。
     /// </summary>
     public class LibraControl : ILibraControl {
         private readonly BooksTable FBooksTable;
@@ -85,7 +85,7 @@ namespace Libra {
         }
 
         /// <summary>
-        /// 削除フラグを立てます。
+        /// 削除フラグを設定します。
         /// </summary>
         public bool SetDeleteFlag(string vTitle, int vBookId) {
             // 削除確認メッセージボックスの表示
@@ -113,7 +113,7 @@ namespace Libra {
         /// <returns></returns>
         public void BorrowBook(string vUserName, int vBookId) {
             // 利用者名は入力が必須
-            if (string.IsNullOrEmpty(vUserName)) {
+            if (string.IsNullOrWhiteSpace(vUserName)) {
                 this.FMessageBoxService.Show(MessageTypeEnum.UserNameNotInput);
                 return;
             }
@@ -146,7 +146,7 @@ namespace Libra {
         }
 
         /// <summary>
-        /// 例外ハンドラ
+        /// 例外を処理します。
         /// </summary>
         /// <param name="vException"></param>
         private void HandleException(Exception vException) {
