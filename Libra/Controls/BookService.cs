@@ -26,18 +26,18 @@ namespace Libra {
         /// </summary>
         /// <param name="vAction"></param>
         private void PerformInTransaction(Action<IBookRepository> vAction) {
-            IBookRepository wInstance = this.FBookRepository();
+            IBookRepository wBookRepository = this.FBookRepository();
             // トランザクション開始
-            wInstance.BeginTransaction();
+            wBookRepository.BeginTransaction();
             try {
                 // 指定されたアクションを実行
-                vAction(wInstance);
-                wInstance.Save();
-                wInstance.CommitTransaction();
+                vAction(wBookRepository);
+                wBookRepository.Save();
+                wBookRepository.CommitTransaction();
 
             } catch (Exception) {
                 // ロールバック
-                wInstance.RollbackTransaction();
+                wBookRepository.RollbackTransaction();
                 throw;
             }
         }
@@ -121,10 +121,10 @@ namespace Libra {
         /// </summary>
         /// <param name="vBookId"></param>
         public void ReturnBook(int vBookId) {
-            this.PerformInTransaction(wRepository =>
-            {
+            this.PerformInTransaction(wRepository => {
                 var wBook = wRepository.GetBookById(vBookId);
                 if (wBook == null) {
+                    // 書籍情報の取得失敗
                     throw new SQLiteException();
                 }
                 if (wBook.UserName == null) {
