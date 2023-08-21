@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 using System.Data.Common;
@@ -13,24 +14,21 @@ namespace Libra {
     /// 書籍一覧画面のコントローラ
     /// </summary>
     public class LibraControl : ILibraControl {
-        private readonly BooksTable FBooksTable;
         private readonly Func<IBookRepository> FBookRepository;
-        private readonly IMessageBoxService FMessageBoxService;
+        private readonly IMessageBoxUtil FMessageBoxService;
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
         public LibraControl() {
-            this.FBooksTable = new BooksTable();
             this.FBookRepository = () => new BookRepository(new BooksDbContext());
-            this.FMessageBoxService = new MessageBoxService();
+            this.FMessageBoxService = new MessageBoxUtil();
         }
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public LibraControl(BooksTable vBooksTable, Func<IBookRepository> vFunc, IMessageBoxService vMessageBoxService) {
-            this.FBooksTable = vBooksTable;
+        public LibraControl(Func<IBookRepository> vFunc, IMessageBoxUtil vMessageBoxService) {
             this.FBookRepository = vFunc;
             this.FMessageBoxService = vMessageBoxService;
         }
@@ -44,13 +42,12 @@ namespace Libra {
         }
 
         /// <summary>
-        /// 書籍一覧テーブルを初期化します。
+        /// 書籍一覧を取得します。
         /// </summary>
-        public void InitializeBookList() {
+        public IEnumerable<Book> GetAllBooks() {
             using (ILibraBookService wBookService = new BookService(this.FBookRepository)) {
                 try {
-                    var wBooks = wBookService.GetExistBooks();
-                    this.SetBooksDataTable(wBooks);
+                    return wBookService.GetExistBooks();
 
                 } catch (DbException) {
                     // DBエラー発生
@@ -64,15 +61,16 @@ namespace Libra {
                     // 予期せぬエラー発生
                     this.FMessageBoxService.Show(MessageTypeEnum.UnexpectedError, vException);
                 }
+                return null;
             }
         }
 
         /// <summary>
-        /// 書籍一覧テーブルを書籍一覧グリッドに設定します。
+        /// 書籍一覧をBooksDataTableに変換します。
         /// </summary>
         /// <param name="vBooks"></param>
         /// <returns></returns>
-        public void SetBooksDataTable(IEnumerable<Book> vBooks) {
+        public BooksDataTable ConvertBooksDataTable(IEnumerable<Book> vBooks) {
             var wDataTable = new BooksDataTable();
             foreach (var wBook in vBooks) {
                 wDataTable.Rows.Add(wBook.BookId,
@@ -82,15 +80,7 @@ namespace Libra {
                                     wBook.Description,
                                     wBook.UserName);
             }
-            this.FBooksTable.Books = wDataTable;
-        }
-
-        /// <summary>
-        /// 書籍一覧テーブルの状態を取得します。
-        /// </summary>
-        /// <returns></returns>
-        public BooksDataTable GetBooksDataTable() {
-            return this.FBooksTable.Books;
+            return wDataTable;
         }
 
         /// <summary>
@@ -130,6 +120,33 @@ namespace Libra {
                 this.FMessageBoxService.Show(MessageTypeEnum.UnexpectedError, vException);
             }
             return wResult;
+        }
+
+        /// <summary>
+        /// 書籍を検索します。
+        /// </summary>
+        /// <param name="vSearchWord"></param>
+        public IEnumerable<Book> SearchBooks(string vSearchString) {
+            // 検索ワードを半角空白で分割する。
+            IEnumerable<string> wSearchWords = vSearchString.Split(' ').Select(s => s.Trim());
+
+            try {
+                using (ILibraBookService wBookService = new BookService(this.FBookRepository)) {
+                    return wBookService.SearchBooks(wSearchWords);
+                }
+            } catch (DbException) {
+                // DBエラー発生
+                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
+
+            } catch (EntityException) {
+                // DBエラー発生
+                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
+
+            } catch (Exception vException) {
+                // 予期せぬエラー発生
+                this.FMessageBoxService.Show(MessageTypeEnum.UnexpectedError, vException);
+            }
+            return null;
         }
     }
 }

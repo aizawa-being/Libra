@@ -12,8 +12,6 @@ namespace LibraUnitTest {
         [TestCase(1234567890, "1１aAａＡあｱ! 　", "1１aAａＡあｱ! 　", "1１aAａＡあｱ! 　", "1１aAａＡあｱ! 　")]
         [TestCase(0, "", "", "", "")]
         public void 書籍一覧グリッド表示テスト(int vBookId, string vTitle, string vAuthor, string vPublisher, string vDescription) {
-
-            var MockContext = new Mock<BooksDbContext>();
             var wLibraControl = new LibraControl();
 
             var wBooks = new List<Book> {
@@ -33,9 +31,8 @@ namespace LibraUnitTest {
                            Publisher = "テスト出版社3",
                            Description = "テスト概要3" }
             };
-
-            wLibraControl.SetBooksDataTable(wBooks);
-            var wBooksDataTable = wLibraControl.GetBooksDataTable();
+            
+            var wBooksDataTable = wLibraControl.ConvertBooksDataTable(wBooks);
             
             Assert.AreEqual(3, wBooksDataTable.Count);
             Assert.AreEqual(vBookId, wBooksDataTable.First(b => b.BookId == vBookId).BookId);

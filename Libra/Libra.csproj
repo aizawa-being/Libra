@@ -122,7 +122,7 @@
   <ItemGroup>
     <Compile Include="Controls\IAddBookService.cs" />
     <Compile Include="Controls\ILibraBookService.cs" />
-    <Compile Include="Models\BookErrorDefine.cs" />
+    <Compile Include="Define\BookErrorDefine.cs" />
     <Compile Include="BookOperationException.cs" />
     <Compile Include="Controls\HttpClientWrapper.cs" />
     <Compile Include="Controls\IAddBookControl.cs" />
@@ -130,7 +130,7 @@
     <Compile Include="Controls\IOpenBdConnect.cs" />
     <Compile Include="Controls\OpenBdConnect.cs" />
     <Compile Include="Models\ErrorTypeEnum.cs" />
-    <Compile Include="Models\MessageConst.cs" />
+    <Compile Include="Const\MessageConst.cs" />
     <Compile Include="Controls\AddBookControl.cs" />
     <Compile Include="Controls\LibraControl.cs" />
     <Compile Include="Controls\ILibraControl.cs" />
@@ -142,8 +142,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BooksDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Controls\IMessageBoxService.cs" />
-    <Compile Include="Controls\MessageBoxService.cs" />
+    <Compile Include="Utils\IMessageBoxUtil.cs" />
+    <Compile Include="Utils\MessageBoxUtil.cs" />
     <Compile Include="Models\MessageTypeEnum.cs" />
     <Compile Include="Views\AddBookForm.cs">
       <SubType>Form</SubType>
@@ -152,7 +152,6 @@
       <DependentUpon>AddBookForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\BookService.cs" />
-    <Compile Include="Models\BooksTable.cs" />
     <Compile Include="Views\LibraForm.cs">
       <SubType>Form</SubType>
     </Compile>

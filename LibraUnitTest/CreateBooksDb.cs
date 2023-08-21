@@ -60,6 +60,8 @@ namespace LibraUnitTest {
                 BookId = 1,
                 Title = "テストタイトル1",
                 Author = "テスト著者1",
+                Publisher = "テスト出版社1",
+                Description = "テスト概要1",
                 Barcode = "0000000000001",
                 IsDeleted = 0
             });
@@ -67,6 +69,8 @@ namespace LibraUnitTest {
                 BookId = 2,
                 Title = "テストタイトル2",
                 Author = "テスト著者2",
+                Publisher = "テスト出版社2",
+                Description = "テスト概要2",
                 Barcode = "0000000000002",
                 IsDeleted = 0
             });
@@ -74,6 +78,8 @@ namespace LibraUnitTest {
                 BookId = 3,
                 Title = "テストタイトル3",
                 Author = "テスト著者3",
+                Publisher = "テスト出版社3",
+                Description = "テスト概要3",
                 Barcode = "0000000000003",
                 IsDeleted = 0
             });
