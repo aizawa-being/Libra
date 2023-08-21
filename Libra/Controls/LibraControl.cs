@@ -102,11 +102,6 @@ namespace Libra {
         /// <param name="vBookId"></param>
         /// <returns></returns>
         public void BorrowBook(string vUserName, int vBookId) {
-            // 利用者名は入力が必須
-            if (string.IsNullOrWhiteSpace(vUserName)) {
-                this.FMessageBoxService.Show(MessageTypeEnum.UserNameNotInput);
-                return;
-            }
             try {
                 using (ILibraBookService wBookService = new BookService(this.FBookRepository)) {
                     wBookService.BorrowBook(vBookId, vUserName);
