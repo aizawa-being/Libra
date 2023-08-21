@@ -3,7 +3,6 @@ using System.Linq;
 using System.Data.SQLite;
 
 using Libra;
-using System;
 
 namespace LibraUnitTest {
     /// <summary>

@@ -1,12 +1,11 @@
-﻿using Libra;
+﻿using System;
+using System.Collections.Generic;
+
 using Moq;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using Libra;
 
 namespace LibraUnitTest {
     [TestFixture]
@@ -263,10 +262,10 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.UpdateBook(It.IsAny<Book>()));
 
             // メッセージボックスのモック作成
-            var wMockMessageService = new Mock<IMessageBoxService>();
+            var wMockMessageService = new Mock<IMessageBoxUtil>();
             wMockMessageService.Setup(m => m.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<object>()));
 
-            ILibraControl wLibraControl = new LibraControl(new BooksTable(), () => wMockRepository.Object, wMockMessageService.Object);
+            ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMockMessageService.Object);
             wLibraControl.BorrowBook("test", It.IsAny<int>());
 
             wMockRepository.Verify(m => m.CommitTransaction(), Times.Once);
@@ -284,10 +283,10 @@ namespace LibraUnitTest {
             });
 
             // メッセージボックスのモック作成
-            var wMockMessageService = new Mock<IMessageBoxService>();
+            var wMockMessageService = new Mock<IMessageBoxUtil>();
             wMockMessageService.Setup(m => m.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<object>()));
 
-            ILibraControl wLibraControl = new LibraControl(new BooksTable(), () => wMockRepository.Object, wMockMessageService.Object);
+            ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMockMessageService.Object);
             wLibraControl.BorrowBook("test", It.IsAny<int>());
 
             wMockRepository.Verify(m => m.CommitTransaction(), Times.Never);
@@ -302,10 +301,10 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.GetBookById(It.IsAny<int>())).Throws<SQLiteException>();
 
             // メッセージボックスのモック作成
-            var wMockMessageService = new Mock<IMessageBoxService>();
+            var wMockMessageService = new Mock<IMessageBoxUtil>();
             wMockMessageService.Setup(m => m.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<object>()));
 
-            ILibraControl wLibraControl = new LibraControl(new BooksTable(), () => wMockRepository.Object, wMockMessageService.Object);
+            ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMockMessageService.Object);
             wLibraControl.BorrowBook("test", It.IsAny<int>());
 
             wMockRepository.Verify(m => m.CommitTransaction(), Times.Never);
@@ -320,10 +319,10 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.GetBookById(It.IsAny<int>())).Throws<Exception>();
 
             // メッセージボックスのモック作成
-            var wMockMessageService = new Mock<IMessageBoxService>();
+            var wMockMessageService = new Mock<IMessageBoxUtil>();
             wMockMessageService.Setup(m => m.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<object>()));
 
-            ILibraControl wLibraControl = new LibraControl(new BooksTable(), () => wMockRepository.Object, wMockMessageService.Object);
+            ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMockMessageService.Object);
             wLibraControl.BorrowBook("test", It.IsAny<int>());
 
             wMockRepository.Verify(m => m.CommitTransaction(), Times.Never);
@@ -341,10 +340,10 @@ namespace LibraUnitTest {
             });
 
             // メッセージボックスのモック作成
-            var wMockMessageService = new Mock<IMessageBoxService>();
+            var wMockMessageService = new Mock<IMessageBoxUtil>();
             wMockMessageService.Setup(m => m.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<object>()));
 
-            ILibraControl wLibraControl = new LibraControl(new BooksTable(), () => wMockRepository.Object, wMockMessageService.Object);
+            ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMockMessageService.Object);
             wLibraControl.ReturnBook(It.IsAny<int>());
 
             wMockRepository.Verify(m => m.CommitTransaction(), Times.Once);
@@ -362,10 +361,10 @@ namespace LibraUnitTest {
             });
 
             // メッセージボックスのモック作成
-            var wMockMessageService = new Mock<IMessageBoxService>();
+            var wMockMessageService = new Mock<IMessageBoxUtil>();
             wMockMessageService.Setup(m => m.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<object>()));
 
-            ILibraControl wLibraControl = new LibraControl(new BooksTable(), () => wMockRepository.Object, wMockMessageService.Object);
+            ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMockMessageService.Object);
             wLibraControl.ReturnBook(It.IsAny<int>());
 
             wMockRepository.Verify(m => m.CommitTransaction(), Times.Never);
@@ -380,10 +379,10 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.GetBookById(It.IsAny<int>())).Throws<SQLiteException>();
 
             // メッセージボックスのモック作成
-            var wMockMessageService = new Mock<IMessageBoxService>();
+            var wMockMessageService = new Mock<IMessageBoxUtil>();
             wMockMessageService.Setup(m => m.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<object>()));
 
-            ILibraControl wLibraControl = new LibraControl(new BooksTable(), () => wMockRepository.Object, wMockMessageService.Object);
+            ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMockMessageService.Object);
             wLibraControl.ReturnBook(It.IsAny<int>());
 
             wMockRepository.Verify(m => m.CommitTransaction(), Times.Never);
@@ -398,10 +397,10 @@ namespace LibraUnitTest {
             wMockRepository.Setup(m => m.GetBookById(It.IsAny<int>())).Throws<Exception>();
 
             // メッセージボックスのモック作成
-            var wMockMessageService = new Mock<IMessageBoxService>();
+            var wMockMessageService = new Mock<IMessageBoxUtil>();
             wMockMessageService.Setup(m => m.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<object>()));
 
-            ILibraControl wLibraControl = new LibraControl(new BooksTable(), () => wMockRepository.Object, wMockMessageService.Object);
+            ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMockMessageService.Object);
             wLibraControl.ReturnBook(It.IsAny<int>());
 
             wMockRepository.Verify(m => m.CommitTransaction(), Times.Never);

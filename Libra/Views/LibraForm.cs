@@ -60,9 +60,9 @@ namespace Libra {
             this.FLibraControl.BorrowBook(this.userNameTextBox.Text, wBookId);
 
             // 書籍一覧グリッドの初期化
-            this.FLibraControl.InitializeBookList();
-            this.booksDataGridView.DataSource = this.FLibraControl.GetBooksDataTable();
-            
+            var wBooks = this.FLibraControl.GetAllBooks();
+            this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
+
             // 貸出した書籍にフォーカスします。
             int wColumnIndex = this.booksDataGridView.Columns[0].Index;
             foreach (DataGridViewRow wRow in this.booksDataGridView.Rows) {
@@ -94,8 +94,8 @@ namespace Libra {
             this.FLibraControl.ReturnBook(wBookId);
 
             // 書籍一覧グリッドの初期化
-            this.FLibraControl.InitializeBookList();
-            this.booksDataGridView.DataSource = this.FLibraControl.GetBooksDataTable();
+            var wBooks = this.FLibraControl.GetAllBooks();
+            this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
 
             // 返却した書籍にフォーカスします。
             int wColumnIndex = this.booksDataGridView.Columns[0].Index;
