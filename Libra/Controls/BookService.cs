@@ -138,6 +138,26 @@ namespace Libra {
         }
 
         /// <summary>
+        /// 書籍を複数ワードで検索します。
+        /// </summary>
+        /// <param name="vSearchWords"></param>
+        /// <returns>Book</returns>
+        public IEnumerable<Book> SearchBooks(IEnumerable<string> vSearchWords) {
+            IBookRepository wInstance = this.FBookRepository();
+            var wBooks = from wBook in wInstance.GetBooks()
+                         where vSearchWords.All(wKeyword =>
+                             wBook.Title.Contains(wKeyword) ||
+                             wBook.Author.Contains(wKeyword) ||
+                             wBook.Publisher != null && wBook.Publisher.Contains(wKeyword) ||
+                             wBook.Description != null && wBook.Description.Contains(wKeyword) ||
+                             wBook.UserName != null && wBook.UserName.Contains(wKeyword) &&
+                             wBook.IsDeleted is 0)
+                         orderby wBook.Title
+                         select wBook;
+            return wBooks;
+        }
+
+        /// <summary>
         /// リソースを破棄します。
         /// </summary>
         public void Dispose() {

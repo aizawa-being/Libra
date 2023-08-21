@@ -107,6 +107,7 @@
     <Compile Include="DBInterfaceUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RentalBookTest.cs" />
+    <Compile Include="SearchBooksTest.cs" />
     <Compile Include="SetDeleteFlagTest.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,7 +4,7 @@ namespace Libra {
     /// <summary>
     /// メッセージボックスのカスタム用インターフェースです。
     /// </summary>
-    public interface IMessageBoxService {
+    public interface IMessageBoxUtil {
 
         /// <summary>
         /// メッセージタイプ毎に既定のメッセージボックスを表示します。

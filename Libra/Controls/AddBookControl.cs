@@ -16,7 +16,7 @@ namespace Libra {
         /// </summary>
         private Book FAddBook;
         private readonly IOpenBdConnect FOpenBdConnect;
-        private readonly IMessageBoxService FMessageBoxService;
+        private readonly IMessageBoxUtil FMessageBoxService;
         private readonly Func<IBookRepository> FBookRepository;
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace Libra {
         /// </summary>
         public AddBookControl() {
             this.FOpenBdConnect = new OpenBdConnect();
-            this.FMessageBoxService = new MessageBoxService();
+            this.FMessageBoxService = new MessageBoxUtil();
             this.FBookRepository = () => new BookRepository(new BooksDbContext());
         }
 
@@ -34,7 +34,7 @@ namespace Libra {
         /// <param name="vOpenBdConnect"></param>
         /// <param name="vMessageBoxService"></param>
         /// <param name="vBookRepository"></param>
-        public AddBookControl(IOpenBdConnect vOpenBdConnect, IMessageBoxService vMessageBoxService, Func<IBookRepository> vFunc) {
+        public AddBookControl(IOpenBdConnect vOpenBdConnect, IMessageBoxUtil vMessageBoxService, Func<IBookRepository> vFunc) {
             this.FOpenBdConnect = vOpenBdConnect;
             this.FMessageBoxService = vMessageBoxService;
             this.FBookRepository = vFunc;

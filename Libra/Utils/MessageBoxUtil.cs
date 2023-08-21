@@ -4,7 +4,7 @@ namespace Libra {
     /// <summary>
     /// メッセージボックスを表示します。
     /// </summary>
-    public class MessageBoxService : IMessageBoxService {
+    public class MessageBoxUtil : IMessageBoxUtil {
 
         /// <summary>
         /// メッセージタイプ毎に既定のメッセージボックスを表示します。
