@@ -74,7 +74,7 @@ namespace Libra {
             }
 
             // 貸出処理
-            this.FLibraControl.BorrowBook(this.userNameTextBox.Text, wBookId);
+            this.FLibraControl.BorrowBook(wBookId, this.userNameTextBox.Text);
 
             // 書籍一覧グリッドの初期化
             var wBooks = this.FLibraControl.GetAllBooks();

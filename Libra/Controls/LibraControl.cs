@@ -96,12 +96,30 @@ namespace Libra {
         }
 
         /// <summary>
+        /// 書籍を検索します。
+        /// </summary>
+        /// <param name="vSearchWord"></param>
+        public IEnumerable<Book> SearchBooks(string vSearchString) {
+            // 検索ワードを半角空白で分割する。
+            IEnumerable<string> wSearchWords = vSearchString.Split(' ').Select(s => s.Trim());
+
+            try {
+                using (ILibraBookService wBookService = new BookService(this.FBookRepository)) {
+                    return wBookService.SearchBooks(wSearchWords);
+                }
+            } catch (Exception vException) {
+                this.HandleException(vException);
+            }
+            return null;
+        }
+
+        /// <summary>
         /// 書籍を貸出中にします。
         /// </summary>
-        /// <param name="vUserName"></param>
         /// <param name="vBookId"></param>
+        /// <param name="vUserName"></param>
         /// <returns></returns>
-        public void BorrowBook(string vUserName, int vBookId) {
+        public void BorrowBook(int vBookId, string vUserName) {
             try {
                 using (ILibraBookService wBookService = new BookService(this.FBookRepository)) {
                     wBookService.BorrowBook(vBookId, vUserName);
@@ -121,10 +139,6 @@ namespace Libra {
                 using (ILibraBookService wBookService = new BookService(this.FBookRepository)) {
                     wBookService.ReturnBook(vBookId);
                 }
-            } catch (BookOperationException vException) {
-                var wBookError = new BookErrorDefine(vException.ErrorType);
-                this.FMessageBoxService.Show(wBookError.FMessageType, vException.BookTitle);
-
             } catch (Exception vException) {
                 this.HandleException(vException);
             }
@@ -148,33 +162,6 @@ namespace Libra {
                 // 予期せぬエラー発生
                 this.FMessageBoxService.Show(MessageTypeEnum.UnexpectedError, vException);
             }
-        }
-
-        /// <summary>
-        /// 書籍を検索します。
-        /// </summary>
-        /// <param name="vSearchWord"></param>
-        public IEnumerable<Book> SearchBooks(string vSearchString) {
-            // 検索ワードを半角空白で分割する。
-            IEnumerable<string> wSearchWords = vSearchString.Split(' ').Select(s => s.Trim());
-
-            try {
-                using (ILibraBookService wBookService = new BookService(this.FBookRepository)) {
-                    return wBookService.SearchBooks(wSearchWords);
-                }
-            } catch (DbException) {
-                // DBエラー発生
-                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
-
-            } catch (EntityException) {
-                // DBエラー発生
-                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
-
-            } catch (Exception vException) {
-                // 予期せぬエラー発生
-                this.FMessageBoxService.Show(MessageTypeEnum.UnexpectedError, vException);
-            }
-            return null;
         }
     }
 }

@@ -143,8 +143,9 @@ namespace Libra {
         /// <param name="vSearchWords"></param>
         /// <returns>Book</returns>
         public IEnumerable<Book> SearchBooks(IEnumerable<string> vSearchWords) {
-            IBookRepository wInstance = this.FBookRepository();
-            var wBooks = from wBook in wInstance.GetBooks()
+            IEnumerable<Book> wBooks = new List<Book>();
+            this.PerformInTransaction(wRepository => {
+                wBooks = from wBook in wRepository.GetBooks()
                          where vSearchWords.All(wKeyword =>
                              wBook.Title.Contains(wKeyword) ||
                              wBook.Author.Contains(wKeyword) ||
@@ -154,6 +155,7 @@ namespace Libra {
                              wBook.IsDeleted is 0)
                          orderby wBook.Title
                          select wBook;
+            });
             return wBooks;
         }
 

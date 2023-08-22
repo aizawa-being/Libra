@@ -38,10 +38,10 @@ using static Libra.BooksDataSet;
         /// <summary>
         /// 書籍を貸出中にします。
         /// </summary>
-        /// <param name="vUserName"></param>
         /// <param name="vBookId"></param>
+        /// <param name="vUserName"></param>
         /// <returns></returns>
-        void BorrowBook(string vUserName, int vBookId);
+        void BorrowBook(int vBookId, string vUserName);
 
         /// <summary>
         /// 書籍を返却します。

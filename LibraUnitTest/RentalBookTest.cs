@@ -266,7 +266,7 @@ namespace LibraUnitTest {
             wMockMessageService.Setup(m => m.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<object>()));
 
             ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMockMessageService.Object);
-            wLibraControl.BorrowBook("test", It.IsAny<int>());
+            wLibraControl.BorrowBook(It.IsAny<int>(), "test");
 
             wMockRepository.Verify(m => m.CommitTransaction(), Times.Once);
             wMockRepository.Verify(m => m.RollbackTransaction(), Times.Never);
@@ -287,7 +287,7 @@ namespace LibraUnitTest {
             wMockMessageService.Setup(m => m.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<object>()));
 
             ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMockMessageService.Object);
-            wLibraControl.BorrowBook("test", It.IsAny<int>());
+            wLibraControl.BorrowBook(It.IsAny<int>(), "test");
 
             wMockRepository.Verify(m => m.CommitTransaction(), Times.Never);
             wMockRepository.Verify(m => m.RollbackTransaction(), Times.Once);
@@ -305,7 +305,7 @@ namespace LibraUnitTest {
             wMockMessageService.Setup(m => m.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<object>()));
 
             ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMockMessageService.Object);
-            wLibraControl.BorrowBook("test", It.IsAny<int>());
+            wLibraControl.BorrowBook(It.IsAny<int>(), "test");
 
             wMockRepository.Verify(m => m.CommitTransaction(), Times.Never);
             wMockRepository.Verify(m => m.RollbackTransaction(), Times.Once);
@@ -323,7 +323,7 @@ namespace LibraUnitTest {
             wMockMessageService.Setup(m => m.Show(It.IsAny<MessageTypeEnum>(), It.IsAny<object>()));
 
             ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMockMessageService.Object);
-            wLibraControl.BorrowBook("test", It.IsAny<int>());
+            wLibraControl.BorrowBook(It.IsAny<int>(), "test");
 
             wMockRepository.Verify(m => m.CommitTransaction(), Times.Never);
             wMockRepository.Verify(m => m.RollbackTransaction(), Times.Once);
