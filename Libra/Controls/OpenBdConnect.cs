@@ -63,10 +63,11 @@ namespace Libra {
                 .GetString();
 
             // 著者名を設定
-            wBook.Author = wRootElement
+            var wAuthor = wRootElement
                 .GetProperty("summary")
                 .GetProperty("author")
                 .GetString();
+            wBook.Author = string.IsNullOrEmpty(wAuthor) ? "（著者名なし）" : wAuthor;
 
             // 出版社を設定
             wBook.Publisher = wRootElement
