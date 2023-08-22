@@ -53,17 +53,11 @@ namespace Libra {
             DataGridViewCell wSelectedCell = this.booksDataGridView.SelectedCells[0];
             DataGridViewRow wSelectedRow = wSelectedCell.OwningRow;
 
-
-            // 貸出する書籍の情報を取得
-            int wBookId = (int)wSelectedRow.Cells["bookIdColumn"].Value;
-            var wTitle = (string)wSelectedRow.Cells["titleColumn"].Value;
-            var wUserName = wSelectedRow.Cells["userNameColumn"].Value;
-
             IMessageBoxUtil wMessageBox = new MessageBoxUtil();
 
             // 既に貸出中
-            if (wUserName != DBNull.Value) {
-                wMessageBox.Show(MessageTypeEnum.AlreadyBorrowed, wTitle);
+            if (wSelectedRow.Cells["userNameColumn"].Value != DBNull.Value) {
+                wMessageBox.Show(MessageTypeEnum.AlreadyBorrowed, (string)wSelectedRow.Cells["titleColumn"].Value);
                 return;
             }
 
@@ -72,6 +66,9 @@ namespace Libra {
                 wMessageBox.Show(MessageTypeEnum.UserNameNotInput);
                 return;
             }
+
+            // 貸出する書籍の情報を取得
+            int wBookId = (int)wSelectedRow.Cells["bookIdColumn"].Value;
 
             // 貸出処理
             this.FLibraControl.BorrowBook(wBookId, this.userNameTextBox.Text);
