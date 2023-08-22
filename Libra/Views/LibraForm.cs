@@ -54,7 +54,7 @@ namespace Libra {
             DataGridViewRow wSelectedRow = wSelectedCell.OwningRow;
 
             IMessageBoxUtil wMessageBox = new MessageBoxUtil();
-
+            
             // 既に貸出中
             if (wSelectedRow.Cells["userNameColumn"].Value != DBNull.Value) {
                 wMessageBox.Show(MessageTypeEnum.AlreadyBorrowed, (string)wSelectedRow.Cells["titleColumn"].Value);
@@ -66,6 +66,9 @@ namespace Libra {
                 wMessageBox.Show(MessageTypeEnum.UserNameNotInput);
                 return;
             }
+            
+            // 貸出する書籍のIDを取得
+            int wBookId = (int)wSelectedRow.Cells["bookIdColumn"].Value;
 
             // 貸出する書籍のIDを取得
             int wBookId = (int)wSelectedRow.Cells["bookIdColumn"].Value;
