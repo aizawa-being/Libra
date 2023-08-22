@@ -67,7 +67,7 @@ namespace Libra {
                 return;
             }
 
-            // 貸出する書籍の情報を取得
+            // 貸出する書籍のIDを取得
             int wBookId = (int)wSelectedRow.Cells["bookIdColumn"].Value;
 
             // 貸出処理
