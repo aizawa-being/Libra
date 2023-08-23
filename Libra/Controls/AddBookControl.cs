@@ -100,7 +100,7 @@ namespace Libra {
         }
 
         /// <summary>
-        /// 追加用書籍情報の取得
+        /// 追加用書籍情報を取得します。
         /// </summary>
         /// <returns></returns>
         public Book GetAddBook() {
@@ -108,7 +108,7 @@ namespace Libra {
         }
 
         /// <summary>
-        /// 追加用書籍情報が存在するか
+        /// 追加用書籍情報が存在するかを判定します。
         /// </summary>
         /// <returns>true : 存在する
         ///         false : null</returns>

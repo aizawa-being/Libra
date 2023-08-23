@@ -28,11 +28,26 @@ using static Libra.BooksDataSet;
         /// 削除フラグを立てます。
         /// </summary>
         bool SetDeleteFlag(string vTitle, int vBookId);
-
+        
         /// <summary>
         /// 書籍を検索します。
         /// </summary>
         /// <param name="vSearchWord"></param>
         IEnumerable<Book> SearchBooks(string vSearchString);
+
+        /// <summary>
+        /// 書籍を貸出中にします。
+        /// </summary>
+        /// <param name="vBookId"></param>
+        /// <param name="vUserName"></param>
+        /// <returns></returns>
+        void BorrowBook(int vBookId, string vUserName);
+
+        /// <summary>
+        /// 書籍を返却します。
+        /// </summary>
+        /// <param name="vBookId"></param>
+        /// <returns></returns>
+        void ReturnBook(int wBookId);
     }
 }

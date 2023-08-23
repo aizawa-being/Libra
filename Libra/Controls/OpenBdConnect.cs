@@ -27,7 +27,7 @@ namespace Libra {
         }
 
         /// <summary>
-        /// ISBNコードで書籍情報を非同期に取得します
+        /// ISBNコードを使用して非同期で書籍情報を取得します。
         /// </summary>
         /// <param name="vIsbn"></param>
         /// <returns>Task<HttpResponseMessage></returns>

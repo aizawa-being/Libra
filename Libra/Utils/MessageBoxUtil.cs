@@ -36,10 +36,10 @@ namespace Libra {
                                            MessageBoxIcon.Information,
                                            MessageBoxDefaultButton.Button2);
 
-                case MessageTypeEnum.IsBorrowed:
-                    // 貸出中エラー
-                    return MessageBox.Show(string.Format(MessageConst.C_IsBorrowed, vAppendMessage),
-                                           MessageConst.C_IsBorrowedCaption,
+                case MessageTypeEnum.DeleteWhileBorrowed:
+                    // 貸出中に削除不可エラー
+                    return MessageBox.Show(string.Format(MessageConst.C_DeleteWhileBorrowed, vAppendMessage),
+                                           MessageConst.C_DeleteWhileBorrowedCaption,
                                            MessageBoxButtons.OK,
                                            MessageBoxIcon.Information);
 
@@ -47,6 +47,27 @@ namespace Libra {
                     // 削除済みエラー
                     return MessageBox.Show(string.Format(MessageConst.C_AlreadyDeleted, vAppendMessage),
                                            MessageConst.C_AlreadyDeletedCaption,
+                                           MessageBoxButtons.OK,
+                                           MessageBoxIcon.Information);
+
+                case MessageTypeEnum.AlreadyBorrowed:
+                    // 既に貸出中エラー
+                    return MessageBox.Show(string.Format(MessageConst.C_AlreadyBorrowed, vAppendMessage),
+                                           MessageConst.C_AlreadyBorrowedCaption,
+                                           MessageBoxButtons.OK,
+                                           MessageBoxIcon.Information);
+
+                case MessageTypeEnum.UserNameNotInput:
+                    // 利用者名未入力エラー
+                    return MessageBox.Show(MessageConst.C_UserNameNotInput,
+                                           MessageConst.C_UserNameNotInputCaption,
+                                           MessageBoxButtons.OK,
+                                           MessageBoxIcon.Information);
+
+                case MessageTypeEnum.NotBorrowed:
+                    // 貸出中ではないエラー
+                    return MessageBox.Show(string.Format(MessageConst.C_NotBorrowed, vAppendMessage),
+                                           MessageConst.C_NotBorrowedCaption,
                                            MessageBoxButtons.OK,
                                            MessageBoxIcon.Information);
 

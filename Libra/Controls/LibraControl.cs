@@ -11,7 +11,7 @@ using static Libra.BooksDataSet;
 
 namespace Libra {
     /// <summary>
-    /// 書籍一覧画面のコントローラ
+    /// 書籍一覧画面のコントローラクラスです。
     /// </summary>
     public class LibraControl : ILibraControl {
         private readonly Func<IBookRepository> FBookRepository;
@@ -49,17 +49,8 @@ namespace Libra {
                 try {
                     return wBookService.GetExistBooks();
 
-                } catch (DbException) {
-                    // DBエラー発生
-                    this.FMessageBoxService.Show(MessageTypeEnum.DbError);
-
-                } catch (EntityException) {
-                    // DBエラー発生
-                    this.FMessageBoxService.Show(MessageTypeEnum.DbError);
-
                 } catch (Exception vException) {
-                    // 予期せぬエラー発生
-                    this.FMessageBoxService.Show(MessageTypeEnum.UnexpectedError, vException);
+                    this.HandleException(vException);
                 }
                 return null;
             }
@@ -84,11 +75,9 @@ namespace Libra {
         }
 
         /// <summary>
-        /// 削除フラグを立てます。
+        /// 削除フラグを設定します。
         /// </summary>
         public bool SetDeleteFlag(string vTitle, int vBookId) {
-            var wResult = false;
-
             // 削除確認メッセージボックスの表示
             if (this.FMessageBoxService.Show(MessageTypeEnum.DeleteConfirmation, vTitle) != DialogResult.OK) {
                 return false;
@@ -97,29 +86,13 @@ namespace Libra {
             try {
                 using (ILibraBookService wBookService = new BookService(this.FBookRepository)) {
                     wBookService.SetDeleteFlag(vBookId);
-                    wResult = true;
+                    return true;
                 }
-            } catch (BookOperationException vException) {
-                var wBookError = new BookErrorDefine(vException.ErrorType);
-                this.FMessageBoxService.Show(wBookError.FMessageType, vException.BookTitle);
-
-            } catch (DbException) {
-                // DBエラー発生
-                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
-
-            } catch (DbUpdateException) {
-                // DBエラー発生
-                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
-
-            } catch (EntityException) {
-                // DBエラー発生
-                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
 
             } catch (Exception vException) {
-                // 予期せぬエラー発生
-                this.FMessageBoxService.Show(MessageTypeEnum.UnexpectedError, vException);
+                this.HandleException(vException);
             }
-            return wResult;
+            return false;
         }
 
         /// <summary>
@@ -134,19 +107,61 @@ namespace Libra {
                 using (ILibraBookService wBookService = new BookService(this.FBookRepository)) {
                     return wBookService.SearchBooks(wSearchWords);
                 }
-            } catch (DbException) {
-                // DBエラー発生
-                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
+            } catch (Exception vException) {
+                this.HandleException(vException);
+            }
+            return null;
+        }
 
-            } catch (EntityException) {
-                // DBエラー発生
-                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
+        /// <summary>
+        /// 書籍を貸出中にします。
+        /// </summary>
+        /// <param name="vBookId"></param>
+        /// <param name="vUserName"></param>
+        /// <returns></returns>
+        public void BorrowBook(int vBookId, string vUserName) {
+            try {
+                using (ILibraBookService wBookService = new BookService(this.FBookRepository)) {
+                    wBookService.BorrowBook(vBookId, vUserName);
+                }
 
             } catch (Exception vException) {
+                this.HandleException(vException);
+            }
+        }
+
+        /// <summary>
+        /// 書籍を返却します。
+        /// </summary>
+        /// <param name="vBookId"></param>
+        public void ReturnBook(int vBookId) {
+            try {
+                using (ILibraBookService wBookService = new BookService(this.FBookRepository)) {
+                    wBookService.ReturnBook(vBookId);
+                }
+            } catch (Exception vException) {
+                this.HandleException(vException);
+            }
+        }
+
+        /// <summary>
+        /// 例外を処理します。
+        /// </summary>
+        /// <param name="vException"></param>
+        private void HandleException(Exception vException) {
+            if (vException is BookOperationException wBookOperationException) {
+                // Libra独自の例外発生
+                var wBookError = new BookErrorDefine(wBookOperationException.ErrorType);
+                this.FMessageBoxService.Show(wBookError.FMessageType, wBookOperationException.BookTitle);
+
+            } else if (vException is DbException || vException is DbUpdateException || vException is EntityException) {
+                // DBエラー発生
+                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
+
+            } else {
                 // 予期せぬエラー発生
                 this.FMessageBoxService.Show(MessageTypeEnum.UnexpectedError, vException);
             }
-            return null;
         }
     }
 }

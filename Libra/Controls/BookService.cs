@@ -21,15 +21,40 @@ namespace Libra {
         }
 
         /// <summary>
+        /// トランザクション内で指定されたアクションを実行します。
+        /// トランザクションの開始、コミット、および例外時のロールバックを管理します。
+        /// </summary>
+        /// <param name="vAction"></param>
+        private void PerformInTransaction(Action<IBookRepository> vAction) {
+            IBookRepository wBookRepository = this.FBookRepository();
+            // トランザクション開始
+            wBookRepository.BeginTransaction();
+            try {
+                // 指定されたアクションを実行
+                vAction(wBookRepository);
+                wBookRepository.Save();
+                wBookRepository.CommitTransaction();
+
+            } catch (Exception) {
+                // ロールバック
+                wBookRepository.RollbackTransaction();
+                throw;
+            }
+        }
+
+        /// <summary>
         /// 削除されていない書籍情報を全て取得します。
         /// </summary>
         /// <returns>books</returns>
         public IEnumerable<Book> GetExistBooks() {
-            IBookRepository wInstance = this.FBookRepository();
-            var wBooks = from book in wInstance.GetBooks()
+            IEnumerable<Book> wBooks = new List<Book>();
+
+            this.PerformInTransaction(wRepository => {
+                wBooks = from book in wRepository.GetBooks()
                          where book.IsDeleted is 0
                          orderby book.Title
                          select book;
+            });
             return wBooks;
         }
 
@@ -39,31 +64,19 @@ namespace Libra {
         /// <param name="vBook"></param>
         /// <returns>int</returns>
         public int AddBook(Book vBook) {
-            IBookRepository wInstance = this.FBookRepository();
-
-            wInstance.BeginTransaction();
-            try {
-                wInstance.AddBook(vBook);
-                wInstance.Save();
-                wInstance.CommitTransaction();
-
-                return vBook.BookId;
-            } catch (Exception) {
-                // ロールバック
-                wInstance.RollbackTransaction();
-                throw;
-            }
+            this.PerformInTransaction(wRepository => {
+                wRepository.AddBook(vBook);
+            });
+            return vBook.BookId;
         }
 
-        /// 削除フラグを立てます
+        /// <summary>
+        /// 削除フラグを設定します。
         /// </summary>
         /// <param name="vBookId"></param>
         public void SetDeleteFlag(int vBookId) {
-            IBookRepository wInstance = this.FBookRepository();
-            // トランザクション開始
-            wInstance.BeginTransaction();
-            try {
-                var wBook = wInstance.GetBookById(vBookId);
+            this.PerformInTransaction(wRepository => {
+                var wBook = wRepository.GetBookById(vBookId);
                 if (wBook == null) {
                     throw new SQLiteException();
                 }
@@ -73,18 +86,55 @@ namespace Libra {
                 }
                 if (wBook.UserName != null) {
                     // 貸出中
-                    throw new BookOperationException(ErrorTypeEnum.IsBorrowed, wBook.Title);
+                    throw new BookOperationException(ErrorTypeEnum.DeleteWhileBorrowed, wBook.Title);
                 }
                 wBook.IsDeleted = 1;
-                wInstance.UpdateBook(wBook);
-                wInstance.Save();
-                wInstance.CommitTransaction();
+                wRepository.UpdateBook(wBook);
+            });
+        }
 
-            } catch (Exception) {
-                // ロールバック
-                wInstance.RollbackTransaction();
-                throw;
-            }
+        /// <summary>
+        /// 書籍を貸出中にします。
+        /// </summary>
+        /// <param name="vBookId"></param>
+        /// <param name="vUserName"></param>
+        public void BorrowBook(int vBookId, string vUserName) {
+            this.PerformInTransaction(wRepository => {
+                // 書籍情報を取得
+                var wBook = wRepository.GetBookById(vBookId);
+                if (wBook == null) {
+                    // 書籍情報の取得失敗
+                    throw new SQLiteException();
+                }
+                if (wBook.UserName != null) {
+                    // 既に貸出中
+                    throw new BookOperationException(ErrorTypeEnum.AlreadyBorrowed, wBook.Title);
+                }
+                wBook.UserName = vUserName;
+                wBook.BorrowingDate = DateTime.Now.ToString("yyyy/MM/dd");
+                wRepository.UpdateBook(wBook);
+            });
+        }
+
+        /// <summary>
+        /// 書籍を返却します。
+        /// </summary>
+        /// <param name="vBookId"></param>
+        public void ReturnBook(int vBookId) {
+            this.PerformInTransaction(wRepository => {
+                var wBook = wRepository.GetBookById(vBookId);
+                if (wBook == null) {
+                    // 書籍情報の取得失敗
+                    throw new SQLiteException();
+                }
+                if (wBook.UserName == null) {
+                    // 貸出されていない
+                    throw new BookOperationException(ErrorTypeEnum.NotBorrowed, wBook.Title);
+                }
+                wBook.UserName = null;
+                wBook.BorrowingDate = null;
+                wRepository.UpdateBook(wBook);
+            });
         }
 
         /// <summary>
@@ -93,8 +143,9 @@ namespace Libra {
         /// <param name="vSearchWords"></param>
         /// <returns>Book</returns>
         public IEnumerable<Book> SearchBooks(IEnumerable<string> vSearchWords) {
-            IBookRepository wInstance = this.FBookRepository();
-            var wBooks = from wBook in wInstance.GetBooks()
+            IEnumerable<Book> wBooks = new List<Book>();
+            this.PerformInTransaction(wRepository => {
+                wBooks = from wBook in wRepository.GetBooks()
                          where vSearchWords.All(wKeyword =>
                              wBook.Title.Contains(wKeyword) ||
                              wBook.Author.Contains(wKeyword) ||
@@ -104,6 +155,7 @@ namespace Libra {
                              wBook.IsDeleted is 0)
                          orderby wBook.Title
                          select wBook;
+            });
             return wBooks;
         }
 

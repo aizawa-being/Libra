@@ -12,17 +12,31 @@ namespace Libra {
         /// </summary>
         /// <returns>books</returns>
         IEnumerable<Book> GetExistBooks();
-        
+
+        /// <summary>
         /// 削除フラグを立てます
         /// </summary>
         /// <param name="vBookId"></param>
         void SetDeleteFlag(int vBookId);
-        
+
         /// <summary>
         /// 書籍を複数ワードで検索します。
         /// </summary>
         /// <param name="vSearchWords"></param>
         /// <returns>Book</returns>
         IEnumerable<Book> SearchBooks(IEnumerable<string> vSearchWords);
+
+        /// <summary>
+        /// 書籍を貸出中にします。
+        /// </summary>
+        /// <param name="vBookId"></param>
+        /// <param name="vUserName"></param>
+        void BorrowBook(int vBookId, string vUserName);
+
+        /// <summary>
+        /// 書籍を返却します。
+        /// </summary>
+        /// <param name="vBookId"></param>
+        void ReturnBook(int vBookId);
     }
 }

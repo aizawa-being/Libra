@@ -6,8 +6,8 @@ using System.Data.Entity;
 
 namespace Libra {
     /// <summary>
-    /// 書籍情報テーブルのCRUD操作用クラス。
-    /// CRUD操作時は、Contextではなくリポジトリを呼び出してください。
+    /// 書籍情報のCRUD操作を提供するリポジトリクラスです。
+    /// CRUD操作時には、DbContextではなくこのリポジトリを使用してください。
     /// </summary>
     public class BookRepository : IBookRepository, IDisposable {
         private BooksDbContext FContext;
@@ -64,7 +64,7 @@ namespace Libra {
         }
 
         /// <summary>
-        /// DBの変更を保存します。
+        /// 変更をデータベースに保存します。
         /// </summary>
         public void Save() {
             this.FContext.SaveChanges();

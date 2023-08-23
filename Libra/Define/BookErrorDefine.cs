@@ -24,9 +24,19 @@
                     this.FMessageType = MessageTypeEnum.AlreadyDeleted;
                     return;
 
-                case ErrorTypeEnum.IsBorrowed:
+                case ErrorTypeEnum.DeleteWhileBorrowed:
                     // 貸出中エラー
-                    this.FMessageType = MessageTypeEnum.IsBorrowed;
+                    this.FMessageType = MessageTypeEnum.DeleteWhileBorrowed;
+                    return;
+
+                case ErrorTypeEnum.AlreadyBorrowed:
+                    // 既に貸出中エラー
+                    this.FMessageType = MessageTypeEnum.AlreadyBorrowed;
+                    return;
+
+                case ErrorTypeEnum.NotBorrowed:
+                    // 貸出中ではないエラー
+                    this.FMessageType = MessageTypeEnum.NotBorrowed;
                     return;
 
                 default:

@@ -85,14 +85,14 @@
         public const string C_AlreadyDeletedCaption = "削除済エラー";
 
         /// <summary>
-        /// 貸出中エラーメッセージ
+        /// 貸出中に削除不可エラーメッセージ
         /// </summary>
-        public const string C_IsBorrowed = "{0} は\r\n貸出中の為、削除できません。";
+        public const string C_DeleteWhileBorrowed = "{0} は\r\n貸出中の為、削除できません。";
 
         /// <summary>
-        /// 貸出中エラーキャプション
+        /// 貸出中に削除不可エラーキャプション
         /// </summary>
-        public const string C_IsBorrowedCaption = "貸出中エラー";
+        public const string C_DeleteWhileBorrowedCaption = "貸出中エラー";
 
         /// <summary>
         /// 削除確認メッセージ
@@ -103,5 +103,35 @@
         /// 削除確認メッセージキャプション
         /// </summary>
         public const string C_DeleteConfirmationCaption = "書籍削除確認";
+
+        /// <summary>
+        /// 既に貸出中エラー
+        /// </summary>
+        public const string C_AlreadyBorrowed = "{0}は\r\n貸出中です。";
+
+        /// <summary>
+        /// 既に貸出中エラーキャプション
+        /// </summary>
+        public const string C_AlreadyBorrowedCaption = "貸出エラー";
+
+        /// <summary>
+        /// 利用者名未入力エラー
+        /// </summary>
+        public const string C_UserNameNotInput = "利用者名を入力してください。";
+
+        /// <summary>
+        /// 利用者名未入力エラーキャプション
+        /// </summary>
+        public const string C_UserNameNotInputCaption = "利用者名未入力エラー";
+
+        /// <summary>
+        /// 貸出中ではないエラー
+        /// </summary>
+        public const string C_NotBorrowed = "{0}は\r\n貸出されていません。";
+
+        /// <summary>
+        /// 貸出中ではないエラーキャプション
+        /// </summary>
+        public const string C_NotBorrowedCaption = "返却エラー";
     }
 }

@@ -46,7 +46,46 @@ namespace Libra {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Borrow_Click(object sender, EventArgs e) {
+            if (booksDataGridView.SelectedCells.Count == 0) {
+                return;
+            }
+            // 選択されている行を取得
+            DataGridViewCell wSelectedCell = this.booksDataGridView.SelectedCells[0];
+            DataGridViewRow wSelectedRow = wSelectedCell.OwningRow;
 
+            IMessageBoxUtil wMessageBox = new MessageBoxUtil();
+            
+            // 既に貸出中
+            if (wSelectedRow.Cells["userNameColumn"].Value != DBNull.Value) {
+                wMessageBox.Show(MessageTypeEnum.AlreadyBorrowed, (string)wSelectedRow.Cells["titleColumn"].Value);
+                return;
+            }
+
+            // 利用者名は入力が必須
+            if (string.IsNullOrWhiteSpace(this.userNameTextBox.Text)) {
+                wMessageBox.Show(MessageTypeEnum.UserNameNotInput);
+                return;
+            }
+            
+            // 貸出する書籍のIDを取得
+            int wBookId = (int)wSelectedRow.Cells["bookIdColumn"].Value;
+
+            // 貸出処理
+            this.FLibraControl.BorrowBook(wBookId, this.userNameTextBox.Text);
+
+            // 書籍一覧グリッドの初期化
+            var wBooks = this.FLibraControl.GetAllBooks();
+            this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
+
+            // 貸出した書籍にフォーカスします。
+            int wColumnIndex = this.booksDataGridView.Columns[0].Index;
+            foreach (DataGridViewRow wRow in this.booksDataGridView.Rows) {
+                if (wRow.Cells[wColumnIndex].Value != null && (int)wRow.Cells[wColumnIndex].Value == wBookId) {
+                    wRow.Selected = true;
+                    this.booksDataGridView.FirstDisplayedScrollingRowIndex = wRow.Index;
+                    break;
+                }
+            }
         }
 
         /// <summary>
@@ -55,7 +94,32 @@ namespace Libra {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Return_Click(object sender, EventArgs e) {
+            if (booksDataGridView.SelectedCells.Count == 0) {
+                return;
+            }
+            // 選択されている行を取得
+            DataGridViewCell wSelectedCell = this.booksDataGridView.SelectedCells[0];
+            DataGridViewRow wSelectedRow = wSelectedCell.OwningRow;
 
+            // 返却する書籍のIDを取得
+            int wBookId = (int)wSelectedRow.Cells["bookIdColumn"].Value;
+
+            // 返却処理
+            this.FLibraControl.ReturnBook(wBookId);
+
+            // 書籍一覧グリッドの初期化
+            var wBooks = this.FLibraControl.GetAllBooks();
+            this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
+
+            // 返却した書籍にフォーカスします。
+            int wColumnIndex = this.booksDataGridView.Columns[0].Index;
+            foreach (DataGridViewRow wRow in this.booksDataGridView.Rows) {
+                if (wRow.Cells[wColumnIndex].Value != null && (int)wRow.Cells[wColumnIndex].Value == wBookId) {
+                    wRow.Selected = true;
+                    this.booksDataGridView.FirstDisplayedScrollingRowIndex = wRow.Index;
+                    break;
+                }
+            }
         }
 
         /// <summary>
