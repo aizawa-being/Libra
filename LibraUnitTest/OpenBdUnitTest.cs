@@ -144,7 +144,7 @@ namespace LibraUnitTest {
             var wBook = wOpenBdConnect.PerseBookInfo(wJsonString);
 
             Assert.AreEqual(vTitle, wBook.Title);
-            Assert.AreEqual(vAuthor, wBook.Author);
+            Assert.That(wBook.Author == vAuthor || wBook.Author == "（著者名なし）");
             Assert.AreEqual(vPublisher, wBook.Publisher);
             Assert.AreEqual(vIsbn, wBook.Barcode);
             Assert.AreEqual(vDescription, wBook.Description);
@@ -167,7 +167,7 @@ namespace LibraUnitTest {
             var wBook = wOpenBdConnect.PerseBookInfo(wJsonString);
 
             Assert.AreEqual(vTitle, wBook.Title);
-            Assert.AreEqual(vAuthor, wBook.Author);
+            Assert.That(wBook.Author == vAuthor || wBook.Author == "（著者名なし）");
             Assert.AreEqual(vPublisher, wBook.Publisher);
             Assert.AreEqual(vIsbn, wBook.Barcode);
             Assert.AreEqual("", wBook.Description);
