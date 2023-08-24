@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -121,56 +122,95 @@ namespace LibraUnitTest {
         }
 
         [TestCase("テスト書籍名1", "テスト著者名1", "テスト出版社1", "0123456789012", "テスト概要1")]
-        [TestCase("", "", "", "", "")]
         public void 書籍情報抽出テスト(string vTitle, string vAuthor, string vPublisher, string vIsbn, string vDescription) {
-            string wJsonString = $@"[
-                        {{
-                            ""summary"": {{
-                                ""title"": ""{vTitle}"",
-                                ""author"": ""{vAuthor}"",
-                                ""publisher"": ""{vPublisher}"",
-                                ""isbn"": ""{vIsbn}"" }},
-                            ""onix"": {{
-                                ""CollateralDetail"": {{
-                                    ""TextContent"": [ {{
-                                        ""Text"": ""{vDescription}""
-                                        }}
-                                    ]
-                                }}
-                            }}
-                        }}
-                    ]";
+            string wJsonString = AssembleJsonString(vTitle, vAuthor, vPublisher, vIsbn, vDescription);
             IOpenBdConnect wOpenBdConnect = new OpenBdConnect();
             var wBook = wOpenBdConnect.PerseBookInfo(wJsonString);
 
             Assert.AreEqual(vTitle, wBook.Title);
-            Assert.That(wBook.Author == vAuthor || wBook.Author == "（著者名なし）");
+            Assert.AreEqual(vAuthor, wBook.Author);
+            Assert.AreEqual(vPublisher, wBook.Publisher);
+            Assert.AreEqual(vIsbn, wBook.Barcode);
+            Assert.AreEqual(vDescription, wBook.Description);
+        }
+
+        [TestCase("", "", "", "", "")]
+        [TestCase("", null, "", "", "")]
+        public void 書籍情報取得時に著者名の登録なければ変換されること(string vTitle, string vAuthor, string vPublisher, string vIsbn, string vDescription) {
+            string wJsonString = AssembleJsonString(vTitle, vAuthor, vPublisher, vIsbn, vDescription);
+            IOpenBdConnect wOpenBdConnect = new OpenBdConnect();
+            var wBook = wOpenBdConnect.PerseBookInfo(wJsonString);
+
+            Assert.AreEqual(vTitle, wBook.Title);
+            Assert.AreEqual("（著者名なし）", wBook.Author);
             Assert.AreEqual(vPublisher, wBook.Publisher);
             Assert.AreEqual(vIsbn, wBook.Barcode);
             Assert.AreEqual(vDescription, wBook.Description);
         }
 
         [TestCase("テスト書籍名1", "テスト著者名1", "テスト出版社1", "0123456789012")]
-        [TestCase("", "", "", "")]
         public void 概要なし書籍情報抽出テスト(string vTitle, string vAuthor, string vPublisher, string vIsbn) {
-            string wJsonString = $@"[
-                        {{
-                            ""summary"": {{
-                                ""title"": ""{vTitle}"",
-                                ""author"": ""{vAuthor}"",
-                                ""publisher"": ""{vPublisher}"",
-                                ""isbn"": ""{vIsbn}""
-                            }}
-                        }}
-                    ]";
+            string wJsonString = AssembleJsonString(vTitle, vAuthor, vPublisher, vIsbn, "");
+
             IOpenBdConnect wOpenBdConnect = new OpenBdConnect();
             var wBook = wOpenBdConnect.PerseBookInfo(wJsonString);
 
             Assert.AreEqual(vTitle, wBook.Title);
-            Assert.That(wBook.Author == vAuthor || wBook.Author == "（著者名なし）");
+            Assert.AreEqual(vAuthor, wBook.Author);
             Assert.AreEqual(vPublisher, wBook.Publisher);
             Assert.AreEqual(vIsbn, wBook.Barcode);
             Assert.AreEqual("", wBook.Description);
+        }
+
+        [TestCase("テスト書籍名1", "", "テスト出版社1", "0123456789012")]
+        [TestCase("テスト書籍名1", null, "テスト出版社1", "0123456789012")]
+        public void 著者名なしかつ概要なし書籍情報抽出テスト(string vTitle, string vAuthor, string vPublisher, string vIsbn) {
+            string wJsonString = AssembleJsonString(vTitle, vAuthor, vPublisher, vIsbn, "");
+
+            IOpenBdConnect wOpenBdConnect = new OpenBdConnect();
+            var wBook = wOpenBdConnect.PerseBookInfo(wJsonString);
+
+            Assert.AreEqual(vTitle, wBook.Title);
+            Assert.AreEqual("（著者名なし）", wBook.Author);
+            Assert.AreEqual(vPublisher, wBook.Publisher);
+            Assert.AreEqual(vIsbn, wBook.Barcode);
+            Assert.AreEqual("", wBook.Description);
+        }
+
+        /// <summary>
+        /// Json形式の文字列を作成します。
+        /// </summary>
+        /// <param name="vTitle"></param>
+        /// <param name="vAuthor"></param>
+        /// <param name="vPublisher"></param>
+        /// <param name="vIsbn"></param>
+        /// <param name="vDescription"></param>
+        /// <returns></returns>
+        private string AssembleJsonString(string vTitle, string vAuthor, string vPublisher, string vIsbn, string vDescription) {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("[{");
+            sb.AppendLine("  \"summary\": {");
+            sb.AppendLine($"    \"title\": \"{vTitle}\",");
+            sb.AppendLine($"    \"author\": \"{vAuthor}\",");
+            sb.AppendLine($"    \"publisher\": \"{vPublisher}\",");
+            sb.AppendLine($"    \"isbn\": \"{vIsbn}\"");
+            sb.AppendLine("  }");
+
+            if (!string.IsNullOrEmpty(vDescription)) {
+                sb.AppendLine(",");
+                sb.AppendLine("  \"onix\": {");
+                sb.AppendLine("    \"CollateralDetail\": {");
+                sb.AppendLine("      \"TextContent\": [ {");
+                sb.AppendLine($"        \"Text\": \"{vDescription}\"");
+                sb.AppendLine("      }]");
+                sb.AppendLine("    }");
+                sb.AppendLine("  }");
+            }
+
+            sb.Append("}]");
+
+            return sb.ToString();
         }
 
         [Test]
