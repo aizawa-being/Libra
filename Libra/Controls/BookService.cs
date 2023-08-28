@@ -147,12 +147,12 @@ namespace Libra {
             this.PerformInTransaction(wRepository => {
                 wBooks = from wBook in wRepository.GetBooks()
                          where vSearchWords.All(wKeyword =>
-                             wBook.Title.Contains(wKeyword) ||
+                             (wBook.Title.Contains(wKeyword) ||
                              wBook.Author.Contains(wKeyword) ||
-                             wBook.Publisher != null && wBook.Publisher.Contains(wKeyword) ||
-                             wBook.Description != null && wBook.Description.Contains(wKeyword) ||
-                             wBook.UserName != null && wBook.UserName.Contains(wKeyword) &&
-                             wBook.IsDeleted is 0)
+                             (wBook.Publisher != null && wBook.Publisher.Contains(wKeyword)) ||
+                             (wBook.Description != null && wBook.Description.Contains(wKeyword)) ||
+                             (wBook.UserName != null && wBook.UserName.Contains(wKeyword)))
+                             && wBook.IsDeleted is 0)
                          orderby wBook.Title
                          select wBook;
             });
