@@ -158,7 +158,7 @@ namespace Libra {
             this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
 
             // スクロール位置の初期化
-            this.booksDataGridView.FirstDisplayedScrollingRowIndex = this.FScrollPosition;
+            this.FScrollPosition = 0;
         }
 
         /// <summary>
