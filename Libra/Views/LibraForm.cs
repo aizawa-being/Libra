@@ -9,6 +9,11 @@ namespace Libra {
         private ILibraControl FLibraControl;
 
         /// <summary>
+        /// 現在のスクロール位置
+        /// </summary>
+        public int FScrollPosition { get; set; }
+
+        /// <summary>
         /// コンストラクタ
         /// </summary>
         public LibraForm() {
@@ -82,10 +87,12 @@ namespace Libra {
             foreach (DataGridViewRow wRow in this.booksDataGridView.Rows) {
                 if (wRow.Cells[wColumnIndex].Value != null && (int)wRow.Cells[wColumnIndex].Value == wBookId) {
                     wRow.Selected = true;
-                    this.booksDataGridView.FirstDisplayedScrollingRowIndex = wRow.Index;
                     break;
                 }
             }
+
+            // スクロール位置を指定
+            this.booksDataGridView.FirstDisplayedScrollingRowIndex = this.FScrollPosition;
         }
 
         /// <summary>
@@ -116,10 +123,12 @@ namespace Libra {
             foreach (DataGridViewRow wRow in this.booksDataGridView.Rows) {
                 if (wRow.Cells[wColumnIndex].Value != null && (int)wRow.Cells[wColumnIndex].Value == wBookId) {
                     wRow.Selected = true;
-                    this.booksDataGridView.FirstDisplayedScrollingRowIndex = wRow.Index;
                     break;
                 }
             }
+
+            // スクロール位置を指定
+            this.booksDataGridView.FirstDisplayedScrollingRowIndex = this.FScrollPosition;
         }
 
         /// <summary>
@@ -130,6 +139,9 @@ namespace Libra {
         private void Search_Click(object sender, EventArgs e) {
             var wBooks = this.FLibraControl.SearchBooks(this.searchWordTextBox.Text);
             this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
+
+            // スクロール位置の初期化
+            this.FScrollPosition = 0;
         }
 
         /// <summary>
@@ -144,6 +156,9 @@ namespace Libra {
             // 書籍一覧グリッドを初期化します。
             var wBooks = this.FLibraControl.GetAllBooks();
             this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
+
+            // スクロール位置の初期化
+            this.booksDataGridView.FirstDisplayedScrollingRowIndex = this.FScrollPosition;
         }
 
         /// <summary>
@@ -168,6 +183,8 @@ namespace Libra {
             foreach (DataGridViewRow wRow in this.booksDataGridView.Rows) {
                 if (wRow.Cells[wColumnIndex].Value != null && (int)wRow.Cells[wColumnIndex].Value == wAddBookId) {
                     wRow.Selected = true;
+
+                    // スクロール位置を指定
                     this.booksDataGridView.FirstDisplayedScrollingRowIndex = wRow.Index;
                     break;
                 }
@@ -200,6 +217,9 @@ namespace Libra {
             var wBooks = this.FLibraControl.SearchBooks(this.searchWordTextBox.Text);
             this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
 
+            // スクロール位置を指定
+            this.booksDataGridView.FirstDisplayedScrollingRowIndex = this.FScrollPosition;
+
             // フォーカスする行を指定
             if (wSelectedCellIndex == 0 || wSelectedCellIndex > this.booksDataGridView.Rows.Count || this.booksDataGridView.Rows.Count == 0) {
                 return;
@@ -209,7 +229,6 @@ namespace Libra {
                 this.booksDataGridView.CurrentCell = this.booksDataGridView.Rows[wSelectedCellIndex - 1].Cells[1];
                 return;
             }
-            this.booksDataGridView.CurrentCell = this.booksDataGridView.Rows[wSelectedCellIndex].Cells[1];
         }
 
         /// <summary>
@@ -247,6 +266,17 @@ namespace Libra {
 
             if (this.booksDataGridView.Rows.Count > 0) {
                 this.booksDataGridView.CurrentCell = this.booksDataGridView.FirstDisplayedCell;
+            }
+        }
+
+        /// <summary>
+        /// 書籍一覧グリッドのスクロールイベントハンドラ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BooksDataGridView_Scroll(object sender, ScrollEventArgs e) {
+            if (e.ScrollOrientation == ScrollOrientation.VerticalScroll) {
+                this.FScrollPosition = e.NewValue;
             }
         }
     }

@@ -161,6 +161,7 @@
             this.booksDataGridView.StandardTab = true;
             this.booksDataGridView.TabStop = false;
             this.booksDataGridView.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.BooksGridCellPainting);
+            this.booksDataGridView.Scroll += new System.Windows.Forms.ScrollEventHandler(this.BooksDataGridView_Scroll);
             // 
             // bookIdColumn
             // 
