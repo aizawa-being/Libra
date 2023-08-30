@@ -159,8 +159,8 @@ namespace Libra {
             }
             // 書籍を追加した場合
             // 書籍一覧グリッドを更新します。
-            // 書籍一覧グリッドの検索条件を引き継ぐ
-            var wBooks = this.FLibraControl.SearchBooks(this.searchWordTextBox.Text);
+            // 検索条件は引き継ぎません。
+            var wBooks = this.FLibraControl.GetAllBooks();
             this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
 
             // 追加した書籍にフォーカスします。
