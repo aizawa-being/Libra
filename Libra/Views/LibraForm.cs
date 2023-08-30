@@ -6,7 +6,7 @@ namespace Libra {
     /// 書籍一覧画面：ホーム画面です。
     /// </summary>
     public partial class LibraForm : Form {
-        private ILibraControl FLibraControl;
+        private readonly ILibraControl FLibraControl;
 
         /// <summary>
         /// 現在のスクロール位置
@@ -92,7 +92,9 @@ namespace Libra {
             }
 
             // スクロール位置を指定
-            this.booksDataGridView.FirstDisplayedScrollingRowIndex = this.FScrollPosition;
+            if (this.booksDataGridView.RowCount > 0) {
+                this.booksDataGridView.FirstDisplayedScrollingRowIndex = this.FScrollPosition;
+            }
         }
 
         /// <summary>
@@ -128,7 +130,9 @@ namespace Libra {
             }
 
             // スクロール位置を指定
-            this.booksDataGridView.FirstDisplayedScrollingRowIndex = this.FScrollPosition;
+            if (this.booksDataGridView.RowCount > 0) {
+                this.booksDataGridView.FirstDisplayedScrollingRowIndex = this.FScrollPosition;
+            }
         }
 
         /// <summary>
@@ -218,7 +222,9 @@ namespace Libra {
             this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
 
             // スクロール位置を指定
-            this.booksDataGridView.FirstDisplayedScrollingRowIndex = this.FScrollPosition;
+            if (this.booksDataGridView.RowCount > 0) {
+                this.booksDataGridView.FirstDisplayedScrollingRowIndex = this.FScrollPosition;
+            }
 
             // フォーカスする行を指定
             if (wSelectedCellIndex == 0 || wSelectedCellIndex > this.booksDataGridView.Rows.Count || this.booksDataGridView.Rows.Count == 0) {
