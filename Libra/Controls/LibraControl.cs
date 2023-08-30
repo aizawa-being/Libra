@@ -152,15 +152,15 @@ namespace Libra {
             if (vException is BookOperationException wBookOperationException) {
                 // Libra独自の例外発生
                 var wBookError = new BookErrorDefine(wBookOperationException.ErrorType);
-                this.FMessageBoxService.Show(wBookError.FMessageType, wBookOperationException.BookTitle);
+                _ = this.FMessageBoxService.Show(wBookError.FMessageType, wBookOperationException.BookTitle);
 
             } else if (vException is DbException || vException is DbUpdateException || vException is EntityException) {
                 // DBエラー発生
-                this.FMessageBoxService.Show(MessageTypeEnum.DbError);
+                _ = this.FMessageBoxService.Show(MessageTypeEnum.DbError);
 
             } else {
                 // 予期せぬエラー発生
-                this.FMessageBoxService.Show(MessageTypeEnum.UnexpectedError, vException);
+                _ = this.FMessageBoxService.Show(MessageTypeEnum.UnexpectedError, vException);
             }
         }
     }
