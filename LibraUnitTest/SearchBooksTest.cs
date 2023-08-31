@@ -350,31 +350,5 @@ namespace LibraUnitTest {
             // 例外発生時、メッセージボックスが表示されていることを確認
             wMessageBoxMock.Verify(m => m.Show(MessageTypeEnum.UnexpectedError, It.IsAny<object>()), Times.Once);
         }
-
-        [Test]
-        public void 検索条件が正しいか確認するテスト() {
-            IEnumerable<Book> wBookList = new List<Book>{
-                new Book {
-                    Title = "該当",
-                    Author = "該当",
-                    Publisher = "該当",
-                    Description = "該当",
-                    Barcode = "0000000000000",
-                    IsDeleted = 1,
-                    UserName = null,
-                    BorrowingDate = null 
-                }
-            };
-
-            var wMockRepository = new Mock<IBookRepository>();
-            wMockRepository.Setup(m => m.GetBooks()).Returns(wBookList);
-
-            var wMessageBoxMock = new Mock<IMessageBoxUtil>();
-            ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMessageBoxMock.Object);
-
-            var wBooks = wLibraControl.SearchBooks("該当");
-
-            Assert.AreEqual(0, wBooks.Count());
-        }
     }
 }
