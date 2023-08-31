@@ -9,7 +9,6 @@ using System.Data.Entity.Core;
 using System.Data.SQLite;
 
 using Libra;
-using System.Collections;
 
 namespace LibraUnitTest {
     [TestFixture]
