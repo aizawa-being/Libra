@@ -73,8 +73,8 @@ namespace Libra {
             // 貸出処理
             this.FLibraControl.BorrowBook(wBookId, this.userNameTextBox.Text);
 
-            // 書籍一覧グリッドの初期化
-            var wBooks = this.FLibraControl.GetAllBooks();
+            // 書籍一覧グリッドの検索条件を引き継ぐ
+            var wBooks = this.FLibraControl.SearchBooks(this.searchWordTextBox.Text);
             this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
 
             // 貸出した書籍にフォーカスします。
@@ -107,8 +107,8 @@ namespace Libra {
             // 返却処理
             this.FLibraControl.ReturnBook(wBookId);
 
-            // 書籍一覧グリッドの初期化
-            var wBooks = this.FLibraControl.GetAllBooks();
+            // 書籍一覧グリッドの検索条件を引き継ぐ
+            var wBooks = this.FLibraControl.SearchBooks(this.searchWordTextBox.Text);
             this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
 
             // 返却した書籍にフォーカスします。
@@ -159,6 +159,7 @@ namespace Libra {
             }
             // 書籍を追加した場合
             // 書籍一覧グリッドを更新します。
+            // 検索条件は引き継ぎません。
             var wBooks = this.FLibraControl.GetAllBooks();
             this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
 
@@ -195,8 +196,8 @@ namespace Libra {
             // 削除実施し、結果を取得する
             var wResult = this.FLibraControl.SetDeleteFlag(wTitle, wBookId);
 
-            // 書籍一覧グリッドの初期化
-            var wBooks = this.FLibraControl.GetAllBooks();
+            // 書籍一覧グリッドの検索条件を引き継ぐ
+            var wBooks = this.FLibraControl.SearchBooks(this.searchWordTextBox.Text);
             this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
 
             // フォーカスする行を指定

@@ -10,7 +10,6 @@ using System.Data.SQLite;
 
 using Libra;
 
-
 namespace LibraUnitTest {
     [TestFixture]
     public class SearchBooksTest {

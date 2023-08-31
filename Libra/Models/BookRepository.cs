@@ -10,7 +10,7 @@ namespace Libra {
     /// CRUD操作時には、DbContextではなくこのリポジトリを使用してください。
     /// </summary>
     public class BookRepository : IBookRepository, IDisposable {
-        private BooksDbContext FContext;
+        private readonly BooksDbContext FContext;
         private DbContextTransaction FTransaction;
 
         /// <summary>
