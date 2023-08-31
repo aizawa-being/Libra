@@ -350,5 +350,57 @@ namespace LibraUnitTest {
             // 例外発生時、メッセージボックスが表示されていることを確認
             wMessageBoxMock.Verify(m => m.Show(MessageTypeEnum.UnexpectedError, It.IsAny<object>()), Times.Once);
         }
+
+        [TestCase("該当", "", "", "", "", 0, 0, 1)]
+        [TestCase("", "該当", "", "", "", 0, 0, 1)]
+        [TestCase("", "", "該当", "", "", 0, 0, 1)]
+        [TestCase("", "", "", "該当", "", 0, 0, 1)]
+        [TestCase("", "", "", "", "該当", 0, 0, 1)]
+        [TestCase("", "", "", "", "", 0, 0, 0)]
+        [TestCase("該当", "", "", "", "", 0, 1, 1)]
+        [TestCase("", "該当", "", "", "", 0, 1, 1)]
+        [TestCase("", "", "該当", "", "", 0, 1, 1)]
+        [TestCase("", "", "", "該当", "", 0, 1, 1)]
+        [TestCase("", "", "", "", "該当", 0, 1, 1)]
+        [TestCase("", "", "", "", "", 0, 1, 0)]
+        [TestCase("該当", "", "", "", "", 1, 1, 0)]
+        [TestCase("", "該当", "", "", "", 1, 1, 0)]
+        [TestCase("", "", "該当", "", "", 1, 1, 0)]
+        [TestCase("", "", "", "該当", "", 1, 1, 0)]
+        [TestCase("", "", "", "", "該当", 1, 1, 0)]
+        [TestCase("", "", "", "", "", 1, 1, 0)]
+        public void 検索条件式が正しいことを確認するテスト(string vTitle, string vAuthor, string vPublisher, string vDescriprion, string vUserName, int vIsDeleted1, int vIsDeleted2, int vResult) {
+            var wBook1 = new Book {
+                Title = vTitle,
+                Author = vAuthor,
+                Publisher = vPublisher,
+                Description = vDescriprion,
+                UserName = vUserName,
+                IsDeleted = vIsDeleted1
+            };
+            var wBook2 = new Book {
+                Title = "",
+                Author = "",
+                Publisher = "",
+                Description = "",
+                UserName = "",
+                IsDeleted = vIsDeleted2
+            };
+
+            IEnumerable<Book> wBookList = new List<Book>{
+                wBook1,
+                wBook2
+            };
+
+            var wMockRepository = new Mock<IBookRepository>();
+            wMockRepository.Setup(m => m.GetBooks()).Returns(wBookList);
+
+            var wMessageBoxMock = new Mock<IMessageBoxUtil>();
+            ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMessageBoxMock.Object);
+
+            var wBooks = wLibraControl.SearchBooks("該当");
+
+            Assert.AreEqual(vResult, wBooks.Count());
+        }
     }
 }
