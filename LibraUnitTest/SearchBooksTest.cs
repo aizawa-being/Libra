@@ -351,45 +351,55 @@ namespace LibraUnitTest {
             wMessageBoxMock.Verify(m => m.Show(MessageTypeEnum.UnexpectedError, It.IsAny<object>()), Times.Once);
         }
 
-        [TestCase("該当", "", "", "", "", 0, 0, 1)]
-        [TestCase("", "該当", "", "", "", 0, 0, 1)]
-        [TestCase("", "", "該当", "", "", 0, 0, 1)]
-        [TestCase("", "", "", "該当", "", 0, 0, 1)]
-        [TestCase("", "", "", "", "該当", 0, 0, 1)]
-        [TestCase("", "", "", "", "", 0, 0, 0)]
-        [TestCase("該当", "", "", "", "", 0, 1, 1)]
-        [TestCase("", "該当", "", "", "", 0, 1, 1)]
-        [TestCase("", "", "該当", "", "", 0, 1, 1)]
-        [TestCase("", "", "", "該当", "", 0, 1, 1)]
-        [TestCase("", "", "", "", "該当", 0, 1, 1)]
-        [TestCase("", "", "", "", "", 0, 1, 0)]
-        [TestCase("該当", "", "", "", "", 1, 1, 0)]
-        [TestCase("", "該当", "", "", "", 1, 1, 0)]
-        [TestCase("", "", "該当", "", "", 1, 1, 0)]
-        [TestCase("", "", "", "該当", "", 1, 1, 0)]
-        [TestCase("", "", "", "", "該当", 1, 1, 0)]
-        [TestCase("", "", "", "", "", 1, 1, 0)]
-        public void 検索条件式が正しいことを確認するテスト(string vTitle, string vAuthor, string vPublisher, string vDescriprion, string vUserName, int vIsDeleted1, int vIsDeleted2, int vResult) {
-            var wBook1 = new Book {
-                Title = vTitle,
-                Author = vAuthor,
-                Publisher = vPublisher,
-                Description = vDescriprion,
-                UserName = vUserName,
-                IsDeleted = vIsDeleted1
-            };
-            var wBook2 = new Book {
-                Title = "",
-                Author = "",
-                Publisher = "",
-                Description = "",
-                UserName = "",
-                IsDeleted = vIsDeleted2
-            };
+        [TestCase("書籍名", 3, TestName = "検索時にTitleが一致する3件取得できること")]
+        [TestCase("著者名", 3, TestName = "検索時にAuthorが一致する3件取得できること")]
+        [TestCase("出版社", 3, TestName = "検索時にPublisherが一致する3件取得できること")]
+        [TestCase("概要", 2, TestName = "検索時にDescriptionが一致する2件取得できること")]
+        [TestCase("利用者名", 1, TestName = "検索時にUserNameが一致する1件取得できること")]
+        [TestCase("該当なし", 0, TestName = "検索時に一致する書籍がないこと")]
+        public void 削除フラグが立っている書籍が検索されないこと(string vSearchWord, int vResult) {
 
             IEnumerable<Book> wBookList = new List<Book>{
-                wBook1,
-                wBook2
+                new Book {
+                    Title = "書籍名1",
+                    Author = "著者名1",
+                    Publisher = "出版社1",
+                    Description = "概要1",
+                    UserName = "利用者名1",
+                    IsDeleted = 0
+                },
+                new Book {
+                    Title = "書籍名2",
+                    Author = "著者名2",
+                    Publisher = "出版社2",
+                    Description = "概要2",
+                    UserName = null,
+                    IsDeleted = 0
+                },
+                new Book {
+                    Title = "書籍名3",
+                    Author = "著者名3",
+                    Publisher = "出版社3",
+                    Description = null,
+                    UserName = null,
+                    IsDeleted = 0
+                },
+                new Book {
+                    Title = "書籍名4",
+                    Author = "著者名4",
+                    Publisher = "出版社4",
+                    Description = "概要4",
+                    UserName = null,
+                    IsDeleted = 1
+                },
+                new Book {
+                    Title = "書籍名5",
+                    Author = "著者名5",
+                    Publisher = "出版社5",
+                    Description = null,
+                    UserName = null,
+                    IsDeleted = 1
+                }
             };
 
             var wMockRepository = new Mock<IBookRepository>();
@@ -398,7 +408,7 @@ namespace LibraUnitTest {
             var wMessageBoxMock = new Mock<IMessageBoxUtil>();
             ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMessageBoxMock.Object);
 
-            var wBooks = wLibraControl.SearchBooks("該当");
+            var wBooks = wLibraControl.SearchBooks(vSearchWord);
 
             Assert.AreEqual(vResult, wBooks.Count());
         }
