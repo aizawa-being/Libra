@@ -350,5 +350,67 @@ namespace LibraUnitTest {
             // 例外発生時、メッセージボックスが表示されていることを確認
             wMessageBoxMock.Verify(m => m.Show(MessageTypeEnum.UnexpectedError, It.IsAny<object>()), Times.Once);
         }
+
+        [TestCase("書籍名", 3, TestName = "検索時にTitleが一致する3件取得できること")]
+        [TestCase("著者名", 3, TestName = "検索時にAuthorが一致する3件取得できること")]
+        [TestCase("出版社", 3, TestName = "検索時にPublisherが一致する3件取得できること")]
+        [TestCase("概要", 2, TestName = "検索時にDescriptionが一致する2件取得できること")]
+        [TestCase("利用者名", 1, TestName = "検索時にUserNameが一致する1件取得できること")]
+        [TestCase("該当なし", 0, TestName = "検索時に一致する書籍がないこと")]
+        public void 削除フラグが立っている書籍が検索されないこと(string vSearchWord, int vResult) {
+
+            IEnumerable<Book> wBookList = new List<Book>{
+                new Book {
+                    Title = "書籍名1",
+                    Author = "著者名1",
+                    Publisher = "出版社1",
+                    Description = "概要1",
+                    UserName = "利用者名1",
+                    IsDeleted = 0
+                },
+                new Book {
+                    Title = "書籍名2",
+                    Author = "著者名2",
+                    Publisher = "出版社2",
+                    Description = "概要2",
+                    UserName = null,
+                    IsDeleted = 0
+                },
+                new Book {
+                    Title = "書籍名3",
+                    Author = "著者名3",
+                    Publisher = "出版社3",
+                    Description = null,
+                    UserName = null,
+                    IsDeleted = 0
+                },
+                new Book {
+                    Title = "書籍名4",
+                    Author = "著者名4",
+                    Publisher = "出版社4",
+                    Description = "概要4",
+                    UserName = null,
+                    IsDeleted = 1
+                },
+                new Book {
+                    Title = "書籍名5",
+                    Author = "著者名5",
+                    Publisher = "出版社5",
+                    Description = null,
+                    UserName = null,
+                    IsDeleted = 1
+                }
+            };
+
+            var wMockRepository = new Mock<IBookRepository>();
+            wMockRepository.Setup(m => m.GetBooks()).Returns(wBookList);
+
+            var wMessageBoxMock = new Mock<IMessageBoxUtil>();
+            ILibraControl wLibraControl = new LibraControl(() => wMockRepository.Object, wMessageBoxMock.Object);
+
+            var wBooks = wLibraControl.SearchBooks(vSearchWord);
+
+            Assert.AreEqual(vResult, wBooks.Count());
+        }
     }
 }
