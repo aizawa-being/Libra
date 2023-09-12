@@ -11,7 +11,12 @@ namespace Libra {
         /// <summary>
         /// 現在のスクロール位置
         /// </summary>
-        public int FScrollPosition { get; set; }
+        private int FScrollPosition;
+
+        /// <summary>
+        /// 最後に検索したときの検索ワード
+        /// </summary>
+        private string FLastSearchWord = "";
 
         /// <summary>
         /// コンストラクタ
@@ -79,7 +84,7 @@ namespace Libra {
             this.FLibraControl.BorrowBook(wBookId, this.userNameTextBox.Text);
 
             // 書籍一覧グリッドの検索条件を引き継ぐ
-            var wBooks = this.FLibraControl.SearchBooks(this.searchWordTextBox.Text);
+            var wBooks = this.FLibraControl.SearchBooks(this.FLastSearchWord);
             this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
 
             // 貸出した書籍にフォーカスします。
@@ -117,7 +122,7 @@ namespace Libra {
             this.FLibraControl.ReturnBook(wBookId);
 
             // 書籍一覧グリッドの検索条件を引き継ぐ
-            var wBooks = this.FLibraControl.SearchBooks(this.searchWordTextBox.Text);
+            var wBooks = this.FLibraControl.SearchBooks(this.FLastSearchWord);
             this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
 
             // 返却した書籍にフォーカスします。
@@ -141,7 +146,10 @@ namespace Libra {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Search_Click(object sender, EventArgs e) {
-            var wBooks = this.FLibraControl.SearchBooks(this.searchWordTextBox.Text);
+            // 検索ワードを保持する。
+            this.FLastSearchWord = this.searchWordTextBox.Text;
+
+            var wBooks = this.FLibraControl.SearchBooks(this.FLastSearchWord);
             this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
 
             // スクロール位置の初期化
@@ -156,6 +164,9 @@ namespace Libra {
         private void Clear_Click(object sender, EventArgs e) {
             // 検索ワード入力欄を初期化します。
             this.searchWordTextBox.Text = "";
+
+            // 保持していた検索ワードを初期化します。
+            this.FLastSearchWord = "";
 
             // 書籍一覧グリッドを初期化します。
             var wBooks = this.FLibraControl.GetAllBooks();
@@ -181,6 +192,9 @@ namespace Libra {
             // 検索条件は引き継ぎません。
             var wBooks = this.FLibraControl.GetAllBooks();
             this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
+
+            // 保持していた検索ワードを初期化します。
+            this.FLastSearchWord = "";
 
             // 追加した書籍にフォーカスします。
             int wColumnIndex = this.booksDataGridView.Columns[0].Index;
@@ -218,7 +232,7 @@ namespace Libra {
             var wResult = this.FLibraControl.SetDeleteFlag(wTitle, wBookId);
 
             // 書籍一覧グリッドの検索条件を引き継ぐ
-            var wBooks = this.FLibraControl.SearchBooks(this.searchWordTextBox.Text);
+            var wBooks = this.FLibraControl.SearchBooks(this.FLastSearchWord);
             this.booksDataGridView.DataSource = this.FLibraControl.ConvertBooksDataTable(wBooks);
 
             // スクロール位置を指定
